@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Bash functions for notifying when your internet connection comes back up
+# From https://brettterpstra.com/2018/05/04/shell-tricks-what-to-do-when-you-cant-do-internet/
+
+set -o errexit
+set -o nounset
+
+# A truly atrocious way to get your attention
+nag() {
+	while true; do
+		for phrase in "$@"; do
+			afplay /System/Library/Sounds/Ping.aiff
+			say "$phrase"
+			sleep 3
+		done
+	done
+}
+
+# Poll a DNS resolver to see when you can reach it, then notify
+imdown() {
+	until ping -W1 -c1 8.8.8.8; do
+		sleep 5;
+	done
+	nag \
+	"internet connection is back up\!" \
+	"Skynet is thinking" "your tribulation is over\!" \
+	"Praise what gods may be. internet\!" \
+	"O M G we're online" \
+	"In the words of Dr. Frankenstein, it's alive\!"
+}
+
+imdown
