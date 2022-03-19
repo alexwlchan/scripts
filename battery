@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This is a simple alias for the macOS utility `pmset`, which manages
+# power management.  In particular, it tells me the status of my laptop
+# battery, and how long I have remaining:
+#
+#     Now drawing from 'Battery Power'
+#      -InternalBattery-0 (id=5111907)
+#       22%; discharging; 1:00 remaining present: true
+#
+# See https://www.dssw.co.uk/reference/pmset.html
+#
+set -o errexit
+set -o nounset
+
+pmset -g batt
