@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This opens my current working directory as a Git repository in GitUp,
+# my Git GUI of choice (https://gitup.co/).
+#
+# It finds the top level of the Git repository, then opens that, rather
+# than the current working directory -- if you run `open -a GitUp.app .`
+# in a subdirectory of a Git repository, you get an error:
+#
+#     could not find repository from '/git/repository/subdirectory'
+#
+# This could be easily adapted to open a different Git GUI.
+
+set -o errexit
+set -o nounset
+
+ROOT=$(git rev-parse --show-toplevel)
+open -a GitUp.app "$ROOT"
