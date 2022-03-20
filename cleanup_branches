@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# This script cleans up local Git branches which have been merged into
+# the main branch.  I use it to clean up the branch view in GitUp
+# (my Git GUI of choice), so I'm not distracted by lots of old branches.
+#
+# It's based on the commands from this Stack Overflow post:
+# https://stackoverflow.com/a/6127884/1558022
+
+set -o errexit
+set -o nounset
+
+GIT_ROOT=$(git rev-parse --absolute-git-dir)
+
+if [[ -f "$GIT_ROOT/refs/remotes/origin/HEAD" ]]
+then
+  PRIMARY_BRANCH=$(cat "$GIT_ROOT/refs/remotes/origin/HEAD" \
+    | tr '/' ' ' \
+    | awk '{print $5}')
+elif [[ -f "$GIT_ROOT/refs/remotes/origin/live" ]]
+then
+  PRIMARY_BRANCH="live"
+else
+  PRIMARY_BRANCH="main"
+fi
+
+echo "Deduced primary branch as $PRIMARY_BRANCH"
+
+CURRENT_BRANCH=$(git branch --show-current)
+echo "Current branch is $CURRENT_BRANCH"
+
+for branch in $(git branch --merged "$PRIMARY_BRANCH")
+do
+  if [[ "$branch" == "$PRIMARY_BRANCH" ]]
+  then
+    continue
+  fi
+
+  if [[ "$branch" == "$CURRENT_BRANCH" ]]
+  then
+    continue
+  fi
+
+  git branch --delete "$branch"
+done
