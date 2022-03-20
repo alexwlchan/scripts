@@ -1,0 +1,57 @@
+#!/usr/bin/env fish
+# Clone a GitHub repo given its web URL.
+#
+#     $1 = URL of the GitHub page
+#
+# Because switching to the repo homepage, clicking, copying the clone URL,
+# typing 'git clone', pasting, are all more effort than I care to do manually.
+#
+# I use this in combination with a shell alias 'gh-clone', which:
+#
+#   1. Gets the URL of my frontmost browser window
+#   2. Clones the repo with this script
+#   3. Switches to that directory
+#
+
+set url "$argv[1]"
+
+# Get the identifiers for the repository
+set components (string split "/" "$url")
+
+if [ "$components[3]" != "github.com" ]
+    echo "$url is not a GitHub repo"
+    return 1
+end
+
+set owner $components[4]
+set repo $components[5]
+
+if [ (count $components) -gt 5 ]
+    # Detect if this is a pull request, and divert
+    if [ $components[6] = "pull" ]
+        github-add-pr-branch "$url"
+        return $status
+    end
+end
+
+set repo_url "git@github.com:$owner/$repo.git"
+
+mkdir -p ~/repos; cd ~/repos
+
+if [ -d $repo ]
+    # If the repo already exists, check we have the selected fork
+    # as a remote.
+    cd $repo
+    git remote -v | grep "$owner" >/dev/null 2>&1
+    if [ $status != 0 ]
+        echo "git remote add $owner $repo_url"
+        git remote add $owner $repo_url
+    end
+    set remote (git remote -v | grep "$owner" | awk '{print $1}')
+    git fetch
+else
+    # Otherwise, clone a fresh copy of the repo
+    echo "git clone $repo_url"
+    git clone $repo_url
+    cd $repo
+end
