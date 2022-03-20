@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+# This script gives me a brief summary of my current Git changes, by
+# telling me the number of lines I'm adding/deleting, e.g.
+#
+#     +++ 455 additions
+#     ---   9 deletions
+#
+# It's just for my own amusement, and shouldn't be relied on for
+# anything serious.
+
+deletions = 0
+additions = 0
+
+`git diff`.each_line do |line|
+  if line.start_with? "-" and not line.start_with? "--- "
+    deletions += 1
+  elsif line.start_with? "+" and not line.start_with? "+++ "
+    additions += 1
+  end
+end
+
+`git diff --cached`.each_line do |line|
+  if line.start_with? "-" and not line.start_with? "--- "
+    deletions += 1
+  elsif line.start_with? "+" and not line.start_with? "+++ "
+    additions += 1
+  end
+end
+
+# https://stackoverflow.com/q/1489183/1558022
+class String
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def red
+    colorize(31)
+  end
+
+  def green
+    colorize(32)
+  end
+end
+
+additions = additions.to_s
+deletions = deletions.to_s
+
+max_len = [additions.size, deletions.size].max
+
+puts "+++ #{additions.rjust(max_len)} addition#{additions == "1" ? "" : "s"}".green
+puts "--- #{deletions.rjust(max_len)} deletion#{deletions == "1" ? "" : "s"}".red
