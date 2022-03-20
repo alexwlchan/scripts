@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This is a quick alias for tallying values -- given a list of values,
+# this prints a table of the values in ascending order.
+#
+# e.g. to find the third character of words that start with 'a':
+#
+#     $ grep '^a' /usr/share/dict/words | cut -c 3 | tally
+#     ...
+#      955 c
+#      975 r
+#     1066 o
+#     1191 a
+#     3226 t
+#
+
+set -o errexit
+set -o nounset
+
+sort | uniq -c | sort
