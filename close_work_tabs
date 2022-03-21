@@ -50,7 +50,11 @@ function isSafeToClose(url) {
     url.startsWith("https://buildkite.com/wellcomecollection/") ||
     url.startsWith("http://localhost:3000/") ||
     url.startsWith("https://api.wellcomecollection.org/") ||
-    url.startsWith("https://www-stage.wellcomecollection.org/")
+    url.startsWith("https://www-stage.wellcomecollection.org/") ||
+    url.startsWith("https://wellcomecollection.prismic.io") ||
+
+    // Kibana dashboards in Elastic Cloud
+    url.includes(".eu-west-1.aws.found.io:9243/")
   ) || (
     url === 'https://github.com/'
   );
