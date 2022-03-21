@@ -1,0 +1,104 @@
+#!/usr/bin/env python3
+"""
+This is to reduce diff churn in the Scala code I write at Wellcome.
+
+The autoformatter that runs against PRs prefers long imports to be split
+across multiple lines, e.g.
+
+    import weco.messaging.typesafe.{
+      AlpakkaSqsWorkerConfigBuilder,
+      SNSBuilder,
+      SQSBuilder
+    }
+
+but whenever IntelliJ touches imports, it "fixes" them onto a single line:
+
+    import weco.messaging.typesafe.{AlpakkaSqsWorkerConfigBuilder, SNSBuilder, SQSBuilder}
+
+This churn makes diffs harder to follow; this script splits imports back
+onto multiple lines.
+
+*   Why not run autoformatting locally?
+    Because Scala autoformatting is sloooooow and this is the main thing
+    I usually want to fix.
+
+*   Why not fix your IntelliJ settings?
+    Because I have no idea how to; writing a simple text editing script
+    was a time-bounded exercise in a way that editing IntelliJ settings isn't.
+
+"""
+
+
+import os
+import re
+import subprocess
+
+
+def git(*cmd):
+    return subprocess.check_output(["git"] + list(cmd)).decode("utf8").strip()
+
+
+def changed_files():
+    root = git("rev-parse", "--show-toplevel")
+    for cmd in [
+        ["diff", "--name-only"],
+        ["diff", "--name-only", "--cached"],
+    ]:
+        for relpath in git(*cmd).split():
+            yield os.path.join(root, relpath)
+
+
+if __name__ == "__main__":
+    for path in changed_files():
+        print(f"Editing {path}")
+        try:
+            with open(path) as srcfile:
+                src_lines = list(srcfile)
+        except FileNotFoundError:
+            continue
+
+        while True:
+            has_edits = False
+
+            for lineno, line in enumerate(src_lines):
+                if not line.startswith("import"):
+                    continue
+
+                if len(line.strip()) <= 80:
+                    continue
+
+                if "{" not in line:
+                    continue
+
+                if line.strip().endswith("{"):
+                    continue
+
+                m = re.match(
+                    r"^import (?P<package>[a-zA-Z0-9\._]+)\{(?P<imports>[a-zA-Z0-9, ]+)\}",
+                    line,
+                )
+                if m is None:
+                    print("???", line)
+                    continue
+                assert m is not None, (path, lineno, line)
+
+                package = m.groupdict()["package"]
+                imports = [im.strip() for im in m.groupdict()["imports"].split(",")]
+
+                src_lines[lineno] = f"import {package}{{\n"
+                for idx, im in enumerate(imports, start=1):
+                    if idx == len(imports):
+                        src_lines.insert(lineno + idx, f"  {im}\n")
+                    else:
+                        src_lines.insert(lineno + idx, f"  {im},\n")
+
+                src_lines.insert(lineno + len(imports) + 1, "}\n")
+
+                has_edits = True
+                break
+
+            if not has_edits:
+                break
+
+        with open(path, "w") as srcfile:
+            srcfile.write("".join(src_lines))
