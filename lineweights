@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+"""
+This script analyses a file, and highlights the longest lines, e.g.
+
+      4 ▏   1167 ▏
+      7 ▏  26324 █████▏
+      8 ▏    268 ▏
+
+I've been using this to reduce the page weight on the Wellcome Collection
+website; I download the HTML and use ``lineweight`` to find the longest
+lines (and so the places where to target reductions).
+
+See https://alexwlchan.net/2018/05/ascii-bar-charts/
+
+"""
+
+import sys
+
+
+def draw_chart(data, *, min_line_length):
+    max_value = max(count for _, count in data)
+    increment = max_value / 25
+
+    longest_label_length = max(len(label) for label, _ in data)
+
+    for label, count in data:
+        if count <= min_line_length:
+            continue
+
+        # The ASCII block elements come in chunks of 8, so we work out how
+        # many fractions of 8 we need.
+        # https://en.wikipedia.org/wiki/Block_Elements
+        bar_chunks, remainder = divmod(int(count * 8 / increment), 8)
+
+        # First draw the full width chunks
+        bar = '█' * bar_chunks
+
+        # Then add the fractional part.  The Unicode code points for
+        # block elements are (8/8), (7/8), (6/8), ... , so we need to
+        # work backwards.
+        if remainder > 0:
+            bar += chr(ord('█') + (8 - remainder))
+
+        # If the bar is empty, add a left one-eighth block
+        bar = bar or  '▏'
+
+        print(f'{label.rjust(longest_label_length)} ▏ {count:#6d} {bar}')
+
+
+if __name__ == '__main__':
+    try:
+        path = sys.argv[1]
+    except IndexError:
+        sys.exit(f"Usage: {__file__} <PATH>")
+
+    with open(path, "rb") as infile:
+        line_lengths = [
+            (f"L{lineno}", len(line))
+            for lineno, line in enumerate(infile, start=1)
+        ]
+
+    draw_chart(line_lengths, min_line_length=250)
