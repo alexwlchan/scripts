@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Gets the latest version of vfd, the command-line tool I use to build
+# my static books site.
+#
+# See https://github.com/alexwlchan/books.alexwlchan.net
+
+set -o errexit
+set -o nounset
+
+DOWNLOAD_URL=$(curl --silent 'https://api.github.com/repos/alexwlchan/books.alexwlchan.net/releases/latest' \
+  | jq -r ' .assets | map(.browser_download_url) | map(select(test(".*darwin.*")))[0]'
+)
+
+# The --location flag means we follow redirects
+curl --location "$DOWNLOAD_URL" > ~/.cargo/bin/vfd.tar.gz
+tar -xzf ~/.cargo/bin/vfd.tar.gz
+
+mv vfd ~/.cargo/bin/vfd
+chmod +x ~/.cargo/bin/vfd
+vfd --version
