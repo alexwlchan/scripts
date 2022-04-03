@@ -26,7 +26,7 @@ import os
 
 
 def count_entries_under(d):
-    assert os.path.isdir(d)
+    assert os.path.isdir(d), d
     total = 1
 
     for _, dirnames, filenames in os.walk(d):
