@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# This is an alias for adding files to docstore
+# (https://github.com/alexwlchan/docstore)
+#
+# When I save a file, I have to supply four bits of information:
+#
+#   1) what's the path to the file?
+#   2) where did I download it from?
+#   3) what's the title of the file?
+#   4) what's it tagged with?
+#
+# This fills in (1) and (2) automatically, so I just have to fill in
+# (3) and (4).
+#
+# I get the frontmost URL from my web browser with https://github.com/alexwlchan/safari.rs;
+# I get my latest download with another script in this repo.
+
+set -o errexit
+set -o nounset
+
+docstore add \
+  $(latest_download) \
+  --source_url=$(~/.cargo/bin/safari url) \
+  "$@"
