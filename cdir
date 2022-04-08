@@ -59,7 +59,8 @@ if __name__ == "__main__":
     for prefix, count in reversed(prefixes.most_common()):
         print("%7d\t%s" % (count, prefix))
 
-    home_display = os.path.abspath(".").replace(os.environ["HOME"], "~")
+    home_display = os.path.abspath(root
+).replace(os.environ["HOME"], "~")
 
     print("-------")
     print("%7d\t%s" % (sum(prefixes.values()), home_display))
