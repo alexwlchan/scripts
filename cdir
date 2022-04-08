@@ -19,10 +19,15 @@ unhappy because there's lots of filesystem activity (e.g. `node_modules`).
 I often use this in conjunction with DaisyDisk (https://daisydiskapp.com/),
 which breaks down directories by size.
 
+This script takes an optional argument, which is the path to the directory
+to scan.  Running ``cdir`` will scan the current directory; ``cdir <DIR>`` will
+scan the directory ``DIR``.
+
 """
 
 import collections
 import os
+import sys
 
 
 def count_entries_under(d):
@@ -39,11 +44,17 @@ def count_entries_under(d):
 if __name__ == "__main__":
     prefixes = collections.Counter()
 
-    for e in os.listdir("."):
-        if os.path.isfile(e):
+    try:
+        root = sys.argv[1]
+    except IndexError:
+        root = "."
+
+    for e in os.listdir(root):
+        pth = os.path.join(root, e)
+        if os.path.isfile(pth):
             prefixes["."] += 1
         else:
-            prefixes[e] = count_entries_under(e)
+            prefixes[e] = count_entries_under(pth)
 
     for prefix, count in reversed(prefixes.most_common()):
         print("%7d\t%s" % (count, prefix))
