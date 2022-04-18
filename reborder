@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# This script adds a white border of consistent width around an image.
+#
+# I use it when I've taken a screenshot of something on a white background,
+# and I want to tidy up the crop quickly.
+
+set -o errexit
+set -o nounset
+
+if (( $# != 2 ))
+then
+  echo "Usage: reborder <PATH> <BORDER_WIDTH>" >&2
+  exit 1
+fi
+
+PATH="$1"
+BORDER_WIDTH="$2"
+
+NOEXT=${PATH%.*}
+EXT=${PATH##*.}
+
+NEW_PATH="$NOEXT"_reborder."$EXT"
+
+/usr/local/bin/convert \
+  -background none \
+  -trim "$PATH" \
+  -bordercolor white \
+  -border "$BORDER_WIDTH"x"$BORDER_WIDTH" \
+  "$NEW_PATH"
+
+echo "$NEW_PATH"
