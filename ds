@@ -19,6 +19,6 @@ set -o errexit
 set -o nounset
 
 docstore add \
-  $(latest_download) \
+  "$(latest_download)" \
   --source_url=$(~/.cargo/bin/safari url) \
   "$@"
