@@ -40,6 +40,7 @@ function isSafeToClose(url) {
     url.startsWith("https://logging.wellcomecollection.org") ||
     url.startsWith("https://console.aws.amazon.com/") ||
     url.startsWith("https://us-east-1.signin.aws.amazon.com/") ||
+    url.startsWith("https://us-east-1.console.aws.amazon.com/") ||
     url.startsWith("https://eu-west-1.signin.aws.amazon.com/") ||
     url.startsWith("https://eu-west-1.console.aws.amazon.com/") ||
     url.startsWith("https://signin.aws.amazon.com/") ||
@@ -53,6 +54,7 @@ function isSafeToClose(url) {
     url.startsWith("https://www-stage.wellcomecollection.org/") ||
     url.startsWith("https://wellcomecollection.prismic.io") ||
     url.startsWith("https://wellcome.org") ||
+    url.startsWith("https://cloud.elastic.co") ||
 
     // Kibana dashboards in Elastic Cloud
     url.includes(".eu-west-1.aws.found.io:9243/")
