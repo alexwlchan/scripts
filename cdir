@@ -31,7 +31,6 @@ import sys
 
 
 def count_entries_under(d):
-    assert os.path.isdir(d), d
     total = 1
 
     for _, dirnames, filenames in os.walk(d):
@@ -51,10 +50,10 @@ if __name__ == "__main__":
 
     for e in os.listdir(root):
         pth = os.path.join(root, e)
-        if os.path.isfile(pth):
-            prefixes["."] += 1
-        else:
+        if os.path.isdir(pth):
             prefixes[e] = count_entries_under(pth)
+        else:
+            prefixes["."] += 1
 
     for prefix, count in reversed(prefixes.most_common()):
         print("%7d\t%s" % (count, prefix))
