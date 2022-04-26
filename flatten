@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+"""
+Run inside a directory, and it moves every non-trivial file up to the
+top-level.
+
+I use this to flatten out heavily-nested directory hierarchies, when I need
+to sort through the files by hand and want to see what I've got.
+
+It tries to handle cases where different files exist with the same name, but
+it may not be robust.  Use with caution.
+
+By default it only prints what it's going to do, you need to add the flag `--run`
+for it to do anything.
+"""
+
+import filecmp
+import os
+import secrets
+import shutil
+import sys
+
+
+def mv(src, dst):
+    print(f'mv {src} ~> {dst}')
+    if '--run' in sys.argv:
+        os.rename(src, dst)
+
+
+def rm(path):
+    print(f'rm {path}')
+    if '--run' in sys.argv:
+        os.unlink(path)
+
+
+if __name__ == '__main__':
+    for root, _, filenames in os.walk('.'):
+        if root == '.':
+            continue
+
+        for f in filenames:
+            f_src = os.path.join(root, f)
+
+            if f == '.DS_Store':
+                rm(f_src)
+                continue
+
+            f_dst = f
+
+            if os.path.exists(f_dst) and filecmp.cmp(f_src, f_dst):
+                rm(f_src)
+                continue
+
+            # Add a bit of noise to filenames to avoid duplication
+            while os.path.exists(f_dst):
+                name, ext = os.path.splitext(f)
+                f_dst = name + '__' + secrets.token_hex(3) + ext
+
+            mv(src=f_src, dst=f_dst)
+
+    # Clean up empty directories
+    while True:
+        is_finished = True
+        for root, dirnames, filenames in os.walk('.'):
+            if not dirnames and not filenames:
+                shutil.rmtree(root)
+                is_finished = False
+
+        if is_finished:
+            break
