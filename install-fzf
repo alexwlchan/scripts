@@ -10,7 +10,7 @@ set -o errexit
 set -o nounset
 
 DOWNLOAD_URL=$(curl --silent 'https://api.github.com/repos/junegunn/fzf/releases/latest' \
-  | jq -r ' .assets | map(.browser_download_url) | map(select(test(".*darwin_arm64.*")))[0]'
+  | jq -r ' .assets | map(.browser_download_url) | map(select(test(".*darwin_amd64.*")))[0]'
 )
 
 cd $(mktemp -d)
