@@ -11,6 +11,12 @@ DOWNLOAD_URL=$(curl --silent 'https://api.github.com/repos/alexwlchan/books.alex
   | jq -r ' .assets | map(.browser_download_url) | map(select(test(".*darwin.*")))[0]'
 )
 
+if [[ "$DOWNLOAD_URL" == "null" ]]
+then
+  echo "No macOS download available for the latest version! Is it still building?" >&2
+  exit 1
+fi
+
 # The --location flag means we follow redirects
 curl --location "$DOWNLOAD_URL" > ~/.cargo/bin/vfd.tar.gz
 tar -xzf ~/.cargo/bin/vfd.tar.gz
