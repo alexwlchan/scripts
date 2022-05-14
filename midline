@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script prints the middle line of a file (approximately).
+#
+# I use it to do binary searches on a file.
+#
+# See https://www.unix.com/unix-for-dummies-questions-and-answers/248556-find-display-middle-line-file-using-single-line-command.html
+
+set -o errexit
+set -o nounset
+
+awk '{a[b++]=$0;}END{print a[int(b/2)];}' "$@"
