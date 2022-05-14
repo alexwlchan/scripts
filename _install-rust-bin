@@ -11,6 +11,10 @@
 # This script gets the latest version of a binary from GitHub and
 # adds it to my $PATH.
 #
+# This script isn't meant to be run directly (hence the underscore) --
+# I have other scripts that invoke it (e.g. install-vfd), so I can find
+# those scripts with autocomplete in my shell, even on a new machine.
+#
 # TODO: I publish macOS/Windows/Linux binaries, but this script only
 # fetches the macOS binary.  In theory, it could detect which OS it's
 # running on and pick the right binary.
