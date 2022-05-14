@@ -30,7 +30,7 @@ import click
 import more_itertools
 import tqdm
 
-# https://github.com/alexwlchan/concurrently/blob/main/concurrently.py
+# https://github.com/alexwlchan/concurrently
 sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
 
 from concurrently import concurrently
