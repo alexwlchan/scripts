@@ -5,13 +5,13 @@ plus the total number of entries in a directory.  It's useful if I'm trying
 to clean up a disk, and I'm looking for directories where I can make quick
 and easy gains.
 
-       37	fishconfig
-       48	repros
-       51	colossus-wheels
-       70	services
-      292	.git
-    =====	=========================
-      699
+         37 fishconfig
+         48 repros
+         51 colossus-wheels
+         70 services
+        292 .git
+    -------
+        699
 
 It's also useful for finding the directory that's making backup software
 unhappy because there's lots of filesystem activity (e.g. `node_modules`).
