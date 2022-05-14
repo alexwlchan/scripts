@@ -6,7 +6,7 @@
 //
 // See https://alexwlchan.net/2022/02/safari-tabs/
 
-safari = Application("Safari Technology Preview");
+safari = Application("Safari");
 
 // Generates all the window/tab/URLs in Safari.
 //
