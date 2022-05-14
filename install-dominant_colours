@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Gets the latest version of dominant_colours, my tool for fetching the
+# dominant colour palette of an image.
+#
+# See https://github.com/alexwlchan/dominant_colours
+
+set -o errexit
+set -o nounset
+
+_install-rust-bin dominant_colours

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Gets the latest version of vfd, the command-line tool I use to build
+# my static books site.
+#
+# See https://github.com/alexwlchan/books.alexwlchan.net
+
+set -o errexit
+set -o nounset
+
+_install-rust-bin books.alexwlchan.net
