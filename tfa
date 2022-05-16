@@ -9,9 +9,44 @@
 #
 # This is an alias for "terraform apply".
 
-if [[ -f run_terraform.sh ]]
+# Handle refresh-only changes.
+#
+# If Terraform doesn't want to make any changes, it will give you
+# a message:
+#
+#     Your configuration already matches the changes detected above.
+#     If you'd like to update the Terraform state to match, create and
+#     apply a refresh-only plan:
+#       terraform apply -refresh-only
+#
+# At this point it's tempting to run `tfa -refresh-only`, but that needs
+# to be handled separately.  If you pass it through the branch below,
+# you get an error:
+#
+#     Error: Too many command line arguments
+#     Expected at most one positional argument.
+#
+# because under the hood it's running:
+#
+#     terraform apply terraform.plan -refresh-only
+#
+# which doesn't make any sense!
+#
+if [[ "$@" == "-refresh-only" ]]
 then
-  ./run_terraform.sh apply terraform.plan "$@"
+  if [[ -f run_terraform.sh ]]
+  then
+    ./run_terraform.sh apply -refresh-only
+  else
+    terraform apply -refresh-only
+  fi
+
+# All other Terraform operations
 else
-  terraform apply terraform.plan "$@"
+  if [[ -f run_terraform.sh ]]
+  then
+    ./run_terraform.sh apply terraform.plan "$@"
+  else
+    terraform apply terraform.plan "$@"
+  fi
 fi
