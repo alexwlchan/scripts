@@ -11,6 +11,12 @@ import shutil
 
 
 def can_be_deleted(d):
+    # This is a folder where I put files that I explicitly don't
+    # want to put in backups.  See https://overcast.fm/+R7DX9_W-Y/21:22
+    # or my Obsidian note about the same.
+    if os.path.abspath(d) == "/Users/alexwlchan/Desktop/do not back up":
+        return False
+
     entries = os.listdir(d)
     return entries == [".DS_Store"] or not entries
 
