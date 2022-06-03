@@ -1,23 +1,9 @@
 #!/usr/bin/env bash
 # This installs the latest version of fzf, a command-line fuzzy finder
-# (https://github.com/junegunn/fzf).
 #
-# Because fzf can be downloaded and installed as a single binary, I do that rather
-# than dealing with Homebrew (which is both slower and more likely to break something
-# completely unrelated).
+# See https://github.com/junegunn/fzf
 
 set -o errexit
 set -o nounset
 
-DOWNLOAD_URL=$(curl --silent 'https://api.github.com/repos/junegunn/fzf/releases/latest' \
-  | jq -r ' .assets | map(.browser_download_url) | map(select(test(".*darwin_amd64.*")))[0]'
-)
-
-cd $(mktemp -d)
-
-# The --location flag means we follow redirects
-curl --location "$DOWNLOAD_URL" > fzf.zip
-unzip fzf.zip
-
-chmod +x fzf
-mv fzf /usr/local/bin/fzf
+_install-github-bin junegunn/fzf

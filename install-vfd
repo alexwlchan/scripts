@@ -7,4 +7,4 @@
 set -o errexit
 set -o nounset
 
-_install-rust-bin books.alexwlchan.net
+_install-github-bin alexwlchan/books.alexwlchan.net

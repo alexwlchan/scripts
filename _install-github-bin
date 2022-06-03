@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 # Install one of my Rust binaries from GitHub.
 #
+# This was originally written to pull just my Rust binaries, but it
+# turns out it can work reasonably well for other projects.  This allows
+# me to bypass Homebrew, which is generally nicer.
+#
 # For my CLI tools written in Rust, I use a GitHub Action [1]
 # to compile binaries and add them to a release on GitHub.
 #
@@ -31,7 +35,7 @@ fi
 
 REPO_NAME="$1"
 
-RELEASES_API_URL="https://api.github.com/repos/alexwlchan/$REPO_NAME/releases/latest"
+RELEASES_API_URL="https://api.github.com/repos/$REPO_NAME/releases/latest"
 
 # Fetch the asset URL using the GitHub Releases API [2].
 #
@@ -60,8 +64,12 @@ RELEASES_API_URL="https://api.github.com/repos/alexwlchan/$REPO_NAME/releases/la
 #
 # [2]: https://docs.github.com/en/rest/releases/releases#get-the-latest-release
 #
+# Note: this will filter out ARM binaries because I'm not running on
+# Apple Silicon yet; this will need updating eventually.
+#
 ASSET_URL=$(curl --silent "$RELEASES_API_URL" \
-  | jq -r '.assets | .[] | select(.name | contains("darwin")) | .url'
+  | jq -r '.assets | .[] | select(.name | contains("darwin")) | select(.name | contains("arm") | not) | .url' \
+  | grep -v arm64
 )
 
 if [[ "$ASSET_URL" == "" ]]
@@ -95,20 +103,27 @@ curl \
 # file, and assume that's the name of the binary.
 ASSET_FILES=$(tar --list --file "asset.tar.gz")
 
-if (( $(echo "$ASSET_FILES" | wc -l) != 1 ))
+if [[ "$REPO_NAME" == "BurntSushi/ripgrep" ]]
 then
-  echo "Release asset doesn't contain exactly 1 file; not sure what to do:" >&2
-  echo "$ASSET_FILES" >&2
-  exit 1
-fi
+  BINARY_PATH=$(echo "$ASSET_FILES" | grep "/rg$")
+  BINARY_NAME="rg"
+else
+  if (( $(echo "$ASSET_FILES" | wc -l) != 1 ))
+  then
+    echo "Release asset doesn't contain exactly 1 file; not sure what to do:" >&2
+    echo "$ASSET_FILES" >&2
+    exit 1
+  fi
 
-BINARY_NAME="$(echo "$ASSET_FILES" | head -n 1)"
+  BINARY_PATH="$(echo "$ASSET_FILES" | head -n 1)"
+  BINARY_NAME="$BINARY_PATH"
+fi
 
 # Now actually extract the binary, make it executable, and add it to the PATH.
 tar --extract --gunzip --file "asset.tar.gz"
 
-chmod +x "$BINARY_NAME"
-mv "$BINARY_NAME" /usr/local/bin
+chmod +x "$BINARY_PATH"
+mv "$BINARY_PATH" /usr/local/bin
 
 which "$BINARY_NAME"
 "$BINARY_NAME" --version

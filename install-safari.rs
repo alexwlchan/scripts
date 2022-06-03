@@ -7,4 +7,4 @@
 set -o errexit
 set -o nounset
 
-_install-rust-bin safari.rs
+_install-github-bin alexwlchan/safari.rs

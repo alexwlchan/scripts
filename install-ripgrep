@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This installs the latest version of ripgrep, an alternative to grep.
+#
+# See https://github.com/BurntSushi/ripgrep/releases/tag/13.0.0
+
+set -o errexit
+set -o nounset
+
+_install-github-bin BurntSushi/ripgrep

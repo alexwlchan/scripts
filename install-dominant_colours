@@ -7,4 +7,4 @@
 set -o errexit
 set -o nounset
 
-_install-rust-bin dominant_colours
+_install-github-bin alexwlchan/dominant_colours
