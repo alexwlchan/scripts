@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+"""
+This script creates a 400×400 thumbnail of a specific page of a PDF file.
+
+It uses similar thumbnailing logic to docstore [1], but it allows me to
+pick a particular page rather than the first page.
+
+This is helpful because sometimes I download PDF cross-stitch patterns
+where the first page contains text which isn't a good thumbnail, but
+later pages do show the whole pattern.
+
+[1]: https://github.com/alexwlchan/docstore/blob/main/src/docstore/thumbnails.py
+
+"""
+
+import os
+import sys
+import subprocess
+import tempfile
+
+from PyPDF2 import PdfFileReader, PdfFileWriter
+
+
+if __name__ == "__main__":
+    try:
+        path = sys.argv[1]
+        page_number = int(sys.argv[2])
+    except (IndexError, ValueError):
+        sys.exit(f"Usage: {__file__} <PATH> <PAGE_NUMBER>")
+
+    reader = PdfFileReader(path)
+
+    # Remember that pages are 0-indexed
+    page = reader.pages[page_number - 1]
+
+    writer = PdfFileWriter()
+    writer.addPage(page)
+
+    with tempfile.TemporaryDirectory(suffix=".pdf") as temp_dir:
+        out_path = os.path.join(temp_dir, os.path.basename(path))
+
+        with open(out_path, "wb") as out_file:
+            writer.write(out_file)
+
+        subprocess.check_call(["qlmanage", "-t", out_path, "-s", "400x400", "-o", "."])
