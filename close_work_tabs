@@ -46,6 +46,7 @@ function isSafeToClose(url) {
     url.startsWith("https://github.com/search?type=Code&q=org:wellcomecollection") ||
     url.startsWith("https://github.com/wellcomecollection/") ||
     url.startsWith("https://logging.wellcomecollection.org") ||
+    url.startsWith("https://manage.auth0.com/") ||
     url.startsWith("https://search.wellcomelibrary.org") ||
     url.startsWith("https://signin.aws.amazon.com/") ||
     url.startsWith("https://trustnet.wellcome.org/") ||
