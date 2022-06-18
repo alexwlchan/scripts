@@ -34,27 +34,27 @@ function isSafeToClose(url) {
   if (url === null) { return false; }
 
   return (
-    url.startsWith("https://zoom.us/") ||
-    url.startsWith("https://trustnet.wellcome.org/") ||
-    url.startsWith("https://search.wellcomelibrary.org") ||
-    url.startsWith("https://logging.wellcomecollection.org") ||
-    url.startsWith("https://console.aws.amazon.com/") ||
-    url.startsWith("https://us-east-1.signin.aws.amazon.com/") ||
-    url.startsWith("https://us-east-1.console.aws.amazon.com/") ||
-    url.startsWith("https://eu-west-1.signin.aws.amazon.com/") ||
-    url.startsWith("https://eu-west-1.console.aws.amazon.com/") ||
-    url.startsWith("https://signin.aws.amazon.com/") ||
-    url.startsWith("https://github.com/wellcomecollection/") ||
-    url.startsWith("https://github.com/orgs/wellcomecollection/") ||
-    url.startsWith("https://github.com/search?type=Code&q=org:wellcomecollection") ||
-    url.startsWith("https://buildkite.com/orgs/wellcomecollection/") ||
-    url.startsWith("https://buildkite.com/wellcomecollection/") ||
     url.startsWith("http://localhost:3000/") ||
     url.startsWith("https://api.wellcomecollection.org/") ||
-    url.startsWith("https://www-stage.wellcomecollection.org/") ||
-    url.startsWith("https://wellcomecollection.prismic.io") ||
-    url.startsWith("https://wellcome.org") ||
+    url.startsWith("https://buildkite.com/orgs/wellcomecollection/") ||
+    url.startsWith("https://buildkite.com/wellcomecollection/") ||
     url.startsWith("https://cloud.elastic.co") ||
+    url.startsWith("https://console.aws.amazon.com/") ||
+    url.startsWith("https://eu-west-1.console.aws.amazon.com/") ||
+    url.startsWith("https://eu-west-1.signin.aws.amazon.com/") ||
+    url.startsWith("https://github.com/orgs/wellcomecollection/") ||
+    url.startsWith("https://github.com/search?type=Code&q=org:wellcomecollection") ||
+    url.startsWith("https://github.com/wellcomecollection/") ||
+    url.startsWith("https://logging.wellcomecollection.org") ||
+    url.startsWith("https://search.wellcomelibrary.org") ||
+    url.startsWith("https://signin.aws.amazon.com/") ||
+    url.startsWith("https://trustnet.wellcome.org/") ||
+    url.startsWith("https://us-east-1.console.aws.amazon.com/") ||
+    url.startsWith("https://us-east-1.signin.aws.amazon.com/") ||
+    url.startsWith("https://wellcome.org") ||
+    url.startsWith("https://wellcomecollection.prismic.io") ||
+    url.startsWith("https://www-stage.wellcomecollection.org/") ||
+    url.startsWith("https://zoom.us/") ||
 
     // Kibana dashboards in Elastic Cloud
     url.includes(".eu-west-1.aws.found.io:9243/")
