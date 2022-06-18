@@ -60,7 +60,8 @@ function isSafeToClose(url) {
     // Kibana dashboards in Elastic Cloud
     url.includes(".eu-west-1.aws.found.io:9243/")
   ) || (
-    url === 'https://github.com/'
+    url === 'https://github.com/' ||
+    url === 'https://twitter.com/home'
   );
 }
 
