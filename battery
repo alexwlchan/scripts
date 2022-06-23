@@ -8,6 +8,7 @@
 #       22%; discharging; 1:00 remaining present: true
 #
 # See https://www.dssw.co.uk/reference/pmset.html
+# See also: temperature
 #
 set -o errexit
 set -o nounset

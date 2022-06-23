@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This is a simple alias for getting CPU temperature.  It prints the
+# current temperature of the CPU:
+#
+#     CPU die temperature: 83.66 C
+#     CPU die temperature: 80.61 C
+#     CPU die temperature: 80.48 C
+#
+# See https://beebom.com/how-check-cpu-temperature-mac/
+# See also: battery
+
+set -o errexit
+set -o nounset
+
+sudo powermetrics --samplers smc |grep -i "CPU die temperature"
