@@ -61,7 +61,10 @@ function isSafeToClose(url) {
     url.includes(".eu-west-1.aws.found.io:9243/")
   ) || (
     url === 'https://github.com/' ||
-    url === 'https://twitter.com/home'
+    url === 'https://twitter.com/home' ||
+    url === 'https://twitter.com/notifications' ||
+    url === 'https://www.macrumors.com' ||
+    url === 'https://www.youtube.com/'
   );
 }
 
