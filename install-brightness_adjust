@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Gets the latest version of brightness_adjust, my tool for showing a
+# selection of darker/lighter variants of a given colour.
+#
+# See https://github.com/alexwlchan/brightness_adjust
+
+set -o errexit
+set -o nounset
+
+_install-github-bin alexwlchan/brightness_adjust
