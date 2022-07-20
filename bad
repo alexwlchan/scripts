@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# This is one of two aliases for git bisect (good/bad).
+#
+# It saves me a bit of typing and lets me use shell autocomplete when
+# doing a 'git bisect'.
+
+set -o errexit
+set -o nounset
+
+git bisect bad
