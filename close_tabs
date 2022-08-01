@@ -64,7 +64,9 @@ function isSafeToClose(url) {
     url === 'https://twitter.com/home' ||
     url === 'https://twitter.com/notifications' ||
     url === 'https://www.macrumors.com' ||
-    url === 'https://www.youtube.com/'
+    url === 'https://www.youtube.com/' ||
+    url === 'https://github.com/alexwlchan/pathscripts' ||
+    url === 'https://alexwlchan.net/'
   );
 }
 
