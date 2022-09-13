@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+
+import csv
+import os
+
+import dateparser
+import matplotlib.pyplot as plt
+
+
+if __name__ == '__main__':
+    csv_path = os.path.join(os.environ['HOME'], 'iCloud', 'usage.csv')
+
+    with open(csv_path) as infile:
+        reader = csv.DictReader(infile)
+        rows = [
+            (dateparser.parse(r['date']), int(r['capacity']) - float(r['available']))
+            for r in reader
+        ]
+
+    f, ax = plt.subplots(1)
+
+    times = [t for (t, _) in rows]
+    values = [used_space for (_, used_space) in rows]
+
+    ax.plot(times, values)
+    # ax.set_ylim(ymin=0)
+    plt.show()
