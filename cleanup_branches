@@ -28,7 +28,7 @@ echo "Deduced primary branch as $PRIMARY_BRANCH"
 CURRENT_BRANCH=$(git branch --show-current)
 echo "Current branch is $CURRENT_BRANCH"
 
-for branch in $(git branch --merged "$PRIMARY_BRANCH")
+for branch in $(git branch --merged "$PRIMARY_BRANCH" | grep -v '*')
 do
   if [[ "$branch" == "$PRIMARY_BRANCH" ]]
   then
