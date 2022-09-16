@@ -63,6 +63,7 @@ function isSafeToClose(url) {
   ) || (
     url === 'https://github.com/' ||
     url === 'https://twitter.com/home' ||
+    url === 'https://mobile.twitter.com/home' ||
     url === 'https://twitter.com/notifications' ||
     url === 'https://www.macrumors.com' ||
     url === 'https://www.youtube.com/' ||
