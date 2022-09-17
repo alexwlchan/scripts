@@ -18,6 +18,20 @@
 set -o errexit
 set -o nounset
 
+LATEST_DOWNLOAD="$(latest_download)"
+MTIME=$(ls -l "$LATEST_DOWNLOAD" | awk '{print $5}')
+NOW=$(date +%s)
+
+# Do a sense check: is this a file I downloaded recently?
+#
+# If not, I may be running `ds` before I've downloaded the file, which
+# might mean I save the wrong thing -- warn against this.
+if (( NOW - MTIME > 1000 ))
+then
+  echo "Latest download '$LATEST_DOWNLOAD' seems quite old, are you sure this is what you want?"
+  exit 1
+fi
+
 docstore add \
   "$(latest_download)" \
   --source_url=$(~/.cargo/bin/safari url) \
