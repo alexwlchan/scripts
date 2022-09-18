@@ -20,7 +20,7 @@ set components (string split "/" "$url")
 
 if [ "$components[3]" != "github.com" ]
     echo "$url is not a GitHub repo"
-    return 1
+    exit 1
 end
 
 set owner $components[4]
@@ -30,7 +30,7 @@ if [ (count $components) -gt 5 ]
     # Detect if this is a pull request, and divert
     if [ $components[6] = "pull" ]
         github-add-pr-branch "$url"
-        return $status
+        exit $status
     end
 end
 

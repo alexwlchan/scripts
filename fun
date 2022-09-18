@@ -5,12 +5,4 @@
 # running `fun nameofdocument.pdf` will move it to the appropriate folder
 # for the current year.
 
-set -o errexit
-set -o nounset
-
-YEAR="$(date +"%Y")"
-
-for f in "$@"
-do
-  mv "$f" ~/Documents/fun/"$YEAR"
-done
+_file_by_year "~/Documents/fun" "$@"
