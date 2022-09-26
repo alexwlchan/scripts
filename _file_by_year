@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This is a shortcut for 'mv' that I use for filing documents.
+#
+# It files documents into per-year subdirectories of a given directory.
+#
+# See e.g. 'fun', 'screenshot', 'wellcome'
+
+set -o errexit
+set -o nounset
+
+DIRNAME="$1"
+YEAR="$(date +"%Y")"
+
+mkdir -p "$DIRNAME/$YEAR"
+
+for f in "${@:2}"
+do
+  mv "$f" "$DIRNAME/$YEAR"
+done
