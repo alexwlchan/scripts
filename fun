@@ -5,4 +5,4 @@
 # running `fun nameofdocument.pdf` will move it to the appropriate folder
 # for the current year.
 
-_file_by_year "~/Documents/fun" "$@"
+_file_by_year ~/Documents/fun "$@"
