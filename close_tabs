@@ -45,6 +45,7 @@ function isSafeToClose(url) {
     url.startsWith("https://eu-west-1.signin.aws.amazon.com/") ||
     url.startsWith("https://github.com/orgs/wellcomecollection/") ||
     url.startsWith("https://github.com/search?type=Code&q=org:wellcomecollection") ||
+    url.startsWith("https://github.com/search?q=org%3Awellcomecollection") ||
     url.startsWith("https://github.com/wellcomecollection/") ||
     url.startsWith("https://logging.wellcomecollection.org") ||
     url.startsWith("https://manage.auth0.com/") ||
@@ -61,16 +62,18 @@ function isSafeToClose(url) {
     // Kibana dashboards in Elastic Cloud
     url.includes(".eu-west-1.aws.found.io:9243/")
   ) || (
-    url === 'https://github.com/' ||
-    url === 'https://twitter.com/home' ||
-    url === 'https://mobile.twitter.com/home' ||
-    url === 'https://twitter.com/notifications' ||
-    url === 'https://www.macrumors.com' ||
-    url === 'https://www.youtube.com/' ||
-    url === 'https://github.com/alexwlchan/pathscripts' ||
     url === 'https://alexwlchan.net/' ||
     url === 'https://arstechnica.com/' ||
-    url === 'https://news.ycombinator.com/'
+    url === 'https://github.com/' ||
+    url === 'https://github.com/alexwlchan/pathscripts' ||
+    url === 'https://mobile.twitter.com/home' ||
+    url === 'https://news.ycombinator.com/' ||
+    url === 'https://twitter.com/home' ||
+    url === 'https://twitter.com/i/timeline' ||
+    url === 'https://twitter.com/notifications' ||
+    url === 'https://www.macrumors.com' ||
+    url === 'https://www.theguardian.com/uk' ||
+    url === 'https://www.youtube.com/'
   );
 }
 
