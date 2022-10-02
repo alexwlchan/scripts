@@ -44,7 +44,9 @@ if __name__ == "__main__":
             delete_directory(d)
             total_deleted += 1
 
-    if total_deleted > 0:
+    if total_deleted == 1:
+        print(termcolor.colored(f"1 directory deleted", "green"))
+    elif total_deleted > 0:
         print(
             termcolor.colored(
                 f"{humanize.intcomma(total_deleted)} directories deleted", "green"
