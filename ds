@@ -19,7 +19,7 @@ set -o errexit
 set -o nounset
 
 LATEST_DOWNLOAD="$(latest_download)"
-MTIME=$(ls -l "$LATEST_DOWNLOAD" | awk '{print $5}')
+MTIME=$(date -r "$LATEST_DOWNLOAD" "+%s")
 NOW=$(date +%s)
 
 # Do a sense check: is this a file I downloaded recently?
