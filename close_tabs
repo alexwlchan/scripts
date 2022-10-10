@@ -33,19 +33,21 @@ function isSafeToClose(url) {
   // so leave this tab open.
   if (url === null) { return false; }
 
+  if (url.startsWith("https://github.com/search") && url.indexOf("org%3Awellcomecollection") !== -1) {
+    return true;
+  }
+
   return (
     url.startsWith("http://localhost:3000/") ||
     url.startsWith("https://api.wellcomecollection.org/") ||
     url.startsWith("https://buildkite.com/orgs/wellcomecollection/") ||
-    url.startsWith("https://buildkite.com/wellcomecollection/") ||
+    url.startsWith("https://buildkite.com/wellcomecollection") ||
     url.startsWith("https://cloud.elastic.co") ||
     url.startsWith("https://console.aws.amazon.com/") ||
     url.startsWith("https://dash.wellcomecollection.org/") ||
     url.startsWith("https://eu-west-1.console.aws.amazon.com/") ||
     url.startsWith("https://eu-west-1.signin.aws.amazon.com/") ||
     url.startsWith("https://github.com/orgs/wellcomecollection/") ||
-    url.startsWith("https://github.com/search?type=Code&q=org:wellcomecollection") ||
-    url.startsWith("https://github.com/search?q=org%3Awellcomecollection") ||
     url.startsWith("https://github.com/wellcomecollection/") ||
     url.startsWith("https://logging.wellcomecollection.org") ||
     url.startsWith("https://manage.auth0.com/") ||
