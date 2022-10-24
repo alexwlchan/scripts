@@ -68,7 +68,7 @@ RELEASES_API_URL="https://api.github.com/repos/$REPO_NAME/releases/latest"
 # Apple Silicon yet; this will need updating eventually.
 #
 ASSET_URL=$(curl --silent "$RELEASES_API_URL" \
-  | jq -r '.assets | .[] | select(.name | contains("darwin")) | select(.name | contains("arm") | not) | .url' \
+  | jq -r '.assets | .[] | select(.name | contains("darwin")) | select(.name | contains("arm") | not) | select(.name | contains("aarch64") | not) | .url' \
   | grep -v arm64
 )
 
