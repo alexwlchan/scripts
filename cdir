@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 This script prints a short table of the subdirectories with the most entries,
 plus the total number of entries in a directory.  It's useful if I'm trying
