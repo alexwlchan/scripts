@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+ENVIRONMENT="${1:-}"
+
+if [[ "${ENVIRONMENT:-}" != "prod" && "${ENVIRONMENT:-}" != "staging" ]]
+then
+  echo "Usage: ssh_to_archivematica <prod|staging>" >&2
+  exit 1
+fi
+
+SECURITY_GROUP_ID=$(
+  AWS_PROFILE=workflow-dev aws ec2 describe-security-groups \
+    | jq .SecurityGroups \
+    | jq "map(select(.GroupName | startswith(\"archivematica-$ENVIRONMENT-bastion_ssh_controlled_ingress\")))" \
+    | jq -r '.[0].GroupId'
+)
+
+MY_IP=$(curl -q 'https://ifconfig.me')
+
+set +o errexit  # InvalidPermission.Duplicate
+AWS_PROFILE=workflow-dev aws ec2 authorize-security-group-ingress \
+  --group-id "$SECURITY_GROUP_ID" \
+  --protocol tcp \
+  --port 22 \
+  --cidr "$MY_IP/32"
+set -o errexit
+
+BASTION_HOST=$(
+  AWS_PROFILE=workflow-dev aws ec2 describe-instances \
+    | jq '.Reservations' \
+    | jq 'map(.Instances) | flatten' \
+    | jq 'map(.Tags |= from_entries)' \
+    | jq "map(select(.Tags.Name | startswith(\"archivematica-$ENVIRONMENT-bastion\")))[0]" \
+    | jq -r '.PublicDnsName'
+)
+
+CONTAINER_HOST=$(
+  AWS_PROFILE=workflow-dev aws ec2 describe-instances \
+    | jq '.Reservations' \
+    | jq 'map(.Instances) | flatten' \
+    | jq 'map(.Tags |= from_entries)' \
+    | jq "map(select(.Tags.Name | startswith(\"archivematica-$ENVIRONMENT-container\")))[0]" \
+    | jq -r '.PrivateIpAddress'
+)
+
+echo "BASTION_HOST=$BASTION_HOST"
+echo "CONTAINER_HOST=$CONTAINER_HOST"
+
+scp -i ~/.ssh/wellcomedigitalworkflow \
+  ~/.ssh/wellcomedigitalworkflow \
+  "ec2-user@$BASTION_HOST:wellcomedigitalworkflow"
+
+ssh -t -i ~/.ssh/wellcomedigitalworkflow \
+  "ec2-user@$BASTION_HOST" \
+  ssh -t -i wellcomedigitalworkflow "ec2-user@$CONTAINER_HOST"
+
+# #!/usr/bin/env python3
+#
+# import sys
+#
+# import boto3
+#
+#
+# def get_environment():
+#     try:
+#         environment = sys.argv[1]
+#         if environment not in ("prod", "staging"):
+#             raise ValueError
+#     except (IndexError, ValueError):
+#         sys.exit(f"Usage: {__file__} <prod|staging>")
+#
+#     return environment
+#
+#
+# def find_security_group_id(sess, *, environment):
+#     ec2 = sess.client("ec2")
+#
+#     for page in ec2.get_paginator('')
+#
+#
+# if __name__ == '__main__':
+#     environment = get_environment()
+#
+#     sess = boto3.Session()
+#     ec2 = sess.client("ec2")
+#
+#
