@@ -56,35 +56,3 @@ scp -i ~/.ssh/wellcomedigitalworkflow \
 ssh -t -i ~/.ssh/wellcomedigitalworkflow \
   "ec2-user@$BASTION_HOST" \
   ssh -t -i wellcomedigitalworkflow "ec2-user@$CONTAINER_HOST"
-
-# #!/usr/bin/env python3
-#
-# import sys
-#
-# import boto3
-#
-#
-# def get_environment():
-#     try:
-#         environment = sys.argv[1]
-#         if environment not in ("prod", "staging"):
-#             raise ValueError
-#     except (IndexError, ValueError):
-#         sys.exit(f"Usage: {__file__} <prod|staging>")
-#
-#     return environment
-#
-#
-# def find_security_group_id(sess, *, environment):
-#     ec2 = sess.client("ec2")
-#
-#     for page in ec2.get_paginator('')
-#
-#
-# if __name__ == '__main__':
-#     environment = get_environment()
-#
-#     sess = boto3.Session()
-#     ec2 = sess.client("ec2")
-#
-#
