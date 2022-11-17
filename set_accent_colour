@@ -12,6 +12,9 @@
 //
 // Tested on macOS Monterey.
 //
+// You may need to run `chmod +x set_accent_colour` first and install the Xcode
+// command-line tools.
+//
 // == How it works ==
 //
 // You can set the accent colour using a `defaults write` command,
