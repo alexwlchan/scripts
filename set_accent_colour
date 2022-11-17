@@ -22,6 +22,12 @@
 // But this doesn't take effect immediately -- we have to send notifications
 // AppleColorPreferencesChangedNotification and
 // AppleAquaColorVariantChanged to tell apps they should update their UIs.
+//
+// == Attribution ==
+//
+// Based on code/ideas by Henrik Helmers, Garth Mortensen, and Robert Sesek.
+//
+// See https://alexwlchan.net/2022/11/changing-the-macos-accent-colour/
 
 import Foundation
 
