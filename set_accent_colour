@@ -1,0 +1,90 @@
+#!/usr/bin/env swift
+// A script to set the accent colour of your Mac.
+//
+// This mimics the accent colour picker in the General pane of
+// System Preferences, and should cause all apps to pick up the change.
+//
+// Usage: pass the colour you want to use as a single command-line argument,
+// e.g.
+//
+//      $ set_accent_colour red
+//      $ set_accent_colour green
+//
+// Tested on macOS Monterey.
+//
+// == How it works ==
+//
+// You can set the accent colour using a `defaults write` command,
+// e.g. to change your accent colour to pink:
+//
+//      $ defaults write -globalDomain AppleAccentColor -int 6
+//
+// But this doesn't take effect immediately -- we have to send notifications
+// AppleColorPreferencesChangedNotification and
+// AppleAquaColorVariantChanged to tell apps they should update their UIs.
+
+import Foundation
+
+// A map of colour names to the int values in AppleAccentColor.
+//
+// I created this map by selected all the accent colours in System Preferences,
+// then running `defaults read -globalDomain AppleAccentColor` and recording
+// the result.
+let colourMap = [
+  ("red",       0),
+  ("orange",    1),
+  ("yellow",    2),
+  ("green",     3),
+  ("blue",      4),
+  ("purple",    5),
+  ("pink",      6),
+  ("graphite", -1),
+]
+
+// Read the selected colour from the command-line arguments.
+func getSelectedColour() -> String {
+  let arguments = CommandLine.arguments
+
+  let colourNames = colourMap.map { $0.0 }
+
+  // If the user hasn't supplied a colour, of they've selected an invalid
+  // colour, print a helpful help message. e.g.
+  //
+  //    $ set_accent_colour blurple
+  //    Usage: set_accent_colour <red|orange|yellow|green|blue|purple|pink|graphite>
+  //
+  if arguments.count != 2 || !colourNames.contains(arguments[1]) {
+    let colours = colourNames.joined(separator:"|")
+    fputs("Usage: \(arguments[0]) <\(colours)>\n", stderr)
+    exit(1)
+  }
+
+  return arguments[1]
+}
+
+func setAccentColour(colour: String) -> () {
+  let colourDict = Dictionary(uniqueKeysWithValues: colourMap)
+  let accentValue: Int = colourDict[colour]!
+
+  // This is the equivalent of
+  //
+  //    $ defaults write -globalDomain AppleAccentColor -int <prefValue>
+  //
+  UserDefaults.standard.setPersistentDomain(
+    ["AppleAccentColor": Optional(accentValue) as Any],
+    forName: UserDefaults.globalDomain
+  )
+
+  let notifications = [
+    "AppleColorPreferencesChangedNotification",
+    "AppleAquaColorVariantChanged"
+  ]
+
+  for name in notifications {
+    let notifyEvent = Notification.Name(name)
+    DistributedNotificationCenter.default().post(name: notifyEvent, object: nil)
+  }
+}
+
+let colour = getSelectedColour()
+setAccentColour(colour: colour)
