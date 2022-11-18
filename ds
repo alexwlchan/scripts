@@ -22,6 +22,8 @@ LATEST_DOWNLOAD="$(latest_download)"
 MTIME=$(date -r "$LATEST_DOWNLOAD" "+%s")
 NOW=$(date +%s)
 
+echo "$LATEST_DOWNLOAD"
+
 # Do a sense check: is this a file I downloaded recently?
 #
 # If not, I may be running `ds` before I've downloaded the file, which
