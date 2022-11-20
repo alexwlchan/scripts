@@ -11,7 +11,7 @@ borders around the images which is precisely what I don't want.
 import os
 import sys
 
-import fitz  # PyMuPDF
+import fitz  # PyMuPDF==1.21.0
 
 
 if __name__ == "__main__":
@@ -22,21 +22,20 @@ if __name__ == "__main__":
 
     with fitz.open(path) as pdf_original, fitz.open() as pdf_new:
         for page_number, page in enumerate(pdf_original, start=1):
-            for image_number, image in enumerate(page.getImageList(), start=1):
+            for image_number, image in enumerate(page.get_images(), start=1):
                 # Get the XREF of the image
                 xref = image[0]
 
                 # Extract the image bytes
-                base_image = pdf_original.extractImage(xref)
+                base_image = pdf_original.extract_image(xref)
 
                 new_page = pdf_new.new_page(
                     width=base_image["width"], height=base_image["height"]
                 )
                 rect = fitz.Rect(0.0, 0.0, base_image["width"], base_image["height"])
-                new_page.insertImage(rect, stream=base_image["image"])
+                new_page.insert_image(rect, stream=base_image["image"])
 
-        out_path = path.replace(".pdf", "-noimages.pdf")
-        assert path != out_path
+        # out_path = path.replace(".pdf", "-noimages.pdf")
+        # assert path != out_path
 
-        pdf_new.save(out_path)
-        print(out_path)
+        pdf_new.save(path)
