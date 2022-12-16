@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Get the name of the current branch
+# http://stackoverflow.com/a/12142066/1558022
+
+set -o errexit
+set -o nounset
+
+git rev-parse --abbrev-ref HEAD
