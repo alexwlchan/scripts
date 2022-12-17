@@ -7,7 +7,7 @@
 set -o errexit
 set -o nounset
 
-if [[ "$1" == "--rebase" ]]
+if [[ "${1:-}" == "--rebase" ]]
 then
   git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase
 else
