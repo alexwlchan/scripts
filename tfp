@@ -9,6 +9,8 @@
 #
 # This is an alias for "terraform plan".
 
+_ensure_aws_credentials_are_fresh
+
 if [[ -f run_terraform.sh ]]
 then
   ./run_terraform.sh plan -out=terraform.plan "$@"

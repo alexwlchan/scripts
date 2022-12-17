@@ -12,6 +12,8 @@
 set -o errexit
 set -o nounset
 
+_ensure_aws_credentials_are_fresh
+
 if [[ -f run_terraform.sh ]]
 then
   ./run_terraform.sh init "$@"

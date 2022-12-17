@@ -32,6 +32,8 @@
 #
 # which doesn't make any sense!
 #
+_ensure_aws_credentials_are_fresh
+
 if [[ "$@" == "-refresh-only" ]]
 then
   if [[ -f run_terraform.sh ]]
