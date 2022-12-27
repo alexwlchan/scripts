@@ -33,7 +33,9 @@ def delete_directory(d):
     # to see if we can delete the parent also.
     parent = os.path.dirname(d)
     if can_be_deleted(parent):
-        delete_directory(parent)
+        return 1 + delete_directory(parent)
+    else:
+        return 1
 
 
 if __name__ == "__main__":
@@ -41,8 +43,7 @@ if __name__ == "__main__":
 
     for d, _, _ in os.walk("."):
         if can_be_deleted(d):
-            delete_directory(d)
-            total_deleted += 1
+            total_deleted += delete_directory(d)
 
     if total_deleted == 1:
         print(termcolor.colored(f"1 directory deleted", "green"))
