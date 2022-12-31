@@ -18,13 +18,12 @@
 // Pass the path to your image as a single command-line argument.  Any text
 // in the image will be returned as a JSON list:
 //
-//      $ get_live_text koa-logger-redactions.jpg
-//      ["koa is","a species","of","tree in the","family","It is",
-//      "endemic to the Hawaiian","Islands, where it","tree."]
+//      $ get_live_text railway-sign.jpg
+//      ["Passengers must","not pass this point","or cross the line"]
 //
 // If the image doesn't contain any text, it returns an empty list:
 //
-//      $ get_live_text marquee-rocket.jpg
+//      $ get_live_text dancers.jpg
 //      []
 //
 
