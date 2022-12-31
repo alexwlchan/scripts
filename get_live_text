@@ -11,7 +11,12 @@
 //    - want to search images that aren't in your Photos library
 //    - want to do analysis which isn't just searching
 //
-// This is based on https://developer.apple.com/documentation/vision/recognizing_text_in_images#3601255
+// This is based on https://developer.apple.com/documentation/vision/recognizing_text_in_images
+//
+// Tested on macOS Monterey.
+//
+// You may need to run `chmod +x get_live_text` first and install the Xcode
+// command-line tools.
 //
 // == Usage ==
 //
