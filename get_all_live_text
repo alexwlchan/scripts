@@ -29,16 +29,31 @@ import os
 import subprocess
 import sys
 
+try:
+    from tqdm import tqdm
+except ImportError:
+    def tqdm(s):
+        return s
 
-def get_file_paths_under(root=".", *, suffix=""):
+
+def get_file_paths_under(root):
     """Generates the paths to every file under ``root``."""
     if not os.path.isdir(root):
         raise ValueError(f"Cannot find files under non-existent directory: {root!r}")
 
     for dirpath, _, filenames in os.walk(root):
         for f in filenames:
-            if os.path.isfile(os.path.join(dirpath, f)) and f.lower().endswith(suffix):
+            if os.path.isfile(os.path.join(dirpath, f)):
                 yield os.path.join(dirpath, f)
+
+
+def get_static_image_paths_under(root):
+    for path in get_file_paths_under(root):
+        if os.path.basename(path).startswith("."):
+            continue
+        if path.lower().endswith((".gif", ".pdf", ".webarchive")):
+            continue
+        yield path
 
 
 def get_text(path):
@@ -61,13 +76,10 @@ if __name__ == "__main__":
     except FileNotFoundError:
         seen_paths = set()
 
-    for path in get_file_paths_under(root):
+    for path in tqdm(list(get_static_image_paths_under(root))):
         if path in seen_paths:
             continue
-        if os.path.basename(path).startswith("."):
-            continue
-        if path.lower().endswith((".gif", ".pdf", ".webarchive")):
-            continue
+
         with open(out_path, "a") as outfile:
             outfile.write(json.dumps({"path": path, "text": get_text(path)}) + "\n")
 
