@@ -10,9 +10,9 @@ Pass the name of the directory you want to scan as a single argument:
 
     $ python3 get_all_live_text ~/screenshots
 
-It will create a JSON file `live-text.json` in the top of the directory with
+It will create a JSON file `live_text.json` in the top of the directory with
 the text for every image it finds.  So the command above would create a file
-at `~/screenshots/live-text.json`.
+at `~/screenshots/live_text.json`.
 
 There will be one line for each image, for example:
 
