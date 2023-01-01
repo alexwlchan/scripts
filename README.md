@@ -24,3 +24,19 @@ Individual scripts have header comments explaining what they do.
 Download them and add them to your PATH.
 
 You can also clone this entire repo, then add it to your PATH, if you want to use all the scripts.
+
+For example, I have the following code in [my fishconfig](https://github.com/alexwlchan/fishconfig/blob/main/config.fish#L5-L22):
+
+```shell
+set --global --export PATH $PATH \
+  ~/repos/pathscripts \
+  ~/repos/pathscripts/aws \
+  ~/repos/pathscripts/git \
+  ~/repos/pathscripts/terraform
+```
+
+## Organisation
+
+Because the names are somewhat inscrutable to anyone but me (e.g. `gp` or `tfi` are meaningless), I've grouped them into a couple of top-level folders.
+
+I add all the subfolders to my PATH so I don't need to remember how they're organised, but it might make it easier to find stuff!
