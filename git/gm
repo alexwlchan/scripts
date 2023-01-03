@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Switch to my main branch and pull any changes from the remote.
+
+set -o errexit
+set -o nounset
+
+GIT_ROOT=$(git rev-parse --absolute-git-dir)
+
+if [[ -f "$GIT_ROOT/refs/remotes/origin/HEAD" ]]
+then
+  PRIMARY_BRANCH=$(cat "$GIT_ROOT/refs/remotes/origin/HEAD" \
+    | tr '/' ' ' \
+    | awk '{print $5}')
+elif [[ -f "$GIT_ROOT/refs/remotes/origin/live" ]]
+then
+  PRIMARY_BRANCH="live"
+else
+  PRIMARY_BRANCH="main"
+fi
+
+git checkout "$PRIMARY_BRANCH"
+gp
