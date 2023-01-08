@@ -3,6 +3,8 @@
 set -o errexit
 set -o nounset
 
+_ensure_aws_credentials_are_fresh
+
 ENVIRONMENT="${1:-}"
 
 if [[ "${ENVIRONMENT:-}" != "prod" && "${ENVIRONMENT:-}" != "staging" ]]
