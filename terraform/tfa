@@ -1,15 +1,7 @@
 #!/usr/bin/env bash
-# In some of the Wellcome Terraform projects, we invoke Terraform via
-# a wrapper script.  This fetches extra credentials from Secrets Manager,
-# e.g. our Auth0 API tokens, and passes them to Terraform as env vars.
-#
-# This is one of three scripts (`tfi`, `tfp`, `tfa`) which do the
-# boring work of checking whether a project uses a wrapper script, or
-# whether to invoke Terraform directly.
-#
 # This is an alias for "terraform apply".
 
-# Handle refresh-only changes.
+# == Handle refresh-only changes ==
 #
 # If Terraform doesn't want to make any changes, it will give you
 # a message:
@@ -32,23 +24,11 @@
 #
 # which doesn't make any sense!
 #
-_ensure_aws_credentials_are_fresh
-
 if [[ "$@" == "-refresh-only" ]]
 then
-  if [[ -f run_terraform.sh ]]
-  then
-    ./run_terraform.sh apply -refresh-only
-  else
-    terraform apply -refresh-only
-  fi
+  tf apply -refresh-only
 
 # All other Terraform operations
 else
-  if [[ -f run_terraform.sh ]]
-  then
-    ./run_terraform.sh apply terraform.plan "$@"
-  else
-    terraform apply terraform.plan "$@"
-  fi
+  tf apply terraform.plan "$@"
 fi

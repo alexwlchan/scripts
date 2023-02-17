@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# In some of the Wellcome Terraform projects, we invoke Terraform via
+# a wrapper script.  This fetches extra credentials from Secrets Manager,
+# e.g. our Auth0 API tokens, and passes them to Terraform as env vars.
+#
+# This script does the boring work of checking whether a project uses
+# a wrapper script, or whether to invoke Terraform directly.
+#
+# All arguments are then passed to the underlying `terraform` command.
+
+_ensure_aws_credentials_are_fresh
+
+if [[ -f run_terraform.sh ]]
+then
+  ./run_terraform.sh "$@"
+else
+  terraform "$@"
+fi
