@@ -7,4 +7,6 @@
 set -o errexit
 set -o nounset
 
-git bisect bad
+pushd $(git rev-parse --show-toplevel)
+  git bisect bad
+popd
