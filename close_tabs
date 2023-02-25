@@ -49,10 +49,12 @@ function isSafeToClose(url) {
     url.startsWith("https://eu-west-1.signin.aws.amazon.com/") ||
     url.startsWith("https://github.com/orgs/wellcomecollection/") ||
     url.startsWith("https://github.com/wellcomecollection/") ||
+    url.startsWith("https://iiif.wellcomecollection.org/dash/") ||
     url.startsWith("https://logging.wellcomecollection.org") ||
     url.startsWith("https://manage.auth0.com/") ||
     url.startsWith("https://search.wellcomelibrary.org") ||
     url.startsWith("https://signin.aws.amazon.com/") ||
+    url.startsWith("https://s3-eu-west-1.amazonaws.com/tzitzit.wellcomecollection.org/index.html") ||
     url.startsWith("https://trustnet.wellcome.org/") ||
     url.startsWith("https://us-east-1.console.aws.amazon.com/") ||
     url.startsWith("https://us-east-1.signin.aws.amazon.com/") ||
@@ -73,6 +75,7 @@ function isSafeToClose(url) {
     url === 'https://twitter.com/home' ||
     url === 'https://twitter.com/i/timeline' ||
     url === 'https://twitter.com/notifications' ||
+    url === 'https://www.facebook.com/' ||
     url === 'https://www.macrumors.com' ||
     url === 'https://www.theguardian.com/uk' ||
     url === 'https://www.youtube.com/'
