@@ -44,6 +44,7 @@ CONTAINER_HOST=$(
     | jq '.Reservations' \
     | jq 'map(.Instances) | flatten' \
     | jq 'map(.Tags |= from_entries)' \
+    | jq 'map(select(.State.Name == "running"))' \
     | jq "map(select(.Tags.Name | startswith(\"archivematica-$ENVIRONMENT-container\")))[0]" \
     | jq -r '.PrivateIpAddress'
 )
