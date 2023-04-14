@@ -36,6 +36,25 @@ sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
 from concurrently import concurrently
 
 
+def get_aws_session(*, role_arn):
+    sts_client = boto3.client("sts")
+    assumed_role_object = sts_client.assume_role(
+        RoleArn=role_arn, RoleSessionName="AssumeRoleSession1"
+    )
+    credentials = assumed_role_object["Credentials"]
+
+    return boto3.Session(
+        aws_access_key_id=credentials["AccessKeyId"],
+        aws_secret_access_key=credentials["SecretAccessKey"],
+        aws_session_token=credentials["SessionToken"],
+    )
+
+
+ACCOUNT_NAMES = {
+    '760097843905': 'platform',
+}
+
+
 @click.command()
 @click.argument("INPUT_FILE", required=True)
 @click.option("--topic-arn", required=True)
@@ -52,7 +71,19 @@ def main(input_file, topic_arn, parallelism):
 
                 yield batch_request_entries
 
-    sess = boto3.Session()
+    # choose the appropriate topic_arn here
+
+    account_id = topic_arn.split(':')[4]
+
+    try:
+        role_arn = f'arn:aws:iam::{account_id}:role/{ACCOUNT_NAMES[account_id]}-developer'
+        print(f'Assuming role {role_arn}...')
+        sess = get_aws_session(
+            role_arn=role_arn
+        )
+    except KeyError:
+        sess = boto3.Session()
+
     sns_client = sess.client("sns")
 
     def publish(batch_request_entries):
