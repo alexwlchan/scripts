@@ -21,13 +21,12 @@ This script provides a convenient wrapper for doing so.
 
 """
 
-import functools
+import argparse
 import os
 import secrets
 import sys
 
 import boto3
-import click
 import more_itertools
 import tqdm
 
@@ -88,11 +87,23 @@ def get_batch_entries(path):
         yield [{"Id": secrets.token_hex(), "Message": line.strip()} for line in batch]
 
 
-@click.command()
-@click.argument("INPUT_FILE", required=True)
-@click.option("--topic-arn", required=True)
-@click.option("--parallelism", default=5, type=int)
-def main(input_file, topic_arn, parallelism):
+def parse_args():
+    parser = argparse.ArgumentParser(
+        prog=os.path.basename(__file__),
+        description="Publish lots of notifications to Amazon SNS.",
+    )
+
+    parser.add_argument(
+        "INPUT_FILE", help="A path containing notifications to send, one per line"
+    )
+    parser.add_argument(
+        "--topic-arn", help="The ARN of the SNS topic to publish to", required=True
+    )
+
+    return parser.parse_args()
+
+
+def publish_messages(*, input_file, topic_arn):
     sess = get_session(topic_arn=topic_arn)
 
     # Note: creating boto3 clients isn't thread-safe, so it's important
@@ -110,11 +121,10 @@ def main(input_file, topic_arn, parallelism):
                 TopicArn=topic_arn, PublishBatchRequestEntries=batch_entries
             ),
             inputs=get_batch_entries(input_file),
-            max_concurrency=parallelism,
         ):
             pbar.update(len(batch))
 
 
 if __name__ == "__main__":
-
-    main()
+    args = parse_args()
+    publish_messages(input_file=args.INPUT_FILE, topic_arn=args.topic_arn)
