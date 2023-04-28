@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+if [[ "$@" == "s3://wellcomedigitalworkflow"* ]]
+then
+  AWS_PROFILE=workflow-read_only python3 ~/repos/pathscripts/aws/s3tree.py "$@"
+else
+  python3 ~/repos/pathscripts/aws/s3tree.py "$@"
+fi
