@@ -156,8 +156,14 @@ def pprint_s3tree(*, bucket, tree):
     if tree.path == "":
         lines.append(".")
 
-    # Start by printing any objects that are in this folder
-    for i, object_key in enumerate(sorted(tree.objects[:3]), start=1):
+    # Start by printing any objects that are in this folder.  Print up to
+    # 4 objects, otherwise print 3 and then '...X other objects'
+    if len(tree.objects) == 4:
+        tree_object_count = 4
+    else:
+        tree_object_count = 3
+
+    for i, object_key in enumerate(sorted(tree.objects[:tree_object_count]), start=1):
         if tree.folders or len(tree.objects) > i:
             prefix_char = "├─"
         else:
@@ -165,13 +171,13 @@ def pprint_s3tree(*, bucket, tree):
 
         lines.append(f"{prefix_char} {termcolor.colored(object_key, 'blue')}")
 
-    if len(tree.objects) > 3:
+    if len(tree.objects) > tree_object_count:
         if tree.folders:
             prefix_char = "├─"
         else:
             prefix_char = "└─"
 
-        extra_objects = f"...{len(tree.objects) - 3} other object{'s' if len(tree.objects) > 4 else ''}"
+        extra_objects = f"...{len(tree.objects) - 3} other objects"
         lines.append(f"{prefix_char} {termcolor.colored(extra_objects, 'blue')}")
 
     for i, (folder_name, folder_tree) in enumerate(
