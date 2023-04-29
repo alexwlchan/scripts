@@ -4,6 +4,11 @@ import boto3
 import hyperlink
 
 
+ACCOUNT_NAMES = {
+    "760097843905": "platform",
+}
+
+
 def get_aws_session(*, role_arn):
     sts_client = boto3.client("sts")
     assumed_role_object = sts_client.assume_role(
@@ -34,11 +39,17 @@ def guess_account(s3_identifier):
 
     """
     if "wellcomedigitalworkflow" in s3_identifier:
-        return {
-            "account_id": "299497370133",
-            "name": "workflow",
-            "role_arn": "arn:aws:iam::299497370133:role/workflow-read_only",
-        }
+        account_id = '299497370133'
+    else:
+        return None
+
+    account_name = ACCOUNT_NAMES[account_id]
+
+    return {
+        "account_id": account_id,
+        "name": account_name,
+        "role_arn": "arn:aws:iam::{account_id}:role/{account_name}-read_only",
+    }
 
 
 def create_s3_session(s3_identifier):

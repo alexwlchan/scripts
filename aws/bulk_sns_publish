@@ -32,6 +32,8 @@ import boto3
 import more_itertools
 import tqdm
 
+from _common import ACCOUNT_NAMES
+
 # https://github.com/alexwlchan/concurrently
 sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
 
@@ -72,7 +74,7 @@ def get_session(*, topic_arn):
 
     try:
         role_arn = (
-            f"arn:aws:iam::{account_id}:role/{account_names[account_id]}-developer"
+            f"arn:aws:iam::{account_id}:role/{ACCOUNT_NAMES[account_id]}-developer"
         )
         return get_aws_session(role_arn=role_arn)
     except KeyError:
