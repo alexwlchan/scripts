@@ -1,5 +1,33 @@
 #!/usr/bin/env python3
+"""
+Prints a tree showing the structure of an S3 prefix.
 
+This is meant to give me an overview of what's in a prefix, not
+a complete listing.  Here's an example of what the output looks like:
+
+    .
+    └─ digitised/
+        └─ b12840889/
+            └─ v1/
+                ├─ bag-info.txt
+                ├─ bagit.txt
+                ├─ manifest-sha256.txt
+                ├─ tagmanifest-sha256.txt
+                └─ data/
+                    ├─ b12840889.xml
+                    ├─ b12840889_0001.xml
+                    └─ objects/
+                        ├─ b12840889_0001_0001.jp2
+                        ├─ b12840889_0001_0002.jp2
+                        ├─ b12840889_0001_0003.jp2
+                        └─ ...2785 other objects
+
+The folder names link to the S3 console, so I can jump into exploring the
+objects in more detail if useful.
+
+"""
+
+import argparse
 import collections
 import datetime
 import os
@@ -12,6 +40,16 @@ import humanize
 import termcolor
 
 from _utils import create_s3_session, parse_s3_uri
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        prog="s3tree", description="Print a summary tree of an S3 prefix"
+    )
+
+    parser.add_argument("S3_URI")
+
+    return parser.parse_args()
 
 
 def list_s3_objects(sess, **kwargs):
@@ -203,14 +241,11 @@ def pprint_s3tree(*, bucket, tree):
 
 
 if __name__ == "__main__":
-    try:
-        s3_uri = sys.argv[1]
-    except IndexError:
-        sys.exit(f"Usage: {__file__} <S3_URI>")
+    args = parse_args()
 
-    s3_prefix = parse_s3_uri(s3_uri)
+    s3_prefix = parse_s3_uri(args.S3_URI)
 
-    sess = create_s3_session(s3_uri)
+    sess = create_s3_session(args.S3_URI)
 
     s3_objects = list(list_s3_objects(sess, **s3_prefix))
 
