@@ -123,14 +123,14 @@ def parse_args():
 
 def publish_batch(sns_client, topic_arn, batch_entries):
     resp = sns_client.publish_batch(
-                    TopicArn=topic_arn, PublishBatchRequestEntries=batch_entries
-                )
+        TopicArn=topic_arn, PublishBatchRequestEntries=batch_entries
+    )
 
     # This is to account for any failures in sending messages to SNS.
     # I've never actually had this happen in practice so I've not written
     # any code to handle it (I'd probably just retry the whole script)
     # but I include it just in case.
-    assert len(resp['Failed']) == 0, resp
+    assert len(resp["Failed"]) == 0, resp
 
 
 def publish_messages(*, input_file, topic_arn):
@@ -149,7 +149,7 @@ def publish_messages(*, input_file, topic_arn):
         for (batch, _) in concurrently(
             handler=functools.partial(publish_batch, sns_client, topic_arn),
             inputs=get_batch_entries(input_file),
-            max_concurrency=8
+            max_concurrency=8,
         ):
             pbar.update(len(batch))
 
