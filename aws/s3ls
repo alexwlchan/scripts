@@ -10,6 +10,8 @@ import datetime
 import json
 import sys
 
+import tqdm
+
 from _common import create_s3_session, parse_s3_uri
 
 
@@ -76,5 +78,5 @@ if __name__ == "__main__":
         iterator = get_objects
         s3_list_args["StartAfter"] = args.start_after
 
-    for s3_obj in iterator(sess, **s3_list_args):
+    for s3_obj in tqdm.tqdm(iterator(sess, **s3_list_args)):
         print(json.dumps(s3_obj, cls=DatetimeEncoder))
