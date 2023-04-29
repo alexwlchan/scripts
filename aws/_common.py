@@ -49,7 +49,7 @@ def guess_account(s3_identifier):
     return {
         "account_id": account_id,
         "name": account_name,
-        "role_arn": "arn:aws:iam::{account_id}:role/{account_name}-read_only",
+        "role_arn": f"arn:aws:iam::{account_id}:role/{account_name}-read_only",
     }
 
 
