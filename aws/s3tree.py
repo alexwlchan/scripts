@@ -25,6 +25,17 @@ a complete listing.  Here's an example of what the output looks like:
 The folder names link to the S3 console, so I can jump into exploring the
 objects in more detail if useful.
 
+== Interesting features ==
+
+*   It tries to pick an appropriate IAM role based on the bucket name
+    (this only works for some buckets, and ones I have access to).
+
+*   The folder names are all clickable links that go to the S3 console,
+    so I can jump into more detailed inspection.
+
+*   It does natural sorting of S3 keys rather than alphabetical, which is
+    useful when I have lots of numeric-esque keys like in the example.
+
 """
 
 import argparse
