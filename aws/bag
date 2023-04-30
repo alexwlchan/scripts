@@ -3,4 +3,4 @@
 set -o errexit
 set -o nounset
 
-AWS_PROFILE=storage-read_only python3 ~/repos/pathscripts/aws/s3tree.py "s3://wellcomecollection-storage/digitised/$@"
+s3tree "s3://wellcomecollection-storage/digitised/$@"

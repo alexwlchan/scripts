@@ -7,6 +7,7 @@ import hyperlink
 ACCOUNT_NAMES = {
     "760097843905": "platform",
     "299497370133": "workflow",
+    "975596993436": "storage",
 }
 
 
@@ -40,7 +41,9 @@ def guess_account(s3_identifier):
 
     """
     if "wellcomedigitalworkflow" in s3_identifier:
-        account_id = '299497370133'
+        account_id = "299497370133"
+    if "wellcomecollection-storage" in s3_identifier:
+        account_id = "975596993436"
     else:
         return None
 
