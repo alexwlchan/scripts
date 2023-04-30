@@ -13,4 +13,4 @@ set -o nounset
 
 _ensure_aws_credentials_are_fresh
 
-~/Library/Python/3.10/bin/aws "$@"
+python3 -m awscli "$@"
