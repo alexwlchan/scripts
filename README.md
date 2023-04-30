@@ -39,6 +39,17 @@ set --global --export PATH $PATH \
 
 ## Organisation
 
-Because the names are somewhat inscrutable to anyone but me (e.g. `gp` or `tfi` are meaningless), I've grouped them into a couple of top-level folders.
+A lot of these names are short, to minimise the typing I need to do, but then that makes their meaning utterly inscrutable to an outsider (e.g. what do `gp` or `tfi` do?).
+To make it a bit easier to find, I've grouped them into a couple of top-level folders.
 
 I add all the subfolders to my PATH so I don't need to remember how they're organised, but it might make it easier to find stuff!
+
+## Contributors
+
+My scripts include code written by other people, and in those cases I've [attributed the commit that added the code/script to multiple authors][trailer].
+This is why several people who aren't me appear in then list of contributors, even though none of them have ever directly committed code.
+
+You can see all the (documented) instances of other people's code by searching for the [Co-authored-by line][search] in my commits.
+
+[trailer]: https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors#:~:text=In%20the%20text%20box%20below,Commit%20changes%20or%20Propose%20changes.
+[search]: https://github.com/search?q=repo%3Aalexwlchan%2Fscripts%20co-authored-by&type=commits
