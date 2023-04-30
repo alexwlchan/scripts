@@ -5,6 +5,7 @@ import json
 import os
 
 import boto3
+import tqdm
 
 from _common import ACCOUNT_NAMES, get_aws_session
 
@@ -75,5 +76,5 @@ def download_messages(*, queue_url):
 
 if __name__ == "__main__":
     args = parse_args()
-    for message in download_messages(queue_url=args.QUEUE_URL):
+    for message in tqdm.tqdm(download_messages(queue_url=args.QUEUE_URL)):
         print(json.dumps(message))
