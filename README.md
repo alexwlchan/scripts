@@ -29,10 +29,12 @@ For example, I have the following code in [my fishconfig](https://github.com/ale
 
 ```shell
 set --global --export PATH $PATH \
-  ~/repos/pathscripts \
-  ~/repos/pathscripts/aws \
-  ~/repos/pathscripts/git \
-  ~/repos/pathscripts/terraform
+  ~/repos/scripts \
+  ~/repos/scripts/aws \
+  ~/repos/scripts/git \
+  ~/repos/scripts/installers \
+  ~/repos/scripts/macos \
+  ~/repos/scripts/terraform
 ```
 
 ## Organisation
