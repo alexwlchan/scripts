@@ -7,6 +7,8 @@
 set -o errexit
 set -o nounset
 
+_ensure_docker_is_running
+
 docker run --rm --tty \
   --volume $(pwd):/data \
   ghcr.io/terraform-linters/tflint --recursive "$@"
