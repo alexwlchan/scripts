@@ -2,22 +2,9 @@
 
 These scripts are all aliases around [Terraform], the infrastructure-as-code tool we use at work.
 
-In some of our Terraform configurations, we use wrapper scripts `run_terraform.sh` instead of invoking `terraform` directly.
-This wrapper script fetches API keys for the [Elastic Cloud] and [Auth0] providers, so we don't have to hard-code them or store them locally.
-Something like:
+[Terraform]: https://www.terraform.io/
 
-```shell
-EC_API_KEY=$(aws secretsmanager get-secret-value \
-  --secret-id "elastic_cloud/api_key" \
-  --output text \
-  --query "SecretString")
-
-EC_API_KEY="$EC_API_KEY" terraform "$@"
-```
-
-My `tf` scripts will choose whether to run a wrapper script or vanilla `terraform`, so I don't have to think about it.
-
-My scripts are:
+## The individual scripts
 
 <dl>
   <dt>
@@ -68,6 +55,22 @@ My scripts are:
   </dd>
 </dl>
 
-[Terraform]: https://www.terraform.io/
+## Choosing between `terraform` and `run_terraform.sh`
+
+In some of the Terraform configurations at work, we use wrapper scripts `run_terraform.sh` instead of invoking `terraform` directly.
+This wrapper script fetches API keys for the [Elastic Cloud] and [Auth0] providers, so we don't have to hard-code them or store them locally.
+Something like:
+
+```shell
+EC_API_KEY=$(aws secretsmanager get-secret-value \
+  --secret-id "elastic_cloud/api_key" \
+  --output text \
+  --query "SecretString")
+
+EC_API_KEY="$EC_API_KEY" terraform "$@"
+```
+
+My `tf` scripts will choose whether to run a wrapper script or vanilla `terraform`, so I don't have to think about it.
+
 [Elastic Cloud]: https://registry.terraform.io/providers/elastic/ec/latest/docs#using-your-api-key-on-the-elastic-cloud-terraform-provider
 [Auth0]: https://registry.terraform.io/providers/auth0/auth0/latest/docs#environment-variables
