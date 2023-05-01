@@ -1,6 +1,6 @@
 # images
 
-These scripts are all for working with images and other visual material.
+These scripts are for working with images and other visual material.
 
 ## The individual scripts
 
