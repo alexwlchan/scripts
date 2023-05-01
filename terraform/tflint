@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This runs the Terraform linter 'tflint'.
+#
+# It runs the linter inside a Docker image, so I don't have to worry
+# about installing it before I use it.
+
+set -o errexit
+set -o nounset
+
+docker run --rm --tty \
+  --volume $(pwd):/data \
+  ghcr.io/terraform-linters/tflint --recursive "$@"

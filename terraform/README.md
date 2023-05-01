@@ -1,6 +1,6 @@
 # terraform
 
-These scripts are all aliases around [Terraform], the infrastructure-as-code tool we use at work.
+These scripts are all related to [Terraform], the infrastructure-as-code tool we use at work.
 
 [Terraform]: https://www.terraform.io/
 
@@ -52,6 +52,15 @@ These scripts are all aliases around [Terraform], the infrastructure-as-code too
   </dt>
   <dd>
     alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/state/mv"><code>terraform state mv</code></a>
+  </dd>
+  
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tflint">
+      <code>tflint</code>
+    </a>
+  </dt>
+  <dd>
+    alias for the <a href="https://github.com/terraform-linters/tflint">tflint linter</a>, but running inside a Docker container
   </dd>
 </dl>
 
