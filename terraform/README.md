@@ -15,7 +15,7 @@ These scripts are all related to [Terraform], the infrastructure-as-code tool we
   <dd>
     alias for <code>terraform</code>
   </dd>
-  
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tfi">
       <code>tfi</code>
@@ -24,27 +24,27 @@ These scripts are all related to [Terraform], the infrastructure-as-code tool we
   <dd>
     alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/init"><code>terraform init</code></a>
   </dd>
-  
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tfp">
       <code>tfp</code>
     </a>
   </dt>
   <dd>
-    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/plan"><code>terraform plan -out=tfplan</code></a>.
+    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/plan"><code>terraform plan -out=terraform.plan</code></a>.
     I run this before making any changes, so I can review what Terraform is about to do.
   </dd>
-  
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tfa">
       <code>tfa</code>
     </a>
   </dt>
   <dd>
-    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/apply"><code>terraform apply tfplan</code></a>.
+    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/apply"><code>terraform apply terraform.plan</code></a>.
     I only run this after I’ve reviewed the proposed changes from <code>tfp</code>.
   </dd>
-  
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tfmv">
       <code>tfmv</code>
@@ -53,7 +53,7 @@ These scripts are all related to [Terraform], the infrastructure-as-code tool we
   <dd>
     alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/state/mv"><code>terraform state mv</code></a>
   </dd>
-  
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tflint">
       <code>tflint</code>

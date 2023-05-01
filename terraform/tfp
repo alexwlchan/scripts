@@ -1,4 +1,17 @@
 #!/usr/bin/env bash
-# This is an alias for "terraform plan".
+# This is an alias for "terraform plan -out=terraform.plan".
+#
+# Note: if you read the Terraform documentation [1], it says:
+#
+#     Terraform will allow any filename for the plan file, but
+#     a typical convention is to name it tfplan.
+#
+# My use of 'terraform.plan' predates me reading about this convention,
+# and it's spread around things like .gitignore files now, so I'm sticking
+# with it for consistency rather than switching.
+#
+# The .plan suffix isn't something I use anywhere else, so I think it's fine.
+#
+# [1]: https://developer.hashicorp.com/terraform/cli/commands/plan#other-options
 
-tf plan -out=tfplan "$@"
+tf plan -out=terraform.plan "$@"
