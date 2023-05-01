@@ -34,4 +34,17 @@ These scripts are for working with images and other visual material.
     </p>
     I often use this when making images for my website, to create identical light mode and dark mode screenshots.
   </dd>
+  
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/pdfthumb">
+      <code>pdfthumb</code>
+    </a>
+  </dt>
+  <dd>
+    get a PNG thumbnail of a specific page of a PDF, for example:
+    <p>
+      <pre><code>pdfthumb pattern.pdf --page=3</code></pre>
+    </p>
+    will create a thumbnail of the third page.
+  </dd>
 </dl>
