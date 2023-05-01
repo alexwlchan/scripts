@@ -41,10 +41,6 @@ These scripts are for working with images and other visual material.
     </a>
   </dt>
   <dd>
-    get a PNG thumbnail of a specific page of a PDF, for example:
-    <p>
-      <pre><code>pdfthumb pattern.pdf --page=3</code></pre>
-    </p>
-    will create a thumbnail of the third page.
+    get a PNG thumbnail of a specific page of a PDF, for example <code>pdfthumb pattern.pdf --page=3</code> will create a thumbnail of the third page.
   </dd>
 </dl>
