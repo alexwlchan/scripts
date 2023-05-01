@@ -26,7 +26,7 @@ My scripts are:
     </a>
   </dt>
   <dd>
-    runs <code>terraform</code> (or the wrapper script) with any arguments supplied.
+    alias for <code>terraform</code>
   </dd>
   
   <dt>
@@ -35,7 +35,7 @@ My scripts are:
     </a>
   </dt>
   <dd>
-    runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/init"><code>init</code> command</a> plus any extra arguments supplied. e.g. <code>tfi -upgrade</code> becomes <code>terraform init -upgrade</code>
+    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/init"><code>terraform init</code></a>
   </dd>
   
   <dt>
@@ -44,7 +44,7 @@ My scripts are:
     </a>
   </dt>
   <dd>
-    runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/plan"><code>plan</code> command</a> and saves the generated plan to <code>tfplan</code>.
+    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/plan"><code>terraform plan -out=tfplan</code></a>.
     I run this before making any changes, so I can review what Terraform is about to do.
   </dd>
   
@@ -54,8 +54,8 @@ My scripts are:
     </a>
   </dt>
   <dd>
-    runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/apply"><code>apply</code> command</a> plus any arguments supplied.
-    If you don’t pass any arguments, it applies the generated plan created by <code>tfp</code>.
+    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/apply"><code>terraform apply tfplan</code></a>.
+    I only run this after I’ve reviewed the proposed changes from <code>tfp</code>.
   </dd>
   
   <dt>
@@ -64,7 +64,7 @@ My scripts are:
     </a>
   </dt>
   <dd>
-    runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/state/mv"><code>state mv</code> command</a> plus any arguments supplied.
+    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/state/mv"><code>terraform state mv</code></a>
   </dd>
 </dl>
 
