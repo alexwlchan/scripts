@@ -13,13 +13,13 @@ These are scripts for manipulating files and folders in my local filesystem.
   <dd>
     counts all the entries in subfolders under the working directory, and prints them in a table
     <p><pre><code>$ cdir
-         37 fishconfig
-         48 repros
-         51 colossus-wheels
-         70 services
-        292 .git
-    -------
-        699</code></pre></p>
+     37 fishconfig
+     48 repros
+     51 colossus-wheels
+     70 services
+    292 .git
+-------
+    699</code></pre></p>
   </dd>
 
   <dt>
