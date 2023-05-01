@@ -1,4 +1,18 @@
 #!/usr/bin/env python3
+"""
+Print a summary of messages visible on our SQS queues (and dead-letter queues).
+
+    $ sqs_stats
+        1        -	calm-windows
+        -        3	catalogue-2023-03-29_image_inferrer_input
+        -    1,246	catalogue-2023-03-29_ingestor_works_input
+        1        -	sierra-adapter-20200604-sierra_bibs_windows
+
+Note: this relies on a Wellcome-specific convention that the dead-letter queue
+associated with a queue has the same name but with `_dlq` on the end,
+e.g. `calm-windows` and `calm-windows_dlq`.
+
+"""
 
 import collections
 import sys
