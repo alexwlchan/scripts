@@ -6,7 +6,7 @@ In some of our Terraform configurations, we use wrapper scripts `run_terraform.s
 This wrapper script fetches API keys for the [Elastic Cloud] and [Auth0] providers, so we don't have to hard-code them or store them locally.
 Something like:
 
-```console
+```shell
 EC_API_KEY=$(aws secretsmanager get-secret-value \
   --secret-id "elastic_cloud/api_key" \
   --output text \
@@ -21,10 +21,21 @@ My scripts are:
 
 <dl>
   <dt>
-    <code>tf</code>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tf">
+      <code>tf</code>
+    </a>
   </dt>
   <dd>
     runs <code>terraform</code> (or the wrapper script) with any arguments supplied.
+  </dd>
+  
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tfi">
+      <code>tfi</code>
+    </a>
+  </dt>
+  <dd>
+    runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/init"><code>init</code> command</a> plus any extra arguments supplied. e.g. <code>tfi -upgrade</code> becomes <code>terraform init -upgrade</code>
   </dd>
 </dl>
 
