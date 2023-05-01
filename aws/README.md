@@ -54,7 +54,8 @@ These are scripts to do stuff in AWS.
     <a href="https://github.com/alexwlchan/scripts/blob/main/aws/sqs_stats"><code>sqs_stats</code></a>
   </dt>
   <dd>
-    prints a summary of messages visible on our SQS queues (and dead-letter queues).
+    prints a summary of messages visible on our SQS queues.
+    The two columns (which are green/red) show messages visible on the main queue and dead-letter queue respectively.
     <img src="screenshots/sqs_stats.png">
   </dd>
 </dl>
