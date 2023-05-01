@@ -37,6 +37,35 @@ My scripts are:
   <dd>
     runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/init"><code>init</code> command</a> plus any extra arguments supplied. e.g. <code>tfi -upgrade</code> becomes <code>terraform init -upgrade</code>
   </dd>
+  
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tfp">
+      <code>tfp</code>
+    </a>
+  </dt>
+  <dd>
+    runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/plan"><code>plan</code> command</a> and saves the generated plan to <code>tfplan</code>.
+    I run this before making any changes, so I can review what Terraform is about to do.
+  </dd>
+  
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tfa">
+      <code>tfa</code>
+    </a>
+  </dt>
+  <dd>
+    runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/apply"><code>apply</code> command</a> plus any arguments supplied.
+    If you don’t pass any arguments, it applies the generated plan created by <code>tfp</code>.
+  </dd>
+  
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tfmv">
+      <code>tfmv</code>
+    </a>
+  </dt>
+  <dd>
+    runs the <a href="https://developer.hashicorp.com/terraform/cli/commands/state/mv"><code>state mv</code> command</a> plus any arguments supplied.
+  </dd>
 </dl>
 
 [Terraform]: https://www.terraform.io/
