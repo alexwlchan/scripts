@@ -19,7 +19,7 @@ BORDER_WIDTH="$2"
 NOEXT=${PATH%.*}
 EXT=${PATH##*.}
 
-NEW_PATH="$NOEXT"_reborder."$EXT"
+NEW_PATH="$NOEXT.reborder_$BORDER_WIDTH.$EXT"
 
 /usr/local/bin/convert \
   -background none \
