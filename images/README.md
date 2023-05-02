@@ -36,6 +36,17 @@ These scripts are for working with images and other visual material.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/images_only_pdf">
+      <code>images_only_pdf [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    take a PDF, and create a new PDF whichb just has the images filling the page.
+    I use this to work around an odd behaviour of the “Scan Document” feature in Notes.app, where it adds a large white border around scanned images that I don’t want.
+    <p><strong>Note:</strong> this script overwrites the original file.</p>
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/pdfthumb">
       <code>pdfthumb</code>
     </a>
