@@ -29,6 +29,13 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/dynamols"><code>dynamols</code></a>
+  </dt>
+  <dd>
+    print the items in a DynamoDB table, one item per line
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3ls"><code>s3ls</code></a>
   </dt>
   <dd>
