@@ -2,7 +2,7 @@
 """
 Get OCR'd text for all the images in a directory using Live Text.
 
-See https://alexwlchan.net/2022/12/live-text-script/
+See https://alexwlchan.net/2022/live-text-script/
 
 == Usage ==
 

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -o errexit
-set -o nounset
-
-CAPACITY="$1"
-AVAILABLE="$2"
-
-echo "$(date +"%Y-%m-%dT%H:%M:%S %z"),$CAPACITY,$AVAILABLE" >> ~/iCloud/usage.csv
