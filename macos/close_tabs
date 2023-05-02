@@ -4,7 +4,7 @@
 // This is a script I run at the end of each working day, to close
 // Safari tabs I've opened that can be safely closed.
 //
-// See https://alexwlchan.net/2022/02/safari-tabs/
+// See https://alexwlchan.net/2022/safari-tabs/
 
 safari = Application("Safari");
 

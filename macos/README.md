@@ -16,6 +16,15 @@ They rely on Mac-specific stuff and are unlikely to be useful on non-Mac systems
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/close_tabs">
+      <code>close_tabs</code>
+    </a>
+  </dt>
+  <dd>
+    close ephemeral tabs in Safari – anything that can be easily recreated/reopened later
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/find_processes_using_secure_input">
       <code>find_processes_using_secure_input</code>
     </a>
