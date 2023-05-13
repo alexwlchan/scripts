@@ -36,12 +36,31 @@ These scripts are for working with images and other visual material.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/create_tinted_image">
+      <code>create_tinted_image [PATH] [HEX_COLOUR]</code>
+    </a>
+  </dt>
+  <dd>
+    take a greyscale image, and create a version which is tinted with the specified colour.
+    This works by creating an RGBA image which has the specified colour on every pixel, but controlling the intensity with the alpha value.
+    <p>
+      <table>
+        <tr>
+          <td><img src="examples/grayscale_circle.png"></td>
+          <td>&rarr;</td>
+          <td><img src="examples/grayscale_circle.ff0000.png"></td>
+        </tr>
+      </table>
+    </p>
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/images_only_pdf">
       <code>images_only_pdf [PATH]</code>
     </a>
   </dt>
   <dd>
-    take a PDF, and create a new PDF whichb just has the images filling the page.
+    take a PDF, and create a new PDF which just has the images filling the page.
     I use this to work around an odd behaviour of the “Scan Document” feature in Notes.app, where it adds a large white border around scanned images that I don’t want.
     <p><strong>Note:</strong> this script overwrites the original file.</p>
   </dd>
