@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """
 This is a script for creating colour-tinted versions of greyscale images.
+
+It works by creating an RGBA image which has the specified colour
+on every pixel, then controlling the intensity with the alpha value.
+
+I don't use it especially often, but I thought it was a neat trick and
+I wanted to save it for future use.
 """
 
 import sys
