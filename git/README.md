@@ -96,6 +96,15 @@ These scripts are all shortcuts for using [Git], mostly designed to let me do my
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/git/gub">
+      <code>gub</code>
+    </a>
+  </dt>
+  <dd>
+    open the current Git repo in my web browser (assuming it's a GitHub repo)
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/git/gup">
       <code>gup</code>
     </a>
