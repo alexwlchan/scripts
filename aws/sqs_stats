@@ -21,11 +21,7 @@ import boto3
 import humanize
 import termcolor
 
-
-# See https://github.com/boto/botocore/issues/2705
-import warnings
-warnings.filterwarnings('ignore', category=FutureWarning, module='botocore.client')
-
+from _common import create_link_text
 
 
 def list_queue_urls_in_account(sess, *, prefixes):
@@ -66,14 +62,25 @@ def get_queue_stats(sess, *, queue_urls):
     }
 
 
-def print_number(value, color):
+def print_number(account_id, region_name, queue_name, *, value, color):
     if value is None:
         print("-".rjust(9, " "), end="")
     else:
-        print(termcolor.colored(humanize.intcomma(value).rjust(9, " "), color), end="")
+        spaces_required = 9 - len(humanize.intcomma(value))
+
+        print(
+            termcolor.colored(
+                " " * spaces_required + create_link_text(
+                    url=f"https://{region_name}.console.aws.amazon.com/sqs/v2/home?region={region_name}#/queues/https%3A%2F%2Fsqs.{region_name}.amazonaws.com%2F{account_id}%2F{queue_name}",
+                    label=humanize.intcomma(value),
+                ),
+                color,
+            ),
+            end="",
+        )
 
 
-def pprint_queue_stats(queue_stats):
+def pprint_queue_stats(account_id, region_name, queue_stats):
     interesting_queues = {
         q_url: q_size for q_url, q_size in queue_stats.items() if q_size > 0
     }
@@ -92,8 +99,10 @@ def pprint_queue_stats(queue_stats):
             paired_queues[q_name]["q"] = q_size
 
     for q_name, q_stats in sorted(paired_queues.items()):
-        print_number(q_stats["q"], "green")
-        print_number(q_stats["dlq"], "red")
+        print_number(account_id, region_name, q_name, value=q_stats["q"], color="green")
+        print_number(
+            account_id, region_name, q_name + "_dlq", value=q_stats["dlq"], color="red"
+        )
         print("\t", end="")
         print(q_name)
 
@@ -107,4 +116,8 @@ if __name__ == "__main__":
 
     queue_stats = get_queue_stats(sess, queue_urls=queue_urls)
 
-    pprint_queue_stats(queue_stats)
+    sts = sess.client("sts")
+    account_id = sts.get_caller_identity()["Account"]
+    region_name = sess.region_name
+
+    pprint_queue_stats(account_id, region_name, queue_stats)

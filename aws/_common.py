@@ -44,6 +44,9 @@ def guess_account(s3_identifier):
         account_id = "299497370133"
     elif "wellcomecollection-storage" in s3_identifier:
         account_id = "975596993436"
+    elif "wellcomecollection-assets-workingstorage" in s3_identifier:
+
+        account_id = "760097843905"
     else:
         return None
 
@@ -74,3 +77,10 @@ def parse_s3_uri(s3_uri):
     prefix = "/".join(uri.path)
 
     return {"Bucket": bucket, "Prefix": prefix}
+
+
+def create_link_text(*, url, label):
+    # Based on https://stackoverflow.com/a/71309268/1558022
+
+    # OSC 8 ; params ; URI ST <name> OSC 8 ;; ST
+    return f"\033]8;;{url}\033\\{label}\033]8;;\033\\"
