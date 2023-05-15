@@ -1,4 +1,4 @@
-# pathscripts
+# scripts
 
 This is a collection of useful scripts and tools I keep in my [PATH].
 I use this Git repository to sync them across multiple computers.
