@@ -34,6 +34,12 @@ then
   exit 1
 fi
 
+if [[ "$LATEST_DOWNLOAD" == *.opml ]]
+then
+  echo "Latest download '$LATEST_DOWNLOAD' doesn't look like a docstore file, are you sure this is what you want?"
+  exit 1
+fi
+
 docstore add \
   "$(latest_download)" \
   --source_url=$(~/.cargo/bin/safari url) \
