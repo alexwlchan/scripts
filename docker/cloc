@@ -3,8 +3,6 @@
 set -o errexit
 set -o nounset
 
-_ensure_docker_is_running
-
 # Note: the --platform line is to silence this warning on Apple Silicon:
 #
 #     WARNING: The requested image's platform (linux/amd64) does not

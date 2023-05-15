@@ -7,8 +7,6 @@
 set -o errexit
 set -o nounset
 
-_ensure_docker_is_running
-
 if ! docker images | grep alexwlchan/rubocop >/dev/null
 then
   pushd ~/repos/pathscripts/docker
