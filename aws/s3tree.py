@@ -51,7 +51,7 @@ import humanize
 import natsort
 import termcolor
 
-from _common import create_s3_session, parse_s3_uri
+from _common import create_link_text, create_s3_session, parse_s3_uri
 
 
 def parse_args():
@@ -69,13 +69,6 @@ def list_s3_objects(sess, **kwargs):
 
     for page in s3.get_paginator("list_objects_v2").paginate(**kwargs):
         yield from page.get("Contents", [])
-
-
-def create_link_text(*, url, label):
-    # Based on https://stackoverflow.com/a/71309268/1558022
-
-    # OSC 8 ; params ; URI ST <name> OSC 8 ;; ST
-    return f"\033]8;;{url}\033\\{label}\033]8;;\033\\"
 
 
 def pprint_nested_tree(bucket, tree, folder_counts, parents=None):
