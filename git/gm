@@ -4,5 +4,15 @@
 set -o errexit
 set -o nounset
 
-git checkout "$(_get_primary_branch)"
+# Checking for the branch first is a bit slower, but avoids a potentially
+# confusing warning immediately before the pull:
+#
+#     Already on 'main'
+#     Your branch is up to date with 'origin/main'.
+#
+if [[ $(gcb) != $(_get_primary_branch) ]]
+then
+  git checkout "$(_get_primary_branch)"
+fi
+
 gp
