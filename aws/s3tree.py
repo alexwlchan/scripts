@@ -41,12 +41,10 @@ objects in more detail if useful.
 import argparse
 import collections
 import datetime
-import os
 import sys
 from typing import List
 
 import attr
-import boto3
 import humanize
 import natsort  # pip3 install --user naturalsort==1.5.1
 import termcolor
@@ -69,83 +67,6 @@ def list_s3_objects(sess, **kwargs):
 
     for page in s3.get_paginator("list_objects_v2").paginate(**kwargs):
         yield from page.get("Contents", [])
-
-
-def pprint_nested_tree(bucket, tree, folder_counts, parents=None):
-    lines = []
-    parents = parents or []
-
-    if not parents:
-        lines.append(".")
-
-    entries = sorted(tree.items())
-
-    for i, (key, nested_tree) in enumerate(entries, start=1):
-        if parents:
-            full_path = f'{"/".join(parents)}/{key}'
-        else:
-            full_path = key
-        if isinstance(key, str):
-            label = create_link_text(
-                url=f"https://eu-west-1.console.aws.amazon.com/s3/buckets/{bucket}?prefix={full_path}/&showversions=false",
-                label=f"{key}/",
-            )
-        else:
-            label = key
-
-        if full_path in folder_counts:
-            obj_count_line = termcolor.colored(
-                f"...plus {folder_counts[full_path]} object{'s' if folder_counts[full_path] > 1 else ''}",
-                "blue",
-            )
-
-            if i == len(entries) and nested_tree:
-                obj_count_line = f"    ├── {obj_count_line}"
-            elif i == len(entries):
-                obj_count_line = f"    └── {obj_count_line}"
-            elif nested_tree:
-                obj_count_line = f"│   ├── {obj_count_line}"
-            else:
-                obj_count_line = f"│   └── {obj_count_line}"
-        else:
-            obj_count_line = None
-
-        if i == len(entries):
-            lines.append("└── " + label)
-
-            if obj_count_line is not None:
-                lines.append(obj_count_line)
-
-            lines.extend(
-                [
-                    "    " + l
-                    for l in pprint_nested_tree(
-                        bucket,
-                        nested_tree,
-                        folder_counts=folder_counts,
-                        parents=parents + [key],
-                    )
-                ]
-            )
-        else:
-            lines.append("├── " + label)
-
-            if obj_count_line is not None:
-                lines.append(obj_count_line)
-
-            lines.extend(
-                [
-                    "│   " + l
-                    for l in pprint_nested_tree(
-                        bucket,
-                        nested_tree,
-                        folder_counts=folder_counts,
-                        parents=parents + [key],
-                    )
-                ]
-            )
-
-    return lines
 
 
 @attr.s
