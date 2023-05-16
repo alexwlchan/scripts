@@ -48,7 +48,7 @@ from typing import List
 import attr
 import boto3
 import humanize
-import natsort
+import natsort  # pip3 install --user naturalsort==1.5.1
 import termcolor
 
 from _common import create_link_text, create_s3_session, parse_s3_uri
