@@ -130,6 +130,10 @@ def pprint_s3tree(*, bucket, tree):
         else:
             prefix_char = "└─"
 
+        # if there's only one more object left in the folder, we should
+        # just print it rather than '...1 other object'
+        assert len(tree.objects) - 3 > 1
+
         extra_objects = f"...{len(tree.objects) - 3} other objects"
         lines.append(f"{prefix_char} {termcolor.colored(extra_objects, 'blue')}")
 
