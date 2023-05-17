@@ -15,6 +15,7 @@ e.g. `calm-windows` and `calm-windows_dlq`.
 """
 
 import collections
+import os
 import sys
 
 import boto3
@@ -22,6 +23,11 @@ import humanize
 import termcolor
 
 from _common import create_link_text
+
+# https://github.com/alexwlchan/concurrently
+sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
+
+from concurrently import concurrently
 
 
 def list_queue_urls_in_account(sess, *, prefixes):
@@ -49,12 +55,15 @@ def get_queue_stats(sess, *, queue_urls):
         "ApproximateNumberOfMessagesDelayed",
     ]
 
-    queue_responses = {
-        q_url: sqs_client.get_queue_attributes(
+    queue_responses = {}
+
+    for q_url, q_resp in concurrently(
+        handler=lambda q_url: sqs_client.get_queue_attributes(
             QueueUrl=q_url, AttributeNames=attribute_names
-        )
-        for q_url in queue_urls
-    }
+        ),
+        inputs=queue_urls
+    ):
+        queue_responses[q_url] = q_resp
 
     return {
         q_url: sum(int(resp["Attributes"][attr]) for attr in attribute_names)
