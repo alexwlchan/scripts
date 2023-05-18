@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Alias for running Retrobatch from the command-line.
+#
+# See https://flyingmeat.com/retrobatch/docs-1.0/commandline/
+
+set -o errexit
+set -o nounset
+
+/Applications/Retrobatch.app/Contents/MacOS/Retrobatch "$@"
