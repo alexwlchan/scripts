@@ -92,4 +92,13 @@ These scripts are for working with images and other visual material.
       </table>
     </p>
   </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/retrobatch">
+      <code>retrobatch [...]</code>
+    </a>
+  </dt>
+  <dd>
+    an alias for running the Retrobatch image processor <a href="https://flyingmeat.com/retrobatch/docs-1.0/commandline/">from the command-line</a>
+  </dd>
 </dl>
