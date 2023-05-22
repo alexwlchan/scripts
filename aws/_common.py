@@ -44,8 +44,10 @@ def guess_account(s3_identifier):
         account_id = "299497370133"
     elif "wellcomecollection-storage" in s3_identifier:
         account_id = "975596993436"
-    elif "wellcomecollection-assets-workingstorage" in s3_identifier:
-
+    elif (
+        "wellcomecollection-assets-workingstorage" in s3_identifier
+        or "wellcomecollection-platform" in s3_identifier
+    ):
         account_id = "760097843905"
     else:
         return None
