@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Prepare a cover image for my website, based on an image I've created in Keynote.
+"""
 
 import collections
 import io
@@ -13,10 +16,10 @@ import termcolor
 
 
 def hilight(info):
-    return termcolor.colored(info, 'blue')
+    return termcolor.colored(info, "blue")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         path = sys.argv[1]
     except IndexError:
@@ -55,7 +58,10 @@ if __name__ == '__main__':
         diagonal = {(x - 1, y - 1), (x - 1, y + 1), (x + 1, y - 1), (x + 1, y + 1)}
         orthogonal = {(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)}
 
-        if len(white_pixels.intersection(diagonal)) == 3 and len(white_pixels.intersection(orthogonal)) == 4:
+        if (
+            len(white_pixels.intersection(diagonal)) == 3
+            and len(white_pixels.intersection(orthogonal)) == 4
+        ):
             corner_pixels.add((x, y))
 
     # Group the corners by row.
@@ -82,19 +88,24 @@ if __name__ == '__main__':
         if len(y_coords) == 2:
             rectangles[tuple(sorted(y_coords))].append(x)
 
-    rectangles = {y_coords: sorted(x_coords) for y_coords, x_coords in rectangles.items() if len(x_coords) == 2}
+    rectangles = {
+        y_coords: sorted(x_coords)
+        for y_coords, x_coords in rectangles.items()
+        if len(x_coords) == 2
+    }
 
     # The outline rectangle is the biggest rectangle; sort by area.
     (y0, y1), (x0, x1) = max(
-        rectangles.items(),
-        key=lambda xy: (xy[1][0] - xy[1][1]) * (xy[0][0] - xy[0][1])
+        rectangles.items(), key=lambda xy: (xy[1][0] - xy[1][1]) * (xy[0][0] - xy[0][1])
     )
 
     # There may be a little slop here, so slice an extra two pixels off
     # either side to account for light grey pixels that have slipped in.
     # This cropping is only approximate, so this is fine.
-    x0 += 2; y0 += 2
-    x1 -= 2; y1 -= 2
+    x0 += 2
+    y0 += 2
+    x1 -= 2
+    y1 -= 2
 
     # Now adjust the pixels so we get a 2:1 aspect ratio in the final image.
     # Again, we don't care about exactness here, slicing a few pixels off
@@ -115,18 +126,23 @@ if __name__ == '__main__':
     cropped_im = im.crop((x0, y0, x1, y1))
 
     name, ext = os.path.splitext(path)
-    ext = ext.replace('.jpeg', '.jpg')
+    ext = ext.replace(".jpeg", ".jpg")
     out_path = f"{name}.cropped{ext}"
 
     cropped_im.save(out_path, icc_profile=im.info.get("icc_profile"))
 
-    subprocess.check_call([
-        'retrobatch', '--workflow', '~/repos/scripts/images/overwrite_with_srgb.retrobatch', out_path
-    ], stdout=subprocess.DEVNULL)
+    subprocess.check_call(
+        [
+            "retrobatch",
+            "--workflow",
+            "~/repos/scripts/images/overwrite_with_srgb.retrobatch",
+            out_path,
+        ],
+        stdout=subprocess.DEVNULL,
+    )
 
     print(out_path)
     assert cropped_im.width == cropped_im.height * 2
-
 
     outline_im = Image.new("RGBA", im.size)
 
@@ -145,6 +161,5 @@ if __name__ == '__main__':
             for y in y_coords:
                 # print(x, y)
                 outline_im.putpixel((x, y), (255, 0, 255, 255))
-
 
     outline_im.save("outline5.png")
