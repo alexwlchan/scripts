@@ -143,23 +143,3 @@ if __name__ == "__main__":
 
     print(out_path)
     assert cropped_im.width == cropped_im.height * 2
-
-    outline_im = Image.new("RGBA", im.size)
-
-    for (x, y) in white_pixels:
-        outline_im.putpixel((x, y), (255, 0, 0, 255))
-
-    for (x, y) in corner_pixels:
-        outline_im.putpixel((x, y), (0, 255, 255, 255))
-
-    for x, y_coords in column_corners.items():
-        for y in y_coords:
-            outline_im.putpixel((x, y), (0, 0, 255, 255))
-
-    for y_coords, x_coords in rectangles.items():
-        for x in x_coords:
-            for y in y_coords:
-                # print(x, y)
-                outline_im.putpixel((x, y), (255, 0, 255, 255))
-
-    outline_im.save("outline5.png")
