@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
+# Unlock my login keychain.
+#
+# The login keychain normally gets unlocked by the OS when you log
+# into your account; this is for when I'm accessing a Mac over SSH.
+# Note: this prompts for the keychain password.
 
 security unlock-keychain ~/Library/Keychains/login.keychain

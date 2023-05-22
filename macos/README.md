@@ -68,4 +68,16 @@ They rely on Mac-specific stuff and are unlikely to be useful on non-Mac systems
   <dd>
     set the accent colour, as configured in the Appearance settings
   </dd>
+  
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/unlock_keychain">
+      <code>unlock_keychain</code>
+    </a>
+  </dt>
+  <dd>
+    alias for <code>security unlock-keychain ~/Library/Keychains/login.keychain</code>; unlocks the login keychain
+    <p>
+      The login keychain normally gets unlocked by the OS when you log into your account; this is for when I'm accessing a Mac over SSH.
+    </p>
+  </dd>  
 </dl>
