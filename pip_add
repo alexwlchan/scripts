@@ -3,13 +3,26 @@
 set -o errexit
 set -o nounset
 
-NAME="$1"
+for ARG in "$@"
+do
+  case "$ARG" in
+    # Although I import the package as 'import flask', the name of the
+    # package that gets installed with pip is 'Flask'.
+    flask)
+      NAME="Flask"
+      ;;
 
-# Add the new library to requirements.in
-pip freeze | grep "$NAME" >> requirements.in
+    *)
+      NAME="$ARG"
+      ;;
+  esac
+
+  # Add the new library to requirements.in
+  pip freeze | grep "$NAME" >> requirements.in
+done
 
 # Now sort the file
-sort requirements.in > requirements.in.tmp
+cat requirements.in | sort | uniq > requirements.in.tmp
 mv requirements.in.tmp requirements.in
 
 # And rebuild the requirements.txt
