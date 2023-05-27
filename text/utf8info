@@ -7,7 +7,7 @@ set -o nounset
 
 if ! docker images | grep lunasorcery/utf8info >/dev/null
 then
-  pushd ~/repos/pathscripts/text
+  pushd ~/repos/scripts/text
     docker build \
       --tag lunasorcery/utf8info \
       --file utf8info.Dockerfile \
