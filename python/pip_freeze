@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+"""
+This is a script for lightweight dependency tracking.
+
+This tries to add a comment to any imports I have in a file, telling me
+what version I had installed when I wrote a script, e.g.
+
+    import os
+    import humanize
+
+becomes
+
+    import os
+    import humanize  # humanize==4.4.0
+
+I use this for a lot of scripts in this repo, when:
+
+-   I don't want to set up a requirements.txt file for each script
+    (and it wouldn't be accurate anyway)
+
+-   I might go a long time between writing and running a script, and
+    a third-party library might upgrade in the meantime -- and then it's
+    useful to know what I originally used if the script breaks
+
+-   I don't want to retest every script every time I upgrade a library.
+
+"""
+
+import os
+import re
+import subprocess
+import sys
+import tempfile
+
+
+def get_freeze_string(library_name):
+    if library_name in {"os", "re", "subprocess", "sys", "tempfile"}:
+        return None
+
+    try:
+        pip_output = subprocess.check_output(
+            f"pip freeze | grep {library_name}", shell=True
+        )
+    except subprocess.CalledProcessError:
+        return None
+    else:
+        return pip_output.decode("utf8").strip()
+
+
+if __name__ == "__main__":
+    try:
+        infile = sys.argv[1]
+    except IndexError:
+        sys.exit(f"Usage: {__file__} <PATH>")
+
+    with tempfile.NamedTemporaryFile(suffix=".py", delete=False) as tmpfile:
+        with open(tmpfile.name, "w") as outfile:
+            for line in open(infile):
+                m = re.match(r"^import (?P<library_name>[a-zA-Z]+)\n$", line)
+
+                if m is None:
+                    outfile.write(line)
+                else:
+                    library_name = m.group("library_name")
+
+                    freeze = get_freeze_string(library_name)
+
+                    if freeze:
+                        outfile.write(f"import {library_name}  # {freeze}\n")
+                    else:
+                        outfile.write(line)
+
+        os.rename(infile, infile + ".pip_freeze.bak")
+        os.rename(tmpfile.name, infile)
