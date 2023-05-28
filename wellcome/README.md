@@ -18,6 +18,17 @@ It's unlikely these would be of any use to somebody not at Wellcome (except as a
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/wellcome/logs"><code>logs</code></a>
+  </dt>
+  <dd>
+    open an app’s logs in our shared logging cluster.
+    This queries the logging cluster to find all the possible app names, then offers me a searchable list.
+    When I select an item, it opens a query for that app’s logs in our logging system.
+    <img src="screenshots/logs.png">
+  </dd>
+
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/wellcome/ssh_to_archivematica"><code>ssh_to_archivematica</code></a>
   </dt>
   <dd>

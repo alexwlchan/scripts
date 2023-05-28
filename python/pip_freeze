@@ -34,7 +34,7 @@ import sys
 
 
 def get_freeze_string(library_name):
-    if library_name in {"os", "re", "subprocess", "sys", "tempfile"}:
+    if library_name in {"json", "os", "re", "subprocess", "sys", "tempfile"}:
         return None
 
     try:
@@ -56,19 +56,24 @@ if __name__ == "__main__":
     lines = []
 
     for line in open(infile):
-        m = re.match(r"^import (?P<library_name>[a-zA-Z]+)\n$", line)
+        m1 = re.match(r"^import (?P<library_name>[a-zA-Z0-9]+)\n$", line)
+        m2 = re.match(r"^from (?P<library_name>[a-zA-Z0-9]+) import [^#]*$", line)
 
-        if m is None:
+        if m1 is None and m2 is None:
             lines.append(line)
+            continue
+
+        if m1 is not None:
+            library_name = m1.group("library_name")
+        elif m2 is not None:
+            library_name = m2.group("library_name")
+
+        freeze = get_freeze_string(library_name)
+
+        if freeze:
+            lines.append(f"{line.rstrip()}  # {freeze}\n")
         else:
-            library_name = m.group("library_name")
-
-            freeze = get_freeze_string(library_name)
-
-            if freeze:
-                lines.append(f"import {library_name}  # {freeze}\n")
-            else:
-                lines.append(line)
+            lines.append(line)
 
     # Note: the original implementation wrote the modified script to
     # a temporary file first, then os.rename-d that over the original.
