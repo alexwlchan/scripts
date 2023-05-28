@@ -28,9 +28,9 @@ I use this for a lot of scripts in this repo, when:
 
 import os
 import re
+import shutil
 import subprocess
 import sys
-import tempfile
 
 
 def get_freeze_string(library_name):
@@ -53,22 +53,33 @@ if __name__ == "__main__":
     except IndexError:
         sys.exit(f"Usage: {__file__} <PATH>")
 
-    with tempfile.NamedTemporaryFile(suffix=".py", delete=False) as tmpfile:
-        with open(tmpfile.name, "w") as outfile:
-            for line in open(infile):
-                m = re.match(r"^import (?P<library_name>[a-zA-Z]+)\n$", line)
+    lines = []
 
-                if m is None:
-                    outfile.write(line)
-                else:
-                    library_name = m.group("library_name")
+    for line in open(infile):
+        m = re.match(r"^import (?P<library_name>[a-zA-Z]+)\n$", line)
 
-                    freeze = get_freeze_string(library_name)
+        if m is None:
+            lines.append(line)
+        else:
+            library_name = m.group("library_name")
 
-                    if freeze:
-                        outfile.write(f"import {library_name}  # {freeze}\n")
-                    else:
-                        outfile.write(line)
+            freeze = get_freeze_string(library_name)
 
-        os.rename(infile, infile + ".pip_freeze.bak")
-        os.rename(tmpfile.name, infile)
+            if freeze:
+                lines.append(f"import {library_name}  # {freeze}\n")
+            else:
+                lines.append(line)
+
+    # Note: the original implementation wrote the modified script to
+    # a temporary file first, then os.rename-d that over the original.
+    #
+    # This is annoying because the new file wouldn't have the same
+    # file permissions -- in particular whether the file is executable.
+    # (In fact, the backup file would become executable and enter the PATH!)
+    #
+    # The easiest one percent of the missions is just to override the
+    # contents of the original file.
+    shutil.copyfile(infile, infile + ".pip_freeze.bak")
+
+    with open(infile, "w") as outfile:
+        outfile.write("".join(lines))
