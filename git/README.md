@@ -28,6 +28,15 @@ These scripts are all shortcuts for using [Git], mostly designed to let me do my
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/git/find_big_commits">
+      <code>find_big_commits</code>
+    </a>
+  </dt>
+  <dd>
+    print some information about the biggest files/commits in the Git history.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/git/gb">
       <code>gb [name]</code>
     </a>
