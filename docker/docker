@@ -3,13 +3,21 @@
 set -o errexit
 set -o nounset
 
-if ! /usr/local/bin/docker info > /dev/null 2>&1; then
+is_docker_running() {
+  if /usr/local/bin/docker info > /dev/null 2>&1; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+if ! is_docker_running; then
   echo "Starting Docker..."
   open /Applications/Docker.app
 
   for i in $(seq 60)
   do
-    if /usr/local/bin/docker info > /dev/null 2>&1; then
+    if is_docker_running; then
       break
     fi
     sleep 1
