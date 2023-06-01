@@ -135,7 +135,7 @@ if __name__ == "__main__":
     sess = boto3.Session()
 
     if table_name is not None:
-        for item in tqdm.tqdm(parallel_scan_table(sess, TableName=args.TABLE_NAME)):
+        for item in tqdm.tqdm(parallel_scan_table(sess, TableName=table_name)):
             print(json.dumps(item, cls=DynamoEncoder))
     else:
         for table_name in list_table_names(sess):
