@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Reverses the lines of the input. e.g.
+#
+#     $ printf " apple \n banana \n coconut \n" | reverse
+#      coconut
+#      banana
+#      apple
+#
+# See https://stackoverflow.com/q/742466/1558022
+
+set -o errexit
+set -o nounset
+
+perl -e 'print reverse <>'
