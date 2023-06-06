@@ -7,4 +7,6 @@
 set -o errexit
 set -o nounset
 
+_ensure_ssh_key_loaded
+
 git fetch origin --prune

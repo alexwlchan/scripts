@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script should run before any Git operations that interact with
+# a remote; they ensure my SSH key is loaded by the macOS Keychain before
+# trying to push/pull anything.
+
+set -o errexit
+set -o nounset
+
+has_ssh_identity_loaded() {
+  ssh-add -l >/dev/null
+}
+
+if ! has_ssh_identity_loaded
+then
+  ssh-add --apple-use-keychain $(find ~/.ssh -name 'id_*' | grep -v '.pub$' | head -n 1)
+fi

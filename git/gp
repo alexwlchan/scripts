@@ -4,6 +4,8 @@
 set -o errexit
 set -o nounset
 
+_ensure_ssh_key_loaded
+
 if [[ "${1:-}" == "--rebase" ]]
 then
   git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase
