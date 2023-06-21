@@ -36,6 +36,13 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3_unfreeze"><code>s3_unfreeze</code></a>
+  </dt>
+  <dd>
+    takes a list of S3 URIs as input, and either restores those objects from Glacier or reports the status of an in-progress restoration
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3ls"><code>s3ls</code></a>
   </dt>
   <dd>

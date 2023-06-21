@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import functools
+
 import boto3
 import hyperlink
 
@@ -11,6 +13,7 @@ ACCOUNT_NAMES = {
 }
 
 
+@functools.cache
 def get_aws_session(*, role_arn):
     sts_client = boto3.client("sts")
     assumed_role_object = sts_client.assume_role(
@@ -25,7 +28,7 @@ def get_aws_session(*, role_arn):
     )
 
 
-def guess_account(s3_identifier):
+def guess_account(s3_identifier, role_name):
     """
     Given the name of an S3 bucket, guess the account it belongs to.
 
@@ -47,6 +50,7 @@ def guess_account(s3_identifier):
     elif (
         "wellcomecollection-assets-workingstorage" in s3_identifier
         or "wellcomecollection-platform" in s3_identifier
+        or "wellcomecollection-editorial-photography" in s3_identifier
     ):
         account_id = "760097843905"
     else:
@@ -57,12 +61,12 @@ def guess_account(s3_identifier):
     return {
         "account_id": account_id,
         "name": account_name,
-        "role_arn": f"arn:aws:iam::{account_id}:role/{account_name}-read_only",
+        "role_arn": f"arn:aws:iam::{account_id}:role/{account_name}-{role_name}",
     }
 
 
-def create_s3_session(s3_identifier):
-    account = guess_account(s3_identifier)
+def create_s3_session(s3_identifier, *, role_name="read_only"):
+    account = guess_account(s3_identifier, role_name)
     if account:
         return get_aws_session(role_arn=account["role_arn"])
     else:
