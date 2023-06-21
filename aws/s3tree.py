@@ -183,7 +183,7 @@ if __name__ == "__main__":
         print("(no objects)")
         sys.exit(1)
 
-    keys = [s3_obj["Key"] for s3_obj in s3_objects if s3_obj["Size"] > 0]
+    keys = [s3_obj["Key"] for s3_obj in s3_objects if s3_obj["Size"] > 0 or not s3_obj["Key"].endswith("/")]
 
     tree = build_s3_tree(keys)
 
