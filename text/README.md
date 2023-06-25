@@ -34,6 +34,17 @@ These are utilities for manipulating streams of text; I consider them in a simil
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/sumsizes">
+      <code>sumsizes < [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    prints a human-readable data size for the numbers passed on stdin.
+    <pre><code>echo -e '100 \n 201287 \n 3190817' | sumsizes</code></pre>
+  </dd>
+
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/randline">
       <code>tally < [PATH]</code>
     </a>
