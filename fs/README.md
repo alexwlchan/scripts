@@ -23,6 +23,15 @@ These are scripts for manipulating files and folders in my local filesystem.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/deepestdir">
+      <code>deepestdir [ROOT]</code>
+    </a>
+  </dt>
+  <dd>
+    prints the directory which is the deepest child of the given directory
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fs/emptydir">
       <code>emptydir</code>
     </a>

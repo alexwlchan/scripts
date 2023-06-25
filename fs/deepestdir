@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+"""
+Usage: deepestdir [<ROOT>]
+
+Prints the path to the deepest directory under the given root.  If no root
+is given, the current directory is used.  If there are multiple directories
+at the same depth, only one is printed.
+"""
+
+import functools
+import os
+import sys
+
+
+def get_dir_paths_under(root):
+    """Generates the paths to every directory under ``root``."""
+    for dirpath, dirnames, _ in os.walk(root):
+        for d in dirnames:
+            yield os.path.join(dirpath, d)
+
+
+@functools.cache
+def directory_depth(d):
+    """Returns the depth of a directory in the filesystem."""
+    if os.path.dirname(d) == d:
+        return 0
+    else:
+        return 1 + directory_depth(os.path.dirname(d))
+
+
+if __name__ == "__main__":
+    try:
+        root = sys.argv[1]
+    except IndexError:
+        root = "."
+
+    print(max(get_dir_paths_under(root), key=directory_depth))
