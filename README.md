@@ -44,6 +44,13 @@ To make it a bit easier to find, I've grouped them into a couple of top-level fo
 
 I add all the subfolders to my PATH so I don't need to remember how they're organised, but it might make it easier to find stuff!
 
+## What goes in this repo
+
+The script in this repo are pretty short – typically 50 lines or less (including documentation).
+They're mostly stuff that I can write all in one go.
+
+If a script gets sufficiently large and complicated that it might benefit from its own documentation or change history, it "graduates" into a separate repo.
+
 ## Contributors
 
 My scripts include code written by other people, and in those cases I've [attributed the commit that added the code/script to multiple authors][trailer].
