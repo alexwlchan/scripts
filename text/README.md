@@ -15,6 +15,15 @@ These are utilities for manipulating streams of text; I consider them in a simil
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/noplaylist">
+      <code>noplaylist < [URL]</code>
+    </a>
+  </dt>
+  <dd>
+    removes the <code>list</code> query parameter from a YouTube URL; I use it with <code>youtube-dl</code>
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/randline">
       <code>randline [NUMBER] < [PATH]</code>
     </a>
@@ -42,7 +51,6 @@ These are utilities for manipulating streams of text; I consider them in a simil
     prints a human-readable data size for the numbers passed on stdin.
     <pre><code>echo -e '100 \n 201287 \n 3190817' | sumsizes</code></pre>
   </dd>
-
 
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/randline">
