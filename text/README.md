@@ -15,6 +15,15 @@ These are utilities for manipulating streams of text; I consider them in a simil
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/natsize">
+      <code>natsize < [NUMBER]</code>
+    </a>
+  </dt>
+  <dd>
+    prints a numeric file size as a human-readable string, e.g. <code>32036032</code> becomes <code>32.0 MB</code>
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/noplaylist">
       <code>noplaylist < [URL]</code>
     </a>
