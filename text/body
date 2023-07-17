@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+"""
+Prints the nth line of a file.
+
+This is meant to fill a gap between the Unix utilities ``head`` and
+``tail``, which I normally use in one of the following forms:
+
+    $ head -n 5 myfile.txt
+    $ tail -n 5 myfile.txt
+
+which print the first/last 5 lines of a file, respectively.
+
+This command fills the gap -- it gets the nth line of a file, e.g. this
+prints the 100th line of the file:
+
+    $ body -n 100 myfile.txt
+
+"""
+
+import argparse
+import subprocess
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-n", required=True, dest="lineno", type=int)
+    parser.add_argument("PATH")
+
+    args = parser.parse_args()
+
+    for lineno, line in enumerate(open(args.PATH), start=1):
+        if lineno == args.lineno:
+            print(line, end="")
+            break

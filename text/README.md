@@ -6,6 +6,17 @@ These are utilities for manipulating streams of text; I consider them in a simil
 
 <dl>
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/body">
+      <code>body -n [LINENO] [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    print the nth line of a file.
+    This is meant to fill a gap between the Unix utilities <code>head</code> and <code>tail</code>.
+  </dd>
+  
+  
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/midline">
       <code>midline [PATH]</code>
     </a>
