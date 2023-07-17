@@ -198,7 +198,7 @@ if __name__ == "__main__":
     elif last_modified.year != datetime.date.today().year:
         last_modified_message = f"in {last_modified.strftime('%B %Y')}"
     else:
-        last_modified_message = last_modified.strftime("%d %B")
+        last_modified_message = last_modified.strftime("%-d %B")
 
     print(
         termcolor.colored(
