@@ -105,6 +105,15 @@ These scripts are all shortcuts for using [Git], mostly designed to let me do my
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/git/groot">
+      <code>groot</code>
+    </a>
+  </dt>
+  <dd>
+    alias for <code>git rev-parse --show-toplevel</code>, which prints the root of the current repository
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/git/gub">
       <code>gub</code>
     </a>
