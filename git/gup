@@ -15,5 +15,4 @@ set -o nounset
 
 _ensure_ssh_key_loaded
 
-ROOT=$(git rev-parse --show-toplevel)
-open -a GitUp.app "$ROOT"
+open -a GitUp.app $(groot)
