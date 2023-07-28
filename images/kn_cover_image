@@ -165,15 +165,16 @@ if __name__ == "__main__":
 
     cropped_im.save(out_path, icc_profile=im.info.get("icc_profile"))
 
-    subprocess.check_call(
-        [
-            "retrobatch",
-            "--workflow",
-            "~/repos/scripts/images/overwrite_with_srgb.retrobatch",
-            out_path,
-        ],
-        stdout=subprocess.DEVNULL,
-    )
+    if im.info.get("icc_profile") is not None:
+        subprocess.check_call(
+            [
+                "retrobatch",
+                "--workflow",
+                "~/repos/scripts/images/overwrite_with_srgb.retrobatch",
+                out_path,
+            ],
+            stdout=subprocess.DEVNULL,
+        )
 
     print(out_path)
     assert cropped_im.width == cropped_im.height * 2
