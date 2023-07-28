@@ -45,7 +45,7 @@ These scripts are for working with images and other visual material.
     I use this to work around an odd behaviour of the “Scan Document” feature in Notes.app, where it adds a large white border around scanned images that I don’t want.
     <p><strong>Note:</strong> this script overwrites the original file.</p>
   </dd>
-  
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/kn_cover_image">
       <code>kn_cover_image [PATH]</code>
@@ -104,7 +104,16 @@ These scripts are for working with images and other visual material.
   <dd>
     an alias for running the Retrobatch image processor <a href="https://flyingmeat.com/retrobatch/docs-1.0/commandline/">from the command-line</a>
   </dd>
-  
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/save_xkcd">
+      <code>save_xkcd [COMIC_NUMBER]</code>
+    </a>
+  </dt>
+  <dd>
+    saves a single comic from <a href="https://xkcd.com/">xkcd</a>, plus some metadata.
+  </dd>
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/tint_image">
       <code>tint_image [PATH] [HEX_COLOUR]</code>
