@@ -137,9 +137,11 @@ def pprint_s3tree(*, bucket, tree):
         extra_objects = f"...{len(tree.objects) - 3} other objects"
         lines.append(f"{prefix_char} {termcolor.colored(extra_objects, 'blue')}")
 
-    for i, (folder_name, folder_tree) in enumerate(
-        sorted(tree.folders.items()), start=1
+    for i, folder_name in enumerate(
+        natsort.natsort(tree.folders), start=1
     ):
+        folder_tree = tree.folders[folder_name]
+
         if tree.path == "":
             full_path = folder_name
         else:
