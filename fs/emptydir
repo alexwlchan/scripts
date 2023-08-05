@@ -8,6 +8,7 @@ It prints the name of every directory it removes.
 
 import os
 import shutil
+import sys
 
 import humanize
 import termcolor
@@ -41,7 +42,12 @@ def delete_directory(d):
 if __name__ == "__main__":
     total_deleted = 0
 
-    for d, _, _ in os.walk("."):
+    try:
+        root = sys.argv[1]
+    except IndexError:
+        root = "."
+
+    for d, _, _ in os.walk(root):
         if can_be_deleted(d):
             total_deleted += delete_directory(d)
 
