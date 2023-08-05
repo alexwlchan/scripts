@@ -106,6 +106,15 @@ These scripts are for working with images and other visual material.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/save_flickr">
+      <code>save_flickr [FLICKR_URL]</code>
+    </a>
+  </dt>
+  <dd>
+    saves a single image from Flickr, plus some metadata.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/save_xkcd">
       <code>save_xkcd [COMIC_NUMBER]</code>
     </a>
