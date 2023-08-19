@@ -6,6 +6,42 @@ These scripts are for working with images and other visual material.
 
 <dl>
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/chunky_pixels">
+      <code>chunky_pixels [PATH] [PIXEL_SIZE]</code>
+    </a>
+  </dt>
+  <dd>
+    redraw an image using “chunky” pixels – that is, replacing every NxN block of pixels with a single colour.
+    <p>
+      <table>
+        <tr>
+          <td>
+            <img src="examples/flowers.jpg">
+            original
+          </td>
+          <td>
+            <img src="examples/flowers_12.jpg">
+            N=12
+          </td>
+          <td>
+            <img src="examples/flowers_34.jpg">
+            N=34
+          </td>
+          <td>
+            <img src="examples/flowers_68.jpg">
+            N=68
+          </td>
+          <td>
+            <img src="examples/flowers_204.jpg">
+            N=204
+          </td>
+        </tr>
+      </table>
+    </p>
+  </dd>
+
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/copycrop">
       <code>copycrop</code>
     </a>
