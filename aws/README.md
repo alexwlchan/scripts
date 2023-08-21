@@ -43,6 +43,13 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3hash"><code>s3hash <S3_URI> [--algorithm=<ALGO>]</code></a>
+  </dt>
+  <dd>
+    get the checksum/hash of an object in S3
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3ls"><code>s3ls</code></a>
   </dt>
   <dd>

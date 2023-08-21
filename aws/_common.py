@@ -80,9 +80,9 @@ def parse_s3_uri(s3_uri):
         raise ValueError(f"Unrecognised scheme in {s3_uri!r}, expected s3://")
 
     bucket = uri.host
-    prefix = "/".join(uri.path)
+    path = "/".join(uri.path)
 
-    return {"Bucket": bucket, "Prefix": prefix}
+    return {"Bucket": bucket, "Path": path}
 
 
 def create_link_text(*, url, label):

@@ -175,7 +175,8 @@ def pprint_s3tree(*, bucket, tree):
 if __name__ == "__main__":
     args = parse_args()
 
-    s3_prefix = parse_s3_uri(args.S3_URI)
+    s3_location = parse_s3_uri(args.S3_URI)
+    s3_prefix = {"Bucket": s3_location["Bucket"], "Prefix": s3_location["Path"]}
 
     sess = create_s3_session(args.S3_URI)
 

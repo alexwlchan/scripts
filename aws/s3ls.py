@@ -67,7 +67,8 @@ def get_object_versions(sess, **kwargs):
 if __name__ == "__main__":
     args = parse_args()
 
-    s3_list_args = parse_s3_uri(args.S3_URI)
+    s3_location = parse_s3_uri(args.S3_URI)
+    s3_list_args = {"Bucket": s3_location["Bucket"], "Prefix": s3_location["Path"]}
 
     sess = create_s3_session(args.S3_URI)
 
