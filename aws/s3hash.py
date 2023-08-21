@@ -7,6 +7,8 @@ import argparse
 import hashlib
 import os
 
+import tqdm
+
 from _common import create_link_text, create_s3_session, parse_s3_uri
 
 
@@ -36,7 +38,13 @@ if __name__ == "__main__":
 
     h = hashlib.new(args.algorithm)
 
-    while chunk := s3_obj["Body"].read(8192):
-        h.update(chunk)
+    with tqdm.tqdm(total=s3_obj["ContentLength"], unit="B", unit_scale=True) as pbar:
+        while True:
+            chunk = s3_obj["Body"].read(8192)
+            pbar.update(len(chunk))
+            h.update(chunk)
+
+            if not chunk:
+                break
 
     print(h.hexdigest(), end="")
