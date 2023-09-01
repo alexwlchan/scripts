@@ -10,6 +10,7 @@ then
 
 !.buildkite/
 !.github/
+!.obsidian/
 EOF
 fi
 
