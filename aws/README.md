@@ -63,6 +63,14 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3rm"><code>s3rm</code></a>
+  </dt>
+  <dd>
+    delete objects from an S3 prefix.
+    To see a preview of what objects this will delete, use the <code>s3ls</code> script – they use the same code to list objects.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3tree"><code>s3tree</code></a>
   </dt>
   <dd>
