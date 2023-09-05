@@ -124,7 +124,10 @@ def get_logging_options():
 
     yield from cached_entries.items()
 
-    new_entries = get_logging_options_from_es()
+    try:
+        new_entries = get_logging_options_from_es()
+    except Exception as e:
+        new_entries = {}
 
     for k, v in new_entries.items():
         if k not in cached_entries:
