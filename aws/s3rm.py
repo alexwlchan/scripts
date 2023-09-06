@@ -4,6 +4,7 @@ A script for deleting all the objects in an S3 prefix.
 """
 
 import argparse
+import os
 import sys
 
 import humanize
@@ -12,6 +13,11 @@ import tqdm
 
 from _common import create_s3_session, parse_s3_uri
 from s3ls import get_objects, get_object_versions
+
+# https://github.com/alexwlchan/concurrently
+sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
+
+from concurrently import concurrently
 
 
 def parse_args():
@@ -39,18 +45,22 @@ def delete_objects(sess, iterator):
     def print_result():
         print(f'{humanize.intcomma(total_deleted_count)} object{"s" if total_deleted_count != 1 else ""} deleted, total {humanize.naturalsize(total_deleted_size)}')
 
-    try:
-        for batch in more_itertools.chunked(iterator, 1000):
-            sess.client("s3").delete_objects(
-                Bucket=s3_location["Bucket"],
-                Delete={
-                    "Objects": [
-                        {k: v for (k, v) in s3_obj.items() if k in {"Key", "VersionId"}}
-                        for s3_obj in batch
-                    ],
-                },
-            )
+    def delete_batch(batch):
+        sess.client("s3").delete_objects(
+            Bucket=s3_location["Bucket"],
+            Delete={
+                "Objects": [
+                    {k: v for (k, v) in s3_obj.items() if k in {"Key", "VersionId"}}
+                    for s3_obj in batch
+                ],
+            },
+        )
 
+    try:
+        for batch, _ in concurrently(
+            handler=delete_batch,
+            inputs=more_itertools.chunked(iterator, 1000)
+        ):
             total_deleted_count += len(batch)
             total_deleted_size += sum(s3_obj['Size'] for s3_obj in batch)
     except:
