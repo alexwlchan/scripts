@@ -4,4 +4,4 @@ set -o errexit
 set -o nounset
 
 _ensure_aws_credentials_are_fresh
-open_logging_cluster.py
+python3 ~/repos/platform-infrastructure/logging/open_logging_cluster.py
