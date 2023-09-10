@@ -51,6 +51,16 @@ These are scripts for manipulating files and folders in my local filesystem.
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/hide">
+      <code>hide [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    alias for <code>chflags hidden PATH</code>.
+    See also: <code>unhide</code>.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fs/latest_download">
       <code>latest_download</code>
     </a>
@@ -73,5 +83,15 @@ These are scripts for manipulating files and folders in my local filesystem.
   4.76M .git/
 -------
   7.58M ~/repos/scripts</code></pre></p>
+  </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/unhide">
+      <code>unhide [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    alias for <code>chflags nohidden PATH</code>.
+    See also: <code>hide</code>.
   </dd>
 </dl>
