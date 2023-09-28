@@ -68,6 +68,15 @@ They rely on Mac-specific stuff and are unlikely to be useful on non-Mac systems
   <dd>
     set the accent colour, as configured in the Appearance settings
   </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/sterilise">
+      <code>sterilise [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    alias for <code>xattr -d com.apple.quarantine</code>
+  </dd>
   
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/unlock_keychain">

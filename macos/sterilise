@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This removes the com.apple.quarantine attribute from files.
+#
+# This attribute is applied when you download a binary from the web,
+# and prevents you running it.  This script is a quick alias for
+# removing that attribute if you know a file is safe.
+
+set -o errexit
+set -o nounset
+
+if (( $# == 0 ))
+then
+  echo "Usage: $0 <PATH>" >&2
+  exit 1
+fi
+
+for NAME in $@
+do
+  xattr -d com.apple.quarantine "$NAME"
+done
