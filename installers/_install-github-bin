@@ -123,7 +123,7 @@ fi
 tar --extract --gunzip --file "asset.tar.gz"
 
 chmod +x "$BINARY_PATH"
-mv "$BINARY_PATH" /usr/local/bin
+sudo mv "$BINARY_PATH" /usr/local/bin
 
 which "$BINARY_NAME"
 "$BINARY_NAME" --version
