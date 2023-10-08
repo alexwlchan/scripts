@@ -40,6 +40,7 @@ function isSafeToClose(url) {
   return (
     url.startsWith("http://localhost:3000/") ||
     url.startsWith("https://api.wellcomecollection.org/") ||
+    url.startsWith("https://app.fastmail.com/mail/Inbox/?u=") ||
     url.startsWith("https://buildkite.com/orgs/wellcomecollection/") ||
     url.startsWith("https://buildkite.com/wellcomecollection") ||
     url.startsWith("https://cloud.elastic.co") ||
