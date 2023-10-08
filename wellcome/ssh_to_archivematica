@@ -5,4 +5,4 @@ set -o nounset
 
 _ensure_aws_credentials_are_fresh
 
-~/repos/archivematica-infrastructure/ssh_to_archivematica "$@"
+~/repos/archivematica-infrastructure/scripts/ssh_to_archivematica "$@"
