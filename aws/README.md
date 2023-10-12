@@ -13,7 +13,7 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/bulk_sns_publish"><code>bulk_sns_publish</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/bulk_sns_publish.py"><code>bulk_sns_publish.py</code></a>
   </dt>
   <dd>
     a tool for publishing lots of messages to SNS, using the <code>PublishBatch</code> API.
@@ -21,7 +21,7 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/download_sqs_messages"><code>download_sqs_messages</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/download_sqs_messages.py"><code>download_sqs_messages.py</code></a>
   </dt>
   <dd>
     a tool for downloading lots of messages from SQS, using the <code>ReceiveMessage</code> API.
@@ -29,28 +29,28 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/dynamols"><code>dynamols</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/dynamols.py"><code>dynamols.py</code></a>
   </dt>
   <dd>
     print the items in a DynamoDB table, one item per line
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3_unfreeze"><code>s3_unfreeze</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3_unfreeze.py"><code>s3_unfreeze.py</code></a>
   </dt>
   <dd>
     takes a list of S3 URIs as input, and either restores those objects from Glacier or reports the status of an in-progress restoration
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3hash"><code>s3hash <S3_URI> [--algorithm=<ALGO>]</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3hash.py"><code>s3hash.py <S3_URI> [--algorithm=<ALGO>]</code></a>
   </dt>
   <dd>
     get the checksum/hash of an object in S3
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3ls"><code>s3ls</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3ls.py"><code>s3ls.py</code></a>
   </dt>
   <dd>
     list objects from an S3 prefix using the <code>ListObjectsV2</code> API, and print them as JSON to stdout.
@@ -63,7 +63,7 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3rm"><code>s3rm</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3rm.py"><code>s3rm.py</code></a>
   </dt>
   <dd>
     delete objects from an S3 prefix.
@@ -71,7 +71,7 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3tree"><code>s3tree</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/s3tree.py"><code>s3tree.py</code></a>
   </dt>
   <dd>
     show a tree-like view of objects and folders in an S3 prefix.
@@ -80,7 +80,7 @@ These are scripts to do stuff in AWS.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/sqs_stats"><code>sqs_stats</code></a>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/sqs_stats.py"><code>sqs_stats.py</code></a>
   </dt>
   <dd>
     prints a summary of messages visible on our SQS queues.

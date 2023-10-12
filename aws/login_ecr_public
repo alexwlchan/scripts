@@ -4,7 +4,5 @@ set -o errexit
 set -o nounset
 set -o verbose
 
-_ensure_aws_credentials_are_fresh
-
 AWS_PROFILE=experience-dev aws ecr-public \
   --region=us-east-1 get-login-password | docker login --username AWS --password-stdin public.ecr.aws

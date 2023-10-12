@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-set -o errexit
-set -o nounset
-
-s3tree "s3://wellcomecollection-storage/digitised/$@"

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# This is a shortcut for 'mv' that I use for filing documents.
-#
-# I have a 'wellcome' directory that's divided into years where I put
-# work documents; running `wellcome nameofdocument.pdf` will move it
-# to the appropriate folder for the current year.
-
-_file_by_year "~/Documents/wellcome" "$@"
