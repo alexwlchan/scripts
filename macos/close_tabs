@@ -59,13 +59,16 @@ function isSafeToClose(url) {
 }
 
 let closedCount = 0;
+let remainingCount = 0;
 
 for (const [window_index, tab_index, url] of tabGenerator()) {
 	if (isSafeToClose(url)) {
 		console.log(url);
 		safari.windows[window_index].tabs[tab_index].close();
     closedCount += 1;
+	} else {
+	  remainingCount += 1;
 	}
 }
 
-console.log(`Closed ${closedCount} tab${closedCount !== 1 ? 's' : ''}`)
+console.log(`Closed ${closedCount} tab${closedCount !== 1 ? 's' : ''}; ${remainingCount} tab${remainingCount !== 1 ? 's' : ''} left open`)
