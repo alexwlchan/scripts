@@ -33,35 +33,10 @@ function isSafeToClose(url) {
   // so leave this tab open.
   if (url === null) { return false; }
 
-  if (url.startsWith("https://github.com/search") && url.indexOf("org%3Awellcomecollection") !== -1) {
-    return true;
-  }
-
   return (
     url.startsWith("http://localhost:3000/") ||
-    url.startsWith("https://api.wellcomecollection.org/") ||
     url.startsWith("https://app.fastmail.com/mail/Inbox/?u=") ||
-    url.startsWith("https://buildkite.com/orgs/wellcomecollection/") ||
-    url.startsWith("https://buildkite.com/wellcomecollection") ||
-    url.startsWith("https://cloud.elastic.co") ||
-    url.startsWith("https://console.aws.amazon.com/") ||
-    url.startsWith("https://dash.wellcomecollection.org/") ||
-    url.startsWith("https://eu-west-1.console.aws.amazon.com/") ||
-    url.startsWith("https://eu-west-1.signin.aws.amazon.com/") ||
-    url.startsWith("https://github.com/orgs/wellcomecollection/") ||
-    url.startsWith("https://github.com/wellcomecollection/") ||
-    url.startsWith("https://iiif.wellcomecollection.org/dash/") ||
-    url.startsWith("https://logging.wellcomecollection.org") ||
-    url.startsWith("https://manage.auth0.com/") ||
-    url.startsWith("https://search.wellcomelibrary.org") ||
-    url.startsWith("https://signin.aws.amazon.com/") ||
-    url.startsWith("https://s3-eu-west-1.amazonaws.com/tzitzit.wellcomecollection.org/index.html") ||
-    url.startsWith("https://trustnet.wellcome.org/") ||
-    url.startsWith("https://us-east-1.console.aws.amazon.com/") ||
-    url.startsWith("https://us-east-1.signin.aws.amazon.com/") ||
-    url.startsWith("https://wellcome.org") ||
-    url.startsWith("https://wellcomecollection.prismic.io") ||
-    url.startsWith("https://www-stage.wellcomecollection.org/") ||
+    url.startsWith("https://github.com/Flickr-Foundation/") ||
     url.startsWith("https://zoom.us/") ||
 
     // Kibana dashboards in Elastic Cloud
