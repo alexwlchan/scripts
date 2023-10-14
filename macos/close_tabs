@@ -48,6 +48,7 @@ function isSafeToClose(url) {
     url === 'https://github.com/alexwlchan/scripts' ||
     url === 'https://mobile.twitter.com/home' ||
     url === 'https://news.ycombinator.com/' ||
+    url === 'https://social.alexwlchan.net/home' ||
     url === 'https://twitter.com/home' ||
     url === 'https://twitter.com/i/timeline' ||
     url === 'https://twitter.com/notifications' ||
