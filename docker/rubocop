@@ -9,7 +9,7 @@ set -o nounset
 
 if ! docker images | grep alexwlchan/rubocop >/dev/null
 then
-  pushd ~/repos/pathscripts/docker
+  pushd ~/repos/scripts/docker
     docker build \
       --tag alexwlchan/rubocop \
       --file rubocop.Dockerfile \
