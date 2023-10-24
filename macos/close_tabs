@@ -46,6 +46,7 @@ function isSafeToClose(url) {
     url === 'https://arstechnica.com/' ||
     url === 'https://github.com/' ||
     url === 'https://github.com/alexwlchan/scripts' ||
+    url === 'https://mail.google.com/mail/u/0/#inbox' ||
     url === 'https://mobile.twitter.com/home' ||
     url === 'https://news.ycombinator.com/' ||
     url === 'https://social.alexwlchan.net/home' ||
