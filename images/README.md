@@ -158,6 +158,15 @@ These scripts are for working with images and other visual material.
   <dd>
     saves a single comic from <a href="https://xkcd.com/">xkcd</a>, plus some metadata.
   </dd>
+  
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/srgbify">
+      <code>srgbify [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    convert an image in-place to have an sRGB colour profile.
+  </dd>
 
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/tint_image">
