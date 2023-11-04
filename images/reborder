@@ -1,31 +1,41 @@
-#!/usr/bin/env bash
-# This script adds a white border of consistent width around an image.
-#
-# I use it when I've taken a screenshot of something on a white background,
-# and I want to tidy up the crop quickly.
+#!/usr/bin/env python3
+"""
+Adds a white border of consistent width around an image.
 
-set -o errexit
-set -o nounset
+I use it when I've taken a screenshot of something on a white background,
+and I want to tidy up the crop quickly.
+"""
 
-if (( $# != 2 ))
-then
-  echo "Usage: reborder <PATH> <BORDER_WIDTH>" >&2
-  exit 1
-fi
+import itertools
+import os
+import sys
 
-PATH="$1"
-BORDER_WIDTH="$2"
+from PIL import Image, ImageChops, ImageOps
 
-NOEXT=${PATH%.*}
-EXT=${PATH##*.}
 
-NEW_PATH="$NOEXT.reborder_$BORDER_WIDTH.$EXT"
+if __name__ == '__main__':
+    try:
+        path = sys.argv[1]
+        border_width = int(sys.argv[2])
+    except (IndexError, ValueError):
+        sys.exit(f"Usage: {__file__} <PATH> <BORDER_WIDTH>")
 
-/usr/local/bin/convert \
-  -background none \
-  -trim "$PATH" \
-  -bordercolor white \
-  -border "$BORDER_WIDTH"x"$BORDER_WIDTH" \
-  "$NEW_PATH"
+    im = Image.open(path)
 
-echo "$NEW_PATH"
+    bg = Image.new(im.mode, im.size, (255, 255, 255))
+
+    diff = ImageChops.difference(im, bg)
+    diff = ImageChops.add(diff, diff, 2.0, -100)
+    bbox = diff.getbbox()
+    if bbox:
+        im = im.crop(bbox)
+
+    im = ImageOps.expand(im, border=border_width, fill='white')
+
+    name, ext = os.path.splitext(path)
+
+    out_path = f'{name}.reborder_{border_width}{ext}'
+
+    im.save(out_path)
+
+    print(out_path)
