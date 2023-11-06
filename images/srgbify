@@ -17,21 +17,30 @@ from PIL import Image, ImageCms
 
 
 if __name__ == "__main__":
-    try:
-        path = sys.argv[1]
-    except IndexError:
-        sys.exit(f"Usage: {__file__} <PATH>")
+    if len(sys.argv) == 1:
+        sys.exit(f"Usage: {__file__} <PATH...>")
 
-    in_img = Image.open(path)
+    for path in sys.argv[1:]:
+        in_img = Image.open(path)
 
-    srgb_profile = ImageCms.createProfile("sRGB")
+        srgb_profile = ImageCms.createProfile("sRGB")
 
-    _, icc_profile = tempfile.mkstemp(suffix=".icc")
-    with open(icc_profile, "wb") as out_file:
-        out_file.write(in_img.info.get("icc_profile"))
+        icc_profile = in_img.info.get("icc_profile")
 
-    out_img = ImageCms.profileToProfile(
-        in_img, inputProfile=icc_profile, outputProfile=srgb_profile
-    )
+        # Handle the case where this image doesn't have
+        # a colour profile
+        if icc_profile is None:
+            print(path)
+            continue
 
-    out_img.save(path)
+        _, icc_profile_path = tempfile.mkstemp(suffix=".icc")
+
+        with open(icc_profile_path, "wb") as out_file:
+            out_file.write(icc_profile)
+
+        out_img = ImageCms.profileToProfile(
+            in_img, inputProfile=icc_profile_path, outputProfile=srgb_profile
+        )
+
+        out_img.save(path)
+        print(path)
