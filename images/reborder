@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/Users/alexwlchan/repos/scripts/.venv/bin/python3
 """
 Adds a white border of consistent width around an image.
 
@@ -6,6 +6,7 @@ I use it when I've taken a screenshot of something on a white background,
 and I want to tidy up the crop quickly.
 """
 
+import argparse
 import itertools
 import os
 import sys
@@ -13,14 +14,20 @@ import sys
 from PIL import Image, ImageChops, ImageOps
 
 
-if __name__ == '__main__':
-    try:
-        path = sys.argv[1]
-        border_width = int(sys.argv[2])
-    except (IndexError, ValueError):
-        sys.exit(f"Usage: {__file__} <PATH> <BORDER_WIDTH>")
+def parse_args():
+    parser = argparse.ArgumentParser()
 
-    im = Image.open(path)
+    parser.add_argument("PATH")
+    parser.add_argument("BORDER_WIDTH", type=int)
+    parser.add_argument("--in-place", action="store_true")
+
+    return parser.parse_args()
+
+
+if __name__ == '__main__':
+    args = parse_args()
+
+    im = Image.open(args.PATH)
 
     bg = Image.new(im.mode, im.size, (255, 255, 255))
 
@@ -30,11 +37,14 @@ if __name__ == '__main__':
     if bbox:
         im = im.crop(bbox)
 
-    im = ImageOps.expand(im, border=border_width, fill='white')
+    im = ImageOps.expand(im, border=args.BORDER_WIDTH, fill='white')
 
-    name, ext = os.path.splitext(path)
+    name, ext = os.path.splitext(args.PATH)
 
-    out_path = f'{name}.reborder_{border_width}{ext}'
+    if args.in_place:
+        out_path = args.PATH
+    else:
+        out_path = f'{name}.reborder_{args.BORDER_WIDTH}{ext}'
 
     im.save(out_path)
 
