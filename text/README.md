@@ -35,8 +35,8 @@ These are utilities for manipulating streams of text; I consider them in a simil
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/text/noplaylist">
-      <code>noplaylist < [URL]</code>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/noplaylist.py">
+      <code>noplaylist.py < [URL]</code>
     </a>
   </dt>
   <dd>

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+~/repos/scripts/.venv/bin/python3 "~/repos/scripts/images/reborder.py" "$@"

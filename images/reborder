@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -o errexit
-set -o nounset
-
-# https://stackoverflow.com/q/59895/1558022
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-
-/Users/alexwlchan/repos/scripts/.venv/bin/python3 "$SCRIPT_DIR/reborder.py" "$@"

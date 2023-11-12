@@ -114,8 +114,8 @@ These scripts are for working with images and other visual material.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/images/reborder">
-      <code>reborder [PATH] [BORDER_WIDTH]</code>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/reborder.py">
+      <code>reborder.py [PATH] [BORDER_WIDTH]</code>
     </a>
   </dt>
   <dd>
@@ -158,7 +158,7 @@ These scripts are for working with images and other visual material.
   <dd>
     saves a single comic from <a href="https://xkcd.com/">xkcd</a>, plus some metadata.
   </dd>
-  
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/srgbify">
       <code>srgbify [PATH]</code>
