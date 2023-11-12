@@ -61,7 +61,7 @@ def get_queue_stats(sess, *, queue_urls):
         handler=lambda q_url: sqs_client.get_queue_attributes(
             QueueUrl=q_url, AttributeNames=attribute_names
         ),
-        inputs=queue_urls
+        inputs=queue_urls,
     ):
         queue_responses[q_url] = q_resp
 
@@ -79,7 +79,8 @@ def print_number(account_id, region_name, queue_name, *, value, color):
 
         print(
             termcolor.colored(
-                " " * spaces_required + create_link_text(
+                " " * spaces_required
+                + create_link_text(
                     url=f"https://{region_name}.console.aws.amazon.com/sqs/v2/home?region={region_name}#/queues/https%3A%2F%2Fsqs.{region_name}.amazonaws.com%2F{account_id}%2F{queue_name}",
                     label=humanize.intcomma(value),
                 ),

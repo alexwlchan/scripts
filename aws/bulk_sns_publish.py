@@ -141,7 +141,7 @@ def publish_messages(*, input_file, topic_arn):
     total_entries = sum(len(entries) for entries in get_batch_entries(input_file))
 
     with tqdm.tqdm(total=total_entries) as pbar:
-        for (batch, _) in concurrently(
+        for batch, _ in concurrently(
             handler=functools.partial(publish_batch, sns_client, topic_arn),
             inputs=get_batch_entries(input_file),
             max_concurrency=8,

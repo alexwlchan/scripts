@@ -80,7 +80,6 @@ def parallel_scan_table(sess, *, TableName, **kwargs):
     scans_to_run = iter(tasks_to_do)
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
-
         # Schedule the initial batch of futures.  Here we assume that
         # max_scans_in_parallel < total_segments, so there's no risk that
         # the queue will throw an Empty exception.

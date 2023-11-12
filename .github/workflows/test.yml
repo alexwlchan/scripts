@@ -26,6 +26,8 @@ jobs:
         pip install -r requirements.txt
     - name: Run linting
       run: |
+        black --check .
+
         # E501 = line too long; anything up to 100-ish is fine in my book
         # (the "ish" is intentional; see https://www.youtube.com/watch?v=wf-BqAjZb8M)
         #

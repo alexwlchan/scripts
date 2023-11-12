@@ -43,7 +43,9 @@ def delete_objects(sess, iterator):
     total_deleted_size = 0
 
     def print_result():
-        print(f'{humanize.intcomma(total_deleted_count)} object{"s" if total_deleted_count != 1 else ""} deleted, total {humanize.naturalsize(total_deleted_size)}')
+        print(
+            f'{humanize.intcomma(total_deleted_count)} object{"s" if total_deleted_count != 1 else ""} deleted, total {humanize.naturalsize(total_deleted_size)}'
+        )
 
     def delete_batch(batch):
         sess.client("s3").delete_objects(
@@ -61,10 +63,10 @@ def delete_objects(sess, iterator):
             handler=delete_batch,
             inputs=more_itertools.chunked(iterator, 1000),
             # Note: if you go too fast, you get a SlowDown error from S3.
-            max_concurrency=3
+            max_concurrency=3,
         ):
             total_deleted_count += len(batch)
-            total_deleted_size += sum(s3_obj['Size'] for s3_obj in batch)
+            total_deleted_size += sum(s3_obj["Size"] for s3_obj in batch)
     except:  # noqa: E722
         print_result()
         raise

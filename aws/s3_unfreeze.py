@@ -30,11 +30,11 @@ def restore_object(s3_client, s3_uri):
 
     head_resp = s3_client.head_object(Bucket=bucket, Key=key)
 
-    if head_resp.get('Restore') == 'ongoing-request="true"':
+    if head_resp.get("Restore") == 'ongoing-request="true"':
         return "RestoreInProgress"
 
-    if 'ongoing-request="false"' in head_resp.get('Restore', ''):
-        return 'RestoredSuccessfully'
+    if 'ongoing-request="false"' in head_resp.get("Restore", ""):
+        return "RestoredSuccessfully"
 
     try:
         resp = s3_client.restore_object(
