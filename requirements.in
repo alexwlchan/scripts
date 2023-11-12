@@ -1,4 +1,5 @@
 black
 flake8
+hyperlink
 Pillow
 pip-tools

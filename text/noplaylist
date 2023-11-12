@@ -1,20 +1,9 @@
-#!/usr/bin/env python3
-"""
-This script receives a YouTube URL on stdin, and removes the `list`
-query parameter.
+#!/usr/bin/env bash
 
-I use this in conjunction with `furl` and `youtube-dl`.  Sometimes
-I want to download a single video from YouTube, but youtube-dl tries
-to download an entire playlist.  This lets me grab just the first video.
-"""
+set -o errexit
+set -o nounset
 
-import sys
+# https://stackoverflow.com/q/59895/1558022
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-import hyperlink
-
-
-if __name__ == '__main__':
-    url = sys.stdin.read()
-    url = hyperlink.URL.from_text(url)
-    url = url.remove('list')
-    sys.stdout.write(str(url))
+/Users/alexwlchan/repos/scripts/.venv/bin/python3 "$SCRIPT_DIR/noplaylist.py" "$@"

@@ -14,6 +14,10 @@ click==8.1.7
     #   pip-tools
 flake8==6.1.0
     # via -r requirements.in
+hyperlink==21.0.0
+    # via -r requirements.in
+idna==3.4
+    # via hyperlink
 mccabe==0.7.0
     # via flake8
 mypy-extensions==1.0.0
