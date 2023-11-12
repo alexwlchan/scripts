@@ -4,5 +4,13 @@
 #
 #    pip-compile requirements.in
 #
+flake8==6.1.0
+    # via -r requirements.in
+mccabe==0.7.0
+    # via flake8
 pillow==10.1.0
     # via -r requirements.in
+pycodestyle==2.11.1
+    # via flake8
+pyflakes==3.1.0
+    # via flake8

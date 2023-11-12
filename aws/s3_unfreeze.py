@@ -19,7 +19,7 @@ import tqdm
 from _common import create_s3_session
 
 sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
-from concurrently import concurrently
+from concurrently import concurrently  # noqa: E402
 
 
 def restore_object(s3_client, s3_uri):

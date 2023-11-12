@@ -29,7 +29,6 @@ import sys
 import uuid
 
 import boto3
-import more_itertools
 import tqdm
 
 from _common import ACCOUNT_NAMES
@@ -37,7 +36,7 @@ from _common import ACCOUNT_NAMES
 # https://github.com/alexwlchan/concurrently
 sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
 
-from concurrently import concurrently
+from concurrently import concurrently  # noqa: E402
 
 
 def get_aws_session(*, role_arn):
@@ -61,10 +60,6 @@ def get_session(*, topic_arn):
     If it recognises the account which contains the topic, it will pick
     the appropriate IAM role, otherwise it use the default boto3 Session.
     """
-    account_names = {
-        "760097843905": "platform",
-    }
-
     # The arn format of an SNS topic is:
     #
     #       arn:aws:sns:{region}:{account_id}:{topic_name}

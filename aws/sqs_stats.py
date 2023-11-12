@@ -27,7 +27,7 @@ from _common import create_link_text
 # https://github.com/alexwlchan/concurrently
 sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
 
-from concurrently import concurrently
+from concurrently import concurrently  # noqa: E402
 
 
 def list_queue_urls_in_account(sess, *, prefixes):

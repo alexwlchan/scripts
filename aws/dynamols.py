@@ -22,7 +22,6 @@ import concurrent.futures
 import decimal
 import json
 import itertools
-import os
 import sys
 
 import boto3

@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import json
-import os
 import sys
 
 import boto3
@@ -74,7 +73,6 @@ if __name__ == "__main__":
         queue_url = sys.argv[1]
     except IndexError:
         queue_url = None
-
 
     if queue_url is not None:
         for message in tqdm.tqdm(download_messages(queue_url=queue_url)):

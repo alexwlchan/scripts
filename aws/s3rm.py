@@ -17,7 +17,7 @@ from s3ls import get_objects, get_object_versions
 # https://github.com/alexwlchan/concurrently
 sys.path.append(os.path.join(os.environ["HOME"], "repos", "concurrently"))
 
-from concurrently import concurrently
+from concurrently import concurrently  # noqa: E402
 
 
 def parse_args():
@@ -65,7 +65,7 @@ def delete_objects(sess, iterator):
         ):
             total_deleted_count += len(batch)
             total_deleted_size += sum(s3_obj['Size'] for s3_obj in batch)
-    except:
+    except:  # noqa: E722
         print_result()
         raise
     else:

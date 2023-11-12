@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  push:
+    branches:
+    - main
+
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Run linting
+      run: |
+        # E501 = line too long; anything up to 100-ish is fine in my book
+        # (the "ish" is intentional; see https://www.youtube.com/watch?v=wf-BqAjZb8M)
+        #
+        # W503 = line break before binary operator; this is something added
+        # by black and I don't have a strong opinion on, so I'm going to trust
+        # black and have flake8 ignore it.
+        flake8 --ignore=E501,W503

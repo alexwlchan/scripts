@@ -9,7 +9,7 @@ import os
 
 import tqdm
 
-from _common import create_link_text, create_s3_session, parse_s3_uri
+from _common import create_s3_session, parse_s3_uri
 
 
 def parse_args():
