@@ -9,7 +9,6 @@ which I want to convert to sRGB for converting on the web.
 Based on https://github.com/python-pillow/Pillow/issues/1662
 """
 
-import os
 import sys
 import tempfile
 
