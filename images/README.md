@@ -160,8 +160,8 @@ These scripts are for working with images and other visual material.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/images/srgbify">
-      <code>srgbify [PATH]</code>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/srgbify.py">
+      <code>srgbify.py [PATH]</code>
     </a>
   </dt>
   <dd>
