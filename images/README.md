@@ -83,8 +83,8 @@ These scripts are for working with images and other visual material.
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/images/kn_cover_image">
-      <code>kn_cover_image [PATH]</code>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/kn_cover_image.py">
+      <code>kn_cover_image.py [PATH]</code>
     </a>
   </dt>
   <dd>

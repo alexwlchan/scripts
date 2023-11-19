@@ -8,14 +8,12 @@ as images, so you can see how the script is working.
 """
 
 import collections
-import io
-import itertools
 import math
 import os
 import subprocess
 import sys
 
-from PIL import Image, ImageCms
+from PIL import Image
 import termcolor
 
 
@@ -69,7 +67,7 @@ if __name__ == "__main__":
     #
     corner_pixels = set()
 
-    for (x, y) in white_pixels:
+    for x, y in white_pixels:
         diagonal = {(x - 1, y - 1), (x - 1, y + 1), (x + 1, y - 1), (x + 1, y + 1)}
         orthogonal = {(x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)}
 
@@ -93,7 +91,7 @@ if __name__ == "__main__":
     #
     column_corners = collections.defaultdict(list)
 
-    for (x, y) in corner_pixels:
+    for x, y in corner_pixels:
         column_corners[x].append(y)
 
     # Now look for columns with:
@@ -107,7 +105,7 @@ if __name__ == "__main__":
     #
     rectangles = collections.defaultdict(list)
 
-    for (x, y_coords) in column_corners.items():
+    for x, y_coords in column_corners.items():
         if len(y_coords) == 2:
             rectangles[tuple(sorted(y_coords))].append(x)
 
@@ -156,6 +154,13 @@ if __name__ == "__main__":
         y0 += int(math.ceil(diff / 2))
         y1 -= int(math.floor(diff / 2))
 
+    # Account for the case where odd/even offsets mean we're actually
+    # one away, e.g. 1601 × 800
+    if x1 - x0 == (y1 - y0) * 2 + 1:
+        x0 += 1
+
+    assert (x1 - x0) == (y1 - y0) * 2
+
     # Now save the image to an appropriate filename, and tell the user
     cropped_im = im.crop((x0, y0, x1, y1))
 
@@ -167,12 +172,7 @@ if __name__ == "__main__":
 
     if im.info.get("icc_profile") is not None:
         subprocess.check_call(
-            [
-                "retrobatch",
-                "--workflow",
-                "~/repos/scripts/images/overwrite_with_srgb.retrobatch",
-                out_path,
-            ],
+            ["srgbify", out_path],
             stdout=subprocess.DEVNULL,
         )
 

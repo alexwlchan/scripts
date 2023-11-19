@@ -4,3 +4,4 @@ hyperlink
 keyring
 Pillow
 pip-tools
+termcolor
