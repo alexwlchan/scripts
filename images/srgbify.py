@@ -13,6 +13,10 @@ import sys
 import tempfile
 
 from PIL import Image, ImageCms
+from pillow_heif import register_heif_opener
+
+
+register_heif_opener()
 
 
 if __name__ == "__main__":

@@ -3,5 +3,6 @@ flake8
 hyperlink
 keyring
 Pillow
+pillow_heif
 pip-tools
 termcolor
