@@ -52,7 +52,7 @@ if __name__ == "__main__":
             total_deleted += delete_directory(d)
 
     if total_deleted == 1:
-        print(termcolor.colored(f"1 directory deleted", "green"))
+        print(termcolor.colored("1 directory deleted", "green"))
     elif total_deleted > 0:
         print(
             termcolor.colored(
