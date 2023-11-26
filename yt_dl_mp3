@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# A shortcut for downloading audio tracks using yt-dlp (or youtube-dl).
-
-set -o errexit
-set -o nounset
-
-yt-dlp -x --audio-format=mp3 "$@"
