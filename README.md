@@ -21,15 +21,8 @@ To set up this repo on a new computer, I run the following commands in a Fish sh
     $ source .venv/bin/activate.fish
     $ pip install -r requirements.txt
     ```
-
-3.  Add some global pip config to [prevent installing anything outside virtual environments](https://blog.glyph.im/2023/08/get-your-mac-python-from-python-dot-org.html#and-always-use-virtual-environments):
-
-    ```console
-    $ mkdir -p ~/.pip
-    $ echo -e "[global]\nrequire-virtualenv = true" > ~/.pip/pip.conf
-    ```
     
-4.  Install my Fish config, so Fish knows where to find all these scripts:
+3.  Install my Fish config, so Fish knows where to find all these scripts:
 
     ```console
     $ ln -s ~/repos/scripts/config.fish ~/.config/fish/config.fish

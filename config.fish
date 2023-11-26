@@ -22,6 +22,17 @@ set -x fish_function_path ~/repos/scripts/fish_functions $fish_function_path
 fish_add_path /Library/Frameworks/Python.framework/Versions/3.12/bin
 
 
+# This prevents me from installing packages with pip without being
+# in a virtualenv first.
+#
+# This allows me to keep my system Python clean, and install all my
+# packages inside virtualenvs.
+#
+# See https://docs.python-guide.org/dev/pip-virtualenv/#requiring-an-active-virtual-environment-for-pip
+#
+set -g -x PIP_REQUIRE_VIRTUALENV true
+
+
 # This tells fish to run a couple of functions as event handlers --
 # that is, to run a function when a variable changes or something similar.
 # These functions can't be autoloaded.
