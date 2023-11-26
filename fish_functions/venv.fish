@@ -6,7 +6,7 @@
 #
 # I upgrade pip because otherwise I get warnings about it being
 # out-of-date, and that's annoying.
-function new_venv
+function venv
     python3 -m venv .venv
     source .venv/bin/activate.fish
 
