@@ -7,7 +7,6 @@
 set -g -x fish_greeting ''
 
 
-
 # This tells fish to find functions in my "fish_functions" directory.
 #
 # Note that we have to *prepend* the directory in this repo, so we
@@ -17,6 +16,17 @@ set -g -x fish_greeting ''
 # See https://fishshell.com/docs/current/language.html#autoloading-functions
 #
 set -x fish_function_path ~/repos/scripts/fish_functions $fish_function_path
+
+
+# This tells fish to run a couple of functions as event handlers --
+# that is, to run a function when a variable changes or something similar.
+# These functions can't be autoloaded.
+#
+# See https://fishshell.com/docs/current/language.html#event
+#
+function __auto_enable_venv --on-variable PWD
+    auto_enable_venv
+end
 
 
 # Load macOS-specific utilities
@@ -30,46 +40,7 @@ if [ (uname -s) = Darwin ]
         _ensure_ssh_key_loaded
         github-clone (furl)
     end
-
 end
-
-
-# Taken from https://gist.github.com/tommyip/cf9099fa6053e30247e5d0318de2fb9e
-#
-# This will automatically enable/disable my virtualenvs when I enter/leave directories.
-#
-# Based on https://gist.github.com/bastibe/c0950e463ffdfdfada7adf149ae77c6f
-# Changes:
-# * Instead of overriding cd, we detect directory change. This allows the script to work
-#   for other means of cd, such as z.
-# * Update syntax to work with new versions of fish.
-# * Handle virtualenvs that are not located in the root of a git directory.
-
-function __auto_source_venv --on-variable PWD --description "Activate/Deactivate virtualenv on directory change"
-    status --is-command-substitution; and return
-
-    # Check if we are inside a git directory
-    if git rev-parse --show-toplevel &>/dev/null
-        set gitdir (realpath (git rev-parse --show-toplevel))
-        set cwd (pwd)
-        # While we are still inside the git directory, find the closest
-        # virtualenv starting from the current directory.
-        while string match "$gitdir*" "$cwd" &>/dev/null
-            if test -e "$cwd/.venv/bin/activate.fish"
-                source "$cwd/.venv/bin/activate.fish" &>/dev/null
-                return
-            else
-                set cwd (path dirname "$cwd")
-            end
-        end
-    end
-
-    # If virtualenv activated but we are not in a git directory, deactivate.
-    if test -n "$VIRTUAL_ENV"
-        deactivate
-    end
-end
-
 
 
 # These aliases run scripts in this repo using the virtualenv, rather
