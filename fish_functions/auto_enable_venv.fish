@@ -13,7 +13,7 @@ function auto_enable_venv
     # (e.g. we've switched from a Git repo to another directory).
     # Otherwise there's nothing to do.
     if [ "$REPO_ROOT" = "" ]
-        if test -n "$VIRTUAL_ENV"
+        if [ -n "$VIRTUAL_ENV" ]
             deactivate
         end
     end
@@ -25,7 +25,7 @@ function auto_enable_venv
         return
     end
 
-    if [ test -d "$REPO_ROOT/.venv"]
+    if [ -d "$REPO_ROOT/.venv" ]
         source "$REPO_ROOT/.venv/bin/activate.fish" &>/dev/null
     end
 end
