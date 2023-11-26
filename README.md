@@ -1,7 +1,8 @@
 # scripts
 
 This is a collection of various scripts and tools I find useful.
-I use this Git repository to sync them across multiple computers.
+
+I manage them in a Git repository to ensure I have a consistent setup across different computers.
 
 ## Installation
 

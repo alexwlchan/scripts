@@ -6,8 +6,16 @@
 #
 black==23.11.0
     # via -r requirements.in
+brotli==1.1.0
+    # via yt-dlp
 build==1.0.3
     # via pip-tools
+certifi==2023.11.17
+    # via
+    #   requests
+    #   yt-dlp
+charset-normalizer==3.3.2
+    # via requests
 click==8.1.7
     # via
     #   black
@@ -19,7 +27,9 @@ humanize==4.9.0
 hyperlink==21.0.0
     # via -r requirements.in
 idna==3.4
-    # via hyperlink
+    # via
+    #   hyperlink
+    #   requests
 jaraco-classes==3.3.0
     # via keyring
 keyring==24.3.0
@@ -28,6 +38,8 @@ mccabe==0.7.0
     # via flake8
 more-itertools==10.1.0
     # via jaraco-classes
+mutagen==1.47.0
+    # via yt-dlp
 mypy-extensions==1.0.0
     # via black
 packaging==23.2
@@ -48,14 +60,26 @@ platformdirs==4.0.0
     # via black
 pycodestyle==2.11.1
     # via flake8
+pycryptodomex==3.19.0
+    # via yt-dlp
 pyflakes==3.1.0
     # via flake8
 pyproject-hooks==1.0.0
     # via build
+requests==2.31.0
+    # via yt-dlp
 termcolor==2.3.0
     # via -r requirements.in
+urllib3==2.1.0
+    # via
+    #   requests
+    #   yt-dlp
+websockets==12.0
+    # via yt-dlp
 wheel==0.41.3
     # via pip-tools
+yt-dlp==2023.11.16
+    # via -r requirements.in
 
 # The following packages are considered to be unsafe in a requirements file:
 # pip

@@ -58,20 +58,47 @@ if [ (uname -s) = Darwin ]
 end
 
 
-# These aliases run scripts in this repo using the virtualenv, rather
+# These functions run scripts in this repo using the virtualenv, rather
 # than running them with system Python.
 #
 # e.g. emptydir.py relies on the `humanize` library.  That isn't installed
 # in my system Python, but it is installed in my `scripts` virtualenv.
 #
-function __run_in_scripts_venv
-    ~/repos/scripts/.venv/bin/python3 ~/repos/scripts/$argv[1] $argv[2..]
+# Useful reading: https://github.com/fish-shell/fish-shell/issues/1776
+
+function __create_bash_script_alias
+    set script_path $argv[1]
+    set shortcut (path basename (path change-extension '' $script_path))
+
+    function $shortcut --inherit-variable script_path
+        source ~/repos/scripts/.venv/bin/activate.fish
+        bash ~/repos/scripts/$script_path $argv
+    end
 end
 
-alias emptydir="__run_in_scripts_venv fs/emptydir.py"
-alias flapi="__run_in_scripts_venv flickr/flapi.sh"
-alias flphoto="__run_in_scripts_venv flickr/flphoto.sh"
-alias kn_cover_image="__run_in_scripts_venv images/kn_cover_image.py"
-alias noplaylist="__run_in_scripts_venv text/noplaylist.py"
-alias reborder="__run_in_scripts_venv images/reborder.py"
-alias srgbify="__run_in_scripts_venv images/srgbify.py"
+function __create_python_script_alias
+    set script_path $argv[1]
+    set shortcut (path basename (path change-extension '' $script_path))
+
+    function $shortcut --inherit-variable script_path
+        source ~/repos/scripts/.venv/bin/activate.fish
+        python3 ~/repos/scripts/$script_path $argv
+    end
+end
+
+function __create_python_module_alias
+    set module_name $argv[1]
+
+    eval "alias $module_name=\"~/repos/scripts/.venv/bin/$module_name\""
+end
+
+__create_bash_script_alias flickr/flapi.sh
+__create_bash_script_alias flickr/flphoto.sh
+
+__create_python_script_alias fs/emptydir.py
+__create_python_script_alias images/kn_cover_image.py
+__create_python_script_alias text/noplaylist.py
+__create_python_script_alias text/reborder.py
+__create_python_script_alias text/srgbify.py
+
+__create_python_module_alias yt-dlp
