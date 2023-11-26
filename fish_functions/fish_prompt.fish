@@ -7,9 +7,9 @@
 
 
 function print_current_directory
-  set_color green
-  printf (echo -n (prompt_pwd))
-  set_color normal
+    set_color green
+    printf (echo -n (prompt_pwd))
+    set_color normal
 end
 
 
@@ -20,29 +20,29 @@ end
 # It's not worth maintaining those alternatives or running them against every
 # shell prompt.
 function print_git_information
-  which git 2>&1 >/dev/null
-  if [ $status = "0" ]
-    set branch (git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-    if [ -n "$branch" ]
-      set_color normal
-      printf " on git:"
+    which git 2>&1 >/dev/null
+    if [ $status = 0 ]
+        set branch (git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+        if [ -n "$branch" ]
+            set_color normal
+            printf " on git:"
 
-      if test (basename "$branch") = "main"
-        set_color cyan
-      else
-        set_color purple
-      end
+            if test (basename "$branch") = main
+                set_color cyan
+            else
+                set_color purple
+            end
 
-      printf "$branch"
+            printf "$branch"
 
-      # Print an asterisk to indicate uncommitted changes, if there are any
-      if ! git diff-index --quiet HEAD --
-        printf "*"
-      end
+            # Print an asterisk to indicate uncommitted changes, if there are any
+            if ! git diff-index --quiet HEAD --
+                printf "*"
+            end
 
-      set_color normal
+            set_color normal
+        end
     end
-  end
 end
 
 
@@ -54,32 +54,32 @@ end
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 function print_venv_information
-  if [ -n "$VIRTUAL_ENV" ]
-    set_color normal
-    printf " using "
+    if [ -n "$VIRTUAL_ENV" ]
+        set_color normal
+        printf " using "
 
-    if test (basename "$VIRTUAL_ENV") = ".venv"
-      set_color cyan
-    else
-      set_color purple
+        if test (basename "$VIRTUAL_ENV") = ".venv"
+            set_color cyan
+        else
+            set_color purple
+        end
+
+        printf (basename "$VIRTUAL_ENV")
+        set_color normal
     end
-
-    printf (basename "$VIRTUAL_ENV")
-    set_color normal
-  end
 end
 
 
 # If I'm running over SSH, prepend the name of the remote host to
 # the context line.
 function print_ssh_information
-  if set -q SSH_CLIENT
-    printf "("
-    set_color purple
-    printf (echo -n (hostname))
-    set_color normal
-    printf ") "
-  end
+    if set -q SSH_CLIENT
+        printf "("
+        set_color purple
+        printf (echo -n (hostname))
+        set_color normal
+        printf ") "
+    end
 end
 
 
@@ -99,59 +99,59 @@ end
 
 
 function fish_prompt --description 'Write out the prompt'
-  # forget_dangerous_history_commands
+    # forget_dangerous_history_commands
 
-  # Put a newline between new prompts for cleanliness, but not on the first run.
-  #
-  # This means the first prompt of a new session is right at the top of
-  # the terminal window, not with a newline above it.
-  #
-  # If we're in an SSH session, we always insert a newline, even on the first
-  # command -- to separate from the client session.  I avoid getting the
-  # 'Last login' message with `touch ~/.hushlogin`
-  if set -q SSH_CLIENT
-    echo ''
-  else
-    if test \( -f "/tmp/$TERM_SESSION_ID" -o -f "/tmp/$XDG_SESSION_ID" \)
-      echo ''
-    end
-
-    touch "/tmp/$TERM_SESSION_ID" 2>/dev/null
-    touch "/tmp/$XDG_SESSION_ID" 2>/dev/null
-  end
-
-  # Print some context about where I'm running this command.
-  #
-  # If I'm in my home directory, the context isn't very interesting (it's where
-  # new shells open, and it's not in Git), so skip the context line to reduce
-  # visual noise.
-  if [ (prompt_pwd) = "~" ]
+    # Put a newline between new prompts for cleanliness, but not on the first run.
+    #
+    # This means the first prompt of a new session is right at the top of
+    # the terminal window, not with a newline above it.
+    #
+    # If we're in an SSH session, we always insert a newline, even on the first
+    # command -- to separate from the client session.  I avoid getting the
+    # 'Last login' message with `touch ~/.hushlogin`
     if set -q SSH_CLIENT
-      print_ssh_information
-      echo ''
+        echo ''
+    else
+        if test \( -f "/tmp/$TERM_SESSION_ID" -o -f "/tmp/$XDG_SESSION_ID" \)
+            echo ''
+        end
+
+        touch "/tmp/$TERM_SESSION_ID" 2>/dev/null
+        touch "/tmp/$XDG_SESSION_ID" 2>/dev/null
     end
-    echo '$ '
-    return
-  end
 
-  print_ssh_information
-  print_current_directory
-  print_git_information
-  print_venv_information
+    # Print some context about where I'm running this command.
+    #
+    # If I'm in my home directory, the context isn't very interesting (it's where
+    # new shells open, and it's not in Git), so skip the context line to reduce
+    # visual noise.
+    if [ (prompt_pwd) = "~" ]
+        if set -q SSH_CLIENT
+            print_ssh_information
+            echo ''
+        end
+        echo '$ '
+        return
+    end
 
-  # Print the shell prompt.
-  #
-  # I have a different prompt for when I'm running as root; admittedly this
-  # is extremely rare if I'm also using fish, but if I am I want a visual cue
-  # that this terminal is unusual.
-  #
-  # I print the prompt on a separate line to the context information so it's
-  # always in the same place: as I'm typing commands, I get the full width of
-  # the terminal to use, rather than a variable amount based on the context line.
-  set_color normal
-  if [ "$USER" = "root" ]
-    echo '' & echo '# '
-  else
-    echo '' & echo '$ '
-  end
+    print_ssh_information
+    print_current_directory
+    print_git_information
+    print_venv_information
+
+    # Print the shell prompt.
+    #
+    # I have a different prompt for when I'm running as root; admittedly this
+    # is extremely rare if I'm also using fish, but if I am I want a visual cue
+    # that this terminal is unusual.
+    #
+    # I print the prompt on a separate line to the context information so it's
+    # always in the same place: as I'm typing commands, I get the full width of
+    # the terminal to use, rather than a variable amount based on the context line.
+    set_color normal
+    if [ "$USER" = root ]
+        echo '' & echo '# '
+    else
+        echo '' & echo '$ '
+    end
 end

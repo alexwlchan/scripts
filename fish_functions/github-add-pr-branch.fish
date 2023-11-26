@@ -24,7 +24,7 @@ function github-add-pr-branch
     #
     set components (string split "/" "$url")
 
-    if [ "$components[6]" != "pull" ]
+    if [ "$components[6]" != pull ]
         echo "$url is not a GitHub pull request"
         return 1
     end

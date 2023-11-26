@@ -20,7 +20,7 @@ function github-clone
 
     if [ (count $components) -gt 5 ]
         # Detect if this is a pull request, and divert
-        if [ $components[6] = "pull" ]
+        if [ $components[6] = pull ]
             github-add-pr-branch "$url"
             return $status
         end
@@ -28,7 +28,8 @@ function github-clone
 
     set repo_url "git@github.com:$owner/$repo.git"
 
-    mkdir -p ~/repos; cd ~/repos
+    mkdir -p ~/repos
+    cd ~/repos
 
     if [ -d $repo ]
         # If the repo already exists, check we have the selected fork
@@ -59,6 +60,6 @@ function github-clone
         # but this way it's managed programatically and all local to the
         # repo, which I slightly prefer to a homefolder full of manually
         # managed dotfiles.)
-        echo .DS_Store >> .git/info/exclude
+        echo .DS_Store >>.git/info/exclude
     end
 end

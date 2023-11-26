@@ -7,12 +7,12 @@
 # I upgrade pip because otherwise I get warnings about it being
 # out-of-date, and that's annoying.
 function new_venv
-  python3 -m venv .venv
-  source .venv/bin/activate.fish
+    python3 -m venv .venv
+    source .venv/bin/activate.fish
 
-  python3 -m pip install --upgrade pip
+    python3 -m pip install --upgrade pip
 
-  if [ -f .git ]
-    echo .venv >> .git/info/exclude
-  end
+    if [ -f .git ]
+        echo .venv >>.git/info/exclude
+    end
 end
