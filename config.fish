@@ -18,6 +18,10 @@ set -g -x fish_greeting ''
 set -x fish_function_path ~/repos/scripts/fish_functions $fish_function_path
 
 
+# Add any extra directories to my PATH variable.
+fish_add_path /Library/Frameworks/Python.framework/Versions/3.12/bin
+
+
 # This tells fish to run a couple of functions as event handlers --
 # that is, to run a function when a variable changes or something similar.
 # These functions can't be autoloaded.
