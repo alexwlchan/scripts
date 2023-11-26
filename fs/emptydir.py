@@ -59,3 +59,5 @@ if __name__ == "__main__":
                 f"{humanize.intcomma(total_deleted)} directories deleted", "green"
             )
         )
+    else:
+        print(termcolor.colored("No empty directories found", "blue"))

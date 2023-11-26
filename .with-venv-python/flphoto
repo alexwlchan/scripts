@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -o errexit
-set -o nounset
-
-source ~/repos/scripts/.venv/bin/activate
-
-bash ~/repos/scripts/flickr/flphoto.sh "$@"
