@@ -52,7 +52,7 @@ function github-clone
         # in the root of the repo.
         if [ -f "requirements.txt" ]
             echo "Creating virtualenv..."
-            new_venv
+            venv
         end
 
         # I auto-populate .git/info/exclude with a few common entries to
