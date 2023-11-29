@@ -101,4 +101,5 @@ __create_python_script_alias text/noplaylist.py
 __create_python_script_alias text/reborder.py
 __create_python_script_alias text/srgbify.py
 
+__create_python_module_alias keyring
 __create_python_module_alias yt-dlp
