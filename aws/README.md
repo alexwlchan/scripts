@@ -97,19 +97,3 @@ Some of the scripts require me to explicitly pick an IAM profile or account; oth
 
 *   The `download_sqs_messages` script looks at an individual queue, and takes a queue URL as argument.
     SQS queue URLs include the account ID, so it can pick a suitable IAM role for that account.
-
-## _ensure_aws_credentials_are_fresh
-
-At Wellcome, we don't have permanent AWS credentials on our local machines – instead, we use [aws-azure-login] to get short-lived credentials that last a few hours.
-This is meant to reduce the risk profile of lost secrets; e.g. if a laptop is stolen, it's less likely to have useful AWS credentials than if we all had long-lived, permanent credentials.
-(See our [platform-infrastructure docs][pi-docs].)
-
-It's moderately frustrating to run a command, be told "your credentials have expired, go get some new ones", and have to do that before running the same command again – so the `_ensure_aws_credentials_are_fresh` does that freshness check for me.
-
-If it detects my AWS credentials are out-of-date, it proactively fetches a new set of credentials and then runs the original command I was trying to run.
-This makes everything run a little smoother.
-
-I never invoke this script directly, but it is invoked by a bunch of my other tools to get this nice behaviour.
-
-[aws-azure-login]: https://github.com/aws-azure-login/aws-azure-login
-[pi-docs]: https://github.com/wellcomecollection/platform-infrastructure/blob/main/accounts/docs/cli-credentials.md
