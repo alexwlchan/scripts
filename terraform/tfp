@@ -14,4 +14,4 @@
 #
 # [1]: https://developer.hashicorp.com/terraform/cli/commands/plan#other-options
 
-tf plan -out=terraform.plan "$@"
+tf plan -out=tfplan "$@"

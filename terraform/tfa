@@ -30,5 +30,5 @@ then
 
 # All other Terraform operations
 else
-  tf apply terraform.plan "$@"
+  tf apply tfplan "$@"
 fi
