@@ -97,9 +97,9 @@ __create_bash_script_alias flickr/flphoto.sh
 
 __create_python_script_alias fs/emptydir.py
 __create_python_script_alias images/kn_cover_image.py
+__create_python_script_alias images/srgbify.py
 __create_python_script_alias text/noplaylist.py
 __create_python_script_alias text/reborder.py
-__create_python_script_alias text/srgbify.py
 
 __create_python_module_alias keyring
 __create_python_module_alias yt-dlp
