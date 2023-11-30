@@ -51,7 +51,6 @@ function github-clone
         # If this looks like a Python repository, create a virtualenv
         # in the root of the repo.
         if [ -f "requirements.txt" ]
-            echo "Creating virtualenv..."
             venv
         end
 
