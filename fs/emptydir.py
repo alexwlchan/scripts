@@ -22,7 +22,7 @@ def can_be_deleted(d):
         return False
 
     entries = os.listdir(d)
-    return entries == [".DS_Store"] or not entries
+    return entries == [".DS_Store"] or entries == ["__pycache__"] or not entries
 
 
 def delete_directory(d):
