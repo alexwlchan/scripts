@@ -10,6 +10,7 @@ naturalsort==1.5.1
 Pillow
 pillow_heif
 pip-tools
+pypdf
 pytest
 termcolor
 yt-dlp

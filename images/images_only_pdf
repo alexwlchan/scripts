@@ -11,31 +11,24 @@ borders around the images which is precisely what I don't want.
 import os
 import sys
 
-import fitz  # PyMuPDF==1.21.0
+from pypdf import PdfReader
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     try:
         path = sys.argv[1]
     except IndexError:
         sys.exit(f"Usage: {__file__} <PATH>")
 
-    with fitz.open(path) as pdf_original, fitz.open() as pdf_new:
-        for page_number, page in enumerate(pdf_original, start=1):
-            for image_number, image in enumerate(page.get_images(), start=1):
-                # Get the XREF of the image
-                xref = image[0]
+    reader = PdfReader(path)
 
-                # Extract the image bytes
-                base_image = pdf_original.extract_image(xref)
+    images = []
 
-                new_page = pdf_new.new_page(
-                    width=base_image["width"], height=base_image["height"]
-                )
-                rect = fitz.Rect(0.0, 0.0, base_image["width"], base_image["height"])
-                new_page.insert_image(rect, stream=base_image["image"])
+    for page in reader.pages:
+        images.extend([
+            im.image for im in page.images
+        ])
 
-        # out_path = path.replace(".pdf", "-noimages.pdf")
-        # assert path != out_path
+    assert len(images) == len(reader.pages)
 
-        pdf_new.save(path)
+    images[0].save(path, "PDF", resolution=100.0, save_all=True, append_images=images[1:])
