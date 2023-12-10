@@ -46,7 +46,7 @@ from typing import List
 
 import attr
 import humanize
-import natsort  # pip3 install --user naturalsort==1.5.1
+import natsort
 import termcolor
 
 from _common import create_link_text, create_s3_session, parse_s3_uri

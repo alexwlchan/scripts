@@ -1,9 +1,12 @@
+attrs
 black
+boto3
 flake8
 httpx
 humanize
 hyperlink
 keyring
+naturalsort==1.5.1
 Pillow
 pillow_heif
 pip-tools
