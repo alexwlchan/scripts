@@ -4,24 +4,82 @@ Look at the Mastodon URL in the frontmost Safari window, and print it
 as a blockquote.
 """
 
+import datetime
+import os
+import pathlib
+import re
 import subprocess
 
-import bs4
 import httpx
+import hyperlink
+
+
+ATTACHMENTS_DIR = pathlib.Path.home() / "textfiles" / "Attachments" / "mastodon"
+
+
+def download(url):
+    """
+    Download a file to the attachments directory, or do nothing if it's
+    already downloaded.
+    """
+    resp = httpx.get(url)
+    content = resp.content
+
+    ATTACHMENTS_DIR.mkdir(exist_ok=True)
+
+    out_path = ATTACHMENTS_DIR / os.path.basename(url)
+
+    try:
+        with open(out_path, "xb") as out_file:
+            out_file.write(content)
+    except FileExistsError:
+        if open(out_path, "rb").read() == content:
+            pass
+        else:
+            raise
+
+
+def normalise_text(text: str) -> str:
+    text = text.replace("<p>", "").replace("</p>", "")
+    text = re.sub(
+        r'<a href="[^"]+" class="mention hashtag" rel="tag">#<span>(?P<hashtag>[^<]+)</span></a>',
+        r"\\#\g<hashtag>",
+        text,
+    )
+    return text
 
 
 if __name__ == "__main__":
-    url = (
-        subprocess.check_output(["/usr/local/bin/safari", "url"]).decode("utf8").strip()
+    url = subprocess.check_output(["/usr/local/bin/safari", "url"]).decode("utf8")
+
+    u = hyperlink.URL.from_text(url)
+
+    # e.g. https://hachyderm.io/@djnavarro/111535929722933178
+    # ~>  https://hachyderm.io/api/v1/statuses/111535929722933178
+    api_url = f"https://{u.host}/api/v1/statuses/{u.path[1]}"
+
+    resp = httpx.get(api_url)
+
+    post_data = resp.json()
+
+    for attachment in post_data["media_attachments"]:
+        download(attachment["url"])
+
+    author = post_data["account"]["display_name"]
+    post_url = post_data["url"]
+
+    # e.g. 2023-12-06T22:53:44.536Z
+    created_at = datetime.datetime.strptime(
+        post_data["created_at"], "%Y-%m-%dT%H:%M:%S.%fz"
     )
-    resp = httpx.get(url)
-    soup = bs4.BeautifulSoup(resp, "html.parser")
 
-    text = soup.find("meta", attrs={"name": "description"}).attrs["content"]
-    author = soup.find("meta", attrs={"property": "og:title"}).attrs["content"]
-    url = soup.find("meta", attrs={"property": "og:url"}).attrs["content"]
+    print(f'[{author}]({post_url}) ({created_at.strftime("%-d %B %Y")}):')
+    print("")
+    print("> " + normalise_text(post_data["content"]))
 
-    print(f"[{author}]({url}):\n")
+    if post_data["media_attachments"]:
+        print(">\n> ", end="")
+        for attachment in post_data["media_attachments"]:
+            print("![[%s|200]]" % os.path.basename(attachment["url"]), end="")
 
-    for line in text.splitlines():
-        print(f"> {line.rstrip()}")
+    print("")

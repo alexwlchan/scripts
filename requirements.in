@@ -1,5 +1,4 @@
 black
-bs4
 flake8
 httpx
 humanize
@@ -8,5 +7,6 @@ keyring
 Pillow
 pillow_heif
 pip-tools
+pytest
 termcolor
 yt-dlp
