@@ -1,5 +1,7 @@
 black
+bs4
 flake8
+httpx
 humanize
 hyperlink
 keyring
