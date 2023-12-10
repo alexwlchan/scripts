@@ -6,6 +6,8 @@
 #
 anyio==4.1.0
     # via httpx
+attrs==23.1.0
+    # via -r requirements.in
 black==23.11.0
     # via -r requirements.in
 brotli==1.1.0
@@ -56,6 +58,8 @@ mutagen==1.47.0
     # via yt-dlp
 mypy-extensions==1.0.0
     # via black
+naturalsort==1.5.1
+    # via -r requirements.in
 packaging==23.2
     # via
     #   black

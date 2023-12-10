@@ -35,3 +35,7 @@ jobs:
         # by black and I don't have a strong opinion on, so I'm going to trust
         # black and have flake8 ignore it.
         flake8 --ignore=E501,W503
+    - name: Run tests
+      run: |
+        py.test aws/test_s3tree.py
+        py.test textexpander/test_get_mastodon_text.py
