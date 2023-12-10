@@ -40,10 +40,16 @@ def download(url):
 
 
 def normalise_text(text: str) -> str:
+    text = text.replace("</p><p>", "\n\n")
     text = text.replace("<p>", "").replace("</p>", "")
     text = re.sub(
         r'<a href="[^"]+" class="mention hashtag" rel="tag">#<span>(?P<hashtag>[^<]+)</span></a>',
         r"\\#\g<hashtag>",
+        text,
+    )
+    text = re.sub(
+        r'<a href="(?P<url>[^"]+)" rel="nofollow noopener noreferrer" translate="no" target="_blank"><span class="invisible">[^<]+</span><span class="ellipsis">[^<]+</span><span class="invisible">[^<]+</span></a>',
+        r"\g<url>",
         text,
     )
     return text
@@ -75,7 +81,8 @@ if __name__ == "__main__":
 
     print(f'[{author}]({post_url}) ({created_at.strftime("%-d %B %Y")}):')
     print("")
-    print("> " + normalise_text(post_data["content"]))
+    for line in normalise_text(post_data["content"]).splitlines():
+        print(f"> {line}".strip())
 
     if post_data["media_attachments"]:
         print(">\n> ", end="")
