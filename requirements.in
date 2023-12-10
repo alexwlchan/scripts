@@ -1,10 +1,12 @@
 black
 flake8
+httpx
 humanize
 hyperlink
 keyring
 Pillow
 pillow_heif
 pip-tools
+pytest
 termcolor
 yt-dlp
