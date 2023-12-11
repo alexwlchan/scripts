@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Copy an image from my Desktop folder into my book tracker.
+#
+# This is very specific to my setup and unlikely to be useful to anyone else.
+
+set -o errexit
+set -o nounset
+
+LATEST_DOWNLOAD=$(latest_download)
+LATEST_REVIEW=$(git ls-files -o --exclude-standard)
+echo "$LATEST_DOWNLOAD"
+echo "$LATEST_REVIEW"
+
+filename=$(basename -- "$LATEST_REVIEW" .md)
+year=$(basename -- $(dirname -- "$LATEST_REVIEW"))
+
+image_filename=$(basename -- "$LATEST_DOWNLOAD")
+image_extension="${image_filename##*.}"
+
+image_path=~/repos/books.alexwlchan.net/src/covers/$year/$filename.$image_extension
+
+echo "$image_path"
+mv "$LATEST_DOWNLOAD" "$image_path"
+dominant_colours "$image_path"

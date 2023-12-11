@@ -103,6 +103,17 @@ These scripts are for working with images and other visual material.
       </table>
     </p>
   </dd>
+  
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/move_cover_image">
+      <code>move_cover_image</code>
+    </a>
+  </dt>
+  <dd>
+    copy an image from my Desktop folder into my book tracker.
+    This is very specific to my setup and unlikely to be useful to anyone else.
+  </dd>
 
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/pdfthumb">
