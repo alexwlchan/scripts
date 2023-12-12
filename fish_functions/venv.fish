@@ -7,8 +7,15 @@ function venv
     echo "Creating virtual environment in "(pwd)"/.venv"
     python3 -m venv .venv --upgrade-deps
 
+    # Append .venv to the Git exclude file, but only if it's not
+    # already there.
     if test -e .git
-        echo .venv >>.git/info/exclude
+        set exclude_file ".git/info/exclude"
+        set line_to_append ".venv"
+
+        if not grep -q -x $line_to_append $exclude_file
+            echo $line_to_append >> $exclude_file
+        end
     end
 
     source .venv/bin/activate.fish
