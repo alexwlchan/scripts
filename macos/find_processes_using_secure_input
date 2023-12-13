@@ -85,11 +85,13 @@ if __name__ == "__main__":
         for pid in sorted(int(p) for p in process_ids)
     ]
 
-    print("The following processes are using Secure Input:")
     if sorted_pids:
+        print("The following processes are using Secure Input:")
         subprocess.check_call([
             "ps",
             "-c",                        # Only show the executable name, not the full command line
             "-o", "pid=,command=",        # Only show the PID/command column, no header
             "-p", ",".join(sorted_pids)  # Only get the selected processes
         ])
+    else:
+        print("I can’t find any processes using Secure Input!")
