@@ -10,12 +10,7 @@ function venv
     # Append .venv to the Git exclude file, but only if it's not
     # already there.
     if test -e .git
-        set exclude_file ".git/info/exclude"
-        set line_to_append ".venv"
-
-        if not grep -q -x $line_to_append $exclude_file
-            echo $line_to_append >> $exclude_file
-        end
+        append_to_file_if_not_exists ".git/info/exclude" ".venv"
     end
 
     source .venv/bin/activate.fish
