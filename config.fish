@@ -71,8 +71,20 @@ function __create_bash_script_alias
     set shortcut (path basename (path change-extension '' $script_path))
 
     function $shortcut --inherit-variable script_path
+        set existing_venv "$VIRTUAL_ENV"
+
         source ~/repos/scripts/.venv/bin/activate.fish
         bash ~/repos/scripts/$script_path $argv
+
+        # If we were in a virtualenv before we started running this
+        # script, make sure we re-enable it afterwards.
+        #
+        # If not, we just need to deactivate the scripts venv.
+        if [ existing_venv = "" ]
+            deactivate
+        else
+            source "$existing_venv/bin/activate.fish"
+        end
     end
 end
 
@@ -81,8 +93,7 @@ function __create_python_script_alias
     set shortcut (path basename (path change-extension '' $script_path))
 
     function $shortcut --inherit-variable script_path
-        source ~/repos/scripts/.venv/bin/activate.fish
-        python3 ~/repos/scripts/$script_path $argv
+        ~/repos/scripts/.venv/bin/python3 ~/repos/scripts/$script_path $argv
     end
 end
 
@@ -95,6 +106,7 @@ end
 __create_bash_script_alias flickr/flapi.sh
 __create_bash_script_alias flickr/flphoto.sh
 
+__create_python_script_alias flickr/fluser_lookup.py
 __create_python_script_alias fs/emptydir.py
 __create_python_script_alias images/kn_cover_image.py
 __create_python_script_alias images/srgbify.py
@@ -103,3 +115,7 @@ __create_python_script_alias text/reborder.py
 
 __create_python_module_alias keyring
 __create_python_module_alias yt-dlp
+
+# Setting PATH for Python 3.12
+# The original version is saved in /Users/alexwlchan/.config/fish/config.fish.pysave
+set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
