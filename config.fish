@@ -81,9 +81,9 @@ function __create_bash_script_alias
         #
         # If not, we just need to deactivate the scripts venv.
         if [ existing_venv = "" ]
-            deactivate
-        else
             source "$existing_venv/bin/activate.fish"
+        else
+            deactivate
         end
     end
 end
