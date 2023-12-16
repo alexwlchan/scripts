@@ -21,6 +21,20 @@ set -x fish_function_path ~/repos/scripts/fish_functions $fish_function_path
 # Add any extra directories to my PATH variable.
 fish_add_path /Library/Frameworks/Python.framework/Versions/3.12/bin
 
+fish_add_path ~/repos/scripts
+fish_add_path ~/repos/scripts/aws
+fish_add_path ~/repos/scripts/docker
+fish_add_path ~/repos/scripts/fs
+fish_add_path ~/repos/scripts/git
+fish_add_path ~/repos/scripts/installers
+fish_add_path ~/repos/scripts/macos
+fish_add_path ~/repos/scripts/terraform
+fish_add_path ~/repos/scripts/text
+
+fish_add_path ~/repos/private-scripts/.with-venv-python
+
+fish_add_path ~/repos/ttml2srt
+
 
 # This prevents me from installing packages with pip without being
 # in a virtualenv first.
@@ -108,6 +122,7 @@ __create_bash_script_alias flickr/flphoto.sh
 
 __create_python_script_alias flickr/fluser_lookup.py
 __create_python_script_alias fs/emptydir.py
+__create_python_script_alias git/git-cloc.py
 __create_python_script_alias images/kn_cover_image.py
 __create_python_script_alias images/srgbify.py
 __create_python_script_alias text/noplaylist.py
@@ -115,7 +130,3 @@ __create_python_script_alias text/reborder.py
 
 __create_python_module_alias keyring
 __create_python_module_alias yt-dlp
-
-# Setting PATH for Python 3.12
-# The original version is saved in /Users/alexwlchan/.config/fish/config.fish.pysave
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
