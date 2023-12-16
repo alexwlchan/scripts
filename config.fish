@@ -18,22 +18,44 @@ set -g -x fish_greeting ''
 set -x fish_function_path ~/repos/scripts/fish_functions $fish_function_path
 
 
-# Add any extra directories to my PATH variable.
-fish_add_path /Library/Frameworks/Python.framework/Versions/3.12/bin
+# Prepend any extra directories to my PATH variable.
+#
+# Note: I use this instead of `fish_add_path` because it updates a global
+# `fish_user_paths` array in ~/.config/fish/fish_variables, but that makes
+# it harder to see how/where my PATH is defined.
+#
+# Doing it this way means I get a fresh PATH in every shell, and it's
+# only updated by the directives below.
 
-fish_add_path ~/repos/scripts
-fish_add_path ~/repos/scripts/aws
-fish_add_path ~/repos/scripts/docker
-fish_add_path ~/repos/scripts/fs
-fish_add_path ~/repos/scripts/git
-fish_add_path ~/repos/scripts/installers
-fish_add_path ~/repos/scripts/macos
-fish_add_path ~/repos/scripts/terraform
-fish_add_path ~/repos/scripts/text
+function prepend_to_path
+    if test (count $argv) -eq 0
+        echo "Usage: prepend_to_path /path/to/directory"
+        return 1
+    end
 
-fish_add_path ~/repos/private-scripts/.with-venv-python
+    set -l new_path $argv[1]
 
-fish_add_path ~/repos/ttml2srt
+    if test -d $new_path
+        set -x PATH $new_path $PATH
+    end
+end
+
+
+prepend_to_path /Library/Frameworks/Python.framework/Versions/3.12/bin
+
+prepend_to_path ~/repos/scripts
+prepend_to_path ~/repos/scripts/aws
+prepend_to_path ~/repos/scripts/docker
+prepend_to_path ~/repos/scripts/fs
+prepend_to_path ~/repos/scripts/git
+prepend_to_path ~/repos/scripts/installers
+prepend_to_path ~/repos/scripts/macos
+prepend_to_path ~/repos/scripts/terraform
+prepend_to_path ~/repos/scripts/text
+
+prepend_to_path ~/repos/private-scripts/.with-venv-python
+
+prepend_to_path ~/repos/ttml2srt
 
 
 # This prevents me from installing packages with pip without being
