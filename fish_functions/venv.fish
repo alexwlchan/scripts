@@ -32,12 +32,10 @@ function venv
 
             if test -f dev_requirements.txt
                 echo "Installing dependencies from dev_requirements.txt"
-                pip install pip-tools
-                pip-sync dev_requirements.txt
+                pip install -r dev_requirements.txt
             else if test -f requirements.txt
                 echo "Installing dependencies from requirements.txt"
-                pip install pip-tools
-                pip-sync requirements.txt
+                pip install -r requirements.txt
             else
                 echo "No requirements.txt file found; no dependencies installed"
             end
