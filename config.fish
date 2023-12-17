@@ -41,6 +41,8 @@ function prepend_to_path
 end
 
 
+prepend_to_path ~/.cargo/bin
+
 prepend_to_path /Library/Frameworks/Python.framework/Versions/3.12/bin
 
 prepend_to_path ~/repos/scripts
