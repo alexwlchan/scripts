@@ -14,7 +14,7 @@ then
   exit 1
 fi
 
-for NAME in $@
+for NAME in "$@"
 do
   xattr -d com.apple.quarantine "$NAME"
 done
