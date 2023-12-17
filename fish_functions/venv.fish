@@ -15,9 +15,6 @@ function venv
 
     source .venv/bin/activate.fish
 
-    echo "Updating to the latest version of pip"
-    pip install --upgrade pip
-
     # If we're in a trusted Git repository (one that I own) and we
     # can see  a requirements file, go ahead and install pip-tools
     # and install the dependencies.
