@@ -12,10 +12,8 @@ function auto_enable_venv
     # If we're already in a virtualenv, then we want to deactivate it
     # (e.g. we've switched from a Git repo to another directory).
     # Otherwise there's nothing to do.
-    if [ "$REPO_ROOT" = "" ]
-        if [ -n "$VIRTUAL_ENV" ]
-            deactivate
-        end
+    if test -z "$REPO_ROOT"; and test -n "$VIRTUAL_ENV"
+        deactivate
     end
 
     # If we're inside a Git repo, we look for the presence of .venv
