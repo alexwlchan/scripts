@@ -15,6 +15,14 @@ These are utilities for manipulating streams of text; I consider them in a simil
     This is meant to fill a gap between the Unix utilities <code>head</code> and <code>tail</code>.
   </dd>
 
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/fix_twitter_thread.py">
+      <code>fix_twitter_thread.py [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    when I copy/paste a Twitter thread into Obsidian, this does some initial tidying up of the formatting for me.
+  </dd>
 
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/midline">
