@@ -11,6 +11,7 @@ if ! docker images | grep alexwlchan/rubocop >/dev/null
 then
   pushd ~/repos/scripts/docker
     docker build \
+      --no-cache \
       --tag alexwlchan/rubocop \
       --file rubocop.Dockerfile \
       .
