@@ -4,7 +4,7 @@
 # them in the root of the Git repo for each project, and I always
 # name them `~/.venv`.  This means it's pretty easy to work out if
 # a virtualenv exists for the current directory.
-function auto_enable_venv
+function auto_enable_venv --description "Auto enable/disable virtualenv when I change directories"
     set REPO_ROOT (git rev-parse --show-toplevel 2>/dev/null)
 
     # If we're not inside a Git repo, there's no virtualenv to activate.
