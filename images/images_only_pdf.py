@@ -8,13 +8,12 @@ iOS Notes app – when you export the scan as PDF, it adds large white
 borders around the images which is precisely what I don't want.
 """
 
-import os
 import sys
 
 from pypdf import PdfReader
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         path = sys.argv[1]
     except IndexError:
@@ -25,10 +24,10 @@ if __name__ == '__main__':
     images = []
 
     for page in reader.pages:
-        images.extend([
-            im.image for im in page.images
-        ])
+        images.extend([im.image for im in page.images])
 
     assert len(images) == len(reader.pages)
 
-    images[0].save(path, "PDF", resolution=100.0, save_all=True, append_images=images[1:])
+    images[0].save(
+        path, "PDF", resolution=100.0, save_all=True, append_images=images[1:]
+    )

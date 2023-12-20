@@ -50,6 +50,7 @@ prepend_to_path ~/repos/scripts/aws
 prepend_to_path ~/repos/scripts/docker
 prepend_to_path ~/repos/scripts/fs
 prepend_to_path ~/repos/scripts/git
+prepend_to_path ~/repos/scripts/images
 prepend_to_path ~/repos/scripts/installers
 prepend_to_path ~/repos/scripts/macos
 prepend_to_path ~/repos/scripts/terraform
@@ -146,6 +147,7 @@ __create_python_script_alias flickr/fluser_lookup.py
 __create_python_script_alias fs/emptydir.py
 __create_python_script_alias git/git-cloc.py
 __create_python_script_alias images/kn_cover_image.py
+__create_python_script_alias images/images_only_pdf.py
 __create_python_script_alias images/srgbify.py
 __create_python_script_alias text/fix_twitter_thread.py
 __create_python_script_alias text/noplaylist.py
