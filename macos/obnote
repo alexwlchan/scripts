@@ -1,0 +1,51 @@
+#!/usr/bin/env python3
+"""
+Prints the path to the note I currently have open in Obsidian (if any).
+
+This relies on knowing the on-disk locations of my Obsidian vaults,
+so you won't be able to use this without changing it for your own setup.
+"""
+
+import os
+import subprocess
+
+
+def get_file_paths_under(root=".", *, suffix=""):
+    """
+    Generates the absolute paths to every matching file under ``root``.
+    """
+    if not os.path.isdir(root):
+        raise ValueError(f"Cannot find files under non-existent directory: {root!r}")
+
+    for dirpath, _, filenames in os.walk(root):
+        for f in filenames:
+            p = os.path.join(dirpath, f)
+
+            if os.path.isfile(p) and f.lower().endswith(suffix):
+                yield p
+
+
+if __name__ == "__main__":
+    window_title = (
+        subprocess.check_output(["get_frontmost_window_title", "Obsidian"])
+        .strip()
+        .decode("utf8")
+    )
+
+    # The window title will be something of the form:
+    #
+    #     Short story ideas - textfiles - Obsidian v1.4.16
+    #
+    note_title, vault_name, _ = window_title.rsplit(" - ", 2)
+
+    if vault_name == "textfiles":
+        vault_root = os.path.join(os.environ["HOME"], "textfiles")
+    else:
+        raise ValueError(f"Unrecognised vault name: {vault_name}")
+
+    for path in get_file_paths_under(vault_root, suffix=".md"):
+        if path.endswith(f"/{note_title}.md"):
+            print(path, end="")
+            break
+    else:  # no break
+        raise RuntimeError(f"Could not find note with title {note_title}")

@@ -45,6 +45,10 @@ scripts = [
         "description": "get OCR'd text for a single image using Live Text"
     },
     {
+        "name": "obnote",
+        "description": "print the path to the note I currently have open in [Obsidian](https://obsidian.md/), if any."
+    },
+    {
         "usage": "set_accent_colour (red|orange|yellow|green|blue|purple|pink|graphite)",
         "description": "set the accent colour, as configured in the Appearance settings",
     },
@@ -124,6 +128,14 @@ prints the title of the frontmost window in the named app. This is particularly 
 get OCR'd text for a single image using Live Text
 </dd>
 <dt>
+<a href="https://github.com/alexwlchan/scripts/blob/main/macos/obnote">
+<code>obnote</code>
+</a>
+</dt>
+<dd>
+print the path to the note I currently have open in [Obsidian](https://obsidian.md/), if any.
+</dd>
+<dt>
 <a href="https://github.com/alexwlchan/scripts/blob/main/macos/set_accent_colour">
 <code>set_accent_colour (red|orange|yellow|green|blue|purple|pink|graphite)</code>
 </a>
@@ -151,4 +163,4 @@ alias for <code>security unlock-keychain ~/Library/Keychains/login.keychain</cod
 </p>
 </dd>
 </dl>
-<!-- [[[end]]] (checksum: ee1950858a05fd7ea7bd4e60e619d61f) -->
+<!-- [[[end]]] (checksum: f7e1feec3b74bd4146f0910828465cf3) -->
