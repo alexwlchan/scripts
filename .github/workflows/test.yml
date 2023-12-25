@@ -38,7 +38,7 @@ jobs:
 
     - name: Check README files with Cog
       run: |
-        find . -name README.md | xargs cog --check
+        find . -name README.md | xargs cog -c --check
 
     - name: Run tests
       run: |
