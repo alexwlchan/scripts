@@ -7,7 +7,10 @@ They rely on Mac-specific stuff and are unlikely to be useful on non-Mac systems
 
 <!-- [[[cog
 
-import sys; sys.path.append("/Users/alexwlchan/repos/scripts")
+# This adds the root of the repo to the PATH, which has cog_helpers.py
+from os.path import abspath, dirname
+import sys; sys.path.append(abspath(dirname(dirname("."))))
+
 import cog_helpers
 
 folder_name = "macos"
