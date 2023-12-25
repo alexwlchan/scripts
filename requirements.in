@@ -1,6 +1,7 @@
 attrs
 black
 boto3
+cogapp
 flake8
 httpx
 humanize
