@@ -1,4 +1,5 @@
 close_tabs linguist-language=JavaScript
 get_focus_mode linguist-language=JavaScript
+get_frontmost_window_title linguist-language=JavaScript
 get_live_text linguist-language=Swift
 set_accent_colour linguist-language=Swift

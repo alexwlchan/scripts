@@ -37,6 +37,10 @@ scripts = [
         "description": "prints the current Focus mode"
     },
     {
+        "usage": "get_frontmost_window_title [APP_NAME]",
+        "description": "prints the title of the frontmost window in the named app. This is particularly useful when working with apps that don't support AppleScript."
+    },
+    {
         "name": "get_live_text [image]",
         "description": "get OCR'd text for a single image using Live Text"
     },
@@ -104,6 +108,14 @@ get OCR'd text for all the images in a directory using Live Text
 prints the current Focus mode
 </dd>
 <dt>
+<a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_frontmost_window_title">
+<code>get_frontmost_window_title [APP_NAME]</code>
+</a>
+</dt>
+<dd>
+prints the title of the frontmost window in the named app. This is particularly useful when working with apps that don't support AppleScript.
+</dd>
+<dt>
 <a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_live_text [image]">
 <code>get_live_text [image]</code>
 </a>
@@ -139,4 +151,4 @@ alias for <code>security unlock-keychain ~/Library/Keychains/login.keychain</cod
 </p>
 </dd>
 </dl>
-<!-- [[[end]]] (checksum: 7185b51098c3e95c9d1fc51f860b1dd2) -->
+<!-- [[[end]]] (checksum: ee1950858a05fd7ea7bd4e60e619d61f) -->
