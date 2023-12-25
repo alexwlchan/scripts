@@ -32,6 +32,8 @@ click==8.1.7
     # via
     #   black
     #   pip-tools
+cogapp==3.3.0
+    # via -r requirements.in
 flake8==6.1.0
     # via -r requirements.in
 h11==0.14.0
