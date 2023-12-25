@@ -1,6 +1,10 @@
 import pytest
 
-from fix_twitter_thread import fix_emoji, remove_profile_links
+from fix_twitter_thread import (
+    fix_emoji,
+    remove_profile_links,
+    remove_view_count_and_reply,
+)
 
 
 @pytest.mark.parametrize(
@@ -24,4 +28,25 @@ def test_remove_profile_links() -> None:
             handle="BooksandChokers",
         )
         == ""
+    )
+
+
+def test_remove_view_count_and_reply() -> None:
+    assert (
+        remove_view_count_and_reply(
+            """Hello
+
+6,260
+
+Views
+
+[
+
+![Alex Chan](https://pbs.twimg.com/profile_images/1538296879137562624/w3pwqwel_x96.jpg)
+
+](https://twitter.com/alexwlchan)
+
+world"""
+        )
+        == "Hello\n\nworld"
     )

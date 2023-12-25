@@ -154,6 +154,36 @@ def download_images(text: str, /, *, handle: str) -> str:
     return text
 
 
+def remove_view_count_and_reply(text: str) -> str:
+    # Remove the view count and link for me to reply, which are spread
+    # across multiple lines, e.g.:
+    #
+    # 6,260
+    #
+    # Views
+    #
+    # [
+    #
+    # ![Alex Chan](https://pbs.twimg.com/profile_images/1538296879137562624/w3pwqwel_x96.jpg)
+    #
+    # ](https://twitter.com/alexwlchan)
+    text = re.sub(
+        r"\n[0-9,]+\n"
+        r"\n"
+        r"Views\n"
+        r"\n"
+        r"\[\n"
+        r"\n"
+        r"!\[Alex Chan\]\(https://pbs\.twimg\.com/profile_images/[^\)]+\)\n"
+        r"\n"
+        r"\]\(https://twitter\.com/alexwlchan\)\s*\n",
+        "",
+        text,
+    )
+
+    return text
+
+
 if __name__ == "__main__":
     try:
         path = sys.argv[1]
@@ -165,6 +195,8 @@ if __name__ == "__main__":
 
     with open(path) as in_file:
         text = in_file.read()
+
+    text = remove_view_count_and_reply(text)
 
     handle = re.search(PROFILE_URL_RE, text).group("username")
     print("Detected handle as", termcolor.colored(handle, "blue"))
