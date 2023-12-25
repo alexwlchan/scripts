@@ -44,9 +44,7 @@ Views
 
 ![Alex Chan](https://pbs.twimg.com/profile_images/1538296879137562624/w3pwqwel_x96.jpg)
 
-](https://twitter.com/alexwlchan)
-
-world"""
+](https://twitter.com/alexwlchan) \n\nworld"""
         )
-        == "Hello\n\nworld"
+        == "Hello\nworld"
     )
