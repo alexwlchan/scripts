@@ -36,23 +36,25 @@ def create_description_table(
 
     for s in scripts:
         try:
-            name = s['name']
+            name = s["name"]
         except KeyError:
-            name = s['usage'].split()[0]
+            name = s["usage"].split()[0]
 
         try:
-            usage = textwrap.dedent(s['usage']).strip()
+            usage = s["usage"]
         except KeyError:
             usage = name
 
         cog.outl("<dt>")
-        cog.outl(f"<a href=\"https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}\">")
+        cog.outl(
+            f'<a href="https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}">'
+        )
         cog.outl(f"<code>{usage}</code>")
         cog.outl("</a>")
         cog.outl("</dt>")
 
         cog.outl("<dd>")
-        cog.outl(s['description'])
+        cog.outl(textwrap.dedent(s["description"]).strip())
         cog.outl("</dd>")
 
     cog.outl("</dl>")
