@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Run Cog to generate the README files in this repo.
+#
+# This creates the per-README list of the individual scripts and files.
+#
+#Here Cog is Ned Batchelder's file generation tool, described here:
+# https://nedbatchelder.com/code/cog
+
+set -o errexit
+set -o nounset
+
+find . -name README.md | xargs cog -c -r
