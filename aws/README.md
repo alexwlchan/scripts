@@ -5,12 +5,6 @@ These are scripts to do stuff in AWS.
 ## The individual scripts
 
 <dl>
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/aws/aws"><code>aws</code></a>
-  </dt>
-  <dd>
-    a wrapper around the AWS CLI that ensures I have fresh credentials (see below)
-  </dd>
 
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/aws/bulk_sns_publish.py"><code>bulk_sns_publish.py</code></a>
