@@ -109,4 +109,6 @@ def create_description_table(
             undocumented_files.add(f)
 
     if undocumented_files:
-        raise ValueError(f"Not all files in {folder_name} are documented: {undocumented_files}")
+        raise ValueError(
+            f"Not all files in {folder_name} are documented: {undocumented_files}"
+        )
