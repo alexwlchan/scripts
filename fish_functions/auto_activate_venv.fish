@@ -4,6 +4,9 @@
 # them in the root of the Git repo for each project, and I always
 # name them `~/.venv`.  This means it's pretty easy to work out if
 # a virtualenv exists for the current directory.
+#
+# See https://alexwlchan.net/2023/fish-venv/
+#
 function auto_activate_venv --description "Auto activate/deactivate virtualenv when I change directories"
 
 		# Get the top-level directory of the current Git repo (if any)

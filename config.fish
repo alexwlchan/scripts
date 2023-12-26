@@ -72,6 +72,7 @@ prepend_to_path ~/repos/ttml2srt
 # packages inside virtualenvs.
 #
 # See https://docs.python-guide.org/dev/pip-virtualenv/#requiring-an-active-virtual-environment-for-pip
+# See https://alexwlchan.net/# See https://alexwlchan.net/2023/fish-venv/
 #
 set -g -x PIP_REQUIRE_VIRTUALENV true
 
@@ -81,6 +82,7 @@ set -g -x PIP_REQUIRE_VIRTUALENV true
 # These functions can't be autoloaded.
 #
 # See https://fishshell.com/docs/current/language.html#event
+# See https://alexwlchan.net/2023/fish-venv/
 #
 function __auto_auto_activate_venv --on-variable PWD --description "Auto activate/deactivate virtualenv when I change directories"
     auto_activate_venv
