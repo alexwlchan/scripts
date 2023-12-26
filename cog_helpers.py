@@ -8,7 +8,7 @@ https://nedbatchelder.com/code/cog
 """
 
 import textwrap
-from typing import TypedDict
+from typing import Literal, TypedDict
 
 import cog
 
@@ -26,15 +26,21 @@ class ScriptWithUsage(TypedDict):
 Script = ScriptWithName | ScriptWithUsage
 
 
+def outl(s: str, indent: int = 0):
+    cog.outl(textwrap.indent(s, prefix=' ' * indent))
+
+
 def create_description_table(
     folder_name: str,
     scripts: list[Script],
     repo_name: str = "alexwlchan/scripts",
     primary_branch: str = "main",
 ) -> None:
-    cog.outl("<dl>")
+    indent = 0
 
-    for s in scripts:
+    outl("<dl>")
+
+    for i, s in enumerate(scripts, start=1):
         try:
             name = s["name"]
         except KeyError:
@@ -45,16 +51,20 @@ def create_description_table(
         except KeyError:
             usage = name
 
-        cog.outl("<dt>")
-        cog.outl(
-            f'<a href="https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}">'
+        outl("<dt>", indent=2)
+        outl(
+            f'<a href="https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}">',
+            indent=4
         )
-        cog.outl(f"<code>{usage}</code>")
-        cog.outl("</a>")
-        cog.outl("</dt>")
+        outl(f"<code>{usage}</code>", indent=6)
+        outl("</a>", indent=4)
+        outl("</dt>", indent=2)
 
-        cog.outl("<dd>")
-        cog.outl(textwrap.dedent(s["description"]).strip())
-        cog.outl("</dd>")
+        outl("<dd>", indent=2)
+        outl(textwrap.dedent(s["description"]).strip(), indent=4)
+        outl("</dd>", indent=2)
 
-    cog.outl("</dl>")
+        if i != len(scripts):
+            outl("")
+
+    outl("</dl>")
