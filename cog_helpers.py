@@ -8,7 +8,7 @@ https://nedbatchelder.com/code/cog
 """
 
 import textwrap
-from typing import Literal, TypedDict
+from typing import TypedDict
 
 import cog
 
@@ -36,8 +36,6 @@ def create_description_table(
     repo_name: str = "alexwlchan/scripts",
     primary_branch: str = "main",
 ) -> None:
-    indent = 0
-
     outl("<dl>")
 
     for i, s in enumerate(scripts, start=1):
