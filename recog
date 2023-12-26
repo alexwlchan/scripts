@@ -9,4 +9,4 @@
 set -o errexit
 set -o nounset
 
-find . -name README.md | xargs cog -c -r
+find . -name README.md | sort | xargs cog -c -r

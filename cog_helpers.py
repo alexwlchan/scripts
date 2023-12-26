@@ -7,6 +7,7 @@ Here Cog is Ned Batchelder's file generation tool, described here:
 https://nedbatchelder.com/code/cog
 """
 
+import os
 import textwrap
 from typing import TypedDict
 
@@ -41,6 +42,8 @@ def create_description_table(
     repo_name: str = "alexwlchan/scripts",
     primary_branch: str = "main",
 ) -> None:
+    documented_files = set()
+
     outl("<dl>")
 
     for i, s in enumerate(scripts, start=1):
@@ -55,6 +58,11 @@ def create_description_table(
 
         for index, v in enumerate(variants, start=1):
             name = v.split()[0]
+
+            path = os.path.join(folder_name, name)
+            assert os.path.exists(path), os.path.join(path)
+
+            documented_files.add(name)
 
             outl(
                 f'<a href="https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}">',
@@ -82,3 +90,25 @@ def create_description_table(
             outl("")
 
     outl("</dl>")
+
+    # Now check there isn't anything in the folder which should have
+    # been documented, but isn't.
+    undocumented_files = set()
+
+    for f in os.listdir(folder_name):
+        if os.path.isdir(os.path.join(folder_name, f)):
+            continue
+
+        if f in {"README.md", "utf8info.Dockerfile"}:
+            continue
+
+        if f.startswith(("test_", "_")):
+            continue
+
+        if f not in documented_files:
+            undocumented_files.add(f)
+
+    if undocumented_files:
+        raise ValueError(
+            f"Not all files in {folder_name} are documented: {undocumented_files}"
+        )
