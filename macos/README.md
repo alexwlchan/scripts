@@ -126,7 +126,7 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_live_text [image]">
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_live_text">
       <code>get_live_text [image]</code>
     </a>
   </dt>
@@ -173,4 +173,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: f83d99f7ee2b7ffd54416fcc1b1cb01e) -->
+<!-- [[[end]]] (checksum: 92219c4a3477e066af5311a2e97e1db6) -->

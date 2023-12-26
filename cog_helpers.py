@@ -18,12 +18,17 @@ class ScriptWithName(TypedDict):
     description: str
 
 
+class ScriptWithVariants(TypedDict):
+    variants: list[str]
+    description: str
+
+
 class ScriptWithUsage(TypedDict):
     usage: str
     description: str
 
 
-Script = ScriptWithName | ScriptWithUsage
+Script = ScriptWithName | ScriptWithUsage | ScriptWithVariants
 
 
 def outl(s: str, indent: int = 0):
@@ -39,23 +44,34 @@ def create_description_table(
     outl("<dl>")
 
     for i, s in enumerate(scripts, start=1):
-        try:
-            name = s["name"]
-        except KeyError:
-            name = s["usage"].split()[0]
-
-        try:
-            usage = s["usage"]
-        except KeyError:
-            usage = name
+        if "name" in s:
+            variants = [s["name"]]
+        elif "variants" in s:
+            variants = s["variants"]
+        else:
+            variants = [s["usage"].split()[0]]
 
         outl("<dt>", indent=2)
-        outl(
-            f'<a href="https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}">',
-            indent=4,
-        )
-        outl(f"<code>{usage}</code>", indent=6)
-        outl("</a>", indent=4)
+
+        for index, v in enumerate(variants, start=1):
+            name = v.split()[0]
+
+            outl(
+                f'<a href="https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}">',
+                indent=4,
+            )
+
+            try:
+                usage = s["usage"]
+            except KeyError:
+                usage = v
+
+            outl(f"<code>{usage}</code>", indent=6)
+            outl("</a>", indent=4)
+
+            if index != len(variants):
+                outl("/")
+
         outl("</dt>", indent=2)
 
         outl("<dd>", indent=2)

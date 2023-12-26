@@ -4,6 +4,74 @@ These are scripts for manipulating files and folders in my local filesystem.
 
 ## The individual scripts
 
+<!-- [[[cog
+
+# This adds the root of the repo to the PATH, which has cog_helpers.py
+from os.path import abspath, dirname
+import sys
+
+sys.path.append(abspath(dirname(dirname("."))))
+
+import cog_helpers
+
+folder_name = "fs"
+
+scripts = [
+    {
+        "name": "cdir",
+        "description": """
+        counts all the entries in subfolders under the working directory, and prints them in a table
+        <p><pre><code>$ cdir
+         37 fishconfig
+         48 repros
+         51 colossus-wheels
+         70 services
+        292 .git
+        -------
+        699</code></pre></p>
+        """
+    },
+    {
+        "usage": "deepestdir [ROOT]",
+        "description": "prints the directory which is the deepest child of the given directory"
+    },
+    {
+        "name": "emptydir",
+        "description": "removes any empty directories under the current one (including directories that are empty aside from files that can be safely deleted, e.g. <code>.DS_Store</code>)"
+    },
+    {
+        "name": "flatten",
+        "description": """
+        flattens a directory structure.
+        When you run it in a folder, it moves any files in subfolders into the top-level folders, then deletes the now-empty folder.
+        """
+    },
+    {
+        "variants": ["hide [PATH]", "unhide [PATH]"],
+        "description": "alias for `chflags hidden PATH` and <code>chflags nohidden PATH</code>."
+    },
+    {
+        "name": "latest_download",
+        "description": "prints the path to the newest file in my Downloads folder"
+    },
+    {
+        "name": "sizes",
+        "description": """
+        gets the total size of all the files/folders under the working directory, and prints them in a table
+        <p><pre><code>$ sizes
+        512.00K aws/
+        520.00K wellcome/
+          1.54M images/
+          4.76M .git/
+        -------
+          7.58M ~/repos/scripts</code></pre></p>
+        """
+    },
+]
+
+cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
+
+]]]-->
 <dl>
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fs/cdir">
@@ -18,7 +86,7 @@ These are scripts for manipulating files and folders in my local filesystem.
      51 colossus-wheels
      70 services
     292 .git
--------
+    -------
     699</code></pre></p>
   </dd>
 
@@ -54,10 +122,13 @@ These are scripts for manipulating files and folders in my local filesystem.
     <a href="https://github.com/alexwlchan/scripts/blob/main/fs/hide">
       <code>hide [PATH]</code>
     </a>
+/
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/unhide">
+      <code>unhide [PATH]</code>
+    </a>
   </dt>
   <dd>
-    alias for <code>chflags hidden PATH</code>.
-    See also: <code>unhide</code>.
+    alias for `chflags hidden PATH` and <code>chflags nohidden PATH</code>.
   </dd>
 
   <dt>
@@ -77,21 +148,12 @@ These are scripts for manipulating files and folders in my local filesystem.
   <dd>
     gets the total size of all the files/folders under the working directory, and prints them in a table
     <p><pre><code>$ sizes
-512.00K aws/
-520.00K wellcome/
-  1.54M images/
-  4.76M .git/
--------
-  7.58M ~/repos/scripts</code></pre></p>
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/unhide">
-      <code>unhide [PATH]</code>
-    </a>
-  </dt>
-  <dd>
-    alias for <code>chflags nohidden PATH</code>.
-    See also: <code>hide</code>.
+    512.00K aws/
+    520.00K wellcome/
+      1.54M images/
+      4.76M .git/
+    -------
+      7.58M ~/repos/scripts</code></pre></p>
   </dd>
 </dl>
+<!-- [[[end]]] (checksum: f58d126f6b43914a355f95c7476ecd35) -->
