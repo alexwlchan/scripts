@@ -27,7 +27,7 @@ Script = ScriptWithName | ScriptWithUsage
 
 
 def outl(s: str, indent: int = 0):
-    cog.outl(textwrap.indent(s, prefix=' ' * indent))
+    cog.outl(textwrap.indent(s, prefix=" " * indent))
 
 
 def create_description_table(
@@ -54,7 +54,7 @@ def create_description_table(
         outl("<dt>", indent=2)
         outl(
             f'<a href="https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}">',
-            indent=4
+            indent=4,
         )
         outl(f"<code>{usage}</code>", indent=6)
         outl("</a>", indent=4)
