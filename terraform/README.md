@@ -6,6 +6,60 @@ These scripts are all related to [Terraform], the infrastructure-as-code tool we
 
 ## The individual scripts
 
+<!-- [[[cog
+
+# This adds the root of the repo to the PATH, which has cog_helpers.py
+from os.path import abspath, dirname
+import sys
+
+sys.path.append(abspath(dirname(dirname("."))))
+
+import cog_helpers
+
+folder_name = "terraform"
+
+scripts = [
+    {
+        "name": "tf",
+        "description": "alias for `terraform`",
+    },
+    {
+        "name": "tfi",
+        "description": """
+        alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/init"><code>terraform init</code></a>
+        """,
+    },
+    {
+        "name": "tfp",
+        "description": """
+        alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/plan"><code>terraform plan -out=tfplan</code></a>.
+        I run this before making any changes, so I can review what Terraform is about to do.
+        """,
+    },
+    {
+        "name": "tfa",
+        "description": """
+        alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/apply"><code>terraform apply terraform.plan</code></a>.
+        I only run this after I’ve reviewed the proposed changes from <code>tfp</code>.
+        """,
+    },
+    {
+        "name": "tfmv",
+        "description": """
+        alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/state/mv"><code>terraform state mv</code></a>
+        """,
+    },
+    {
+        "name": "tflint",
+        "description": """
+        alias for the <a href="https://github.com/terraform-linters/tflint">tflint linter</a>, but running inside a Docker container
+        """,
+    },
+]
+
+cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
+
+]]]-->
 <dl>
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/terraform/tf">
@@ -13,7 +67,7 @@ These scripts are all related to [Terraform], the infrastructure-as-code tool we
     </a>
   </dt>
   <dd>
-    alias for <code>terraform</code>
+    alias for `terraform`
   </dd>
 
   <dt>
@@ -31,7 +85,7 @@ These scripts are all related to [Terraform], the infrastructure-as-code tool we
     </a>
   </dt>
   <dd>
-    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/plan"><code>terraform plan -out=terraform.plan</code></a>.
+    alias for <a href="https://developer.hashicorp.com/terraform/cli/commands/plan"><code>terraform plan -out=tfplan</code></a>.
     I run this before making any changes, so I can review what Terraform is about to do.
   </dd>
 
@@ -63,6 +117,7 @@ These scripts are all related to [Terraform], the infrastructure-as-code tool we
     alias for the <a href="https://github.com/terraform-linters/tflint">tflint linter</a>, but running inside a Docker container
   </dd>
 </dl>
+<!-- [[[end]]] (checksum: b9d70deb03a18bfd0a84a1a3ee918977) -->
 
 ## Choosing between `terraform` and `run_terraform.sh`
 
