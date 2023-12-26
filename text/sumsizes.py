@@ -14,10 +14,7 @@ import sys
 import humanize
 
 
-if __name__ == '__main__':
-    total = sum(
-        int(line)
-        for line in sys.stdin.readlines()
-    )
+if __name__ == "__main__":
+    total = sum(int(line) for line in sys.stdin.readlines())
 
     print(humanize.naturalsize(total))

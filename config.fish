@@ -160,6 +160,7 @@ __create_python_script_alias images/srgbify.py
 __create_python_script_alias images/reborder.py
 __create_python_script_alias text/fix_twitter_thread.py
 __create_python_script_alias text/noplaylist.py
+__create_python_script_alias text/sumsizes.py
 
 __create_python_module_alias keyring
 __create_python_module_alias yt-dlp
