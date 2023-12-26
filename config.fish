@@ -20,12 +20,18 @@ set -x fish_function_path ~/repos/scripts/fish_functions $fish_function_path
 
 # Prepend any extra directories to my PATH variable.
 #
-# Note: I use this instead of `fish_add_path` because it updates a global
-# `fish_user_paths` array in ~/.config/fish/fish_variables, but that makes
-# it harder to see how/where my PATH is defined.
+# == Why not use `fish_add_path`? ==
 #
-# Doing it this way means I get a fresh PATH in every shell, and it's
-# only updated by the directives below.
+# That function updates a global `fish_user_paths` array in a file which
+# isn't tracked by Git: `~/.config/fish/fish_variables`.  That makes it
+# harder to see how/where my PATH is defined.
+#
+# For example, I could have removed the code that adds a directory to
+# my PATH from this repo, but it would persist in the `fish_variables` file.
+#
+# Using my own function means I get a fresh PATH in every shell, and it's
+# only updated by the directives below.  All my PATH additions can be
+# tracked in Git.
 
 function prepend_to_path
     if test (count $argv) -eq 0
