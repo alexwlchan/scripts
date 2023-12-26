@@ -32,6 +32,12 @@ scripts = [
         """,
     },
     {
+        "usage": "fix_whitespace [PATH]",
+        "description": """
+        when I copy/paste text into Obsidian from th web, this cleans up some of the extraneous whitespace.
+        """,
+    },
+    {
         "usage": "midline [PATH]",
         "description": "print the line in the middle of a file, e.g. if the file has 5 lines, it prints line 3"
     },
@@ -101,6 +107,14 @@ This is meant to fill a gap between the Unix utilities `head` and `tail`.
 <dd>
 when I copy/paste a Twitter thread into Obsidian, this does some 
 initial tidying up of the formatting for me.
+</dd>
+<dt>
+<a href="https://github.com/alexwlchan/scripts/blob/main/text/fix_whitespace">
+<code>fix_whitespace [PATH]</code>
+</a>
+</dt>
+<dd>
+when I copy/paste text into Obsidian from th web, this cleans up some of the extraneous whitespace.
 </dd>
 <dt>
 <a href="https://github.com/alexwlchan/scripts/blob/main/text/midline">
@@ -179,4 +193,4 @@ read UTF-8 on stdin and print out the raw Unicode "
 "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
 </dd>
 </dl>
-<!-- [[[end]]] (checksum: afe7ca0c0f56a356286950da6b8332a3) -->
+<!-- [[[end]]] (checksum: 1ac648df181fdf4aea491bce61f10523) -->
