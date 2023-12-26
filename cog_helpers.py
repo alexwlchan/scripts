@@ -7,6 +7,7 @@ Here Cog is Ned Batchelder's file generation tool, described here:
 https://nedbatchelder.com/code/cog
 """
 
+import os
 import textwrap
 from typing import TypedDict
 
@@ -55,6 +56,9 @@ def create_description_table(
 
         for index, v in enumerate(variants, start=1):
             name = v.split()[0]
+
+            path = os.path.join(folder_name, name)
+            assert os.path.exists(path), os.path.join(path)
 
             outl(
                 f'<a href="https://github.com/{repo_name}/blob/{primary_branch}/{folder_name}/{name}">',

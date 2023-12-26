@@ -78,6 +78,7 @@ scripts = [
         "description": "prints a tally of lines in the given text.",
     },
     {
+        "name": "utf8info",
         "usage": "echo [STRING] | utf8info",
         "description": """
         read UTF-8 on stdin and print out the raw Unicode "
@@ -195,7 +196,7 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/text/echo">
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/utf8info">
       <code>echo [STRING] | utf8info</code>
     </a>
   </dt>
@@ -204,4 +205,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 6abfdf25169d3fba58601dec88f4bd9f) -->
+<!-- [[[end]]] (checksum: 679627866c7239d6d4d5db3a8f03ab91) -->
