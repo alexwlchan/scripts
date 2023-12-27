@@ -41,8 +41,12 @@ def create_description_table(
     scripts: list[Script],
     repo_name: str = "alexwlchan/scripts",
     primary_branch: str = "main",
+    ignore_files: set[str] | None = None
 ) -> None:
     documented_files = set()
+
+    if ignore_files is None:
+        ignore_files = set()
 
     outl("<dl>")
 
@@ -102,7 +106,10 @@ def create_description_table(
         if f in {"README.md", "utf8info.Dockerfile"}:
             continue
 
-        if f.startswith(("test_", "_")):
+        if f.startswith(("test_", "_", ".")):
+            continue
+
+        if f in ignore_files:
             continue
 
         if f not in documented_files:
