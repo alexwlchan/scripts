@@ -9,14 +9,19 @@
 set -o errexit
 set -o nounset
 
-if (( $# != 2 ))
+if (( $# == 1 ))
 then
+  method="$1"
+  params=""
+elif (( $# == 2 ))
+then
+  method="$1"
+  params="$2"
+else
   echo "Usage: $0 <METHOD> <PARAMS>" >&2
   exit 1
 fi
 
-method="$1"
-params="$2"
 api_key=$(keyring get flickr_api key)
 
 curl "https://api.flickr.com/services/rest/?api_key=${api_key}&method=${method}&${params}"
