@@ -41,7 +41,7 @@ def create_description_table(
     scripts: list[Script],
     repo_name: str = "alexwlchan/scripts",
     primary_branch: str = "main",
-    ignore_files: set[str] | None = None
+    ignore_files: set[str] | None = None,
 ) -> None:
     documented_files = set()
 
