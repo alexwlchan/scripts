@@ -26,6 +26,7 @@ if __name__ == "__main__":
     blue = int(hex_colour[5:7], 16)
 
     im = Image.open(path)
+    im = im.convert("L")
     pixels = list(im.getdata())
     tinted_im = Image.new("RGBA", im.size)
 
