@@ -5,6 +5,10 @@ in Obsidian (if any).
 
 This relies on knowing the on-disk locations of my Obsidian vaults,
 so you won't be able to use this without changing it for your own setup.
+
+Note: this will print the *first* file with the same name as your
+open note, which may cause issues if you have multiple notes with
+the same title.
 """
 
 import os
