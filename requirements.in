@@ -3,6 +3,7 @@ black
 boto3
 cogapp
 flake8
+flickr-url-parser
 httpx
 humanize
 hyperlink

@@ -36,16 +36,23 @@ cogapp==3.3.0
     # via -r requirements.in
 flake8==6.1.0
     # via -r requirements.in
+flickr-url-parser==1.7.1
+    # via
+    #   -r requirements.in
 h11==0.14.0
     # via httpcore
 httpcore==1.0.2
     # via httpx
 httpx==0.25.2
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   flickr-url-parser
 humanize==4.9.0
     # via -r requirements.in
 hyperlink==21.0.0
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   flickr-url-parser
 idna==3.6
     # via
     #   anyio
