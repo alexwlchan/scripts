@@ -51,7 +51,8 @@ if __name__ == "__main__":
 
     # Match the vault name to a path on disk.
     #
-    # This is very specific to my setp
+    # This is very specific to my setup, so if you want to use it on
+    # your computer, you'll need to customise this bit.
     if vault_name == "textfiles":
         vault_root = os.path.join(os.environ["HOME"], "textfiles")
     else:
