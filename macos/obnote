@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Prints the path to the note I currently have open in Obsidian (if any).
+Print the path to the Markdown file which is currently open
+in Obsidian (if any).
 
 This relies on knowing the on-disk locations of my Obsidian vaults,
 so you won't be able to use this without changing it for your own setup.
@@ -31,9 +32,7 @@ def get_applescript_output(script):
     """
     cmd = ["osascript", "-e", script]
 
-    return subprocess.check_output(cmd)
-        .strip()
-        .decode("utf8")
+    return subprocess.check_output(cmd).strip().decode("utf8")
 
 
 if __name__ == "__main__":
