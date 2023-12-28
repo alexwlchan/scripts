@@ -37,10 +37,6 @@ scripts = [
         "description": "prints the current Focus mode"
     },
     {
-        "usage": "get_frontmost_window_title [APP_NAME]",
-        "description": "prints the title of the frontmost window in the named app. This is particularly useful when working with apps that don't support AppleScript."
-    },
-    {
         "name": "get_live_text [image]",
         "description": "get OCR'd text for a single image using Live Text"
     },
@@ -117,15 +113,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_frontmost_window_title">
-      <code>get_frontmost_window_title [APP_NAME]</code>
-    </a>
-  </dt>
-  <dd>
-    prints the title of the frontmost window in the named app. This is particularly useful when working with apps that don't support AppleScript.
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_live_text">
       <code>get_live_text [image]</code>
     </a>
@@ -173,4 +160,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 92219c4a3477e066af5311a2e97e1db6) -->
+<!-- [[[end]]] (checksum: b76affe4f83859dc60b4ef333666ce0f) -->
