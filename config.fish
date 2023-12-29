@@ -125,7 +125,7 @@ function __create_bash_script_alias
         # script, make sure we re-enable it afterwards.
         #
         # If not, we just need to deactivate the scripts venv.
-        if test -z existing_venv
+        if test -z "$existing_venv"
             deactivate
         else
             source "$existing_venv/bin/activate.fish"
