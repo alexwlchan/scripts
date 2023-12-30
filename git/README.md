@@ -32,7 +32,7 @@ scripts = [
         """
     },
     {
-        "name": "find_big_commits",
+        "name": "find_big_commits.py",
         "description": """
         print some information about the biggest files/commits in the Git history.
         """
@@ -137,8 +137,8 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/git/find_big_commits">
-      <code>find_big_commits</code>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/git/find_big_commits.py">
+      <code>find_big_commits.py</code>
     </a>
   </dt>
   <dd>
@@ -253,4 +253,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     open the current Git repo in <a href="https://gitup.co/">GitUp</a>, my GUI Git client of choice
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: fddec72ed280c65e392617fa331cce25) -->
+<!-- [[[end]]] (checksum: ce37e30161ddef4f54ee397d664307dd) -->

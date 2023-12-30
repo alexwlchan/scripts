@@ -12,8 +12,8 @@ extra formatting and the total of the .git folder printed also.
 import os
 import subprocess
 
-import humanize  # humanize==4.4.0
-import termcolor  # termcolor==2.1.1
+import humanize
+import termcolor
 
 
 def get_blobs():
