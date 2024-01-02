@@ -155,6 +155,7 @@ __create_python_script_alias flickr/fluser_lookup.py
 __create_python_script_alias fs/emptydir.py
 __create_python_script_alias git/find_big_commits.py
 __create_python_script_alias git/git-cloc.py
+__create_python_script_alias images/copycrop.py
 __create_python_script_alias images/kn_cover_image.py
 __create_python_script_alias images/images_only_pdf.py
 __create_python_script_alias images/srgbify.py

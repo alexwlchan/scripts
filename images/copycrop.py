@@ -101,7 +101,7 @@ def find_crop_region(original: Image, cropped: Image):
         if cropped_pixels[x, y] == least_frequent_colour
     }
 
-    for ((original_x, original_y), (cropped_x, cropped_y)) in itertools.product(
+    for (original_x, original_y), (cropped_x, cropped_y) in itertools.product(
         matching_original_coordinates, matching_crop_coordinates
     ):
         left = original_x - cropped_x
