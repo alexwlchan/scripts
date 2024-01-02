@@ -38,9 +38,6 @@ function isSafeToClose(url) {
     url.startsWith("https://app.fastmail.com/mail/Inbox/?u=") ||
     url.startsWith("https://github.com/Flickr-Foundation/") ||
     url.startsWith("https://zoom.us/") ||
-
-    // Kibana dashboards in Elastic Cloud
-    url.includes(".eu-west-1.aws.found.io:9243/")
   ) || (
     url === 'https://alexwlchan.net/' ||
     url === 'https://arstechnica.com/' ||
@@ -49,6 +46,7 @@ function isSafeToClose(url) {
     url === 'https://mail.google.com/mail/u/0/#inbox' ||
     url === 'https://mobile.twitter.com/home' ||
     url === 'https://news.ycombinator.com/' ||
+    url === 'https://remote.com' ||
     url === 'https://social.alexwlchan.net/home' ||
     url === 'https://twitter.com/home' ||
     url === 'https://twitter.com/i/timeline' ||
