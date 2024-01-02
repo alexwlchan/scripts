@@ -36,9 +36,12 @@ cogapp==3.3.0
     # via -r requirements.in
 flake8==6.1.0
     # via -r requirements.in
+flickr-photos-api==1.5.7
+    # via -r requirements.in
 flickr-url-parser==1.7.1
     # via
     #   -r requirements.in
+    #   flickr-photos-api
 h11==0.14.0
     # via httpcore
 httpcore==1.0.2
@@ -46,6 +49,7 @@ httpcore==1.0.2
 httpx==0.25.2
     # via
     #   -r requirements.in
+    #   flickr-photos-api
     #   flickr-url-parser
 humanize==4.9.0
     # via -r requirements.in
@@ -122,6 +126,8 @@ sniffio==1.3.0
     # via
     #   anyio
     #   httpx
+tenacity==8.2.3
+    # via flickr-photos-api
 termcolor==2.4.0
     # via -r requirements.in
 urllib3==2.0.7

@@ -29,6 +29,12 @@ scripts = [
         look up a single photo with the Flickr API and print the XML response to stdout.
         """,
     },
+    {
+        "usage": "fluser_lookup.py [USER_ID]",
+        "description": """
+        Look up a Flickr user by URL or path alias.
+        """,
+    },
 ]
 
 cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
@@ -52,5 +58,14 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   <dd>
     look up a single photo with the Flickr API and print the XML response to stdout.
   </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/flickr/fluser_lookup.py">
+      <code>fluser_lookup.py [USER_ID]</code>
+    </a>
+  </dt>
+  <dd>
+    Look up a Flickr user by URL or path alias.
+  </dd>
 </dl>
-<!-- [[[end]]] (checksum: 7d80deb90d125a1f886c6faa3436d829) -->
+<!-- [[[end]]] (checksum: 37fb345f2f059bad0669a7c8411516b9) -->
