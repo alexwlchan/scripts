@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Deploy a new version of a Flickr Foundation Python library:
+#
+#   1. Bump the version
+#   2. Tag the Git commit
+#   3. Push to PyPI and GitHub.
+#
+# This probably works for other projects as well, but relies on certain
+# aspects of the way the repos are laid out that may not be universal.
+#
+# Note: unlike most Python scripts in this repo, this should run in
+# the project virtualenv rather than the script virtualenv.
+
+set -o errexit
+set -o nounset
+
+python3 -m build
+python3 -m twine upload dist/* --username=__token__ --skip-existing
+
+version=$(find src -name __init__.py \
+  | xargs grep '__version__ =' \
+  | awk '{print $3}' \
+  | tr -d '"')
+
+echo "Tagging as v$version and pushing to GitHub"
+
+git tag "v$version"
+git push origin --tag

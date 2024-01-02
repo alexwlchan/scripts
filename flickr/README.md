@@ -18,6 +18,12 @@ folder_name = "flickr"
 
 scripts = [
     {
+        "usage": "deploy_to_pypi",
+        "description": """
+        deploy a new version of a Flickr Foundation Python library: bump the version, tag the Git commit, push to PyPI and GitHub.
+        """,
+    },
+    {
         "usage": "flapi.sh [METHOD] [PARAMS]",
         "description": """
         call a method with the Flickr API and print the XML response to stdout.
@@ -41,6 +47,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
 
 ]]]-->
 <dl>
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/flickr/deploy_to_pypi">
+      <code>deploy_to_pypi</code>
+    </a>
+  </dt>
+  <dd>
+    deploy a new version of a Flickr Foundation Python library: bump the version, tag the Git commit, push to PyPI and GitHub.
+  </dd>
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/flickr/flapi.sh">
       <code>flapi.sh [METHOD] [PARAMS]</code>
@@ -68,4 +83,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     Look up a Flickr user by URL or path alias.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 37fb345f2f059bad0669a7c8411516b9) -->
+<!-- [[[end]]] (checksum: c6023a15d18d6ef6f489f55f8b032b9a) -->
