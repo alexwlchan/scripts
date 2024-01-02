@@ -160,6 +160,7 @@ __create_python_script_alias images/images_only_pdf.py
 __create_python_script_alias images/srgbify.py
 __create_python_script_alias images/reborder.py
 __create_python_script_alias images/tint_image.py
+__create_python_script_alias text/fix_twemoji.py
 __create_python_script_alias text/fix_twitter_thread.py
 __create_python_script_alias text/noplaylist.py
 __create_python_script_alias text/sumsizes.py

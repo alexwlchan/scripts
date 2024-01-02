@@ -25,9 +25,16 @@ scripts = [
         """,
     },
     {
+        "usage": "fix_twemoji.py [PATH]",
+        "description": """
+        when I copy/paste a tweet into Obsidian, often any emoji get replaced by "twemoji" – links to Twitter’s custom emoji artwork.
+        This script replaces those links with vanilla emoji characters.
+        """,
+    },
+    {
         "usage": "fix_twitter_thread.py [PATH]",
         "description": """
-        when I copy/paste a Twitter thread into Obsidian, this does some 
+        when I copy/paste a Twitter thread into Obsidian, this does some
         initial tidying up of the formatting for me.
         """,
     },
@@ -43,11 +50,11 @@ scripts = [
     },
     {
         "usage": "natsize < [NUMBER]",
-        "description": "prints a numeric file size as a human-readable string, e.g. `32036032` becomes `32.0 MB`",   
+        "description": "prints a numeric file size as a human-readable string, e.g. `32036032` becomes `32.0 MB`",
     },
     {
         "usage": "noplaylist.py < [URL]",
-        "description": "removes the `list` query parameter from a YouTube URL; I use it with `youtube-dl`",  
+        "description": "removes the `list` query parameter from a YouTube URL; I use it with `youtube-dl`",
     },
     {
         "name": "r",
@@ -102,12 +109,22 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/fix_twemoji.py">
+      <code>fix_twemoji.py [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    when I copy/paste a tweet into Obsidian, often any emoji get replaced by "twemoji" – links to Twitter’s custom emoji artwork.
+    This script replaces those links with vanilla emoji characters.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/fix_twitter_thread.py">
       <code>fix_twitter_thread.py [PATH]</code>
     </a>
   </dt>
   <dd>
-    when I copy/paste a Twitter thread into Obsidian, this does some 
+    when I copy/paste a Twitter thread into Obsidian, this does some
     initial tidying up of the formatting for me.
   </dd>
 
@@ -205,4 +222,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 679627866c7239d6d4d5db3a8f03ab91) -->
+<!-- [[[end]]] (checksum: 1d5a76eaf2e7b0159fc349d7a4198453) -->
