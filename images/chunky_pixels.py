@@ -54,11 +54,11 @@ if __name__ == "__main__":
     draw = ImageDraw.Draw(im)
 
     for (x_start, y_start), (r, g, b) in all_colours.items():
-        h, l, s = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
-        l = clamp(l * random.uniform(0.9, 1.1), between=[0, 1])
-        s = clamp(s * random.uniform(0.9, 1.1), between=[0, 1])
+        hue, lightness, saturation = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
+        lightness = clamp(lightness * random.uniform(0.9, 1.1), between=[0, 1])
+        saturation = clamp(saturation * random.uniform(0.9, 1.1), between=[0, 1])
 
-        r, g, b = colorsys.hls_to_rgb(h, l, s)
+        r, g, b = colorsys.hls_to_rgb(hue, lightness, saturation)
         draw.rectangle(
             [(x_start, y_start), (x_start + pixel_size), (y_start + pixel_size)],
             fill=(int(r * 255), int(g * 255), int(b * 255)),
