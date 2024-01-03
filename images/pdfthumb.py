@@ -19,7 +19,7 @@ import sys
 import subprocess
 import tempfile
 
-from PyPDF2 import PdfReader, PdfWriter  # pip3 install --user PyPDF2==3.0.1
+from pypdf import PdfReader, PdfWriter
 
 
 def parse_args(argv):

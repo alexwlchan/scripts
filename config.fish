@@ -155,11 +155,14 @@ __create_python_script_alias flickr/fluser_lookup.py
 __create_python_script_alias fs/emptydir.py
 __create_python_script_alias git/find_big_commits.py
 __create_python_script_alias git/git-cloc.py
+__create_python_script_alias images/chunky_pixels.py
 __create_python_script_alias images/copycrop.py
 __create_python_script_alias images/kn_cover_image.py
 __create_python_script_alias images/images_only_pdf.py
-__create_python_script_alias images/srgbify.py
+__create_python_script_alias images/pdfthumb.py
 __create_python_script_alias images/reborder.py
+__create_python_script_alias images/save_xkcd.py
+__create_python_script_alias images/srgbify.py
 __create_python_script_alias images/tint_image.py
 __create_python_script_alias text/fix_twemoji.py
 __create_python_script_alias text/fix_twitter_thread.py
