@@ -3,7 +3,7 @@
 #
 # This creates the per-README list of the individual scripts and files.
 #
-#Here Cog is Ned Batchelder's file generation tool, described here:
+# Here Cog is Ned Batchelder's file generation tool, described here:
 # https://nedbatchelder.com/code/cog
 
 set -o errexit

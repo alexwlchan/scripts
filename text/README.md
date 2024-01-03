@@ -67,6 +67,12 @@ scripts = [
         "description": "prints randomly selected lines from the given text. If `NUMBER` is unspecified, it prints a single line.",
     },
     {
+        "usage": "recog",
+        "description": """
+        Find all the README files under the current folder, and process them using <a href="https://nedbatchelder.com/code/cog">Cog</a>.
+        """
+    },
+    {
         "usage": "reverse < [PATH]",
         "description": "prints the lines of text, but in reverse order.",
     },
@@ -183,6 +189,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/recog">
+      <code>recog</code>
+    </a>
+  </dt>
+  <dd>
+    Find all the README files under the current folder, and process them using <a href="https://nedbatchelder.com/code/cog">Cog</a>.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/reverse">
       <code>reverse < [PATH]</code>
     </a>
@@ -222,4 +237,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 1d5a76eaf2e7b0159fc349d7a4198453) -->
+<!-- [[[end]]] (checksum: bc564280bcf97df83fad1af796670312) -->
