@@ -8,6 +8,8 @@ anyio==4.1.0
     # via httpx
 attrs==23.1.0
     # via -r requirements.in
+beautifulsoup4==4.12.2
+    # via bs4
 black==23.11.0
     # via -r requirements.in
 boto3==1.33.11
@@ -18,6 +20,8 @@ botocore==1.33.11
     #   s3transfer
 brotli==1.1.0
     # via yt-dlp
+bs4==0.0.1
+    # via -r requirements.in
 build==1.0.3
     # via pip-tools
 certifi==2023.11.17
@@ -116,6 +120,8 @@ pytest==7.4.3
     # via -r requirements.in
 python-dateutil==2.8.2
     # via botocore
+regex==2023.12.25
+    # via -r requirements.in
 requests==2.31.0
     # via yt-dlp
 s3transfer==0.8.2
@@ -126,6 +132,8 @@ sniffio==1.3.0
     # via
     #   anyio
     #   httpx
+soupsieve==2.5
+    # via beautifulsoup4
 tenacity==8.2.3
     # via flickr-photos-api
 termcolor==2.4.0

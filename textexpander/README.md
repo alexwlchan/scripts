@@ -20,7 +20,7 @@ scripts = [
     {
         "name": "get_mastodon_text.py",
         "description": """
-        print a Markdown-formatted blockquote of a Mastodon I've got open in Safari, suitable for pasting into Obsidian
+        print a Markdown-formatted blockquote of a Mastodon I've got open in Safari, suitable for saving in Obsidian
         """,
     },
     {
@@ -30,9 +30,19 @@ scripts = [
         This makes a couple of tweaks to tidy up the URL, e.g. remove tracking parameters and tidy up some Jekyll stuff for my personal site.
         """,
     },
+    {
+        "name": "get_tweet_text.py",
+        "description": """
+        print a Markdown-formatted blockquote of a tweet I've got open in Safari, suitable for saving in Obsidian
+        """,
+    },
 ]
 
-cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
+cog_helpers.create_description_table(
+    folder_name=folder_name,
+    scripts=scripts,
+    ignore_files={"urls.py"}
+)
 
 ]]]-->
 <dl>
@@ -42,7 +52,7 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </a>
   </dt>
   <dd>
-    print a Markdown-formatted blockquote of a Mastodon I've got open in Safari, suitable for pasting into Obsidian
+    print a Markdown-formatted blockquote of a Mastodon I've got open in Safari, suitable for saving in Obsidian
   </dd>
 
   <dt>
@@ -54,5 +64,14 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     print the URL in my frontmost Safari window.
     This makes a couple of tweaks to tidy up the URL, e.g. remove tracking parameters and tidy up some Jekyll stuff for my personal site.
   </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_tweet_text.py">
+      <code>get_tweet_text.py</code>
+    </a>
+  </dt>
+  <dd>
+    print a Markdown-formatted blockquote of a tweet I've got open in Safari, suitable for saving in Obsidian
+  </dd>
 </dl>
-<!-- [[[end]]] (checksum: 92cb9f2e13db3a692bf3b95b32c5c773) -->
+<!-- [[[end]]] (checksum: ef5c5561422a830e36c0bb6498b552a9) -->

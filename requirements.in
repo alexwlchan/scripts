@@ -1,6 +1,7 @@
 attrs
 black
 boto3
+bs4
 cogapp
 flake8
 flickr-photos-api
@@ -15,5 +16,6 @@ pillow_heif
 pip-tools
 pypdf
 pytest
+regex
 termcolor
 yt-dlp
