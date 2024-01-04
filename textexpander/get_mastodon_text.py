@@ -5,6 +5,7 @@ as a blockquote.
 """
 
 import datetime
+import html
 import os
 import pathlib
 import re
@@ -52,6 +53,7 @@ def normalise_text(text: str) -> str:
         r"\g<url>",
         text,
     )
+    text = html.unescape(text)
     return text
 
 

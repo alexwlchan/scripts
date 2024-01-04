@@ -17,6 +17,10 @@ from get_mastodon_text import normalise_text
             '<p>my rules for git rebase</p><p>permalink: <a href="https://wizardzines.com/comics/rules-for-rebasing/" rel="nofollow noopener noreferrer" translate="no" target="_blank"><span class="invisible">https://</span><span class="ellipsis">wizardzines.com/comics/rules-f</span><span class="invisible">or-rebasing/</span></a></p>',
             "my rules for git rebase\n\npermalink: https://wizardzines.com/comics/rules-for-rebasing/",
         ),
+        (
+            "I realize it&#39;s (comparatively) super easy to set up",
+            "I realize it's (comparatively) super easy to set up",
+        ),
     ],
 )
 def test_normalise_text(input, output):
