@@ -56,7 +56,9 @@ def normalise_text(text: str) -> str:
 
 
 if __name__ == "__main__":
-    url = subprocess.check_output(["/usr/local/bin/safari", "url"]).decode("utf8")
+    url = subprocess.check_output(
+        ["/Users/alexwlchan/.cargo/bin/safari", "url"]
+    ).decode("utf8")
 
     u = hyperlink.URL.from_text(url)
 
