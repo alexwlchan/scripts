@@ -18,6 +18,12 @@ folder_name = "textexpander"
 
 scripts = [
     {
+        "name": "copy_file_into_obsidian.py",
+        "description": """
+        get the latest download from my Desktop, copy it into Obsidian, and print a ![[…]] link to insert it into my current document.
+        """
+    },
+    {
         "name": "get_mastodon_text.py",
         "description": """
         print a Markdown-formatted blockquote of a Mastodon I've got open in Safari, suitable for saving in Obsidian
@@ -47,6 +53,15 @@ cog_helpers.create_description_table(
 ]]]-->
 <dl>
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/copy_file_into_obsidian.py">
+      <code>copy_file_into_obsidian.py</code>
+    </a>
+  </dt>
+  <dd>
+    get the latest download from my Desktop, copy it into Obsidian, and print a ![[…]] link to insert it into my current document.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_mastodon_text.py">
       <code>get_mastodon_text.py</code>
     </a>
@@ -74,4 +89,4 @@ cog_helpers.create_description_table(
     print a Markdown-formatted blockquote of a tweet I've got open in Safari, suitable for saving in Obsidian
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: ef5c5561422a830e36c0bb6498b552a9) -->
+<!-- [[[end]]] (checksum: 6e089377a506a73c7859d6e34777570a) -->
