@@ -43,6 +43,7 @@ if __name__ == "__main__":
     # username = soup.find("div", attrs={"data-testid": "User-Name"}).text.replace(f'@{handle}', '').strip()
 
     text = soup.find("div", attrs={"data-testid": "tweetText"}).text
+    text = text.replace("#", "\\#")
 
     time = datetime.datetime.fromisoformat(soup.find("time").attrs["datetime"])
 
