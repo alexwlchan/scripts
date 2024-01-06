@@ -29,4 +29,4 @@ if __name__ == "__main__":
 
     os.rename(latest_download, out_path)
 
-    print(f"![[{name}]]")
+    print(f"![[{name}]]", end="")
