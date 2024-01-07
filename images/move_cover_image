@@ -9,6 +9,13 @@ set -o nounset
 LATEST_DOWNLOAD=$(latest_download)
 LATEST_REVIEW=$(git ls-files -o --exclude-standard)
 echo "$LATEST_DOWNLOAD"
+
+if [[ "$LATEST_REVIEW" = "" ]]
+then
+  echo "Please create the review file before you copy the cover image!" >&2
+  exit 1
+fi
+
 echo "$LATEST_REVIEW"
 
 filename=$(basename -- "$LATEST_REVIEW" .md)
