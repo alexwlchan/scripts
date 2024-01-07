@@ -26,6 +26,8 @@ image_extension="${image_filename##*.}"
 
 image_path=~/repos/books.alexwlchan.net/src/covers/$year/$filename.$image_extension
 
+mkdir -p ~/repos/books.alexwlchan.net/src/covers/$year/
+
 echo "$image_path"
 mv "$LATEST_DOWNLOAD" "$image_path"
 dominant_colours "$image_path"
