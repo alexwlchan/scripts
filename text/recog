@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# Run Cog to generate the README files in this repo.
+# Regenerate any files that use Cog.
 #
-# This creates the per-README list of the individual scripts and files.
+# Among other things, this is used to create the per-README list of
+# the individual scripts and files in this repo.
 #
 # Here Cog is Ned Batchelder's file generation tool, described here:
 # https://nedbatchelder.com/code/cog
@@ -9,4 +10,19 @@
 set -o errexit
 set -o nounset
 
-find . -name README.md | sort | xargs cog -c -r
+if [[ "$@" =~ "--check" ]]; then
+  action="check_only"
+else
+  action="apply_changes"
+fi
+
+files=$(
+  find . -type f -not -path "./.venv/*" -exec grep -rl "\[\[\[cog" {} + | sort)
+
+for f in $files; do
+  if [[ "$action" == "check_only" ]]; then
+    cog -c --check "$f"
+  else
+    cog -c -r "$f"
+  fi
+done

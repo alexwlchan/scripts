@@ -37,8 +37,7 @@ jobs:
         flake8 --ignore=E501,W503
 
     - name: Check README files with Cog
-      run: |
-        find . -name README.md | xargs cog -c --check
+      run: ./text/recog --check
 
     - name: Run tests
       run: |
