@@ -3,12 +3,15 @@
 Look up a user by URL or path alias.
 
     $ fluser_lookup.py amymle
-    ID:       '82621159@N00'
-    username: 'amymle'
-    realname: 'Amy Esau'
+    ID:       82621159@N00
+    username: amymle
+    realname: Amy Esau
+    profile:  https://www.flickr.com/people/amymle/
+    photos:   https://www.flickr.com/photos/amymle/
 
 """
 
+import re
 import sys
 
 from flickr_photos_api import FlickrPhotosApi
@@ -27,23 +30,14 @@ if __name__ == "__main__":
     )
 
     if USER_TEXT.startswith("https://"):
-        resp = api.call("flickr.urls.lookupUser", url=USER_TEXT)
+        user = api.lookup_user_by_url(url=USER_TEXT)
+    elif re.match(USER_TEXT, "^[0-9]{7}@N[0-9]{2}$"):
+        user = api.lookup_user_by_id(user_id=USER_TEXT)
     else:
-        resp = api.call(
-            method="flickr.urls.lookupUser",
-            params={"url": f"https://www.flickr.com/people/{USER_TEXT}"},
-        )
+        user = api.lookup_user_by_url(url=f"https://www.flickr.com/people/{USER_TEXT}")
 
-    user_id = resp.find(".//user").attrib["id"]
-    username = resp.find(".//username").text
-
-    resp = api.call(method="flickr.people.getInfo", params={"user_id": user_id})
-
-    try:
-        realname = resp.find(".//realname").text
-    except AttributeError:
-        realname = None
-
-    print(f"ID:       {user_id!r}")
-    print(f"username: {username!r}")
-    print(f"realname: {(realname or '<none>')!r}")
+    print(f"ID:       {user['id']}")
+    print(f"username: {user['username']}")
+    print(f"realname: {user['realname'] or '<none>'}")
+    print(f"profile:  {user['profile_url']}")
+    print(f"photos:   {user['photos_url']}")
