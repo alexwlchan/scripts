@@ -42,6 +42,12 @@ scripts = [
         print a Markdown-formatted blockquote of a tweet I've got open in Safari, suitable for saving in Obsidian
         """,
     },
+    {
+        "name": "get_wikipedia_quote.py",
+        "description": """
+        get URL and first paragraph of a Wikipedia entry I have open in Safari, suitable for saving in Obsidian.
+        """,
+    },
 ]
 
 cog_helpers.create_description_table(
@@ -88,5 +94,14 @@ cog_helpers.create_description_table(
   <dd>
     print a Markdown-formatted blockquote of a tweet I've got open in Safari, suitable for saving in Obsidian
   </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_wikipedia_quote.py">
+      <code>get_wikipedia_quote.py</code>
+    </a>
+  </dt>
+  <dd>
+    get URL and first paragraph of a Wikipedia entry I have open in Safari, suitable for saving in Obsidian.
+  </dd>
 </dl>
-<!-- [[[end]]] (checksum: 6e089377a506a73c7859d6e34777570a) -->
+<!-- [[[end]]] (checksum: 24db92a20bd6747bf2e7768f276dc414) -->
