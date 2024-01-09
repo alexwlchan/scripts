@@ -24,6 +24,12 @@ scripts = [
         """
     },
     {
+        "name": "create_books_commit_message",
+        "description": """
+        create a commit message for when I'm adding new books to my book tracker.
+        """
+    },
+    {
         "name": "get_mastodon_text.py",
         "description": """
         print a Markdown-formatted blockquote of a Mastodon I've got open in Safari, suitable for saving in Obsidian
@@ -68,6 +74,15 @@ cog_helpers.create_description_table(
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/create_books_commit_message">
+      <code>create_books_commit_message</code>
+    </a>
+  </dt>
+  <dd>
+    create a commit message for when I'm adding new books to my book tracker.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_mastodon_text.py">
       <code>get_mastodon_text.py</code>
     </a>
@@ -104,4 +119,4 @@ cog_helpers.create_description_table(
     get URL and first paragraph of a Wikipedia entry I have open in Safari, suitable for saving in Obsidian.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 24db92a20bd6747bf2e7768f276dc414) -->
+<!-- [[[end]]] (checksum: ad35004c0b69b4421e1d303061102eb9) -->
