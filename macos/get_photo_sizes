@@ -1,0 +1,61 @@
+#!/usr/bin/env swift
+// Print the size of every item in my Photos Library.
+// See https://alexwlchan.net/2023/finding-big-photos/
+
+import Photos
+
+struct AssetData: Codable {
+  var localIdentifier: String
+  var originalFilename: String
+  var fileSize: Int64
+}
+
+/// Returns a list of assets in the Photos Library.
+///
+/// The list is sorted by file size, from largest to smallest.
+func getAssetsBySize() -> [AssetData] {
+  var allAssets: [AssetData] = []
+
+  let options: PHFetchOptions? = nil
+
+  PHAsset.fetchAssets(with: options)
+    .enumerateObjects({ (asset, _, _) in
+      let resource = PHAssetResource.assetResources(for: asset)[0]
+
+      let data = AssetData(
+        localIdentifier: asset.localIdentifier,
+        originalFilename: resource.originalFilename,
+        fileSize: resource.value(forKey: "fileSize") as! Int64
+      )
+
+      allAssets.append(data)
+    })
+
+  allAssets.sort { $0.fileSize > $1.fileSize }
+
+  return allAssets
+}
+
+/// Quick extension to allow left-padding a string in Swift
+///
+/// By user2878850 on Stack Overflow:
+/// https://stackoverflow.com/a/69859859/1558022
+extension String {
+  func leftPadding(toLength: Int, withPad: String) -> String {
+    String(
+      String(reversed())
+        .padding(toLength: toLength, withPad: withPad, startingAt: 0)
+        .reversed()
+    )
+  }
+}
+
+let bcf = ByteCountFormatter()
+
+for photo in getAssetsBySize() {
+  let size =
+    bcf
+      .string(fromByteCount: photo.fileSize)
+      .leftPadding(toLength: 8, withPad: " ")
+  print("\(size)  \(photo.originalFilename)")
+}

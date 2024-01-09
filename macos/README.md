@@ -37,6 +37,10 @@ scripts = [
         "description": "prints the current Focus mode"
     },
     {
+        "name": "get_photo_sizes",
+        "description": "print the size of every item in my Photos Library."
+    },
+    {
         "name": "get_live_text [image]",
         "description": "get OCR'd text for a single image using Live Text"
     },
@@ -113,6 +117,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_photo_sizes">
+      <code>get_photo_sizes</code>
+    </a>
+  </dt>
+  <dd>
+    print the size of every item in my Photos Library.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_live_text">
       <code>get_live_text [image]</code>
     </a>
@@ -160,4 +173,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: b76affe4f83859dc60b4ef333666ce0f) -->
+<!-- [[[end]]] (checksum: 08c7ada61eb1b97fe419046dcccb8b1f) -->
