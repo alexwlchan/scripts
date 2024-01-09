@@ -1,17 +1,14 @@
 #!/usr/bin/python3
 
 import os
-import subprocess
 import sys
 
 import httpx
 
+from urls import get_safari_url
 
-def get_safari_url(window: str) -> str:
-    cmd = ["/Users/alexwlchan/.cargo/bin/safari", "url", "--window", window]
 
-    url = subprocess.check_output(cmd).decode("utf8")
-
+def normalise_url(url: str) -> str:
     # If this is a URL at http://localhost:5757, it's probably the
     # local web server for Jekyll running my personal site.
     #
@@ -35,6 +32,14 @@ def get_safari_url(window: str) -> str:
                 + " %}"
             )
 
+    # If this is a URL at http://localhost:5959/, it's probably the
+    # local web server for my book tracker.
+    #
+    # Rather than printing the raw URL, print a relative URL that's safe
+    # to use in published links.
+    if url.startswith("http://localhost:5959/"):
+        return url.replace("http://localhost:5959", "")
+
     # If it's a Mastodon post, we want to retrieve the URL of the original
     # post rather than the copy of it on my server.
     if url.startswith("https://social.alexwlchan.net") and not url.startswith(
@@ -54,4 +59,6 @@ def get_safari_url(window: str) -> str:
 if __name__ == "__main__":
     window = sys.argv[1]
 
-    print(get_safari_url(window=window), end="")
+    url = get_safari_url(window=int(window))
+    url = normalise_url(url)
+    print(url, end="")
