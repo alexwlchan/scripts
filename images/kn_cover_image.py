@@ -172,7 +172,7 @@ if __name__ == "__main__":
 
     if im.info.get("icc_profile") is not None:
         subprocess.check_call(
-            ["srgbify", out_path],
+            ["srgbify.py", out_path],
             stdout=subprocess.DEVNULL,
         )
 
