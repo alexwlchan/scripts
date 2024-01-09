@@ -37,7 +37,7 @@ function isSafeToClose(url) {
     url.startsWith("http://localhost:3000/") ||
     url.startsWith("https://app.fastmail.com/mail/Inbox/?u=") ||
     url.startsWith("https://github.com/Flickr-Foundation/") ||
-    url.startsWith("https://zoom.us/") ||
+    url.startsWith("https://zoom.us/")
   ) || (
     url === 'https://alexwlchan.net/' ||
     url === 'https://arstechnica.com/' ||
