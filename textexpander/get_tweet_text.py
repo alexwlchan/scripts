@@ -11,9 +11,15 @@ import sys
 import textwrap
 
 import bs4
+import httpx
 import hyperlink
 
 from urls import get_safari_url
+
+
+def get_tco_redirect(url: str) -> str:
+    resp = httpx.head(url)
+    return resp.headers["location"]
 
 
 if __name__ == "__main__":
@@ -40,10 +46,15 @@ if __name__ == "__main__":
 
     soup = bs4.BeautifulSoup(html, "html.parser")
 
-    # username = soup.find("div", attrs={"data-testid": "User-Name"}).text.replace(f'@{handle}', '').strip()
-
     text = soup.find("div", attrs={"data-testid": "tweetText"}).text
     text = text.replace("#", "\\#")
+
+    # Look for a link to an external web page
+    card = soup.find("div", attrs={"data-testid": "card.wrapper"})
+
+    if card is not None:
+        linked_url = card.find("a").attrs["href"]
+        text += "\n\n" + get_tco_redirect(linked_url)
 
     time = datetime.datetime.fromisoformat(soup.find("time").attrs["datetime"])
 
