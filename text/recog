@@ -20,7 +20,8 @@ fi
 #   -I = ignore binary files
 #
 files=$(
-  find . -type f -not -path "./.venv/*" -exec grep -rIl "\[\[\[cog" {} + | sort)
+  find . -type f -not -path "./.venv/*" -not -path "./.git/*" \
+  -exec grep -rIl "\[\[\[cog" {} + | sort)
 
 for f in $files; do
   if [[ "$action" == "check_only" ]]; then
