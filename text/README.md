@@ -45,6 +45,10 @@ scripts = [
         """,
     },
     {
+        "usage": "longlines [PATH]",
+        "description": "print the line numbers of the longest lines in the file."
+    },
+    {
         "usage": "midline [PATH]",
         "description": "print the line in the middle of a file, e.g. if the file has 5 lines, it prints line 3"
     },
@@ -144,6 +148,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/longlines">
+      <code>longlines [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    print the line numbers of the longest lines in the file.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/midline">
       <code>midline [PATH]</code>
     </a>
@@ -237,4 +250,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: bc564280bcf97df83fad1af796670312) -->
+<!-- [[[end]]] (checksum: ca2352d23f305660d76ce3000c8e98df) -->
