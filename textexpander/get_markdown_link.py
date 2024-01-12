@@ -28,6 +28,10 @@ def get_reference_label(url: str) -> str:
         return u.path[1]
 
     # If we can't deduce a default link name, prompt the user for input.
+    #
+    # Note: this seems to steal focus from the current app, prevent
+    # TextExpander from actually filling in the snippet.
+    # TODO: Investigate further!
     cmd = [
         "osascript",
         "-e",
