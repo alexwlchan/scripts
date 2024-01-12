@@ -61,6 +61,12 @@ scripts = [
         "description": "removes the `list` query parameter from a YouTube URL; I use it with `youtube-dl`",
     },
     {
+        "name": "pp_xml < [TEXT]",
+        "description": """
+        alias for <code>xmllint --format -</code>, which pretty-prints a blob of XML.
+        """,
+    },
+    {
         "name": "r",
         "description": """
         an alias for `rg`, aka <a href="https://geoff.greer.fm/ag/">the Silver Searcher</a>. (Yes, I really am too lazy to type two whole characters.)
@@ -104,7 +110,7 @@ scripts = [
     },
 ]
 
-cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
+cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts, ignore_files={'prettyjson'})
 
 ]]]-->
 <dl>
@@ -184,6 +190,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/pp_xml">
+      <code>pp_xml < [TEXT]</code>
+    </a>
+  </dt>
+  <dd>
+    alias for <code>xmllint --format -</code>, which pretty-prints a blob of XML.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/r">
       <code>r</code>
     </a>
@@ -250,4 +265,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: ca2352d23f305660d76ce3000c8e98df) -->
+<!-- [[[end]]] (checksum: d635f5a163a958b2746e4ef50d7cf2d9) -->
