@@ -30,6 +30,12 @@ scripts = [
         """
     },
     {
+        "name": "get_markdown_link.py",
+        "description": """
+        print a reference-style Markdown link to my frontmost Safari URL
+        """,
+    },
+    {
         "name": "get_mastodon_text.py",
         "description": """
         print a Markdown-formatted blockquote of a Mastodon I've got open in Safari, suitable for saving in Obsidian
@@ -83,6 +89,15 @@ cog_helpers.create_description_table(
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_markdown_link.py">
+      <code>get_markdown_link.py</code>
+    </a>
+  </dt>
+  <dd>
+    print a reference-style Markdown link to my frontmost Safari URL
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_mastodon_text.py">
       <code>get_mastodon_text.py</code>
     </a>
@@ -119,4 +134,4 @@ cog_helpers.create_description_table(
     get URL and first paragraph of a Wikipedia entry I have open in Safari, suitable for saving in Obsidian.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: ad35004c0b69b4421e1d303061102eb9) -->
+<!-- [[[end]]] (checksum: bde87b2a782ccef4c17c11eb80e2f099) -->
