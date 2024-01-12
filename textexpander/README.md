@@ -30,6 +30,12 @@ scripts = [
         """
     },
     {
+        "name": "create_til_commit_message",
+        "description": """
+        create a commit message for when I'm updating my TIL (Today-I-Learned) repository.
+        """
+    },
+    {
         "name": "get_markdown_link.py",
         "description": """
         print a reference-style Markdown link to my frontmost Safari URL
@@ -89,6 +95,15 @@ cog_helpers.create_description_table(
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/create_til_commit_message">
+      <code>create_til_commit_message</code>
+    </a>
+  </dt>
+  <dd>
+    create a commit message for when I'm updating my TIL (Today-I-Learned) repository.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_markdown_link.py">
       <code>get_markdown_link.py</code>
     </a>
@@ -134,4 +149,4 @@ cog_helpers.create_description_table(
     get URL and first paragraph of a Wikipedia entry I have open in Safari, suitable for saving in Obsidian.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: bde87b2a782ccef4c17c11eb80e2f099) -->
+<!-- [[[end]]] (checksum: 034550064cf7e815871e16bf9097229a) -->
