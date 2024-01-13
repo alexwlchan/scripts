@@ -14,5 +14,5 @@ set -o nounset
 pushd ~/repos/books.alexwlchan.net >/dev/null
     markdown_file=$(git diff --cached --name-only | grep ".md$" | head -n 1)
     title=$(grep 'title:' "$markdown_file" | head -n 1 | sed 's/^ *title: *//')
-    echo -n "Create entry for \"$title\""
+    echo -n "Add review for \"$title\""
 popd >/dev/null
