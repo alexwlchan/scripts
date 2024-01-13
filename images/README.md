@@ -233,6 +233,16 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/download_cover_image">
+      <code>download_cover_image</code>
+    </a>
+  </dt>
+  <dd>
+    copy an image from my Desktop folder into my book tracker.
+    This is very specific to my setup and unlikely to be useful to anyone else.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/images_only_pdf.py">
       <code>images_only_pdf.py [PATH]</code>
     </a>
@@ -263,16 +273,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
         </tr>
       </table>
     </p>
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/images/move_cover_image">
-      <code>move_cover_image</code>
-    </a>
-  </dt>
-  <dd>
-    copy an image from my Desktop folder into my book tracker.
-    This is very specific to my setup and unlikely to be useful to anyone else.
   </dd>
 
   <dt>
@@ -341,4 +341,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     I don’t use this script very often, but I checked it in because I thought it was a neat trick I didn’t want to forget.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 50c5b16562f339dec3e3f32fbb6e21a5) -->
+<!-- [[[end]]] (checksum: dc1a63324c84a51d54b49276ba71b463) -->
