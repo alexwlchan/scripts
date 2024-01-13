@@ -109,6 +109,9 @@ def create_description_table(
         if f.startswith(("test_", "_", ".")):
             continue
 
+        if f.endswith((".png", ".db")):
+            continue
+
         if f in ignore_files:
             continue
 

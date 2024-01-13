@@ -4,6 +4,7 @@ boto3
 beautifulsoup4
 cogapp
 datasette
+datasette-render-image-tags
 flake8
 flickr-photos-api
 flickr-url-parser
@@ -18,5 +19,7 @@ pip-tools
 pypdf
 pytest
 regex
+sqlite-utils
 termcolor
+tqdm
 yt-dlp
