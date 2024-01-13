@@ -3,6 +3,7 @@ black
 boto3
 beautifulsoup4
 cogapp
+datasette
 flake8
 flickr-photos-api
 flickr-url-parser
