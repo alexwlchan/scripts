@@ -1,7 +1,7 @@
 attrs
 black
 boto3
-bs4
+beautifulsoup4
 cogapp
 flake8
 flickr-photos-api

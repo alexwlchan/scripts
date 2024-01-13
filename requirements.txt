@@ -9,7 +9,7 @@ anyio==4.1.0
 attrs==23.1.0
     # via -r requirements.in
 beautifulsoup4==4.12.2
-    # via bs4
+    # via -r requirements.in
 black==23.11.0
     # via -r requirements.in
 boto3==1.33.11
@@ -20,8 +20,6 @@ botocore==1.33.11
     #   s3transfer
 brotli==1.1.0
     # via yt-dlp
-bs4==0.0.1
-    # via -r requirements.in
 build==1.0.3
     # via pip-tools
 certifi==2023.11.17
