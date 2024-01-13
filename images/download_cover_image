@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-# Copy an image from my Desktop folder into my book tracker.
+# Copy an image from my open browser tab into my book tracker.
 #
 # This is very specific to my setup and unlikely to be useful to anyone else.
 
 set -o errexit
 set -o nounset
 
-LATEST_DOWNLOAD=$(latest_download)
 LATEST_REVIEW=$(git ls-files -o --exclude-standard)
-echo "$LATEST_DOWNLOAD"
 
 if [[ "$LATEST_REVIEW" = "" ]]
 then
@@ -21,7 +19,9 @@ echo "$LATEST_REVIEW"
 filename=$(basename -- "$LATEST_REVIEW" .md)
 year=$(basename -- $(dirname -- "$LATEST_REVIEW"))
 
-image_filename=$(basename -- "$LATEST_DOWNLOAD")
+url="$(/Users/alexwlchan/.cargo/bin/safari url)"
+
+image_filename=$(basename -- "$url")
 image_extension="${image_filename##*.}"
 
 image_path=~/repos/books.alexwlchan.net/src/covers/$year/$filename.$image_extension
@@ -29,5 +29,5 @@ image_path=~/repos/books.alexwlchan.net/src/covers/$year/$filename.$image_extens
 mkdir -p "$(dirname "$image_path")"
 
 echo "$image_path"
-mv "$LATEST_DOWNLOAD" "$image_path"
+curl "$url" > "$image_path"
 dominant_colours "$image_path"

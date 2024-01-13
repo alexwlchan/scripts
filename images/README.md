@@ -77,6 +77,13 @@ scripts = [
         """
     },
     {
+        "name": "download_cover_image",
+        "description": """
+        copy an image from my Desktop folder into my book tracker.
+        This is very specific to my setup and unlikely to be useful to anyone else.
+        """
+    },
+    {
         "usage": "images_only_pdf.py [PATH]",
         "description": """
         take a PDF, and create a new PDF which just has the images filling the page.
@@ -101,13 +108,6 @@ scripts = [
             </tr>
           </table>
         </p>
-        """
-    },
-    {
-        "name": "move_cover_image",
-        "description": """
-        copy an image from my Desktop folder into my book tracker.
-        This is very specific to my setup and unlikely to be useful to anyone else.
         """
     },
     {
