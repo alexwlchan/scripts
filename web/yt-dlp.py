@@ -10,7 +10,6 @@ See https://alexwlchan.net/2020/how-to-do-parallel-downloads-with-youtube-dl/
 """
 
 import os
-import shlex
 import subprocess
 import sys
 
@@ -56,7 +55,7 @@ if __name__ == "__main__":
             [yt_dlp_path, "--get-id", youtube_url], stdout=subprocess.PIPE
         )
 
-        subprocess.Popen(
+        subprocess.check_call(
             ["xargs", "-I", "{}", "-P", "5", yt_dlp_path]
             + remaining_args
             + ["https://youtube.com/watch?v={}"],
