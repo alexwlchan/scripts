@@ -61,6 +61,7 @@ prepend_to_path ~/repos/scripts/installers
 prepend_to_path ~/repos/scripts/macos
 prepend_to_path ~/repos/scripts/terraform
 prepend_to_path ~/repos/scripts/text
+prepend_to_path ~/repos/scripts/web
 
 prepend_to_path ~/repos/ttml2srt
 
