@@ -11,6 +11,7 @@ flickr-url-parser
 httpx
 humanize
 hyperlink
+instaloader
 keyring
 naturalsort==1.5.1
 Pillow

@@ -92,6 +92,8 @@ idna==3.6
     #   requests
 iniconfig==2.0.0
     # via pytest
+instaloader==4.10.3
+    # via -r requirements.in
 itsdangerous==2.1.2
     # via
     #   asgi-csrf
@@ -169,7 +171,9 @@ pyyaml==6.0.1
 regex==2023.12.25
     # via -r requirements.in
 requests==2.31.0
-    # via yt-dlp
+    # via
+    #   instaloader
+    #   yt-dlp
 s3transfer==0.8.2
     # via boto3
 six==1.16.0

@@ -18,6 +18,12 @@ folder_name = "web"
 
 scripts = [
     {
+        "usage": "download_instagram.py [POST_URL]",
+        "description": """
+        download the photos from an Instagram post.
+        """
+    },
+    {
         "name": "imdown",
         "description": """
         I run this when my Internet connection goes down, and it makes an audible "ping" when it comes back up.
@@ -41,6 +47,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
 
 ]]]-->
 <dl>
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/download_instagram.py">
+      <code>download_instagram.py [POST_URL]</code>
+    </a>
+  </dt>
+  <dd>
+    download the photos from an Instagram post.
+  </dd>
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/imdown">
       <code>imdown</code>
@@ -68,4 +83,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 248e56c72ea624b8450e3e39e63663e1) -->
+<!-- [[[end]]] (checksum: ba9551c2698692a04b0fc4c5a45c7cf5) -->
