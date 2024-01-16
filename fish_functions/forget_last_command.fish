@@ -6,7 +6,7 @@
 #
 # See https://alexwlchan.net/2023/forgetful-fish/
 # See https://github.com/fish-shell/fish-shell/issues/10066
-function forget_last_command
+function forget_last_command --description "Remove the last-typed command from my fish history"
     set last_typed_command (history --max 1)
     history delete --exact --case-sensitive "$last_typed_command"
     history save
