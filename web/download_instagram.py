@@ -9,7 +9,7 @@ import hyperlink
 import instaloader
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         url = sys.argv[1]
     except IndexError:
@@ -17,8 +17,8 @@ if __name__ == '__main__':
 
     url = hyperlink.DecodedURL.from_text(url)
 
-    assert url.host == 'www.instagram.com', url
-    assert url.path[0] == 'p', url
+    assert url.host == "www.instagram.com", url
+    assert url.path[0] == "p", url
 
     post_id = url.path[1]
 
