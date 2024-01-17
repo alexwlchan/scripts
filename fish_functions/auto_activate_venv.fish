@@ -15,7 +15,7 @@ function auto_activate_venv --description "Auto activate/deactivate virtualenv w
     # Case #1: cd'd into a folder which has a .venv in its root.
     #
     # Activate this virtualenv if it's not already activated.
-    if test -z "$REPO_ROOT"; and test -d "$(pwd)/.venv"
+    if test -d "$(pwd)/.venv"
         if [ "$VIRTUAL_ENV" != "$(pwd)/.venv" ]
             source "$(pwd)/.venv/bin/activate.fish" &>/dev/null
         end
