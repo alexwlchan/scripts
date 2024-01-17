@@ -146,7 +146,16 @@ end
 function __create_python_module_alias
     set module_name $argv[1]
 
-    eval "alias $module_name=\"~/repos/scripts/.venv/bin/$module_name\""
+    # If we're in a virtualenv where this module is installed, we
+    # should prefer the virtualenv version over the version in scripts.
+    function $module_name --inherit-variable module_name
+        if test -n (which $module_name)
+            set executable (which $module_name)
+            $executable $argv
+        else
+            ~/repos/scripts/.venv/bin/$module_name $argv
+        end
+    end
 end
 
 __create_bash_script_alias flickr/flapi.sh
