@@ -85,7 +85,7 @@ set -g -x PIP_REQUIRE_VIRTUALENV true
 # See https://fishshell.com/docs/current/language.html#event
 # See https://alexwlchan.net/2023/fish-venv/
 #
-function __auto_auto_activate_venv --on-variable PWD --description "Auto activate/deactivate virtualenv when I change directories"
+function __auto_activate_venv --on-variable PWD --description "Auto activate/deactivate virtualenv when I change directories"
     auto_activate_venv
 end
 
