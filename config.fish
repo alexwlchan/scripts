@@ -90,6 +90,18 @@ function __auto_activate_venv --on-variable PWD --description "Auto activate/dea
 end
 
 
+# This updates the Git index whenever I 'cd' into a new directory.
+#
+# Not all directories are Git repos, so if it returns an error, hide it.
+#
+# This is needed for showing my Git branch in my prompt: otherwise I see
+# an asterisk for uncommitted changes until I interact with Git somehow,
+# even though there aren't any.
+function __refresh_git_indexes --on-variable PWD
+    git update-index --refresh >/dev/null 2>&1
+end
+
+
 # Load macOS-specific utilities
 if [ (uname -s) = Darwin ]
     # Provide a convenient alias for the front URL in both browsers
