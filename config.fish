@@ -164,7 +164,6 @@ function __create_python_module_alias
         which $module_name >/dev/null 2>&1
 
         if test $status -eq 0
-            echo "it's in the venv!"
             set executable (which $module_name)
             $executable $argv
         else
