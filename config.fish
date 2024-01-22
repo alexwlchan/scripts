@@ -161,7 +161,10 @@ function __create_python_module_alias
     # If we're in a virtualenv where this module is installed, we
     # should prefer the virtualenv version over the version in scripts.
     function $module_name --inherit-variable module_name
-        if test -n (which $module_name)
+        which $module_name >/dev/null 2>&1
+
+        if test $status -eq 0
+            echo "it's in the venv!"
             set executable (which $module_name)
             $executable $argv
         else
