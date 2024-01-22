@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import os
+import subprocess
 import sys
 
 import httpx
@@ -56,9 +57,21 @@ def normalise_url(url: str) -> str:
     return url
 
 
+def is_frontmost_app_discord():
+    return b"Discord.app" in subprocess.check_output(
+        ["osascript", "-e", "get path to frontmost application"]
+    )
+
+
 if __name__ == "__main__":
     window = sys.argv[1]
 
     url = get_safari_url(window=int(window))
     url = normalise_url(url)
+
+    # I never want to paste Twitter links into Discord; I want fxtwitter
+    # so I get the nice link previews.
+    if url.startswith("https://twitter.com/") and is_frontmost_app_discord():
+        url = url.replace("https://twitter.com/", "https://fxtwitter.com/")
+
     print(url, end="")
