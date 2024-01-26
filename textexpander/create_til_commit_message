@@ -5,14 +5,9 @@ set -o errexit
 set -o nounset
 
 pushd ~/repos/til >/dev/null
-    markdown_file=$(git diff --cached --name-only | grep -v README.md | head -n 1)
-    title=$(basename "$markdown_file")
+    markdown_file=$(git diff --cached --name-only | head -n 1)
 
-    # Strip trailing double quotes from the end
-    title="${title%\"}"
-
-    # Strip the .md file extension
-    title="${title%.md}"
+    title=$(grep 'title:' "$markdown_file" | sed 's/^title: //')
 
     # Use printf rather than echo so it prints Unicode escapes,
     # e.g. "that\342\200\231s" ~> "that’s"
