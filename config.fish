@@ -195,5 +195,6 @@ __create_python_script_alias text/sumsizes.py
 __create_python_script_alias web/download_instagram.py
 __create_python_script_alias web/yt-dlp.py
 
+__create_python_module_alias cog
 __create_python_module_alias datasette
 __create_python_module_alias keyring
