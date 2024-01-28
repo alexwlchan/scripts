@@ -53,7 +53,7 @@ scripts = [
         "description": "print the line in the middle of a file, e.g. if the file has 5 lines, it prints line 3"
     },
     {
-        "usage": "natsize < [NUMBER]",
+        "usage": "natsize.py < [NUMBER]",
         "description": "prints a numeric file size as a human-readable string, e.g. `32036032` becomes `32.0 MB`",
     },
     {
@@ -172,8 +172,8 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts, i
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/text/natsize">
-      <code>natsize < [NUMBER]</code>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/natsize.py">
+      <code>natsize.py < [NUMBER]</code>
     </a>
   </dt>
   <dd>
@@ -265,4 +265,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts, i
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: d635f5a163a958b2746e4ef50d7cf2d9) -->
+<!-- [[[end]]] (checksum: 6093300a8e3cc8d5dd508f4a3eb4e3cc) -->
