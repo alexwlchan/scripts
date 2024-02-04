@@ -48,6 +48,7 @@ if __name__ == "__main__":
 
     text = soup.find("div", attrs={"data-testid": "tweetText"}).text
     text = text.replace("#", "\\#")
+    text = text.replace("[", "\\[")
 
     # Look for a link to an external web page
     card = soup.find("div", attrs={"data-testid": "card.wrapper"})
