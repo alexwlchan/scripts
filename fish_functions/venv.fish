@@ -16,4 +16,8 @@ function venv --description "Create and activate a new virtual environment"
     if test -e .git
         append_to_file_if_not_exists ".git/info/exclude" ".venv"
     end
+
+    # Tell Time Machine that it doesn't need to both backing up the
+    # virtualenv directory.
+    tmutil addexclusion .venv
 end
