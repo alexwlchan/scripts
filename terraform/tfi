@@ -5,3 +5,10 @@ set -o errexit
 set -o nounset
 
 tf init "$@"
+
+# Tell Time Machine that it doesn't need to both backing up the
+# .terraform directory.
+if [[ -d ".terraform" ]]
+then
+  tmutil addexclusion .terraform
+end
