@@ -48,19 +48,6 @@ scripts = [
         """,
     },
     {
-        "name": "get_safari_url.py",
-        "description": """
-        print the URL in my frontmost Safari window.
-        This makes a couple of tweaks to tidy up the URL, e.g. remove tracking parameters and tidy up some Jekyll stuff for my personal site.
-        """,
-    },
-    {
-        "name": "get_tweet_text.py",
-        "description": """
-        print a Markdown-formatted blockquote of a tweet I've got open in Safari, suitable for saving in Obsidian
-        """,
-    },
-    {
         "name": "get_wikipedia_quote.py",
         "description": """
         get URL and first paragraph of a Wikipedia entry I have open in Safari, suitable for saving in Obsidian.
@@ -122,25 +109,6 @@ cog_helpers.create_description_table(
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_safari_url.py">
-      <code>get_safari_url.py</code>
-    </a>
-  </dt>
-  <dd>
-    print the URL in my frontmost Safari window.
-    This makes a couple of tweaks to tidy up the URL, e.g. remove tracking parameters and tidy up some Jekyll stuff for my personal site.
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_tweet_text.py">
-      <code>get_tweet_text.py</code>
-    </a>
-  </dt>
-  <dd>
-    print a Markdown-formatted blockquote of a tweet I've got open in Safari, suitable for saving in Obsidian
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/textexpander/get_wikipedia_quote.py">
       <code>get_wikipedia_quote.py</code>
     </a>
@@ -149,4 +117,4 @@ cog_helpers.create_description_table(
     get URL and first paragraph of a Wikipedia entry I have open in Safari, suitable for saving in Obsidian.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 034550064cf7e815871e16bf9097229a) -->
+<!-- [[[end]]] (checksum: 75dbd3e0c7b1be65eb5c169399792cc4) -->
