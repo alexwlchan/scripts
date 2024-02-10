@@ -1,0 +1,27 @@
+#!/usr/bin/env osascript -l JavaScript
+// A script to list all my open Safari tabs.
+
+safari = Application("Safari");
+
+// Generates all the window/tab/URLs in Safari.
+//
+// This runs in reverse window/tab index order: that is, windows are returned
+// bottom to top, and tabs from right to left.
+function* tabGenerator() {
+  window_count = safari.windows.length;
+
+  for (window_index = window_count - 1; window_index >= 0; window_index--) {
+    window = safari.windows[window_index];
+
+    tab_count = window.tabs.length;
+
+    for (tab_index = tab_count - 1; tab_index >= 0; tab_index--) {
+      tab = window.tabs[tab_index];
+      yield tab.url();
+    }
+  }
+}
+
+for (const url of tabGenerator()) {
+  console.log(url);
+}

@@ -2,4 +2,5 @@ close_tabs linguist-language=JavaScript
 get_focus_mode linguist-language=JavaScript
 get_live_text linguist-language=Swift
 get_photo_sizes linguist-language=Swift
+list_safari_tabs linguist-language=JavaScript
 set_accent_colour linguist-language=Swift

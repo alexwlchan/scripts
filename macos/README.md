@@ -45,6 +45,10 @@ scripts = [
         "description": "get OCR'd text for a single image using Live Text"
     },
     {
+        "name": "list_safari_tabs",
+        "description": "print the URL of every tab I have open in Safari"
+    },
+    {
         "name": "obnote",
         "description": "print the path to the note I currently have open in [Obsidian](https://obsidian.md/), if any."
     },
@@ -135,6 +139,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/list_safari_tabs">
+      <code>list_safari_tabs</code>
+    </a>
+  </dt>
+  <dd>
+    print the URL of every tab I have open in Safari
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/obnote">
       <code>obnote</code>
     </a>
@@ -173,4 +186,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 08c7ada61eb1b97fe419046dcccb8b1f) -->
+<!-- [[[end]]] (checksum: c269506c592ac8bcea9ed47784bf7616) -->
