@@ -7,13 +7,24 @@ import subprocess
 import sys
 import tarfile
 
+import hyperlink
+
 
 BACKUP_ROOT = pathlib.Path("/Volumes/Media (Sapphire)/backups/ao3")
 
 
-def save_ao3_url(url: str):
+def get_ao3_id(url: str) -> str:
     # e.g. 'https://archiveofourown.org/works/1234' ~> '1234'
-    ao3_id = url.split("/")[-1]
+    u = hyperlink.DecodedURL.from_text(url)
+
+    if u.path[0] == 'works' and u.path[1].isnumeric():
+        return u.path[1]
+    else:
+        raise ValueError(url)
+
+
+def save_ao3_url(url: str):
+    ao3_id = get_ao3_id(url)
 
     # Check if the fic is already downloaded -- if it is, nothing to do.
     if any(
