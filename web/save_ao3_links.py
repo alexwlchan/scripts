@@ -17,7 +17,7 @@ def get_ao3_id(url: str) -> str:
     # e.g. 'https://archiveofourown.org/works/1234' ~> '1234'
     u = hyperlink.DecodedURL.from_text(url)
 
-    if u.path[0] == 'works' and u.path[1].isnumeric():
+    if u.path[0] == "works" and u.path[1].isnumeric():
         return u.path[1]
     else:
         raise ValueError(url)

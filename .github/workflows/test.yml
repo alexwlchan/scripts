@@ -44,3 +44,4 @@ jobs:
         py.test aws/test_s3tree.py
         py.test text/test_fix_twitter_thread.py
         py.test textexpander/test_get_mastodon_text.py
+        py.test web/test_save_ao3_links.py
