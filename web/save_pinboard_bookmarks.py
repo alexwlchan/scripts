@@ -107,7 +107,7 @@ def get_cache_ids(username: str, password: str) -> dict[str, str]:
         if "earlier" not in pagination_link.text:
             break
 
-        url = f"https://pinboard.in" + pagination_link.attrs["href"]
+        url = "https://pinboard.in" + pagination_link.attrs["href"]
 
     return cache_ids
 
