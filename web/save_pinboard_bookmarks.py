@@ -27,7 +27,7 @@ def write_to_file(name: str, contents: str) -> None:
     path.write_text(contents)
 
 
-def get_bookmarks_json(username: str, password: str) -> str:
+def get_bookmarks_data(username: str, password: str) -> str:
     """
     Call the Pinboard API to get a complete list of my bookmarks.
 
@@ -41,9 +41,7 @@ def get_bookmarks_json(username: str, password: str) -> str:
 
     resp.raise_for_status()
 
-    json_string = json.dumps(resp.json(), indent=2, sort_keys=True)
-
-    return json_string
+    return resp.json()
 
 
 def get_cache_ids(username: str, password: str) -> dict[str, str]:
@@ -191,25 +189,40 @@ if __name__ == "__main__":
     now = datetime.date.today().strftime("%Y-%m-%d")
 
     print("*** Getting a JSON copy of my bookmarks data")
-    json_string = get_bookmarks_json(username, password)
+    bookmarks = get_bookmarks_data(username, password)
+    json_string = json.dumps(bookmarks, indent=2, sort_keys=True)
 
     for name in (f"bookmarks.{now}.json", "bookmarks.json"):
         write_to_file(name, contents=json_string)
 
     print("")
 
-    print("*** Getting a list of cache IDs")
-    all_cache_ids = get_cache_ids(username, password)
+    # print("*** Getting a list of cache IDs")
+    # all_cache_ids = get_cache_ids(username, password)
+    #
+    # for name in (f"cache_ids.{now}.json", "cache_ids.json"):
+    #     write_to_file(name, contents=json.dumps(all_cache_ids))
+    #
+    # all_cache_ids = json.load(open(BACKUP_ROOT / "cache_ids.json"))
+    #
+    # print("")
+    #
+    # print("*** Saving archive files using wget")
+    #
+    # with wget_context(username, password):
+    #     for url, cache_id in all_cache_ids.items():
+    #         download_single_archive(url, cache_id)
+    #
+    # print("")
 
-    for name in (f"cache_ids.{now}.json", "cache_ids.json"):
-        write_to_file(name, contents=json.dumps(all_cache_ids))
+    print("*** Saving stories from AO3")
 
-    all_cache_ids = json.load(open(BACKUP_ROOT / "cache_ids.json"))
+    ao3_urls = [b["href"] for b in bookmarks if "archiveofourown.org" in b["href"]]
 
-    print("")
-
-    print("*** Saving archive files using wget")
-
-    with wget_context(username, password):
-        for url, cache_id in all_cache_ids.items():
-            download_single_archive(url, cache_id)
+    subprocess.check_call(
+        [
+            "python3",
+            "/Users/alexwlchan/repos/scripts/web/save_ao3_links.py",
+        ]
+        + ao3_urls
+    )
