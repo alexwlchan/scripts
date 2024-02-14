@@ -36,6 +36,18 @@ scripts = [
         """
     },
     {
+        "usage": "save_ao3_links.py [URL...]",
+        "description": """
+        save a copy of a story on AO3, including exports in every available format.
+        """
+    },
+    {
+        "name": "save_pinboard_bookmarks.py",
+        "description": """
+        save a complete copy of all my Pinboard bookmarks, including my archive backups.
+        """
+    },
+    {
         "name": "save_tumblr_likes.py",
         "description": """
         save a copy of all the posts I've liked on Tumblr to my backup drive.
@@ -87,6 +99,24 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_ao3_links.py">
+      <code>save_ao3_links.py [URL...]</code>
+    </a>
+  </dt>
+  <dd>
+    save a copy of a story on AO3, including exports in every available format.
+  </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_pinboard_bookmarks.py">
+      <code>save_pinboard_bookmarks.py</code>
+    </a>
+  </dt>
+  <dd>
+    save a complete copy of all my Pinboard bookmarks, including my archive backups.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_tumblr_likes.py">
       <code>save_tumblr_likes.py</code>
     </a>
@@ -113,4 +143,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 0d41d07b707085af6913de92b942a152) -->
+<!-- [[[end]]] (checksum: a4f4aaedc92d2ce7e499f50a87c39d22) -->
