@@ -10,6 +10,7 @@ import pathlib
 import subprocess
 import sys
 import textwrap
+from typing import Literal
 
 import hyperlink
 from sqlite_utils import Database
@@ -76,12 +77,50 @@ def log_result(format_template):
                 print(termcolor.colored(f"✘ {description}\n{wrapped_error}", "red"))
                 raise
             else:
-                print(termcolor.colored(f"✔ {description}", "green"))
+                if result == "downloaded":
+                    print(termcolor.colored(f"✔ {description}", "green"))
                 return result
 
         return wrapper
 
     return decorator
+
+
+def classify_file_type(
+    video_id: str, filename: str
+) -> Literal["video", "info", "thumbnail"] | None:
+    """
+    Given an already-downloaded file, work out what sort of file it is.
+    """
+    if filename.endswith(".part"):
+        return None
+
+    if filename.endswith(
+        (
+            f"-{video_id}.mp4",
+            f"-{video_id}.webm",
+            f"-{video_id}.mkv",
+            f" [{video_id}].mp4",
+            f" [{video_id}].mkv",
+            f" [{video_id}].webm",
+        )
+    ):
+        return "video"
+
+    if filename.endswith(
+        (
+            f"-{video_id}.jpg",
+            f"-{video_id}.webp",
+            f" [{video_id}].jpg",
+            f" [{video_id}].webp",
+        )
+    ):
+        return "thumbnail"
+
+    if filename.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json")):
+        return "info"
+
+    raise ValueError(f"Unrecognised filename: {filename}")
 
 
 @log_result("https://youtube.com/watch?v={video_id}")
@@ -97,38 +136,17 @@ def download_video(*, video_id, download_root):
 
     # Look to see if this video has been downloaded before.  If it has, skip any
     # further processing.
-    matching_filenames = [
-        filename for filename in os.listdir(download_dir) if video_id in filename
-    ]
+    matching_filenames = {
+        filename: classify_file_type(video_id, filename)
+        for filename in os.listdir(download_dir)
+        if video_id in filename
+    }
 
-    has_video = any(
-        f.endswith(
-            (
-                f"-{video_id}.mp4",
-                f"-{video_id}.webm",
-                f"-{video_id}.mkv",
-                f" [{video_id}].webm",
-            )
-        )
-        for f in matching_filenames
-    )
+    has_video = "video" in matching_filenames.values()
+    has_info = "info" in matching_filenames.values()
+    has_thumbnail = "thumbnail" in matching_filenames.values()
 
-    has_description = any(
-        f.endswith((f"-{video_id}.description", f" [{video_id}].description"))
-        for f in matching_filenames
-    )
-
-    has_info = any(
-        f.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json"))
-        for f in matching_filenames
-    )
-
-    has_thumbnail = any(
-        f.endswith((f"-{video_id}.jpg", f" [{video_id}].jpg"))
-        for f in matching_filenames
-    )
-
-    if has_video and has_description and has_info:
+    if has_video and has_thumbnail and has_info:
         return
 
     # Construct the command.  The expensive bit is redownloading the
@@ -139,9 +157,6 @@ def download_video(*, video_id, download_root):
     if has_video:
         cmd.append("--skip-download")
 
-    if not has_description:
-        cmd.append("--write-description")
-
     if not has_info:
         cmd.append("--write-info-json")
 
@@ -151,6 +166,7 @@ def download_video(*, video_id, download_root):
     try:
         youtube_dl(*cmd, cwd=download_dir)
         print(download_dir)
+        return "downloaded"
     except subprocess.CalledProcessError as err:  # pragma: no cover
         print(f"Unable to download {video_url}: {err}", file=sys.stderr)
         raise
@@ -159,4 +175,7 @@ def download_video(*, video_id, download_root):
 if __name__ == "__main__":
     for url in sys.argv[1:]:
         video_id = get_video_id(url)
-        download_video(video_id=video_id, download_root=BACKUP_ROOT)
+        try:
+            download_video(video_id=video_id, download_root=BACKUP_ROOT)
+        except Exception:
+            pass
