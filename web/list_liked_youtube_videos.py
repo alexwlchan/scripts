@@ -124,21 +124,6 @@ class YouTubeClient:
 if __name__ == "__main__":
     youtube = YouTubeClient(label="download_liked_videos")
 
-    # request = youtube.youtube.playlistItems().list(
-    #     part="snippet,contentDetails",
-    #     # onBehalfOfContentOwner=True,
-    #     playlistId='LL'
-    # )
-    # response = request.execute()
-    #
-    # # liked_playlist_id = next(
-    # #     playlist['id']
-    # #     for playlist in response['items']
-    # #     if
-    # # )
-    #
-    # from pprint import pprint; pprint(response)
-
     for video in youtube.get_liked_videos():
-        video_id = video["id"]
+        video_id = video["snippet"]["resourceId"]["videoId"]
         print(f"https://www.youtube.com/watch?v={video_id}")
