@@ -60,6 +60,12 @@ scripts = [
         """
     },
     {
+        "usage": "save_youtube_videos.py [URL...]",
+        "description": """
+        save a local copy of one or more YouTube videos
+        """
+    },
+    {
         "name": "scrape_really_useful_boxes.py",
         "description": """
         scrape the Really Useful Boxes product catalogue, so I can search for boxes in ways their website doesn't allow – in particular, by dimensions, so I can find boxes that fit into specific spaces.<br/><br/><img src="really_useful_boxes.png">
@@ -141,6 +147,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_youtube_videos.py">
+      <code>save_youtube_videos.py [URL...]</code>
+    </a>
+  </dt>
+  <dd>
+    save a local copy of one or more YouTube videos
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/scrape_really_useful_boxes.py">
       <code>scrape_really_useful_boxes.py</code>
     </a>
@@ -158,4 +173,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 1bdadef9eb851d3d98d6e7d78e37aa11) -->
+<!-- [[[end]]] (checksum: 54f08d9f43084b85f2d56d5caced4e10) -->
