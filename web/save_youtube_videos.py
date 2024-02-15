@@ -77,7 +77,7 @@ def log_result(format_template):
                 print(termcolor.colored(f"✘ {description}\n{wrapped_error}", "red"))
                 raise
             else:
-                if result == 'downloaded':
+                if result == "downloaded":
                     print(termcolor.colored(f"✔ {description}", "green"))
                 return result
 
@@ -166,7 +166,7 @@ def download_video(*, video_id, download_root):
     try:
         youtube_dl(*cmd, cwd=download_dir)
         print(download_dir)
-        return 'downloaded'
+        return "downloaded"
     except subprocess.CalledProcessError as err:  # pragma: no cover
         print(f"Unable to download {video_url}: {err}", file=sys.stderr)
         raise

@@ -19,11 +19,10 @@ from save_youtube_videos import classify_file_type
             "thumbnail",
         ),
         (
-        "wGS53t8ZbO8",
-        "The World's Most Remote Buildings-wGS53t8ZbO8.f251.webm.part",
-        None
-
-        )
+            "wGS53t8ZbO8",
+            "The World's Most Remote Buildings-wGS53t8ZbO8.f251.webm.part",
+            None,
+        ),
     ],
 )
 def test_classify_file_type(video_id, filename, file_type):
