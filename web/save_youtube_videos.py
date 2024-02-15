@@ -151,4 +151,7 @@ def download_video(*, video_id, download_root):
 if __name__ == "__main__":
     for url in sys.argv[1:]:
         video_id = get_video_id(url)
-        download_video(video_id=video_id, download_root=BACKUP_ROOT)
+        try:
+            download_video(video_id=video_id, download_root=BACKUP_ROOT)
+        except Exception:
+            pass
