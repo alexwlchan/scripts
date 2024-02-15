@@ -6,13 +6,10 @@ Make a local copy of one or more YouTube videos.
 import functools
 import json
 import os
-import re
 import pathlib
-import sqlite3
 import subprocess
 import sys
 import textwrap
-import zipfile
 
 import hyperlink
 from sqlite_utils import Database
