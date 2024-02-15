@@ -113,11 +113,6 @@ def download_video(*, video_id, download_root):
         for f in matching_filenames
     )
 
-    has_description = any(
-        f.endswith((f"-{video_id}.description", f" [{video_id}].description"))
-        for f in matching_filenames
-    )
-
     has_info = any(
         f.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json"))
         for f in matching_filenames
@@ -128,7 +123,7 @@ def download_video(*, video_id, download_root):
         for f in matching_filenames
     )
 
-    if has_video and has_description and has_info:
+    if has_video and has_thumbnail and has_info:
         return
 
     # Construct the command.  The expensive bit is redownloading the
@@ -138,9 +133,6 @@ def download_video(*, video_id, download_root):
 
     if has_video:
         cmd.append("--skip-download")
-
-    if not has_description:
-        cmd.append("--write-description")
 
     if not has_info:
         cmd.append("--write-info-json")
