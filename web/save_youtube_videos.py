@@ -87,15 +87,16 @@ def log_result(format_template):
 
 
 def classify_file_type(
-    video_id: str, filename: str
+    video_id: str, filename: pathlib.Path
 ) -> Literal["video", "info", "thumbnail", "subtitles"] | None:
     """
     Given an already-downloaded file, work out what sort of file it is.
     """
-    if filename.endswith(".part"):
+    if filename.name.endswith(".part"):
+        os.unlink(filename)
         return None
 
-    if filename.endswith(
+    if filename.name.endswith(
         (
             f"-{video_id}.mp4",
             f"-{video_id}.webm",
@@ -107,7 +108,7 @@ def classify_file_type(
     ):
         return "video"
 
-    if filename.endswith(
+    if filename.name.endswith(
         (
             f"-{video_id}.jpg",
             f"-{video_id}.webp",
@@ -117,10 +118,10 @@ def classify_file_type(
     ):
         return "thumbnail"
 
-    if filename.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json")):
+    if filename.name.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json")):
         return "info"
 
-    if filename.endswith(
+    if filename.name.endswith(
         (
             f" [{video_id}].en.vtt",
             f" [{video_id}].en-US.vtt",
@@ -175,7 +176,7 @@ def download_video(*, video_id, download_root):
     # Look to see if this video has been downloaded before.  If it has, skip any
     # further processing.
     matching_filenames = {
-        filename: classify_file_type(video_id, filename)
+        filename: classify_file_type(video_id, download_dir / filename)
         for filename in os.listdir(download_dir)
         if video_id in filename
     }
