@@ -123,10 +123,7 @@ def classify_file_type(
 
     if filename.name.endswith(
         (
-            f" [{video_id}].en.vtt",
-            f" [{video_id}].en-US.vtt",
-            f" [{video_id}].en-GB.vtt",
-            f" [{video_id}].en-CA.vtt",
+            ".vtt",
             f" [{video_id}].live_chat.json",
         )
     ):
