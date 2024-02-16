@@ -23,6 +23,11 @@ from save_youtube_videos import classify_file_type
             "The World's Most Remote Buildings-wGS53t8ZbO8.f251.webm.part",
             None,
         ),
+        (
+            "IjCylxs8hZU",
+            "Soviet Flying Aircraft Carriers Were Ingenious [IjCylxs8hZU].en.vtt",
+            "subtitles",
+        ),
     ],
 )
 def test_classify_file_type(video_id, filename, file_type):

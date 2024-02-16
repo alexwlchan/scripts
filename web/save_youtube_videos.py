@@ -88,7 +88,7 @@ def log_result(format_template):
 
 def classify_file_type(
     video_id: str, filename: str
-) -> Literal["video", "info", "thumbnail"] | None:
+) -> Literal["video", "info", "thumbnail", "subtitles"] | None:
     """
     Given an already-downloaded file, work out what sort of file it is.
     """
@@ -119,6 +119,17 @@ def classify_file_type(
 
     if filename.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json")):
         return "info"
+
+    if filename.endswith(
+        (
+            f" [{video_id}].en.vtt",
+            f" [{video_id}].en-US.vtt",
+            f" [{video_id}].en-GB.vtt",
+            f" [{video_id}].en-CA.vtt",
+            f" [{video_id}].live_chat.json",
+        )
+    ):
+        return "subtitles"
 
     raise ValueError(f"Unrecognised filename: {filename}")
 
@@ -152,7 +163,7 @@ def download_video(*, video_id, download_root):
     # Construct the command.  The expensive bit is redownloading the
     # video file, so don't do that if it's already downloaded.
     video_url = f"https://youtube.com/watch?v={video_id}"
-    cmd = [video_url]
+    cmd = [video_url, "--write-sub"]
 
     if has_video:
         cmd.append("--skip-download")
