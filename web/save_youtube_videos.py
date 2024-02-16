@@ -134,6 +134,33 @@ def classify_file_type(
     raise ValueError(f"Unrecognised filename: {filename}")
 
 
+def fix_info_json(path: pathlib.Path) -> None:
+    """
+    Tidy up the contents of the info.json fie.
+    """
+    with open(path) as in_file:
+        data = json.load(in_file)
+
+    # These are a couple of fields which are very large, don't contain
+    # much useful metadata, and point to transient URLs that don't work
+    # later.
+    for key in (
+        "formats",
+        "automatic_captions",
+        "thumbnails",
+        "heatmap",
+        "_format_sort_fields",
+        "subtitles",
+    ):
+        if key in data:
+            del data[key]
+
+    json_string = json.dumps(data, indent=2)
+
+    with open(path, "w") as out_file:
+        out_file.write(json_string)
+
+
 @log_result("https://youtube.com/watch?v={video_id}")
 def download_video(*, video_id, download_root):
     uploader = get_uploader(video_id=video_id, db_path=download_root / "uploaders.db")
@@ -177,6 +204,11 @@ def download_video(*, video_id, download_root):
     try:
         youtube_dl(*cmd, cwd=download_dir)
         print(download_dir)
+
+        for f in os.listdir(download_dir):
+            if f.endswith(".info.json"):
+                fix_info_json(download_dir / f)
+
         return "downloaded"
     except subprocess.CalledProcessError as err:  # pragma: no cover
         print(f"Unable to download {video_url}: {err}", file=sys.stderr)
