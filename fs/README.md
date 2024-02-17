@@ -55,6 +55,10 @@ scripts = [
         "description": "prints the path to the newest file in my Downloads folder"
     },
     {
+        "usage": "reveal PATH",
+        "description": "reveal the file/folder in the macOS Finder; alias for <code>open -R</code>"
+    },
+    {
         "name": "sizes",
         "description": """
         gets the total size of all the files/folders under the working directory, and prints them in a table
@@ -141,6 +145,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/reveal">
+      <code>reveal PATH</code>
+    </a>
+  </dt>
+  <dd>
+    reveal the file/folder in the macOS Finder; alias for <code>open -R</code>
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fs/sizes">
       <code>sizes</code>
     </a>
@@ -156,4 +169,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
       7.58M ~/repos/scripts</code></pre></p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 76e15300c60dae8de5db3c785debc5cf) -->
+<!-- [[[end]]] (checksum: 632a7aa9e05edd9243371bf85c14b266) -->

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Reveal the file/folder in the Finder.
+
+set -o errexit
+set -o nounset
+
+open -R "$@"
