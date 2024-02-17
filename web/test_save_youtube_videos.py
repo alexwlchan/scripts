@@ -1,3 +1,5 @@
+import pathlib
+
 import pytest
 
 from save_youtube_videos import classify_file_type
@@ -19,11 +21,11 @@ from save_youtube_videos import classify_file_type
             "thumbnail",
         ),
         (
-            "wGS53t8ZbO8",
-            "The World's Most Remote Buildings-wGS53t8ZbO8.f251.webm.part",
-            None,
+            "IjCylxs8hZU",
+            "Soviet Flying Aircraft Carriers Were Ingenious [IjCylxs8hZU].en.vtt",
+            "subtitles",
         ),
     ],
 )
 def test_classify_file_type(video_id, filename, file_type):
-    assert classify_file_type(video_id, filename) == file_type
+    assert classify_file_type(video_id, pathlib.Path(filename)) == file_type

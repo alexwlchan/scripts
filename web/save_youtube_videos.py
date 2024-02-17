@@ -87,15 +87,16 @@ def log_result(format_template):
 
 
 def classify_file_type(
-    video_id: str, filename: str
-) -> Literal["video", "info", "thumbnail"] | None:
+    video_id: str, filename: pathlib.Path
+) -> Literal["video", "info", "thumbnail", "subtitles"] | None:
     """
     Given an already-downloaded file, work out what sort of file it is.
     """
-    if filename.endswith(".part"):
+    if filename.name.endswith(".part"):
+        os.unlink(filename)
         return None
 
-    if filename.endswith(
+    if filename.name.endswith(
         (
             f"-{video_id}.mp4",
             f"-{video_id}.webm",
@@ -107,7 +108,7 @@ def classify_file_type(
     ):
         return "video"
 
-    if filename.endswith(
+    if filename.name.endswith(
         (
             f"-{video_id}.jpg",
             f"-{video_id}.webp",
@@ -117,10 +118,45 @@ def classify_file_type(
     ):
         return "thumbnail"
 
-    if filename.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json")):
+    if filename.name.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json")):
         return "info"
 
+    if filename.name.endswith(
+        (
+            ".vtt",
+            f" [{video_id}].live_chat.json",
+        )
+    ):
+        return "subtitles"
+
     raise ValueError(f"Unrecognised filename: {filename}")
+
+
+def fix_info_json(path: pathlib.Path) -> None:
+    """
+    Tidy up the contents of the info.json fie.
+    """
+    with open(path) as in_file:
+        data = json.load(in_file)
+
+    # These are a couple of fields which are very large, don't contain
+    # much useful metadata, and point to transient URLs that don't work
+    # later.
+    for key in (
+        "formats",
+        "automatic_captions",
+        "thumbnails",
+        "heatmap",
+        "_format_sort_fields",
+        "subtitles",
+    ):
+        if key in data:
+            del data[key]
+
+    json_string = json.dumps(data, indent=2)
+
+    with open(path, "w") as out_file:
+        out_file.write(json_string)
 
 
 @log_result("https://youtube.com/watch?v={video_id}")
@@ -137,7 +173,7 @@ def download_video(*, video_id, download_root):
     # Look to see if this video has been downloaded before.  If it has, skip any
     # further processing.
     matching_filenames = {
-        filename: classify_file_type(video_id, filename)
+        filename: classify_file_type(video_id, download_dir / filename)
         for filename in os.listdir(download_dir)
         if video_id in filename
     }
@@ -152,7 +188,7 @@ def download_video(*, video_id, download_root):
     # Construct the command.  The expensive bit is redownloading the
     # video file, so don't do that if it's already downloaded.
     video_url = f"https://youtube.com/watch?v={video_id}"
-    cmd = [video_url]
+    cmd = [video_url, "--write-sub"]
 
     if has_video:
         cmd.append("--skip-download")
@@ -166,6 +202,11 @@ def download_video(*, video_id, download_root):
     try:
         youtube_dl(*cmd, cwd=download_dir)
         print(download_dir)
+
+        for f in os.listdir(download_dir):
+            if f.endswith(".info.json"):
+                fix_info_json(download_dir / f)
+
         return "downloaded"
     except subprocess.CalledProcessError as err:  # pragma: no cover
         print(f"Unable to download {video_url}: {err}", file=sys.stderr)
