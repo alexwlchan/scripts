@@ -116,7 +116,7 @@ scripts = [
     },
 ]
 
-cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts, ignore_files={'prettyjson'})
+cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
 
 ]]]-->
 <dl>
