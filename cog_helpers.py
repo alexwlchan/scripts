@@ -8,6 +8,7 @@ https://nedbatchelder.com/code/cog
 """
 
 import os
+import pathlib
 import textwrap
 from typing import TypedDict
 
@@ -48,6 +49,12 @@ def create_description_table(
     if ignore_files is None:
         ignore_files = set()
 
+    folder = pathlib.Path(folder_name)
+
+    for f in ignore_files:
+        if not (folder / f).exists():
+            raise ValueError(f"Ignoring non-existing file {f!r}")
+
     outl("<dl>")
 
     for i, s in enumerate(scripts, start=1):
@@ -63,8 +70,8 @@ def create_description_table(
         for index, v in enumerate(variants, start=1):
             name = v.split()[0]
 
-            path = os.path.join(folder_name, name)
-            assert os.path.exists(path), os.path.join(path)
+            path = folder / name
+            assert path.exists(), path
 
             documented_files.add(name)
 
@@ -100,7 +107,7 @@ def create_description_table(
     undocumented_files = set()
 
     for f in os.listdir(folder_name):
-        if os.path.isdir(os.path.join(folder_name, f)):
+        if os.path.isdir(folder / f):
             continue
 
         if f in {"README.md", "utf8info.Dockerfile"}:
