@@ -42,4 +42,4 @@ sys.ps2 = "\033[1;34m... \033[0m"
 
 sys.displayhook = displayhook_pprint
 
-readline.parse_and_bind('tab: complete')
+readline.parse_and_bind("tab: complete")
