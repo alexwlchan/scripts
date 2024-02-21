@@ -45,6 +45,12 @@ scripts = [
         """,
     },
     {
+        "usage": "fromtimestamp [TIMESTAMP]",
+        "description": """
+        convert a Unix timestamp to a human-readable date.  Alias for <code>date -r [TIMESTAMP]</code>.
+        """,
+    },
+    {
         "usage": "longlines [PATH]",
         "description": "print the line numbers of the longest lines in the file."
     },
@@ -151,6 +157,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts, i
   </dt>
   <dd>
     when I copy/paste text into Obsidian from th web, this cleans up some of the extraneous whitespace.
+  </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/fromtimestamp">
+      <code>fromtimestamp [TIMESTAMP]</code>
+    </a>
+  </dt>
+  <dd>
+    convert a Unix timestamp to a human-readable date.  Alias for <code>date -r [TIMESTAMP]</code>.
   </dd>
 
   <dt>
@@ -265,4 +280,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts, i
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 6093300a8e3cc8d5dd508f4a3eb4e3cc) -->
+<!-- [[[end]]] (checksum: 49d227b94b5dd07ca39ceeda39ef31c2) -->
