@@ -76,6 +76,15 @@ prepend_to_path ~/repos/ttml2srt
 set -g -x PIP_REQUIRE_VIRTUALENV true
 
 
+# This points to a file which will be run as a setup script any time
+# I start an interactive Python session.  It customises the prompt slightly
+# and adds tab completion.
+#
+# See https://docs.python.org/3/using/cmdline.html#envvar-PYTHONSTARTUP
+#
+set -g -x PYTHONSTARTUP ~/repos/scripts/pythonstartup.py
+
+
 # This tells fish to run a couple of functions as event handlers --
 # that is, to run a function when a variable changes or something similar.
 # These functions can't be autoloaded.
