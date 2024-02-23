@@ -25,6 +25,10 @@ scripts = [
         "description": "close ephemeral tabs in Safari – basically, anything that can be easily recreated/reopened later."
     },
     {
+        "name": "count_tabs",
+        "description": "count the number of tabs I have open in Safari."
+    },
+    {
         "name": "find_processes_using_secure_input",
         "description": "lists any processes using Secure Input, which can block apps like TextExpander"
     },
@@ -91,6 +95,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dt>
   <dd>
     close ephemeral tabs in Safari – basically, anything that can be easily recreated/reopened later.
+  </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/count_tabs">
+      <code>count_tabs</code>
+    </a>
+  </dt>
+  <dd>
+    count the number of tabs I have open in Safari.
   </dd>
 
   <dt>
@@ -186,4 +199,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: c269506c592ac8bcea9ed47784bf7616) -->
+<!-- [[[end]]] (checksum: 5190a14c113ded41343a7efe338cccf6) -->
