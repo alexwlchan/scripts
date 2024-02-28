@@ -51,6 +51,7 @@ function isSafeToClose(url) {
   ) || (
     url === 'https://alexwlchan.net/' ||
     url === 'https://arstechnica.com/' ||
+    url === 'https://docs.google.com/document/u/0/' ||
     url === 'https://github.com/' ||
     url === 'https://github.com/alexwlchan/books.alexwlchan.net' ||
     url === 'https://github.com/alexwlchan/scripts' ||
@@ -75,7 +76,7 @@ let remainingCount = 0;
 for (const [window_index, tab_index, url] of tabGenerator()) {
 	if (isSafeToClose(url)) {
 		console.log(url);
-    // safari.windows[window_index].tabs[tab_index].close();
+    safari.windows[window_index].tabs[tab_index].close();
     closedCount += 1;
 	} else {
 	  remainingCount += 1;
