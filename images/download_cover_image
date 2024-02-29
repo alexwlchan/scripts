@@ -19,7 +19,7 @@ echo "$LATEST_REVIEW"
 filename=$(basename -- "$LATEST_REVIEW" .md)
 year=$(basename -- $(dirname -- "$LATEST_REVIEW"))
 
-url="$(/Users/alexwlchan/.cargo/bin/safari url)"
+url=$(osascript -e 'tell application "Safari" to get URL of document 1')
 
 image_filename=$(basename -- "$url")
 image_extension="${image_filename##*.}"
