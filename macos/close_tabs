@@ -43,6 +43,7 @@ function isSafeToClose(url) {
 
   return (
     url.startsWith("http://localhost:3000/") ||
+    url.startsWith("http://localhost:5000/") ||
     url.startsWith("http://localhost:5959/") ||
     url.startsWith("https://analytics.alexwlchan.net") ||
     url.startsWith("https://app.fastmail.com/mail/Inbox/?u=") ||
@@ -51,22 +52,29 @@ function isSafeToClose(url) {
   ) || (
     url === 'https://alexwlchan.net/' ||
     url === 'https://arstechnica.com/' ||
+    url === 'https://calendar.google.com/calendar/u/0/r/week' ||
+    url === 'https://commons.flickr.org/' ||
     url === 'https://docs.google.com/document/u/0/' ||
     url === 'https://github.com/' ||
     url === 'https://github.com/alexwlchan/books.alexwlchan.net' ||
     url === 'https://github.com/alexwlchan/scripts' ||
     url === 'https://mail.google.com/mail/u/0/#inbox' ||
+    url === 'https://mail.google.com/mail/u/1/#inbox' ||
     url === 'https://mobile.twitter.com/home' ||
     url === 'https://news.ycombinator.com/' ||
     url === 'https://remote.com' ||
     url === 'https://social.alexwlchan.net/home' ||
+    url === 'https://social.alexwlchan.net/notifications' ||
     url === 'https://twitter.com/home' ||
     url === 'https://twitter.com/i/timeline' ||
     url === 'https://twitter.com/notifications' ||
     url === 'https://www.facebook.com/' ||
     url === 'https://www.macrumors.com' ||
+    url === 'https://www.macrumors.com/' ||
     url === 'https://www.theguardian.com/uk' ||
-    url === 'https://www.youtube.com/'
+    url === 'https://www.youtube.com/' ||
+    url === 'https://www.youtube.com/?app=desktop' ||
+    url === 'history://'
   );
 }
 
