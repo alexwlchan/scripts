@@ -7,6 +7,13 @@
 # See https://alexwlchan.net/2023/fish-venv/
 #
 function venv --description "Create and activate a new virtual environment"
+
+    # I don't want venvs in my home directory; block it if I try
+    if test "$PWD" = "$HOME"
+        echo "You can't create a venv in your home directory!" >&2
+        return 1
+    end
+
     echo "Creating virtual environment in "(pwd)"/.venv"
     python3 -m venv .venv --upgrade-deps
     source .venv/bin/activate.fish
