@@ -15,7 +15,21 @@ import re
 import sys
 
 from flickr_photos_api import FlickrPhotosApi
+import hyperlink
 import keyring
+
+
+def get_user_id(user_text: str) -> str:
+    u = hyperlink.URL.from_text(user_text)
+
+    # e.g. https://www.youtube.com/watch?v=0naRXbQQ838
+    if (
+        u.host == "commons.flickr.org"
+        and len(u.path) == 3
+        and u.path[0] == "members"
+        and u.path[2] == ""
+    ):
+        return {"path_alias": u.path[1]}
 
 
 if __name__ == "__main__":
@@ -29,12 +43,16 @@ if __name__ == "__main__":
         user_agent="Alex Chan's personal scripts <alex@alexwlchan.net>",
     )
 
-    if USER_TEXT.startswith("https://"):
-        user = api.lookup_user_by_url(url=USER_TEXT)
-    elif re.match(USER_TEXT, "^[0-9]{7}@N[0-9]{2}$"):
-        user = api.lookup_user_by_id(user_id=USER_TEXT)
+    user_id = get_user_id(USER_TEXT)
+
+    if "path_alias" in user_id:
+        user = api.lookup_user_by_url(
+            url=f"https://www.flickr.com/people/{user_id['path_alias']}"
+        )
     else:
-        user = api.lookup_user_by_url(url=f"https://www.flickr.com/people/{USER_TEXT}")
+        user = api.lookup_user_by_id(
+            url=f"https://www.flickr.com/people/{user_id['id']}"
+        )
 
     print(f"ID:       {user['id']}")
     print(f"username: {user['username']}")
