@@ -11,7 +11,6 @@ Look up a user by URL or path alias.
 
 """
 
-import re
 import sys
 
 from flickr_photos_api import FlickrPhotosApi
