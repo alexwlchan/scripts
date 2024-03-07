@@ -10,6 +10,10 @@ from fluser_lookup import get_user_id
             "https://commons.flickr.org/members/csj_canada_archives/",
             {"path_alias": "csj_canada_archives"},
         ),
+        (
+            "https://www.flickr.com/photos/powerhouse_museum/2532449275/",
+            {"path_alias": "powerhouse_museum"},
+        ),
     ],
 )
 def test_get_user_id(user_text, user_id):

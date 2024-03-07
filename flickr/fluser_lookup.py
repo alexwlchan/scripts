@@ -30,6 +30,10 @@ def get_user_id(user_text: str) -> str:
     ):
         return {"path_alias": u.path[1]}
 
+    # e.g. https://www.flickr.com/photos/powerhouse_museum/2532449275/
+    if u.host == "www.flickr.com" and len(u.path) >= 2 and u.path[0] == "photos":
+        return {"path_alias": u.path[1]}
+
 
 if __name__ == "__main__":
     try:
