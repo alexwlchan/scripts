@@ -19,6 +19,9 @@ from sqlite_utils.db import NotFoundError
 import termcolor
 
 
+BACKUP_ROOT = pathlib.Path("/Volumes/Media (Sapphire)/backups/tumblr")
+
+
 def get_liked_posts(blog_identifier: str, days: int):
     """
     Get a list of all my likes from Tumblr.
@@ -352,5 +355,5 @@ if __name__ == "__main__":
         download_tumblr_post(
             post_url=post_data["post_url"],
             post_data=post_data,
-            download_root=pathlib.Path("/Volumes/Media (Sapphire)/backups/tumblr"),
+            download_root=pathlib.Path(BACKUP_ROOT),
         )
