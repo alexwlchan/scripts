@@ -52,7 +52,7 @@ if __name__ == "__main__":
     if (
         "--write-subs" in remaining_args or "--write-auto-subs" in remaining_args
     ) and "--convert-subtitles=srt" not in remaining_args:
-        sys.exit(f"Did you forget to add --convert-subtitles=srt?")
+        sys.exit("Did you forget to add --convert-subtitles=srt?")
 
     # If this is a YouTube URL but it's not a playlist, then it's probably
     # a single video.  Download it as normal.
