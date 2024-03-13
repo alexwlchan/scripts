@@ -49,7 +49,9 @@ if __name__ == "__main__":
     # Note: I could add this automatically, but it means vanilla yt-dlp
     # and my wrapper would behave differently.  That could get confusing!
     # So just add a prompt rather than fixing it.
-    if ("--write-subs" in remaining_args or "--write-auto-subs" in remaining_args) and "--convert-subtitles=srt" not in remaining_args:
+    if (
+        "--write-subs" in remaining_args or "--write-auto-subs" in remaining_args
+    ) and "--convert-subtitles=srt" not in remaining_args:
         sys.exit(f"Did you forget to add --convert-subtitles=srt?")
 
     # If this is a YouTube URL but it's not a playlist, then it's probably
