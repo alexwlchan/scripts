@@ -44,6 +44,14 @@ if __name__ == "__main__":
     remaining_args = [a for a in argv if "youtube.com" not in a]
     youtube_url = youtube_url_matches[0]
 
+    # I always want subtitles in srt format, so make sure I've done that.
+    #
+    # Note: I could add this automatically, but it means vanilla yt-dlp
+    # and my wrapper would behave differently.  That could get confusing!
+    # So just add a prompt rather than fixing it.
+    if ("--write-subs" in remaining_args or "--write-auto-subs" in remaining_args) and "--convert-subtitles=srt" not in remaining_args:
+        sys.exit(f"Did you forget to add --convert-subtitles=srt?")
+
     # If this is a YouTube URL but it's not a playlist, then it's probably
     # a single video.  Download it as normal.
     if not is_playlist(youtube_url):
