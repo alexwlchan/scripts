@@ -37,12 +37,10 @@ if __name__ == "__main__":
     # assume we're downloading some other source and call yt-dlp as usual.
     youtube_url_matches = [a for a in argv if "youtube.com" in a]
 
-    if len(youtube_url_matches) != 1:
-        subprocess.check_call([yt_dlp_path] + argv)
-        sys.exit(0)
-
     remaining_args = [a for a in argv if "youtube.com" not in a]
-    youtube_url = youtube_url_matches[0]
+
+    if "--write-sub" in remaining_args:
+        sys.exit("Did you mean --write-subs?")
 
     # I always want subtitles in srt format, so make sure I've done that.
     #
@@ -53,6 +51,12 @@ if __name__ == "__main__":
         "--write-subs" in remaining_args or "--write-auto-subs" in remaining_args
     ) and "--convert-subtitles=srt" not in remaining_args:
         sys.exit("Did you forget to add --convert-subtitles=srt?")
+
+    if len(youtube_url_matches) != 1:
+        subprocess.check_call([yt_dlp_path] + argv)
+        sys.exit(0)
+
+    youtube_url = youtube_url_matches[0]
 
     # If this is a YouTube URL but it's not a playlist, then it's probably
     # a single video.  Download it as normal.
