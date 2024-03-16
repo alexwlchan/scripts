@@ -1,12 +1,18 @@
 #!/usr/bin/env python3
 """
-This is a wrapper around yt-dlp that has special behaviour
-for YouTube playlists.
+This is a wrapper around yt-dlp that has a couple of special behaviours:
 
-When it detects a playlist, it can run up to five downloads in parallel --
-this can makes downloads significantly faster.
+*   It does parallel downloads for YouTube playlists, which is must
+    faster than vanilla yt-dlp.
 
-See https://alexwlchan.net/2020/how-to-do-parallel-downloads-with-youtube-dl/
+*   It enforces a couple of rules around downloading subtitles, to ensure
+    I always remember to download them in a consistent way.
+
+The goal is that this is a drop-in replacement for vanilla yt-dlp: if it
+downloads something, it downloads the exact same set of files.  You could
+copy any command that uses this script onto a machine running the regular
+tool and it would work as-is.  It might check extra rules or run faster,
+but it should never download something different to the regular tool.
 """
 
 import os
@@ -24,8 +30,57 @@ def is_playlist(url: str) -> bool:
     return bool(u.get("list"))
 
 
+def download_parallel_playlist(youtube_url: str, remaining_args: list[str]) -> None:
+    """
+    Download a YouTube playlist in parallel.
+
+    See https://alexwlchan.net/2020/how-to-do-parallel-downloads-with-youtube-dl/
+    """
+    get_ids_proc = subprocess.Popen(
+        [yt_dlp_path, "--get-id", youtube_url], stdout=subprocess.PIPE
+    )
+
+    subprocess.check_call(
+        ["xargs", "-I", "{}", "-P", "5", yt_dlp_path]
+        + remaining_args
+        + ["https://youtube.com/watch?v={}"],
+        stdin=get_ids_proc.stdout,
+    )
+
+    get_ids_proc.wait()
+
+
+def check_arguments(argv: list[str]) -> None:
+    """
+    Validate the arguments I'm using.
+
+    This will never modify the arguments, but it might give an error
+    message telling me to use arguments differently.
+    """
+    # I always want subtitles in srt format, so make sure that if I'm
+    # downloading subtitles I'm doing that conversion.
+    #
+    # I could do this after the fact, but it's slightly quicker to do
+    # it on the initial download, especially if I'm invoking `yt-dlp`
+    # with some sort of dynamic variable e.g. `pbpaste` or `furl`.
+    download_subtitle_args = (
+        "--write-sub",
+        "--write-subs",
+        "--write-auto-sub",
+        "--write-auto-subs",
+    )
+
+    if (
+        any(dsa in argv for dsa in download_subtitle_args)
+        and "--convert-subtitles=srt" not in argv
+    ):
+        sys.exit("Did you forget to add --convert-subtitles=srt?")
+
+
 if __name__ == "__main__":
     argv = sys.argv[1:]
+
+    check_arguments(argv)
 
     # Where is yt-dlp?
     #
@@ -33,24 +88,11 @@ if __name__ == "__main__":
     # and we can go from there to get the path to yt-dlp.
     yt_dlp_path = os.path.join(os.path.dirname(sys.executable), "yt-dlp")
 
+    remaining_args = [a for a in argv if "youtube.com" not in a]
+
     # Look for a YouTube URL in the argument list.  If we don't find one,
     # assume we're downloading some other source and call yt-dlp as usual.
     youtube_url_matches = [a for a in argv if "youtube.com" in a]
-
-    remaining_args = [a for a in argv if "youtube.com" not in a]
-
-    if "--write-sub" in remaining_args:
-        sys.exit("Did you mean --write-subs?")
-
-    # I always want subtitles in srt format, so make sure I've done that.
-    #
-    # Note: I could add this automatically, but it means vanilla yt-dlp
-    # and my wrapper would behave differently.  That could get confusing!
-    # So just add a prompt rather than fixing it.
-    if (
-        "--write-subs" in remaining_args or "--write-auto-subs" in remaining_args
-    ) and "--convert-subtitles=srt" not in remaining_args:
-        sys.exit("Did you forget to add --convert-subtitles=srt?")
 
     if len(youtube_url_matches) != 1:
         subprocess.check_call([yt_dlp_path] + argv)
@@ -58,22 +100,9 @@ if __name__ == "__main__":
 
     youtube_url = youtube_url_matches[0]
 
-    # If this is a YouTube URL but it's not a playlist, then it's probably
-    # a single video.  Download it as normal.
-    if not is_playlist(youtube_url):
-        subprocess.check_call([yt_dlp_path] + argv)
-
-    # Otherwise, this is a playlist, so we want to download it in parallel.
+    if is_playlist(youtube_url):
+        download_parallel_playlist(
+            youtube_url=youtube_url, remaining_args=remaining_args
+        )
     else:
-        get_ids_proc = subprocess.Popen(
-            [yt_dlp_path, "--get-id", youtube_url], stdout=subprocess.PIPE
-        )
-
-        subprocess.check_call(
-            ["xargs", "-I", "{}", "-P", "5", yt_dlp_path]
-            + remaining_args
-            + ["https://youtube.com/watch?v={}"],
-            stdin=get_ids_proc.stdout,
-        )
-
-        get_ids_proc.wait()
+        subprocess.check_call([yt_dlp_path] + argv)
