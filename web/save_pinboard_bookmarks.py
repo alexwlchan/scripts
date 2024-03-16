@@ -197,23 +197,23 @@ if __name__ == "__main__":
 
     print("")
 
-    # print("*** Getting a list of cache IDs")
-    # all_cache_ids = get_cache_ids(username, password)
-    #
-    # for name in (f"cache_ids.{now}.json", "cache_ids.json"):
-    #     write_to_file(name, contents=json.dumps(all_cache_ids))
-    #
-    # all_cache_ids = json.load(open(BACKUP_ROOT / "cache_ids.json"))
-    #
-    # print("")
-    #
-    # print("*** Saving archive files using wget")
-    #
-    # with wget_context(username, password):
-    #     for url, cache_id in all_cache_ids.items():
-    #         download_single_archive(url, cache_id)
-    #
-    # print("")
+    print("*** Getting a list of cache IDs")
+    all_cache_ids = get_cache_ids(username, password)
+
+    for name in (f"cache_ids.{now}.json", "cache_ids.json"):
+        write_to_file(name, contents=json.dumps(all_cache_ids))
+
+    all_cache_ids = json.load(open(BACKUP_ROOT / "cache_ids.json"))
+
+    print("")
+
+    print("*** Saving archive files using wget")
+
+    with wget_context(username, password):
+        for url, cache_id in all_cache_ids.items():
+            download_single_archive(url, cache_id)
+
+    print("")
 
     print("*** Saving stories from AO3")
 

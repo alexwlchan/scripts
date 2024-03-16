@@ -85,4 +85,17 @@ def wget(*args):
 
 if __name__ == "__main__":
     for url in sys.argv[1:]:
-        save_ao3_url(url)
+        if url == "https://archiveofourown.org/series/136245":
+            for story_url in [
+                "https://archiveofourown.org/works/1854957",
+                "https://archiveofourown.org/works/2089398",
+                "https://archiveofourown.org/works/2218554",
+                "https://archiveofourown.org/works/2249544",
+                "https://archiveofourown.org/works/2330390",
+                "https://archiveofourown.org/works/2399867",
+                "https://archiveofourown.org/works/2467277",
+                "https://archiveofourown.org/works/2802287",
+            ]:
+                save_ao3_url(story_url)
+        else:
+            save_ao3_url(url)
