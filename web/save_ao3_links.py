@@ -28,7 +28,7 @@ def save_ao3_url(url: str):
 
     # Check if the fic is already downloaded -- if it is, nothing to do.
     if any(
-        name.startswith(f"{ao3_id}-") and name.endswith(".tar.gz")
+        name.startswith(f"{ao3_id}-") and os.path.isdir(BACKUP_ROOT / name)
         for name in os.listdir(BACKUP_ROOT)
     ):
         return
@@ -66,14 +66,11 @@ def save_ao3_url(url: str):
     except FileNotFoundError:
         return
 
-    out_path = BACKUP_ROOT / f"{ao3_id}-{title}.tar.gz"
+    out_dir = BACKUP_ROOT / f"{ao3_id}-{title}"
 
-    with tarfile.open(out_path, "w:gz") as tf:
-        tf.add(tmp_dir, arcname=ao3_id)
+    os.rename(tmp_dir, out_dir)
 
-    shutil.rmtree(tmp_dir)
-
-    print(f" ~> {out_path}")
+    print(f" ~> {out_dir}")
 
 
 def wget(*args):
