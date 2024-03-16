@@ -5,7 +5,6 @@ import pathlib
 import shutil
 import subprocess
 import sys
-import tarfile
 
 import hyperlink
 
@@ -19,6 +18,13 @@ def get_ao3_id(url: str) -> str:
 
     if u.path[0] == "works" and u.path[1].isnumeric():
         return u.path[1]
+    elif (
+        len(u.path) >= 4
+        and u.path[0] == "collections"
+        and u.path[2] == "works"
+        and u.path[3].isnumeric()
+    ):
+        return u.path[3]
     else:
         raise ValueError(url)
 
