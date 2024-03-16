@@ -54,6 +54,7 @@ function isSafeToClose(url) {
     url === 'https://arstechnica.com/' ||
     url === 'https://calendar.google.com/calendar/u/0/r/week' ||
     url === 'https://commons.flickr.org/' ||
+    url === 'https://daringfireball.net/' ||
     url === 'https://docs.google.com/document/u/0/' ||
     url === 'https://github.com/' ||
     url === 'https://github.com/alexwlchan/books.alexwlchan.net' ||
