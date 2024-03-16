@@ -59,14 +59,14 @@ def normalise_text(text: str) -> str:
 
 if __name__ == "__main__":
     url = subprocess.check_output(
-        ["/Users/alexwlchan/.cargo/bin/safari", "url"]
+        ["osascript", "-e", 'tell application "Safari" to get URL of document 1']
     ).decode("utf8")
 
     u = hyperlink.URL.from_text(url)
 
     # e.g. https://hachyderm.io/@djnavarro/111535929722933178
     # ~>  https://hachyderm.io/api/v1/statuses/111535929722933178
-    api_url = f"https://{u.host}/api/v1/statuses/{u.path[1]}"
+    api_url = f"https://{u.host}/api/v1/statuses/{u.path[1]}".strip()
 
     resp = httpx.get(api_url)
 
