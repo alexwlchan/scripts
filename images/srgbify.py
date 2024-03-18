@@ -9,14 +9,52 @@ which I want to convert to sRGB for converting on the web.
 Based on https://github.com/python-pillow/Pillow/issues/1662
 """
 
+import io
 import sys
-import tempfile
 
 from PIL import Image, ImageCms
+from PIL.ImageCms import PyCMSError
 from pillow_heif import register_heif_opener
 
 
 register_heif_opener()
+
+
+def convert_image_to_srgb(im: Image) -> Image:
+    """
+    Convert an image to sRGB and return a new Image instance.
+    """
+    icc_profile = im.info.get("icc_profile")
+
+    # If this image doesn't have a colour profile, we're done.
+    if icc_profile is None:
+        return im
+
+    # Otherwise, convert the image to an sRGB colour profile and return that.
+
+    try:
+        return ImageCms.profileToProfile(
+            im,
+            inputProfile=io.BytesIO(icc_profile),
+            outputProfile=ImageCms.createProfile("sRGB"),
+        )
+    except PyCMSError as err:
+        print(err.args[0].args)
+        if (
+            im.mode == "L"
+            and b"GRAYXYZ" in icc_profile
+            and err.args[0].args == ("cannot build transform",)
+        ):
+            return ImageCms.profileToProfile(
+                im,
+                inputProfile=io.BytesIO(icc_profile),
+                outputProfile=ImageCms.createProfile("sRGB"),
+                outputMode="RGB",
+            )
+        else:
+            raise
+
+    return out_im
 
 
 if __name__ == "__main__":
@@ -24,26 +62,10 @@ if __name__ == "__main__":
         sys.exit(f"Usage: {__file__} <PATH...>")
 
     for path in sys.argv[1:]:
-        in_img = Image.open(path)
+        im = Image.open(path)
+        out_im = convert_image_to_srgb(im)
 
-        srgb_profile = ImageCms.createProfile("sRGB")
+        if out_im != im:
+            out_im.save(path)
 
-        icc_profile = in_img.info.get("icc_profile")
-
-        # Handle the case where this image doesn't have
-        # a colour profile
-        if icc_profile is None:
-            print(path)
-            continue
-
-        _, icc_profile_path = tempfile.mkstemp(suffix=".icc")
-
-        with open(icc_profile_path, "wb") as out_file:
-            out_file.write(icc_profile)
-
-        out_img = ImageCms.profileToProfile(
-            in_img, inputProfile=icc_profile_path, outputProfile=srgb_profile
-        )
-
-        out_img.save(path)
         print(path)
