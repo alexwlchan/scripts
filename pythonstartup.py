@@ -8,8 +8,6 @@ Features:
 
 *   Use pprint() by default.
     https://gist.github.com/chekunkov/848c3472d4b0bee69bccd2e77907a590
-*   Blue chevrons
-    http://www.jasonamyers.com/2017/default-to-pprint-python-repl/
 *   Tab completion
     https://github.com/patrik-johansson/dotfiles/blob/master/.pythonstartup
 
@@ -36,9 +34,6 @@ def displayhook_pprint(o):
     pprint.pprint(o)
     builtins._ = o
 
-
-sys.ps1 = "\033[0;34m>>> \033[0m"
-sys.ps2 = "\033[1;34m... \033[0m"
 
 sys.displayhook = displayhook_pprint
 
