@@ -73,9 +73,7 @@ if __name__ == "__main__":
             url=f"https://www.flickr.com/people/{user_id['path_alias']}"
         )
     else:
-        user = api.lookup_user_by_id(
-            url=f"https://www.flickr.com/people/{user_id['id']}"
-        )
+        user = api.lookup_user_by_id(user_id=user_id["id"])
 
     print(f"ID:       {user['id']}")
     print(f"username: {user['username']}")
