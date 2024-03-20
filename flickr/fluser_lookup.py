@@ -12,13 +12,27 @@ Look up a user by URL or path alias.
 """
 
 import sys
+from typing import TypedDict
 
 from flickr_photos_api import FlickrPhotosApi
+from flickr_url_parser import is_flickr_user_id
 import hyperlink
 import keyring
 
 
-def get_user_id(user_text: str) -> str:
+class PathAlias(TypedDict):
+    path_alias: str
+
+
+class UserId(TypedDict):
+    id: str
+
+
+def get_user_id(user_text: str) -> PathAlias | UserId:
+    # e.g. 35468159852@N01
+    if is_flickr_user_id(user_text):
+        return {"id": user_text}
+
     u = hyperlink.URL.from_text(user_text)
 
     # e.g. https://www.youtube.com/watch?v=0naRXbQQ838
@@ -30,9 +44,15 @@ def get_user_id(user_text: str) -> str:
     ):
         return {"path_alias": u.path[1]}
 
+    # e.g. "https://www.flickr.com/photos/35468159852@N01/"
     # e.g. https://www.flickr.com/photos/powerhouse_museum/2532449275/
     if u.host == "www.flickr.com" and len(u.path) >= 2 and u.path[0] == "photos":
-        return {"path_alias": u.path[1]}
+        if is_flickr_user_id(u.path[1]):
+            return {"id": u.path[1]}
+        else:
+            return {"path_alias": u.path[1]}
+
+    raise ValueError(f"Cannot get Flickr user from {user_text!r}")
 
 
 if __name__ == "__main__":

@@ -14,6 +14,14 @@ from fluser_lookup import get_user_id
             "https://www.flickr.com/photos/powerhouse_museum/2532449275/",
             {"path_alias": "powerhouse_museum"},
         ),
+        (
+            "35468159852@N01",
+            {"id": "35468159852@N01"},
+        ),
+        (
+            "https://www.flickr.com/photos/35468159852@N01/",
+            {"id": "35468159852@N01"},
+        ),
     ],
 )
 def test_get_user_id(user_text, user_id):
