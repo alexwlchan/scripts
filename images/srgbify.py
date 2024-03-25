@@ -39,7 +39,6 @@ def convert_image_to_srgb(im: Image) -> Image:
             outputProfile=ImageCms.createProfile("sRGB"),
         )
     except PyCMSError as err:
-        print(err.args[0].args)
         if (
             im.mode == "L"
             and b"GRAYXYZ" in icc_profile
