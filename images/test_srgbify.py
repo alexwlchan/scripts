@@ -1,4 +1,5 @@
 import filecmp
+import pathlib
 
 from PIL import Image
 
@@ -13,9 +14,7 @@ def test_it_ignores_an_image_which_is_already_srgb():
     """
     im = Image.open("images/examples/Shoes-sRGB.jpg")
 
-    new_im = convert_image_to_srgb(im)
-
-    assert new_im is im
+    assert convert_image_to_srgb(im) is None
 
 
 def test_it_converts_a_display_p3_image_to_srgb(tmp_path):
@@ -65,3 +64,21 @@ def test_it_converts_images_with_a_grey_profile():
     new_im = convert_image_to_srgb(im)
 
     assert new_im.mode == "RGB"
+
+
+def test_it_preserves_rotation_from_exif_orientation(tmp_path: pathlib.Path):
+    """
+    This is based on a photo exported from my Apple Photos Library
+    which was rotated by 90 degrees upon transformation.
+
+    This was caused by an image with an EXIF orientation tag that was
+    being stripped on save.  I found a solution in the Pillow issue tracker.
+
+    See https://github.com/alexwlchan/scripts/issues/21
+    See https://github.com/python-pillow/Pillow/issues/4703
+    """
+    im = Image.open("images/examples/taylorswift.jpg")
+
+    new_im = convert_image_to_srgb(im)
+
+    assert new_im.size == (3024, 4032)
