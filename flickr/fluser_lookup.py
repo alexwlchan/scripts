@@ -46,7 +46,11 @@ def get_user_id(user_text: str) -> PathAlias | UserId:
 
     # e.g. "https://www.flickr.com/photos/35468159852@N01/"
     # e.g. https://www.flickr.com/photos/powerhouse_museum/2532449275/
-    if u.host == "www.flickr.com" and len(u.path) >= 2 and u.path[0] == "photos":
+    if (
+        u.host == "www.flickr.com"
+        and len(u.path) >= 2
+        and u.path[0] in {"photos", "people"}
+    ):
         if is_flickr_user_id(u.path[1]):
             return {"id": u.path[1]}
         else:

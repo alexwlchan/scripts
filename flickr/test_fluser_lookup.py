@@ -15,6 +15,10 @@ from fluser_lookup import get_user_id
             {"path_alias": "powerhouse_museum"},
         ),
         (
+            "https://www.flickr.com/people/alexwlchan/",
+            {"path_alias": "alexwlchan"},
+        ),
+        (
             "35468159852@N01",
             {"id": "35468159852@N01"},
         ),
