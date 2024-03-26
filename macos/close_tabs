@@ -23,13 +23,6 @@ function* tabGenerator() {
     for (tab_index = tab_count - 1; tab_index >= 0; tab_index--) {
       tab = window.tabs[tab_index];
 
-      // I have a window of social media sites that I always have open,
-      // and the last tab is Cohost so this script knows now to close
-      // Twitter/Facebook in that window.
-      if (tab_index === tab_count - 1 && tab.url().startsWith('https://cohost.org')) {
-        break;
-      }
-
       yield [window_index, tab_index, tab.url()];
     }
   }
