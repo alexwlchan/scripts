@@ -24,4 +24,5 @@ fi
 
 api_key=$(keyring get flickr_api key)
 
-curl "https://api.flickr.com/services/rest/?api_key=${api_key}&method=${method}&${params}"
+curl --silent "https://api.flickr.com/services/rest/?api_key=${api_key}&method=${method}&${params}" \
+  | ~/repos/scripts/text/pp_xml.sh
