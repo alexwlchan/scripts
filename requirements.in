@@ -26,4 +26,4 @@ regex
 sqlite-utils
 termcolor
 tqdm
-yt-dlp
+yt-dlp>=2024.3.10
