@@ -19,6 +19,7 @@ naturalsort==1.5.1
 Pillow
 pillow_heif
 pip-tools
+pygments
 pypdf
 pytest
 regex

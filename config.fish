@@ -179,6 +179,7 @@ end
 
 __create_bash_script_alias flickr/flapi.sh
 __create_bash_script_alias flickr/flphoto.sh
+__create_bash_script_alias text/pp_xml.sh
 
 __create_python_script_alias flickr/fluser_lookup.py
 __create_python_script_alias fs/emptydir.py

@@ -3,4 +3,4 @@
 set -o errexit
 set -o nounset
 
-xmllint --format -
+xmllint --format - | pygmentize -l xml
