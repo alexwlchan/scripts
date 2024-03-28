@@ -6,7 +6,11 @@ This is particularly useful for screenshots on macOS, which are taken
 with the display's colour profile (e.g. Display LCD or Display P3), but
 which I want to convert to sRGB for converting on the web.
 
-This script strips out EXIF metadata.
+Note: this is a potentially destructive script.  Don't run this on images
+you care about if you don't have a backup!
+
+*   It overwrites the original image file.
+*   It strips out EXIF metadata.
 
 Based on https://github.com/python-pillow/Pillow/issues/1662
 """
@@ -39,6 +43,8 @@ def convert_image_to_srgb(im: Image) -> typing.Union[Image, None]:
     # To avoid any weird rotation issues, bake the rotation into the image.
     # See https://github.com/python-pillow/Pillow/issues/4703#issuecomment-645219973
     # or the associated test.
+    #
+    # See https://github.com/alexwlchan/scripts/issues/21
     im = ImageOps.exif_transpose(im)
 
     # Otherwise, convert the image to an sRGB colour profile and return that.
