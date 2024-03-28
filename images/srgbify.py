@@ -6,13 +6,20 @@ This is particularly useful for screenshots on macOS, which are taken
 with the display's colour profile (e.g. Display LCD or Display P3), but
 which I want to convert to sRGB for converting on the web.
 
+Note: this is a potentially destructive script.  Don't run this on images
+you care about if you don't have a backup!
+
+*   It overwrites the original image file.
+*   It strips out EXIF metadata.
+
 Based on https://github.com/python-pillow/Pillow/issues/1662
 """
 
 import io
 import sys
+import typing
 
-from PIL import Image, ImageCms
+from PIL import Image, ImageCms, ImageOps
 from PIL.ImageCms import PyCMSError
 from pillow_heif import register_heif_opener
 
@@ -20,7 +27,7 @@ from pillow_heif import register_heif_opener
 register_heif_opener()
 
 
-def convert_image_to_srgb(im: Image) -> Image:
+def convert_image_to_srgb(im: Image) -> typing.Union[Image, None]:
     """
     Convert an image to sRGB and return a new Image instance.
     """
@@ -28,10 +35,19 @@ def convert_image_to_srgb(im: Image) -> Image:
 
     # If this image doesn't have a colour profile, we're done.
     if icc_profile is None:
-        return im
+        return None
+
+    # If the image has an EXIF orientation tag, it will be stripped out
+    # upon saving (like all EXIF metadata).
+    #
+    # To avoid any weird rotation issues, bake the rotation into the image.
+    # See https://github.com/python-pillow/Pillow/issues/4703#issuecomment-645219973
+    # or the associated test.
+    #
+    # See https://github.com/alexwlchan/scripts/issues/21
+    im = ImageOps.exif_transpose(im)
 
     # Otherwise, convert the image to an sRGB colour profile and return that.
-
     try:
         return ImageCms.profileToProfile(
             im,
@@ -39,7 +55,6 @@ def convert_image_to_srgb(im: Image) -> Image:
             outputProfile=ImageCms.createProfile("sRGB"),
         )
     except PyCMSError as err:
-        print(err.args[0].args)
         if (
             im.mode == "L"
             and b"GRAYXYZ" in icc_profile
@@ -65,7 +80,7 @@ if __name__ == "__main__":
         im = Image.open(path)
         out_im = convert_image_to_srgb(im)
 
-        if out_im != im:
+        if out_im is not None:
             out_im.save(path)
 
         print(path)
