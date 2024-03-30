@@ -54,7 +54,16 @@ end
 set -x VIRTUAL_ENV_DISABLE_PROMPT 1
 
 function print_venv_information
-    if [ -n "$VIRTUAL_ENV" ]
+    if test -n "$VIRTUAL_ENV"
+
+        # If the virtualenv has ceased to exist since the last prompt,
+        # then it can't possibly be activated, so deactivate and don't
+        # print it in the prompt.
+        if test ! -d "$VIRTUAL_ENV"
+            deactivate
+            return
+        end
+
         set_color normal
         printf " using "
 
