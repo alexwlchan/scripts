@@ -9,7 +9,7 @@
 #
 function auto_activate_venv --description "Auto activate/deactivate virtualenv when I change directories"
 
-		# Get the top-level directory of the current Git repo (if any)
+    # Get the top-level directory of the current Git repo (if any)
     set REPO_ROOT (git rev-parse --show-toplevel 2>/dev/null)
 
     # Case #1: cd'd into a folder which has a .venv in its root.
