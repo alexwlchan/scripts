@@ -22,11 +22,12 @@ import sys
 import hyperlink
 
 
-def is_playlist(url: str) -> bool:
+def is_youtube_playlist(url: str) -> bool:
     """
     Returns True if a YouTube URL is a playlist, false otherwise.
     """
     u = hyperlink.DecodedURL.from_text(url)
+    assert "youtube.com" in u.host
     return bool(u.get("list"))
 
 
@@ -88,11 +89,10 @@ if __name__ == "__main__":
     # and we can go from there to get the path to yt-dlp.
     yt_dlp_path = os.path.join(os.path.dirname(sys.executable), "yt-dlp")
 
-    remaining_args = [a for a in argv if "youtube.com" not in a]
-
     # Look for a YouTube URL in the argument list.  If we don't find one,
     # assume we're downloading some other source and call yt-dlp as usual.
     youtube_url_matches = [a for a in argv if "youtube.com" in a]
+    remaining_args = [a for a in argv if "youtube.com" not in a]
 
     if len(youtube_url_matches) != 1:
         subprocess.check_call([yt_dlp_path] + argv)
@@ -100,7 +100,7 @@ if __name__ == "__main__":
 
     youtube_url = youtube_url_matches[0]
 
-    if is_playlist(youtube_url):
+    if is_youtube_playlist(youtube_url):
         download_parallel_playlist(
             youtube_url=youtube_url, remaining_args=remaining_args
         )
