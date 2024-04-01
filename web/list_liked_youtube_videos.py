@@ -96,8 +96,7 @@ class YouTubeClient:
         try:
             request = youtube.channels().list(part="snippet", mine=True)
             request.execute()
-        except Exception as e:
-            print(e)
+        except Exception:
             keyring.delete_password("youtube", label)
             return self.create_youtube_client(label)
         else:
