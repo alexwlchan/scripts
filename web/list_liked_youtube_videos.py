@@ -23,6 +23,10 @@ import keyring
 
 class YouTubeClient:
     def __init__(self, label: str):
+        self.api_service_name = "youtube"
+        self.api_version = "v3"
+        self.scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
+
         self.youtube = self.create_youtube_client(label)
 
     def create_youtube_client(self, label: str):
@@ -32,10 +36,6 @@ class YouTubeClient:
         It gets the OAuth config from the system keychain, and caches
         per-user credentials in the keychain under ("youtube", label).
         """
-        api_service_name = "youtube"
-        api_version = "v3"
-        scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
-
         # Try to retrieve a stored OAuth access token from the keychain.
         #
         # This saves me going through the in-browser authentication flow
@@ -64,7 +64,7 @@ class YouTubeClient:
                 raise ValueError("Could not find OAuth client secrets in keychain!")
 
             flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_config(
-                client_config=json.loads(stored_client_secrets), scopes=scopes
+                client_config=json.loads(stored_client_secrets), scopes=self.scopes
             )
 
             with contextlib.redirect_stdout(sys.stderr):
@@ -75,7 +75,7 @@ class YouTubeClient:
             keyring.set_password("youtube", label, credentials.to_json())
 
         youtube = googleapiclient.discovery.build(
-            api_service_name, api_version, credentials=credentials
+            self.api_service_name, self.api_version, credentials=credentials
         )
 
         # The OAuth credentials don't last forever -- they seem to expire after
