@@ -16,11 +16,6 @@ from save_youtube_videos import classify_file_type
         ),
         ("AfsnHVaScjg", "Ravens can talk! [AfsnHVaScjg].info.json", "info"),
         (
-            "X1ynZm1wI18",
-            "Rami Ismail, Vlambeer - XOXO Festival (2015)-X1ynZm1wI18.webp",
-            "thumbnail",
-        ),
-        (
             "IjCylxs8hZU",
             "Soviet Flying Aircraft Carriers Were Ingenious [IjCylxs8hZU].en.vtt",
             "subtitles",
