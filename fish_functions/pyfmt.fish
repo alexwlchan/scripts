@@ -4,7 +4,7 @@
 # virtualenv, it will fall back to copies in the scripts repo.
 
 function _run_black
-    if which black
+    if which black >/dev/null
         black $argv
     else
         ~/repos/scripts/.venv/bin/black $argv
@@ -12,7 +12,7 @@ function _run_black
 end
 
 function _run_flake8
-    if which flake8
+    if which flake8 >/dev/null
         flake8 $argv
     else
         ~/repos/scripts/.venv/bin/flake8 $argv
