@@ -112,7 +112,11 @@ class YouTubeClient:
             request = self.youtube.playlistItems().list(**kwargs)
             response = request.execute()
 
-            yield from response["items"]
+            for item in response["items"]:
+                if item["snippet"]["title"] in {"Deleted video", "Private video"}:
+                    continue
+
+                yield item
 
             try:
                 kwargs["pageToken"] = response["nextPageToken"]
