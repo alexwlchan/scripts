@@ -98,9 +98,6 @@ def classify_file_type(
 
     if filename.name.endswith(
         (
-            f"-{video_id}.mp4",
-            f"-{video_id}.webm",
-            f"-{video_id}.mkv",
             f" [{video_id}].mp4",
             f" [{video_id}].mkv",
             f" [{video_id}].webm",
@@ -110,15 +107,13 @@ def classify_file_type(
 
     if filename.name.endswith(
         (
-            f"-{video_id}.jpg",
-            f"-{video_id}.webp",
             f" [{video_id}].jpg",
             f" [{video_id}].webp",
         )
     ):
         return "thumbnail"
 
-    if filename.name.endswith((f"-{video_id}.info.json", f" [{video_id}].info.json")):
+    if filename.name.endswith(f" [{video_id}].info.json"):
         return "info"
 
     if filename.name.endswith(
