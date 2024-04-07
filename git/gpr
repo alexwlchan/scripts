@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Open a GitHub pull request for the current branch.
+
+set -o errexit
+set -o nounset
+
+open "$(_get_github_url)/compare/$(gcb)?expand=1"

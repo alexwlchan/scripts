@@ -4,9 +4,4 @@
 set -o errexit
 set -o nounset
 
-# The remote URL will be something of the form
-#
-#     git@github.com:alexwlchan/photo-reviewer.git
-#
-# The tr/awk gets everything after the colon, then prepends github.com.
-open https://github.com/$(git remote get-url origin | tr ':' ' ' | awk '{print $2}')
+open "$(_get_github_url)"

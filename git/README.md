@@ -85,6 +85,12 @@ scripts = [
         """
     },
     {
+        "usage": "gpr",
+        "description": """
+        open a GitHub <strong>p</strong>ull <strong>r</strong>equest for the current branch
+        """
+    },
+    {
         "usage": "groot",
         "description": """
         alias for <code>git rev-parse --show-toplevel</code>, which prints the root of the current repository
@@ -214,6 +220,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/git/gpr">
+      <code>gpr</code>
+    </a>
+  </dt>
+  <dd>
+    open a GitHub <strong>p</strong>ull <strong>r</strong>equest for the current branch
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/git/groot">
       <code>groot</code>
     </a>
@@ -253,4 +268,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     open the current Git repo in <a href="https://gitup.co/">GitUp</a>, my GUI Git client of choice
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: ce37e30161ddef4f54ee397d664307dd) -->
+<!-- [[[end]]] (checksum: 113cfe8c833dfc74985f3f7dff2bcace) -->

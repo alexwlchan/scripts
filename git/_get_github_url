@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+# The remote URL will be something of the form
+#
+#     git@github.com:alexwlchan/photo-reviewer.git
+#
+# The tr/awk gets everything after the colon
+REPO_NAME=$(
+  git remote get-url origin \
+    | tr ':' ' ' \
+    | awk '{print $2}' \
+    | sed "s/\.git//g"
+)
+
+printf "https://github.com/$REPO_NAME"
