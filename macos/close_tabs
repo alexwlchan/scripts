@@ -49,6 +49,7 @@ function isSafeToClose(url) {
     url === 'https://alexwlchan.net/' ||
     url === 'https://arstechnica.com/' ||
     url === 'https://calendar.google.com/calendar/u/0/r/week' ||
+    url === 'https://chat.openai.com/' ||
     url === 'https://commons.flickr.org/' ||
     url === 'https://daringfireball.net/' ||
     url === 'https://docs.google.com/document/u/0/' ||
