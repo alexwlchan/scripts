@@ -25,6 +25,10 @@ scripts = [
         "description": "close ephemeral tabs in Safari – basically, anything that can be easily recreated/reopened later."
     },
     {
+        "usage": "close_specific_tabs [example.org fragment.net]",
+        "description": "close tabs in Safari based on their URL – useful for closing tabs which I can see have high activity/CPU in Activity Monitor."
+    },
+    {
         "name": "count_tabs",
         "description": "count the number of tabs I have open in Safari."
     },
@@ -95,6 +99,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dt>
   <dd>
     close ephemeral tabs in Safari – basically, anything that can be easily recreated/reopened later.
+  </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/close_specific_tabs">
+      <code>close_specific_tabs [example.org fragment.net]</code>
+    </a>
+  </dt>
+  <dd>
+    close tabs in Safari based on their URL – useful for closing tabs which I can see have high activity/CPU in Activity Monitor.
   </dd>
 
   <dt>
@@ -199,4 +212,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 5190a14c113ded41343a7efe338cccf6) -->
+<!-- [[[end]]] (checksum: bb331272b982f8cfc69dea52a1e7f558) -->

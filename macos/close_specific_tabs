@@ -1,0 +1,53 @@
+#!/usr/bin/env osascript -l JavaScript
+// A script to close Safari tabs.
+//
+// This is a script I run when I see high memory usage in Activity Monitor --
+// it shows me the URL but no easy way to jump to the tab.  If I recognise
+// the URL and I know I can close it safely, this script lets me do that
+// quickly.
+
+safari = Application("Safari");
+
+// Generates all the window/tab/URLs in Safari.
+//
+// This runs in reverse window/tab index order: that is, windows are returned
+// bottom to top, and tabs from right to left.
+function* tabGenerator() {
+  window_count = safari.windows.length;
+
+  for (window_index = window_count - 1; window_index >= 0; window_index--) {
+    window = safari.windows[window_index];
+
+    tab_count = window.tabs.length;
+
+    for (tab_index = tab_count - 1; tab_index >= 0; tab_index--) {
+      tab = window.tabs[tab_index];
+
+      yield [window_index, tab_index, tab.url(), tab.name()];
+    }
+  }
+}
+
+
+function run(argv) {
+  let closedCount = 0;
+  let remainingCount = 0;
+
+  for (const [window_index, tab_index, url, title] of tabGenerator()) {
+    for (i = 0; i < argv.length; i++) {
+      const searchFragment = argv[i];
+
+      if (url.includes(searchFragment)) {
+        console.log(`${url} (${title})`);
+        safari.windows[window_index].tabs[tab_index].close();
+        closedCount += 1;
+        break;
+      } else {
+        remainingCount += 1;
+      }
+    }
+  }
+
+  console.log(`Closed ${closedCount} tab${closedCount !== 1 ? 's' : ''}; ${remainingCount} tab${remainingCount !== 1 ? 's' : ''} left open`)
+}
+
