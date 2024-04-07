@@ -46,12 +46,14 @@ function prepend_to_path
     end
 end
 
+prepend_to_path /opt/homebrew/bin
+prepend_to_path /opt/homebrew/opt/ruby/bin
+prepend_to_path /opt/homebrew/lib/ruby/gems/3.3.0/gems/jekyll-4.3.3/exe
 
 prepend_to_path /Library/Frameworks/Python.framework/Versions/3.12/bin
 
 prepend_to_path ~/repos/scripts
 prepend_to_path ~/repos/scripts/aws
-prepend_to_path ~/repos/scripts/docker
 prepend_to_path ~/repos/scripts/fs
 prepend_to_path ~/repos/scripts/git
 prepend_to_path ~/repos/scripts/images
