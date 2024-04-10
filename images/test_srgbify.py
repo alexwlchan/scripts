@@ -82,3 +82,14 @@ def test_it_preserves_rotation_from_exif_orientation(tmp_path: pathlib.Path):
     new_im = convert_image_to_srgb(im)
 
     assert new_im.size == (3024, 4032)
+
+
+def test_it_converts_images_with_a_cmyk_profile():
+    """
+    If an image has a CMYK colour profile, that gets converted to sRGB.
+    """
+    im = Image.open("images/examples/the-design-of-everyday-things.jpg")
+
+    new_im = convert_image_to_srgb(im)
+
+    assert new_im.mode == "RGB"

@@ -27,6 +27,12 @@ from pillow_heif import register_heif_opener
 register_heif_opener()
 
 
+def get_profile_description(icc_profile):
+    f = io.BytesIO(icc_profile)
+    prf = ImageCms.ImageCmsProfile(f)
+    return prf.profile.profile_description
+
+
 def convert_image_to_srgb(im: Image) -> typing.Union[Image, None]:
     """
     Convert an image to sRGB and return a new Image instance.
@@ -55,11 +61,12 @@ def convert_image_to_srgb(im: Image) -> typing.Union[Image, None]:
             outputProfile=ImageCms.createProfile("sRGB"),
         )
     except PyCMSError as err:
-        if (
-            im.mode == "L"
-            and b"GRAYXYZ" in icc_profile
-            and err.args[0].args == ("cannot build transform",)
-        ):
+        profile_name = get_profile_description(icc_profile)
+
+        is_gray_xyz = im.mode == "L" and b"GRAYXYZ" in icc_profile
+        is_cmyk = im.mode == "CMYK" and profile_name == "U.S. Web Coated (SWOP) v2"
+
+        if err.args[0].args == ("cannot build transform",) and (is_gray_xyz or is_cmyk):
             return ImageCms.profileToProfile(
                 im,
                 inputProfile=io.BytesIO(icc_profile),
