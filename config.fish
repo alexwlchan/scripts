@@ -46,10 +46,6 @@ function prepend_to_path
     end
 end
 
-prepend_to_path /opt/homebrew/bin
-prepend_to_path /opt/homebrew/opt/ruby/bin
-prepend_to_path /opt/homebrew/lib/ruby/gems/3.3.0/gems/jekyll-4.3.3/exe
-
 prepend_to_path /Library/Frameworks/Python.framework/Versions/3.12/bin
 
 prepend_to_path ~/repos/scripts
@@ -62,6 +58,14 @@ prepend_to_path ~/repos/scripts/macos
 prepend_to_path ~/repos/scripts/terraform
 prepend_to_path ~/repos/scripts/text
 prepend_to_path ~/repos/scripts/web
+
+# Paths for Ruby and bundler
+prepend_to_path /opt/homebrew/bin
+prepend_to_path /opt/homebrew/opt/ruby/bin
+prepend_to_path /opt/homebrew/lib/ruby/gems/3.3.0/bin
+
+# Path for Python tools installed with pipx
+prepend_to_path ~/.local/bin
 
 
 # This prevents me from installing packages with pip without being
@@ -162,23 +166,6 @@ function __create_python_script_alias
     end
 end
 
-function __create_python_module_alias
-    set module_name $argv[1]
-
-    # If we're in a virtualenv where this module is installed, we
-    # should prefer the virtualenv version over the version in scripts.
-    function $module_name --inherit-variable module_name
-        which $module_name >/dev/null 2>&1
-
-        if test $status -eq 0
-            set executable (which $module_name)
-            $executable $argv
-        else
-            ~/repos/scripts/.venv/bin/$module_name $argv
-        end
-    end
-end
-
 __create_bash_script_alias flickr/flapi.sh
 __create_bash_script_alias flickr/flphoto.sh
 __create_bash_script_alias text/pp_xml.sh
@@ -203,7 +190,3 @@ __create_python_script_alias text/noplaylist.py
 __create_python_script_alias text/sumsizes.py
 __create_python_script_alias web/download_instagram.py
 __create_python_script_alias web/yt-dlp.py
-
-__create_python_module_alias cog
-__create_python_module_alias datasette
-__create_python_module_alias keyring
