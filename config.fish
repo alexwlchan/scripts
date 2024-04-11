@@ -59,6 +59,8 @@ prepend_to_path ~/repos/scripts/terraform
 prepend_to_path ~/repos/scripts/text
 prepend_to_path ~/repos/scripts/web
 
+prepend_to_path ~/repos/flapi.sh
+
 # Paths for Ruby and bundler
 prepend_to_path /opt/homebrew/bin
 prepend_to_path /opt/homebrew/opt/ruby/bin
@@ -166,11 +168,8 @@ function __create_python_script_alias
     end
 end
 
-__create_bash_script_alias flickr/flapi.sh
-__create_bash_script_alias flickr/flphoto.sh
 __create_bash_script_alias text/pp_xml.sh
 
-__create_python_script_alias flickr/fluser_lookup.py
 __create_python_script_alias fs/emptydir.py
 __create_python_script_alias git/find_big_commits.py
 __create_python_script_alias git/git-cloc.py
