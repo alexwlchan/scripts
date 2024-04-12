@@ -2,6 +2,8 @@
 
 These scripts do stuff with the Flickr API.
 
+Some scripts that used to be in this folder have moved to [a standalone repo](https://github.com/Flickr-Foundation/flapi.sh).
+
 ## The individual scripts
 
 <!-- [[[cog
