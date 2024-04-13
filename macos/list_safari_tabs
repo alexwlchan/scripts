@@ -22,6 +22,6 @@ function* tabGenerator() {
   }
 }
 
-for (const url of tabGenerator()) {
-  console.log(url);
-}
+// Print the list of tabs to stdout.
+// See https://apple.stackexchange.com/a/278395/14295
+Array.from(tabGenerator()).join('\n');
