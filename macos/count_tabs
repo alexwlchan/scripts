@@ -12,7 +12,7 @@ for (index = 0; index < safari.windows.length; index++) {
 }
 
 if (totalTabs === 1) {
-  console.log('There is 1 tab open.')
+  'There is 1 tab open.';
 } else {
-  console.log(`There are ${totalTabs} tabs open.`)
+  `There are ${totalTabs} tabs open.`;
 }
