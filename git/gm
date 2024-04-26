@@ -18,3 +18,5 @@ then
 fi
 
 gp
+
+cleanup_branches
