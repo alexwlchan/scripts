@@ -8,7 +8,7 @@ datasette-render-image-tags
 flake8
 flickr-photos-api>=1.6.0
 flickr-url-parser>=1.8.2
-google-api-python-client==1.7.2
+google-api-python-client==2.128.0
 google-auth-oauthlib==0.4.1
 httpx
 humanize
