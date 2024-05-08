@@ -23,7 +23,8 @@ imdown() {
 	done
 	nag \
 	"internet connection is back up\!" \
-	"Skynet is thinking" "your tribulation is over\!" \
+	"Skynet is thinking" \
+  "your tribulation is over\!" \
 	"Praise what gods may be. internet\!" \
 	"O M G we're online" \
 	"In the words of Dr. Frankenstein, it's alive\!"
