@@ -1,58 +1,14 @@
 #!/usr/bin/env bash
-# Download large files with r(esumable) curl.
+# r(esumable) curl.
 #
-# This is for large files that can't necessarily be downloaded in one go --
-# it will call curl with a set of flags that allow it to resume an
-# in-progress download, and call it repeatedly until it's done.
+# This just calls curl with a couple of flags that allow it to resume
+# an in-progress download.
 
 set -o errexit
 set -o nounset
 
-if (( $# == 1 ))
-then
-  url="$1"
-else
-  echo "Usage: $0 URL" >&2
-  exit 1
-fi
-
-url="$1"
-
-filename=$(
-  curl \
-    --location \
-    --remote-name \
-    --silent \
-    --write-out '%{filename_effective}' \
-    --head \
-    "$url"
-)
-remote_size=$(
-  curl \
-    --location \
-    --head \
-    --silent \
-    --output /dev/null \
-    --write-out '%header{content-length}' \
-    "$url"
-)
-
-while true
-do
-  curl \
-    --location \
-    --remote-name \
-    --continue-at - \
-    "$url" || true
-
-  downloaded_size=$(stat -f%z "$filename")
-
-  if (( downloaded_size == remote_size ))
-  then
-    echo "Download complete!"
-    exit 0
-  else
-    echo "*** Download failed before it completed, retrying in 10 seconds..."
-    sleep 10
-  fi
-done
+curl \
+  --location \
+  --remote-name \
+  --continue-at - \
+  "$1"
