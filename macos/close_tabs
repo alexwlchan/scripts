@@ -41,6 +41,7 @@ function isSafeToClose(url) {
     url.startsWith("http://localhost:5959/") ||
     url.startsWith("https://analytics.alexwlchan.net") ||
     url.startsWith("https://app.fastmail.com/mail/Inbox/?u=") ||
+    url.startsWith("https://chat.openai.com/c/") ||
     url.startsWith("https://discord.com/") ||
     url.startsWith("https://github.com/Flickr-Foundation/") ||
     url.startsWith("https://lexies-library-lookup.netlify.app/") ||
