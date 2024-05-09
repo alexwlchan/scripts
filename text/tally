@@ -16,4 +16,4 @@
 set -o errexit
 set -o nounset
 
-sort | uniq -c | sort
+sort | uniq --count | sort --numeric-sort
