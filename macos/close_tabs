@@ -35,6 +35,7 @@ function isSafeToClose(url) {
   if (url === null) { return false; }
 
   return (
+    url.startsWith("https://chat.openai.com/c/") ||
     url.startsWith("http://localhost:3000/") ||
     url.startsWith("http://localhost:5000/") ||
     url.startsWith("http://localhost:5757/") ||
