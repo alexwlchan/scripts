@@ -77,13 +77,6 @@ scripts = [
         """
     },
     {
-        "name": "download_cover_image",
-        "description": """
-        copy an image from my Desktop folder into my book tracker.
-        This is very specific to my setup and unlikely to be useful to anyone else.
-        """
-    },
-    {
         "usage": "images_only_pdf.py [PATH]",
         "description": """
         take a PDF, and create a new PDF which just has the images filling the page.
@@ -233,16 +226,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/images/download_cover_image">
-      <code>download_cover_image</code>
-    </a>
-  </dt>
-  <dd>
-    copy an image from my Desktop folder into my book tracker.
-    This is very specific to my setup and unlikely to be useful to anyone else.
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/images_only_pdf.py">
       <code>images_only_pdf.py [PATH]</code>
     </a>
@@ -341,4 +324,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     I don’t use this script very often, but I checked it in because I thought it was a neat trick I didn’t want to forget.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: dc1a63324c84a51d54b49276ba71b463) -->
+<!-- [[[end]]] (checksum: c65a5837a2a9b2e8cab77b6b040d081f) -->
