@@ -50,6 +50,7 @@ prepend_to_path /Library/Frameworks/Python.framework/Versions/3.12/bin
 
 prepend_to_path ~/repos/scripts
 prepend_to_path ~/repos/scripts/aws
+prepend_to_path ~/repos/scripts/flickr
 prepend_to_path ~/repos/scripts/fs
 prepend_to_path ~/repos/scripts/git
 prepend_to_path ~/repos/scripts/images
