@@ -84,14 +84,26 @@ function isSafeToClose(url) {
 let closedCount = 0;
 let remainingCount = 0;
 
+var alreadySeenUrls = new Set();
+
+// We can close a tab if:
+//
+//  - it's safe to close, or
+//  - the URL in this tab is open in another tab, so it's a dupe
+//
 for (const [window_index, tab_index, url] of tabGenerator()) {
-	if (isSafeToClose(url)) {
-		console.log(url);
+  if (isSafeToClose(url)) {
+    console.log(url);
     safari.windows[window_index].tabs[tab_index].close();
     closedCount += 1;
-	} else {
-	  remainingCount += 1;
-	}
+  } else if (alreadySeenUrls.has(url)) {
+    console.log(`${url} (open in another tab)`);
+    safari.windows[window_index].tabs[tab_index].close();
+    closedCount += 1;
+  } else {
+    remainingCount += 1;
+    alreadySeenUrls.add(url);
+  }
 }
 
 console.log(`Closed ${closedCount} tab${closedCount !== 1 ? 's' : ''}; ${remainingCount} tab${remainingCount !== 1 ? 's' : ''} left open`)
