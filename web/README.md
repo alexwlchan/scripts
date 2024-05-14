@@ -71,6 +71,12 @@ scripts = [
         scrape the Really Useful Boxes product catalogue, so I can search for boxes in ways their website doesn't allow – in particular, by dimensions, so I can find boxes that fit into specific spaces.<br/><br/><img src="really_useful_boxes.png">
         """
     },
+    {
+        "name": "yt-dlp.py",
+        "description": """
+        this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
+        """
+    },
 ]
 
 cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
@@ -157,5 +163,14 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   <dd>
     scrape the Really Useful Boxes product catalogue, so I can search for boxes in ways their website doesn't allow – in particular, by dimensions, so I can find boxes that fit into specific spaces.<br/><br/><img src="really_useful_boxes.png">
   </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/yt-dlp.py">
+      <code>yt-dlp.py</code>
+    </a>
+  </dt>
+  <dd>
+    this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
+  </dd>
 </dl>
-<!-- [[[end]]] (checksum: 43e1e90a4f72b89531ee5307b85e6385) -->
+<!-- [[[end]]] (checksum: 54f08d9f43084b85f2d56d5caced4e10) -->
