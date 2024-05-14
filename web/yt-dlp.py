@@ -77,6 +77,9 @@ def check_arguments(argv: list[str]) -> None:
     ):
         sys.exit("Did you forget to add --convert-subtitles=srt?")
 
+    if any("bbc.co.uk" in u for u in argv) and "--output=%(title)s.%(ext)s" not in argv:
+        sys.exit('Did you forget to add --output="%(title)s.%(ext)s"?')
+
 
 if __name__ == "__main__":
     argv = sys.argv[1:]
