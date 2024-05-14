@@ -16,7 +16,7 @@ asgiref==3.7.2
     # via datasette
 attrs==23.1.0
     # via -r requirements.in
-beautifulsoup4==4.12.2
+beautifulsoup4==4.12.3
     # via -r requirements.in
 black==23.11.0
     # via -r requirements.in
