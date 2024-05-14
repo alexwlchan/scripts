@@ -14,5 +14,5 @@ for (index = 0; index < safari.windows.length; index++) {
 if (totalTabs === 1) {
   'There is 1 tab open.';
 } else {
-  `There are ${totalTabs} tabs open.`;
+  `There are ${totalTabs} tabs open in ${windowCount} window${windowCount > 1 ? 's' : ''}.`;
 }
