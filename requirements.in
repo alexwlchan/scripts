@@ -6,8 +6,6 @@ cogapp
 datasette
 datasette-render-image-tags
 flake8
-flickr-photos-api>=1.6.0
-flickr-url-parser>=1.8.2
 google-api-python-client==1.7.2
 google-auth-oauthlib==0.4.1
 httpx
@@ -15,7 +13,7 @@ humanize
 hyperlink
 instaloader
 keyring
-naturalsort==1.5.1
+naturalsort==1.5.1  # Used as 'natsort'
 Pillow
 pillow_heif
 pip-tools
@@ -23,7 +21,6 @@ pipx
 pygments
 pypdf
 pytest
-regex
 sqlite-utils
 termcolor
 tqdm
