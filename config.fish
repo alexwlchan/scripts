@@ -39,10 +39,10 @@ function prepend_to_path
         return 1
     end
 
-    set -l new_path $argv[1]
+    set --local new_path $argv[1]
 
     if test -d $new_path
-        set -x PATH $new_path $PATH
+        set --export PATH $new_path $PATH
     end
 end
 
