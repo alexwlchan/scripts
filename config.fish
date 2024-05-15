@@ -62,13 +62,31 @@ prepend_to_path ~/repos/scripts/web
 
 prepend_to_path ~/repos/flapi.sh
 
-# Paths for Ruby and bundler
-prepend_to_path /opt/homebrew/bin
-prepend_to_path /opt/homebrew/opt/ruby/bin
-prepend_to_path /opt/homebrew/lib/ruby/gems/3.3.0/bin
+# Path for Rust
+prepend_to_path ~/.cargo/bin
 
 # Path for Python tools installed with pipx
 prepend_to_path ~/.local/bin
+
+
+
+# Prepend any Homebrew-related directories to my PATH variable.
+#
+# Note that Homebrew installs into different directories depending on
+# whether you're on an Intel or Apple Silicon Mac.  Eventually I can
+# delete this when I get rid of my last Intel Mac, but until then
+# I want to make sure I have the same paths on both machines.
+#
+# See https://docs.brew.sh/Installation
+
+if test (uname -m) = "arm64"
+  set HOMEBREW_PREFIX /opt/homebrew
+else
+  set HOMEBREW_PREFIX /usr/local
+end
+
+prepend_to_path $HOMEBREW_PREFIX/bin
+prepend_to_path $HOMEBREW_PREFIX/opt/ruby/bin
 
 
 # This prevents me from installing packages with pip without being
