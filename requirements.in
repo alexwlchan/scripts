@@ -18,7 +18,7 @@ Pillow
 pillow_heif
 pip-tools
 pipx
-pygments
+pygments  # Used as 'pygmentize' in 'pp_xml.sh'
 pypdf
 pytest
 sqlite-utils
