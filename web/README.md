@@ -66,6 +66,12 @@ scripts = [
         """
     },
     {
+        "usage": "save_safari_webarchive [URL] [OUTPUT_PATH]",
+        "description": """
+        save a copy of a web page as a Safari webarchive
+        """
+    },
+    {
         "name": "scrape_really_useful_boxes.py",
         "description": """
         scrape the Really Useful Boxes product catalogue, so I can search for boxes in ways their website doesn't allow – in particular, by dimensions, so I can find boxes that fit into specific spaces.<br/><br/><img src="really_useful_boxes.png">
@@ -156,6 +162,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_safari_webarchive">
+      <code>save_safari_webarchive [URL] [OUTPUT_PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    save a copy of a web page as a Safari webarchive
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/scrape_really_useful_boxes.py">
       <code>scrape_really_useful_boxes.py</code>
     </a>
@@ -173,4 +188,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 54f08d9f43084b85f2d56d5caced4e10) -->
+<!-- [[[end]]] (checksum: a31c60eca24c6488caaa93e8bb5f6b44) -->
