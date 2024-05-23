@@ -6,7 +6,7 @@ cogapp
 datasette
 datasette-render-image-tags
 flake8
-google-api-python-client==1.7.2
+google-api-python-client==2.130.0
 google-auth-oauthlib==0.4.1
 httpx
 humanize
