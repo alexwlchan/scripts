@@ -166,7 +166,7 @@ pillow-heif==0.14.0
     # via -r requirements.in
 pint==0.23
     # via datasette
-pip-tools==7.3.0
+pip-tools==7.4.1
     # via -r requirements.in
 pipx==1.5.0
     # via -r requirements.in
@@ -200,7 +200,9 @@ pyparsing==3.1.1
 pypdf==3.17.2
     # via -r requirements.in
 pyproject-hooks==1.0.0
-    # via build
+    # via
+    #   build
+    #   pip-tools
 pytest==7.4.3
     # via -r requirements.in
 python-dateutil==2.8.2
