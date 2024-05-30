@@ -15,7 +15,7 @@ function venv --description "Create and activate a new virtual environment"
     end
 
     echo "Creating virtual environment in "(pwd)"/.venv"
-    python3 -m venv .venv --upgrade-deps
+    uv venv --quiet .venv
     source .venv/bin/activate.fish
 
     # Append .venv to the Git exclude file, but only if it's not
