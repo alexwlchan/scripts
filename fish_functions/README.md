@@ -105,6 +105,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pip_sync.fish">
+      <code>pip_sync.fish</code>
+    </a>
+  </dt>
+  <dd>
+    Make a virtualenv dependencies look like requirements.txt
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pyfmt.fish">
       <code>pyfmt.fish</code>
     </a>
@@ -140,4 +149,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
     Create and activate a new virtual environment
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: b252f415053e97cb4e0110ae9131b55e) -->
+<!-- [[[end]]] (checksum: e9c834ba6a3e6dce919939efbe5deaad) -->
