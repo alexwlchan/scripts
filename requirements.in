@@ -1,11 +1,9 @@
 attrs
-black
 boto3
 beautifulsoup4
 cogapp
 datasette
 datasette-render-image-tags
-flake8
 google-api-python-client==1.7.2
 google-auth-oauthlib==0.4.1
 httpx
@@ -16,11 +14,11 @@ keyring
 naturalsort==1.5.1  # Used as 'natsort'
 Pillow
 pillow_heif
-pip-tools
 pipx
 pygments  # Used as 'pygmentize' in 'pp_xml.sh'
 pypdf
 pytest
+ruff
 sqlite-utils
 termcolor
 tqdm

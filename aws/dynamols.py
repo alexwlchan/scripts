@@ -112,9 +112,9 @@ def parallel_scan_table(sess, *, TableName, **kwargs):
             # of entries in the queue if we've finished scanning the table, so
             # we need to spot that and not throw.
             for scan_params in itertools.islice(scans_to_run, len(done)):
-                futures[
-                    executor.submit(dynamo_client.scan, **scan_params)
-                ] = scan_params
+                futures[executor.submit(dynamo_client.scan, **scan_params)] = (
+                    scan_params
+                )
 
 
 def list_table_names(sess):

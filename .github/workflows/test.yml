@@ -18,20 +18,15 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.12"
+        cache: pip
+
     - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+      run: pip install -r requirements.txt
+
     - name: Run linting
       run: |
-        black --check .
-
-        # E501 = line too long; anything up to 100-ish is fine in my book
-        # (the "ish" is intentional; see https://www.youtube.com/watch?v=wf-BqAjZb8M)
-        #
-        # W503 = line break before binary operator; this is something added
-        # by black and I don't have a strong opinion on, so I'm going to trust
-        # black and have flake8 ignore it.
-        flake8 --ignore=E501,W503
+        ruff check .
+        ruff format --check .
 
     - name: Check README files with Cog
       run: ./text/recog --check
