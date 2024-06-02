@@ -65,6 +65,14 @@ prepend_to_path ~/repos/flapi.sh
 # Path for Rust
 prepend_to_path ~/.cargo/bin
 
+# Paths for Ruby and bundler
+#
+# These paths are different for Intel/Apple Silicon Macs.
+prepend_to_path /opt/homebrew/bin
+prepend_to_path /opt/homebrew/opt/ruby/bin
+prepend_to_path /opt/homebrew/lib/ruby/gems/3.3.0/bin
+prepend_to_path /usr/local/opt/ruby/bin
+
 # Path for Python tools installed with pipx
 prepend_to_path ~/.local/bin
 
