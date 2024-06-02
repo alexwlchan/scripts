@@ -5,8 +5,8 @@ set -o nounset
 
 export FLICKR_API_KEY=$(keyring get flickr_api key)
 
-black .
-flake8 --exclude .venv --ignore=E501,E203,W503 --extend-select=W504
+ruff check .
+ruff format --check .
 
 mypy src tests
 
