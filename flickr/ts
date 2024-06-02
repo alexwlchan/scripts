@@ -6,7 +6,7 @@ set -o nounset
 export FLICKR_API_KEY=$(keyring get flickr_api key)
 
 ruff check .
-ruff format --check .
+ruff format .
 
 mypy src tests
 
