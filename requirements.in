@@ -14,7 +14,6 @@ keyring
 naturalsort==1.5.1  # Used as 'natsort'
 Pillow
 pillow_heif
-pip-tools
 pipx
 pygments  # Used as 'pygmentize' in 'pp_xml.sh'
 pypdf
