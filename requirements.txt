@@ -30,6 +30,8 @@ certifi==2023.11.17
     #   httpx
     #   requests
     #   yt-dlp
+cffi==1.16.0
+    # via cryptography
 charset-normalizer==3.3.2
     # via requests
 click==8.1.7
@@ -43,8 +45,10 @@ click-default-group==1.2.4
     # via
     #   datasette
     #   sqlite-utils
-cogapp==3.3.0
+cogapp==3.4.1
     # via -r requirements.in
+cryptography==42.0.7
+    # via secretstorage
 datasette==0.64.6
     # via
     #   -r requirements.in
@@ -104,6 +108,10 @@ jaraco-context==5.3.0
     # via keyring
 jaraco-functools==4.0.1
     # via keyring
+jeepney==0.8.0
+    # via
+    #   keyring
+    #   secretstorage
 jinja2==3.1.3
     # via datasette
 jmespath==1.0.1
@@ -138,8 +146,6 @@ pillow-heif==0.14.0
     # via -r requirements.in
 pint==0.23
     # via datasette
-pip==24.0
-    # via datasette
 pipx==1.5.0
     # via -r requirements.in
 platformdirs==4.1.0
@@ -155,6 +161,8 @@ pyasn1==0.5.1
     #   rsa
 pyasn1-modules==0.3.0
     # via google-auth
+pycparser==2.22
+    # via cffi
 pycryptodomex==3.19.0
     # via yt-dlp
 pygments==2.18.0
@@ -186,8 +194,8 @@ ruff==0.4.7
     # via -r requirements.in
 s3transfer==0.8.2
     # via boto3
-setuptools==70.0.0
-    # via datasette
+secretstorage==3.3.3
+    # via keyring
 six==1.16.0
     # via
     #   google-api-python-client
