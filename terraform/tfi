@@ -11,4 +11,4 @@ tf init "$@"
 if [[ -d ".terraform" ]]
 then
   tmutil addexclusion .terraform
-end
+fi
