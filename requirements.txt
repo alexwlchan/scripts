@@ -55,10 +55,13 @@ datasette==0.64.6
     #   datasette-render-image-tags
 datasette-render-image-tags==0.1
     # via -r requirements.in
-google-api-python-client==1.7.2
+google-api-core==2.19.0
+    # via google-api-python-client
+google-api-python-client==2.131.0
     # via -r requirements.in
 google-auth==2.27.0
     # via
+    #   google-api-core
     #   google-api-python-client
     #   google-auth-httplib2
     #   google-auth-oauthlib
@@ -66,6 +69,8 @@ google-auth-httplib2==0.2.0
     # via google-api-python-client
 google-auth-oauthlib==0.4.1
     # via -r requirements.in
+googleapis-common-protos==1.63.0
+    # via google-api-core
 h11==0.14.0
     # via
     #   httpcore
@@ -155,6 +160,13 @@ pluggy==1.3.0
     #   datasette
     #   pytest
     #   sqlite-utils
+proto-plus==1.23.0
+    # via google-api-core
+protobuf==4.25.3
+    # via
+    #   google-api-core
+    #   googleapis-common-protos
+    #   proto-plus
 pyasn1==0.5.1
     # via
     #   pyasn1-modules
@@ -183,6 +195,7 @@ pyyaml==6.0.1
     # via datasette
 requests==2.31.0
     # via
+    #   google-api-core
     #   instaloader
     #   requests-oauthlib
     #   yt-dlp
@@ -197,9 +210,7 @@ s3transfer==0.8.2
 secretstorage==3.3.3
     # via keyring
 six==1.16.0
-    # via
-    #   google-api-python-client
-    #   python-dateutil
+    # via python-dateutil
 sniffio==1.3.0
     # via
     #   anyio
