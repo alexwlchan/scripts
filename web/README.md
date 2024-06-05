@@ -42,12 +42,6 @@ scripts = [
         """
     },
     {
-        "name": "save_pinboard_bookmarks.py",
-        "description": """
-        save a complete copy of all my Pinboard bookmarks, including my archive backups.
-        """
-    },
-    {
         "name": "save_tumblr_likes.py",
         "description": """
         save a copy of all the posts I've liked on Tumblr to my backup drive.
@@ -120,15 +114,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_pinboard_bookmarks.py">
-      <code>save_pinboard_bookmarks.py</code>
-    </a>
-  </dt>
-  <dd>
-    save a complete copy of all my Pinboard bookmarks, including my archive backups.
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_tumblr_likes.py">
       <code>save_tumblr_likes.py</code>
     </a>
@@ -173,4 +158,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: d5cc17500a34414cf4107db0dcc7b0e1) -->
+<!-- [[[end]]] (checksum: 7df3c46289e99cda17cd36adb479b0f0) -->
