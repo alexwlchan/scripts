@@ -51,6 +51,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
 ]]] -->
 <dl>
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/add_repo_to_path.fish">
+      <code>add_repo_to_path.fish</code>
+    </a>
+  </dt>
+  <dd>
+    Add a folder in my ~/repos directory to my PATH
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/append_to_file_if_not_exists.fish">
       <code>append_to_file_if_not_exists.fish</code>
     </a>
@@ -149,4 +158,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
     Create and activate a new virtual environment
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: e9c834ba6a3e6dce919939efbe5deaad) -->
+<!-- [[[end]]] (checksum: a3aa157a74c828f8f09dd8705289558a) -->
