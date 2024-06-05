@@ -42,18 +42,6 @@ scripts = [
         """
     },
     {
-        "usage": "save_ao3_links.py [URL...]",
-        "description": """
-        save a copy of a story on AO3, including exports in every available format.
-        """
-    },
-    {
-        "name": "save_pinboard_bookmarks.py",
-        "description": """
-        save a complete copy of all my Pinboard bookmarks, including my archive backups.
-        """
-    },
-    {
         "name": "save_tumblr_likes.py",
         "description": """
         save a copy of all the posts I've liked on Tumblr to my backup drive.
@@ -63,12 +51,6 @@ scripts = [
         "usage": "save_youtube_videos.py [URL...]",
         "description": """
         save a local copy of one or more YouTube videos
-        """
-    },
-    {
-        "usage": "save_safari_webarchive [URL] [OUTPUT_PATH]",
-        "description": """
-        save a copy of a web page as a Safari webarchive
         """
     },
     {
@@ -126,24 +108,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_ao3_links.py">
-      <code>save_ao3_links.py [URL...]</code>
-    </a>
-  </dt>
-  <dd>
-    save a copy of a story on AO3, including exports in every available format.
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_pinboard_bookmarks.py">
-      <code>save_pinboard_bookmarks.py</code>
-    </a>
-  </dt>
-  <dd>
-    save a complete copy of all my Pinboard bookmarks, including my archive backups.
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_tumblr_likes.py">
       <code>save_tumblr_likes.py</code>
     </a>
@@ -159,15 +123,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dt>
   <dd>
     save a local copy of one or more YouTube videos
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_safari_webarchive">
-      <code>save_safari_webarchive [URL] [OUTPUT_PATH]</code>
-    </a>
-  </dt>
-  <dd>
-    save a copy of a web page as a Safari webarchive
   </dd>
 
   <dt>
@@ -188,4 +143,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: a31c60eca24c6488caaa93e8bb5f6b44) -->
+<!-- [[[end]]] (checksum: 93b152a3a4162f174022195ee107ad46) -->
