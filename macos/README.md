@@ -49,10 +49,6 @@ scripts = [
         "description": "print the size of every item in my Photos Library."
     },
     {
-        "name": "get_live_text [image]",
-        "description": "get OCR'd text for a single image using Live Text"
-    },
-    {
         "name": "list_safari_tabs",
         "description": "print the URL of every tab I have open in Safari"
     },
@@ -156,15 +152,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/get_live_text">
-      <code>get_live_text [image]</code>
-    </a>
-  </dt>
-  <dd>
-    get OCR'd text for a single image using Live Text
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/list_safari_tabs">
       <code>list_safari_tabs</code>
     </a>
@@ -212,4 +199,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: bb331272b982f8cfc69dea52a1e7f558) -->
+<!-- [[[end]]] (checksum: 548c914e7cb2a6c9d296697e3b067b5c) -->
