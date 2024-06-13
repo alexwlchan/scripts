@@ -15,6 +15,6 @@ import hyperlink
 
 if __name__ == "__main__":
     url = sys.stdin.read()
-    url = hyperlink.URL.from_text(url)
+    url = hyperlink.parse(url)
     url = url.remove("list")
     sys.stdout.write(str(url))
