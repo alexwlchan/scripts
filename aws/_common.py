@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-
 import functools
+import typing
 
 import boto3
 import hyperlink
@@ -73,8 +72,13 @@ def create_s3_session(s3_identifier, *, role_name="read_only"):
         return boto3.Session()
 
 
-def parse_s3_uri(s3_uri):
-    uri = hyperlink.URL.from_text(s3_uri)
+class S3Uri(typing.TypedDict):
+    Bucket: str
+    Path: str
+
+
+def parse_s3_uri(s3_uri: str) -> S3Uri:
+    uri = hyperlink.parse(s3_uri)
 
     if uri.scheme != "s3":
         raise ValueError(f"Unrecognised scheme in {s3_uri!r}, expected s3://")
