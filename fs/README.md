@@ -36,10 +36,6 @@ scripts = [
         "description": "prints the directory which is the deepest child of the given directory"
     },
     {
-        "name": "emptydir.py",
-        "description": "removes any empty directories under the current one (including directories that are empty aside from files that can be safely deleted, e.g. <code>.DS_Store</code>)"
-    },
-    {
         "name": "flatten",
         "description": """
         flattens a directory structure.
@@ -104,15 +100,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/emptydir.py">
-      <code>emptydir.py</code>
-    </a>
-  </dt>
-  <dd>
-    removes any empty directories under the current one (including directories that are empty aside from files that can be safely deleted, e.g. <code>.DS_Store</code>)
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fs/flatten">
       <code>flatten</code>
     </a>
@@ -169,4 +156,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
       7.58M ~/repos/scripts</code></pre></p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 632a7aa9e05edd9243371bf85c14b266) -->
+<!-- [[[end]]] (checksum: 1b70ade732604da8223fe9628b2ebf80) -->
