@@ -3,12 +3,27 @@
 set -o errexit
 set -o nounset
 
-export FLICKR_API_KEY=$(keyring get flickr_api key)
+function run_python_tests() {
+    export FLICKR_API_KEY=$(keyring get flickr_api key)
 
-ruff check .
-ruff format .
+    ruff check .
+    ruff format .
 
-mypy src tests
+    mypy src tests
 
-coverage run -m pytest tests
-coverage report
+    coverage run -m pytest tests
+    coverage report
+}
+
+function run_rust_tests() {
+    cargo fmt
+    cargo build
+    cargo test
+}
+
+if test -f Cargo.toml
+then
+    run_rust_tests
+else
+    run_python_tests
+fi
