@@ -43,6 +43,7 @@ def download(url):
 def normalise_text(text: str) -> str:
     text = text.replace("</p><p>", "\n\n")
     text = text.replace("<p>", "").replace("</p>", "")
+    text = text.replace("*", "\\*")
     text = re.sub(
         r'<a href="[^"]+" class="mention hashtag" rel="tag">#<span>(?P<hashtag>[^<]+)</span></a>',
         r"\\#\g<hashtag>",

@@ -21,6 +21,10 @@ from get_mastodon_text import normalise_text
             "I realize it&#39;s (comparatively) super easy to set up",
             "I realize it's (comparatively) super easy to set up",
         ),
+        (
+            'The "this site is faster in the app" prompts have the benefit of truth *because they broke the website with React*',
+            'The "this site is faster in the app" prompts have the benefit of truth \*because they broke the website with React\*',
+        ),
     ],
 )
 def test_normalise_text(input, output):
