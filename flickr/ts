@@ -4,7 +4,7 @@ set -o errexit
 set -o nounset
 
 function run_python_tests() {
-    export FLICKR_API_KEY=$(keyring get flickr_api key)
+    export FLICKR_API_KEY=$(keyring get flickr_api key 2>/dev/null)
 
     ruff check .
     ruff format .
