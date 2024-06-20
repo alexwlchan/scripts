@@ -77,6 +77,7 @@ function isSafeToClose(url) {
     url === 'https://www.theguardian.com/uk' ||
     url === 'https://www.youtube.com/' ||
     url === 'https://www.youtube.com/?app=desktop' ||
+    url === 'https://x.com/home' ||
     url === 'history://'
   );
 }
