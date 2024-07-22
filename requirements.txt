@@ -169,7 +169,7 @@ pygments==2.18.0
     # via -r requirements.in
 pyparsing==3.1.1
     # via httplib2
-pypdf==3.17.2
+pypdf==4.3.1
     # via -r requirements.in
 pytest==7.4.3
     # via -r requirements.in
