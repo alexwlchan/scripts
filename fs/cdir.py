@@ -29,15 +29,20 @@ import collections
 import os
 import sys
 
+import tqdm
+
 
 def count_entries_under(d):
-    total = 1
+    with tqdm.tqdm(desc=d, leave=False) as pbar:
+        total = 1
 
-    for _, dirnames, filenames in os.walk(d):
-        total += len(dirnames)
-        total += len(filenames)
+        for _, dirnames, filenames in os.walk(d):
+            update = len(dirnames) + len(filenames)
 
-    return total
+            total += update
+            pbar.update(update)
+
+        return total
 
 
 if __name__ == "__main__":

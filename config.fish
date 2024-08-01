@@ -195,6 +195,7 @@ end
 
 __create_bash_script_alias text/pp_xml.sh
 
+__create_python_script_alias fs/cdir.py
 __create_python_script_alias git/find_big_commits.py
 __create_python_script_alias git/git-cloc.py
 __create_python_script_alias images/chunky_pixels.py
