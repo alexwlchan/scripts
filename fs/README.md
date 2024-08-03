@@ -18,7 +18,7 @@ folder_name = "fs"
 
 scripts = [
     {
-        "name": "cdir",
+        "name": "cdir.py",
         "description": """
         counts all the entries in subfolders under the working directory, and prints them in a table
         <p><pre><code>$ cdir
@@ -74,8 +74,8 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
 ]]]-->
 <dl>
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/cdir">
-      <code>cdir</code>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fs/cdir.py">
+      <code>cdir.py</code>
     </a>
   </dt>
   <dd>
@@ -156,4 +156,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
       7.58M ~/repos/scripts</code></pre></p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 1b70ade732604da8223fe9628b2ebf80) -->
+<!-- [[[end]]] (checksum: 3f615d2b736155ad5b34a540145398b8) -->
