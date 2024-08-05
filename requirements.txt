@@ -214,7 +214,7 @@ tabulate==0.9.0
     # via sqlite-utils
 termcolor==2.4.0
     # via -r requirements.in
-tqdm==4.66.4
+tqdm==4.66.5
     # via -r requirements.in
 typing-extensions==4.9.0
     # via
