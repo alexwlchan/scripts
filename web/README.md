@@ -30,12 +30,6 @@ scripts = [
         """
     },
     {
-        "usage": 'list_liked_youtube_videos.py > liked_videos.$(date +"%Y-%m-%d").txt',
-        "description": """
-        print the URL of every video I've liked on YouTube.
-        """
-    },
-    {
         "usage": "rcurl [URL]",
         "description": """
         call curl with a couple of flags that allow it to do resumable downloads, which is useful for large files.
@@ -90,15 +84,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/web/list_liked_youtube_videos.py">
-      <code>list_liked_youtube_videos.py > liked_videos.$(date +"%Y-%m-%d").txt</code>
-    </a>
-  </dt>
-  <dd>
-    print the URL of every video I've liked on YouTube.
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/rcurl">
       <code>rcurl [URL]</code>
     </a>
@@ -143,4 +128,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 93b152a3a4162f174022195ee107ad46) -->
+<!-- [[[end]]] (checksum: 52d8c9f27f76e4f1eb6f63952ee3b9b6) -->
