@@ -77,8 +77,6 @@ idna==3.6
     #   requests
 iniconfig==2.0.0
     # via pytest
-instaloader==4.10.3
-    # via -r requirements.in
 itsdangerous==2.1.2
     # via
     #   asgi-csrf
@@ -155,9 +153,7 @@ python-multipart==0.0.6
 pyyaml==6.0.1
     # via datasette
 requests==2.31.0
-    # via
-    #   instaloader
-    #   yt-dlp
+    # via yt-dlp
 ruff==0.5.7
     # via -r requirements.in
 s3transfer==0.10.2

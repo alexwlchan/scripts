@@ -7,7 +7,6 @@ datasette-render-image-tags
 httpx
 humanize
 hyperlink
-instaloader
 keyring
 naturalsort==1.5.1  # Used as 'natsort'
 Pillow
