@@ -152,7 +152,7 @@ python-multipart==0.0.6
     # via asgi-csrf
 pyyaml==6.0.1
     # via datasette
-requests==2.31.0
+requests==2.32.3
     # via yt-dlp
 ruff==0.5.7
     # via -r requirements.in
@@ -193,5 +193,5 @@ uvicorn==0.25.0
     # via datasette
 websockets==12.0
     # via yt-dlp
-yt-dlp==2024.5.26
+yt-dlp==2024.8.6
     # via -r requirements.in
