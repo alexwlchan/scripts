@@ -30,6 +30,12 @@ scripts = [
         """
     },
     {
+        "usage": "save_instagram_post URL",
+        "description": """
+        save the photos from a single Instagram post to a temporary directory
+        """
+    },
+    {
         "name": "save_tumblr_likes.py",
         "description": """
         save a copy of all the posts I've liked on Tumblr to my backup drive.
@@ -78,6 +84,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_instagram_post">
+      <code>save_instagram_post URL</code>
+    </a>
+  </dt>
+  <dd>
+    save the photos from a single Instagram post to a temporary directory
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/save_tumblr_likes.py">
       <code>save_tumblr_likes.py</code>
     </a>
@@ -113,4 +128,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: cc21e25a1a69ea0dea3a50dd8737ec2d) -->
+<!-- [[[end]]] (checksum: e672cab382a39082951edc1a0a3f9f21) -->

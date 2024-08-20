@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+if (( $# != 1 ))
+then
+  echo "Usage: $0 URL" >&2
+  exit 1
+fi
+
+url="$1"
+
+pushd $(mktemp -d) >/dev/null
+  uv venv --quiet .venv
+  source .venv/bin/activate
+
+  uv pip install --quiet instaloader
+
+  post_id=$(echo "$url" | tr '/' ' ' | awk '{print $4}')
+  instaloader -- "-$post_id"
+
+  echo "$(pwd)/-$post_id"
+  reveal "$(pwd)/-$post_id"
+popd >/dev/null
