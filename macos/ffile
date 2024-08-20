@@ -1,0 +1,4 @@
+#!/usr/bin/env osascript
+# See https://alexwlchan.net/til/2024/get-selected-finder-items/
+
+tell application "Finder" to get POSIX path of first item of (selection as alias list)

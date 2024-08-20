@@ -33,6 +33,10 @@ scripts = [
         "description": "count the number of tabs I have open in Safari."
     },
     {
+        "name": "ffile",
+        "description": "print the path to the frontmost selected item in Finder"
+    },
+    {
         "name": "find_processes_using_secure_input",
         "description": "lists any processes using Secure Input, which can block apps like TextExpander"
     },
@@ -113,6 +117,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dt>
   <dd>
     count the number of tabs I have open in Safari.
+  </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/ffile">
+      <code>ffile</code>
+    </a>
+  </dt>
+  <dd>
+    print the path to the frontmost selected item in Finder
   </dd>
 
   <dt>
@@ -199,4 +212,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 548c914e7cb2a6c9d296697e3b067b5c) -->
+<!-- [[[end]]] (checksum: c1f5a62504ef1ef8f73a1f81751b9997) -->
