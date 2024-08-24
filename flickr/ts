@@ -9,6 +9,8 @@ function run_python_tests() {
     ruff check .
     ruff format .
 
+    interrogate -vv
+
     mypy src tests
 
     coverage run -m pytest tests
