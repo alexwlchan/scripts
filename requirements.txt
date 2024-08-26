@@ -125,7 +125,7 @@ pillow-heif==0.18.0
     # via -r requirements.in
 pint==0.23
     # via datasette
-pipx==1.7.0
+pipx==1.7.1
     # via -r requirements.in
 platformdirs==4.1.0
     # via pipx
