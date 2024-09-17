@@ -1,5 +1,12 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # Reveal the file/folder in the Finder.
+#
+# Usage examples:
+#
+#     reveal .                    # reveal the current folder
+#     reveal ~/Desktop            # reveal a folder
+#     reveal ~/Desktop/cat.jpg    # reveal a file
+#
 
 set -o errexit
 set -o nounset
