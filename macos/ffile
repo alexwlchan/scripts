@@ -1,4 +1,7 @@
 #!/usr/bin/env osascript
-# See https://alexwlchan.net/til/2024/get-selected-finder-items/
+# Get the path to the first item which is selected in the
+# frontmost Finder window.
 
-tell application "Finder" to get POSIX path of first item of (selection as alias list)
+tell application "Finder"
+  get POSIX path of first item of (selection as alias list)
+end tell
