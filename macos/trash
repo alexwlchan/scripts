@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Move a file to the Trash in macOS.
+
+set -o errexit
+set -o nounset
+
+if (( $# != 1 ))
+then
+  echo "Usage: $0 PATH" >&2
+  exit 1
+fi
+
+osascript -e "tell application \"Finder\"
+	delete POSIX file \"$1\"
+end tell"

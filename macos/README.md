@@ -73,6 +73,10 @@ scripts = [
         "description": "alias for <code>xattr -d com.apple.quarantine</code>"
     },
     {
+        "usage": "trash [PATH]",
+        "description": "move a file to the Trash"
+    },
+    {
         "name": "unlock_keychain",
         "description": """
         alias for <code>security unlock-keychain ~/Library/Keychains/login.keychain</code>; unlocks the login keychain
@@ -214,6 +218,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/trash">
+      <code>trash [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    move a file to the Trash
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/unlock_keychain">
       <code>unlock_keychain</code>
     </a>
@@ -225,4 +238,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: e560a98d56d0c36aa6d1e4d9318baf1e) -->
+<!-- [[[end]]] (checksum: dd3558b095357994d6bd03ab9bdc8481) -->
