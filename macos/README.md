@@ -37,6 +37,10 @@ scripts = [
         "description": "print the path to the frontmost selected item in Finder"
     },
     {
+        "name": "furl",
+        "description": "get the URL of the frontmost Safari window"
+    },
+    {
         "name": "find_processes_using_secure_input",
         "description": "lists any processes using Secure Input, which can block apps like TextExpander"
     },
@@ -129,6 +133,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/furl">
+      <code>furl</code>
+    </a>
+  </dt>
+  <dd>
+    get the URL of the frontmost Safari window
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/find_processes_using_secure_input">
       <code>find_processes_using_secure_input</code>
     </a>
@@ -212,4 +225,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: c1f5a62504ef1ef8f73a1f81751b9997) -->
+<!-- [[[end]]] (checksum: e560a98d56d0c36aa6d1e4d9318baf1e) -->

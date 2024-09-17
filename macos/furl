@@ -1,0 +1,6 @@
+#!/usr/bin/env osascript
+# Get the URL of the frontmost Safari window.
+
+tell application "Safari"
+  get URL of document 1
+end tell
