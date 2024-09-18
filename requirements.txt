@@ -140,7 +140,7 @@ pycryptodomex==3.19.0
     # via yt-dlp
 pygments==2.18.0
     # via -r requirements.in
-pypdf==4.3.1
+pypdf==5.0.0
     # via -r requirements.in
 pytest==8.3.3
     # via -r requirements.in
