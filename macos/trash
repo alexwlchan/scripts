@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
-# Move a file to the Trash in macOS.
+# Move one or more files to the Trash in macOS.
+#
+# Examples:
+#
+#     trash ~/Desktop/cat.jpg     # Trash a single file
+#     trash ~/Desktop/photos      # Trash a folder
+#     trash dog.png fish.gif      # Trash multiple files at once
+#
 
-set -o errexit
-set -o nounset
+osascript -e 'on run argv
+	repeat with filePath in argv
+		set posixPath to (POSIX file filePath)
 
-if (( $# != 1 ))
-then
-  echo "Usage: $0 PATH" >&2
-  exit 1
-fi
-
-osascript -e "tell application \"Finder\"
-	delete POSIX file \"$1\"
-end tell"
+		tell application "Finder"
+      if posixPath exists
+        log filePath
+        delete posixPath
+      end if
+    end tell
+	end repeat
+end run' "$@" 2>&1 1>/dev/null
