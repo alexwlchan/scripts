@@ -1,6 +1,29 @@
 #!/usr/bin/env osascript
 # Get the URL of the frontmost Safari window.
 
+-- An AppleScript function to replace text.  Yes, this is really
+-- what it takes.
+--
+-- Example:
+--
+--      replaceText("The cat is red", "red", "green")
+--      /* The cat is green */
+--
+on replaceText(inputText, old, new)
+	set AppleScript's text item delimiters to the old
+	set the itemList to every text item of inputText
+	set AppleScript's text item delimiters to the new
+	set inputText to the itemList as string
+	set AppleScript's text item delimiters to ""
+	return inputText
+end replaceText
+
 tell application "Safari"
-  get URL of document 1
+  set frontmostUrl to URL of document 1
 end tell
+
+-- Remove the localhost:5959 prefix from my book tracker running
+-- locally -- I never actually want this, just the relative path.
+set frontmostUrl to replaceText(frontmostUrl, "http://localhost:5959", "")
+
+get frontmostUrl
