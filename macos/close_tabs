@@ -65,6 +65,7 @@ function isSafeToClose(url) {
     url === 'https://mobile.twitter.com/home' ||
     url === 'https://news.ycombinator.com/' ||
     url === 'https://old.reddit.com/' ||
+    url === 'https://pinboard.in/u:alexwlchan' ||
     url === 'https://remote.com' ||
     url === 'https://social.alexwlchan.net/home' ||
     url === 'https://social.alexwlchan.net/notifications' ||
