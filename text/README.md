@@ -67,6 +67,10 @@ scripts = [
         "description": "removes the `list` query parameter from a YouTube URL; I use it with `youtube-dl`",
     },
     {
+        "usage": "peek < SECRET",
+        "description": "show a few characters of a secret, without printing the whole value in plain text"
+    },
+    {
         "name": "pp_xml.sh < [TEXT]",
         "description": """
         alias for <code>xmllint --format - | pygmentize -l xml</code>, which pretty-prints a blob of XML with coloured syntax highlighting.
@@ -205,6 +209,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/peek">
+      <code>peek < SECRET</code>
+    </a>
+  </dt>
+  <dd>
+    show a few characters of a secret, without printing the whole value in plain text
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/pp_xml.sh">
       <code>pp_xml.sh < [TEXT]</code>
     </a>
@@ -280,4 +293,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 53b60d7b751d2a00cb982810e1a4c682) -->
+<!-- [[[end]]] (checksum: a84b7f3702442495b6e7efbc28b5107e) -->
