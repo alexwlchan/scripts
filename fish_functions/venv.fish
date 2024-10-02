@@ -10,8 +10,8 @@ function venv --description "Create and activate a new virtual environment"
 
     # I don't want venvs in my home directory; block it if I try
     if test "$PWD" = "$HOME"
-        echo "You can't create a venv in your home directory!" >&2
-        return 1
+    echo "You can't create a venv in your home directory; switching to temporary directory" >&2
+        cd $(mktemp -d)
     end
 
     echo "Creating virtual environment in "(pwd)"/.venv"
