@@ -47,12 +47,16 @@ cogapp==3.4.1
     # via -r requirements.in
 cryptography==42.0.7
     # via secretstorage
-datasette==0.64.8
+datasette==0.65
     # via
     #   -r requirements.in
     #   datasette-render-image-tags
 datasette-render-image-tags==0.1
     # via -r requirements.in
+flexcache==0.3
+    # via datasette
+flexparser==0.3.1
+    # via datasette
 h11==0.14.0
     # via
     #   httpcore
@@ -123,12 +127,12 @@ pillow==10.4.0
     #   pillow-heif
 pillow-heif==0.18.0
     # via -r requirements.in
-pint==0.23
-    # via datasette
 pipx==1.7.1
     # via -r requirements.in
 platformdirs==4.1.0
-    # via pipx
+    # via
+    #   datasette
+    #   pipx
 pluggy==1.5.0
     # via
     #   datasette
@@ -180,8 +184,10 @@ tqdm==4.66.5
     # via -r requirements.in
 typing-extensions==4.9.0
     # via
+    #   datasette
+    #   flexcache
+    #   flexparser
     #   janus
-    #   pint
 urllib3==2.0.7
     # via
     #   botocore
