@@ -199,5 +199,5 @@ uvicorn==0.25.0
     # via datasette
 websockets==13.1
     # via yt-dlp
-yt-dlp==2024.9.27
+yt-dlp==2024.10.7
     # via -r requirements.in
