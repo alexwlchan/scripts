@@ -158,7 +158,7 @@ pyyaml==6.0.1
     # via datasette
 requests==2.32.3
     # via yt-dlp
-ruff==0.6.8
+ruff==0.6.9
     # via -r requirements.in
 s3transfer==0.10.2
     # via boto3
