@@ -11,7 +11,14 @@ function run_python_tests() {
 
     interrogate -vv
 
-    mypy src tests
+    # This is one repo which is a bit special -- I'm gradually trying to chase
+    # the code into `src`, but for now I have to remmeber to look at *.py
+    if [[ "$(pwd)" == ~/repos/library-lookup ]]
+    then
+      mypy *.py src tests
+    else
+      mypy src tests
+    fi
 
     coverage run -m pytest tests
     coverage report

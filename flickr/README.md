@@ -25,12 +25,6 @@ scripts = [
         deploy a new version of a Flickr Foundation Python library: bump the version, tag the Git commit, push to PyPI and GitHub.
         """,
     },
-    {
-        "usage": "ts",
-        "description": """
-        run <strong>t</strong>est<strong>s</strong> in a Flickr Foundation Python project (including linting, autoformatting, pytest tests)
-        """,
-    },
 ]
 
 cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
@@ -45,14 +39,5 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   <dd>
     deploy a new version of a Flickr Foundation Python library: bump the version, tag the Git commit, push to PyPI and GitHub.
   </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/flickr/ts">
-      <code>ts</code>
-    </a>
-  </dt>
-  <dd>
-    run <strong>t</strong>est<strong>s</strong> in a Flickr Foundation Python project (including linting, autoformatting, pytest tests)
-  </dd>
 </dl>
-<!-- [[[end]]] (checksum: 6f1984b029c50abbbd12d74d6f1b07bb) -->
+<!-- [[[end]]] (checksum: 25a2e0861d7f789ae830f7da3763f089) -->
