@@ -125,7 +125,7 @@ pillow==11.0.0
     # via
     #   -r requirements.in
     #   pillow-heif
-pillow-heif==0.18.0
+pillow-heif==0.20.0
     # via -r requirements.in
 pipx==1.7.1
     # via -r requirements.in
