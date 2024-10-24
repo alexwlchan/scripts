@@ -3,4 +3,11 @@
 set -o errexit
 set -o nounset
 
-xmllint --format - | pygmentize -l xml
+if [ -t 1 ]
+then
+  echo "terminal"
+  xmllint --format - | pygmentize -l xml
+else
+  xmllint --format -
+fi
+
