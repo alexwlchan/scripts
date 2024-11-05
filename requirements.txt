@@ -20,18 +20,12 @@ botocore==1.35.26
     # via
     #   boto3
     #   s3transfer
-brotli==1.1.0
-    # via yt-dlp
 certifi==2023.11.17
     # via
     #   httpcore
     #   httpx
-    #   requests
-    #   yt-dlp
 cffi==1.16.0
     # via cryptography
-charset-normalizer==3.3.2
-    # via requests
 click==8.1.7
     # via
     #   click-default-group
@@ -78,7 +72,6 @@ idna==3.6
     #   anyio
     #   httpx
     #   hyperlink
-    #   requests
 iniconfig==2.0.0
     # via pytest
 itsdangerous==2.1.2
@@ -113,8 +106,6 @@ more-itertools==10.1.0
     # via
     #   jaraco-classes
     #   jaraco-functools
-mutagen==1.47.0
-    # via yt-dlp
 naturalsort==1.5.1
     # via -r requirements.in
 packaging==23.2
@@ -140,8 +131,6 @@ pluggy==1.5.0
     #   sqlite-utils
 pycparser==2.22
     # via cffi
-pycryptodomex==3.19.0
-    # via yt-dlp
 pygments==2.18.0
     # via -r requirements.in
 pypdf==5.1.0
@@ -156,8 +145,6 @@ python-multipart==0.0.6
     # via asgi-csrf
 pyyaml==6.0.1
     # via datasette
-requests==2.32.3
-    # via yt-dlp
 ruff==0.7.1
     # via -r requirements.in
 s3transfer==0.10.2
@@ -189,15 +176,10 @@ typing-extensions==4.9.0
     #   flexparser
     #   janus
 urllib3==2.0.7
-    # via
-    #   botocore
-    #   requests
-    #   yt-dlp
+    # via botocore
 userpath==1.9.2
     # via pipx
 uvicorn==0.25.0
     # via datasette
-websockets==13.1
-    # via yt-dlp
-yt-dlp==2024.10.22
+yt-dlp==2024.11.4
     # via -r requirements.in
