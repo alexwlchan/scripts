@@ -161,7 +161,7 @@ soupsieve==2.5
     # via beautifulsoup4
 sqlite-fts4==1.0.3
     # via sqlite-utils
-sqlite-utils==3.37
+sqlite-utils==3.38
     # via -r requirements.in
 tabulate==0.9.0
     # via sqlite-utils
