@@ -41,7 +41,7 @@ cogapp==3.4.1
     # via -r requirements.in
 cryptography==42.0.7
     # via secretstorage
-datasette==0.65
+datasette==0.65.1
     # via
     #   -r requirements.in
     #   datasette-render-image-tags
