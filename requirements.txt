@@ -57,7 +57,7 @@ h11==0.14.0
     #   uvicorn
 httpcore==1.0.2
     # via httpx
-httpx==0.28.0
+httpx==0.28.1
     # via
     #   -r requirements.in
     #   datasette
