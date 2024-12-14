@@ -60,6 +60,8 @@ prepend_to_path ~/repos/scripts/web
 
 prepend_to_path ~/repos/flapi.sh
 
+prepend_to_path ~/.local/bin
+
 # Path for Rust
 prepend_to_path ~/.cargo/bin
 
@@ -69,10 +71,6 @@ prepend_to_path ~/.cargo/bin
 prepend_to_path /opt/homebrew/bin
 prepend_to_path /opt/homebrew/opt/ruby/bin
 prepend_to_path /opt/homebrew/lib/ruby/gems/3.3.0/bin
-prepend_to_path /usr/local/opt/ruby/bin
-
-# Path for Python tools installed with pipx
-prepend_to_path ~/.local/bin
 
 
 
