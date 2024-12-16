@@ -179,5 +179,5 @@ userpath==1.9.2
     # via pipx
 uvicorn==0.25.0
     # via datasette
-yt-dlp==2024.12.6
+yt-dlp==2024.12.13
     # via -r requirements.in
