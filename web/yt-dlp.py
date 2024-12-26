@@ -51,40 +51,8 @@ def download_parallel_playlist(youtube_url: str, remaining_args: list[str]) -> N
     get_ids_proc.wait()
 
 
-def check_arguments(argv: list[str]) -> None:
-    """
-    Validate the arguments I'm using.
-
-    This will never modify the arguments, but it might give an error
-    message telling me to use arguments differently.
-    """
-    # I always want subtitles in srt format, so make sure that if I'm
-    # downloading subtitles I'm doing that conversion.
-    #
-    # I could do this after the fact, but it's slightly quicker to do
-    # it on the initial download, especially if I'm invoking `yt-dlp`
-    # with some sort of dynamic variable e.g. `pbpaste` or `furl`.
-    download_subtitle_args = (
-        "--write-sub",
-        "--write-subs",
-        "--write-auto-sub",
-        "--write-auto-subs",
-    )
-
-    if (
-        any(dsa in argv for dsa in download_subtitle_args)
-        and "--convert-subtitles=srt" not in argv
-    ):
-        sys.exit("Did you forget to add --convert-subtitles=srt?")
-
-    if any("bbc.co.uk" in u for u in argv) and "--output=%(title)s.%(ext)s" not in argv:
-        sys.exit('Did you forget to add --output="%(title)s.%(ext)s"?')
-
-
 if __name__ == "__main__":
     argv = sys.argv[1:]
-
-    check_arguments(argv)
 
     # Where is yt-dlp?
     #
