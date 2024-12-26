@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Get the IP address of Phaenna (my home desktop) within my Tailnet.
+# See https://alexwlchan.net/til/2024/get-tailscale-ip/
+
+set -o errexit
+set -o nounset
+
+tailscale status --json \
+  | jq --join-output --raw-output '.Peer[] | select(.HostName  == "Phaenna") | .TailscaleIPs[0]'
