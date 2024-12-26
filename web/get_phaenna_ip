@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Get the IP address of Phaenna (my home desktop) within my Tailnet.
+# Get the IP address of Phaenna (my home desktop) within my Tailscale network.
 # See https://alexwlchan.net/til/2024/get-tailscale-ip/
 
 set -o errexit

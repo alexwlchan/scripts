@@ -18,6 +18,12 @@ folder_name = "web"
 
 scripts = [
     {
+        "name": "get_phaenna_ip",
+        "description": """
+        Get the IP address of Phaenna (my home desktop) within my Tailscale network.
+        """
+    },
+    {
         "name": "imdown",
         "description": """
         I run this when my Internet connection goes down, and it makes an audible "ping" when it comes back up.
@@ -65,6 +71,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
 
 ]]]-->
 <dl>
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/get_phaenna_ip">
+      <code>get_phaenna_ip</code>
+    </a>
+  </dt>
+  <dd>
+    Get the IP address of Phaenna (my home desktop) within my Tailscale network.
+  </dd>
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/imdown">
       <code>imdown</code>
@@ -128,4 +143,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: e672cab382a39082951edc1a0a3f9f21) -->
+<!-- [[[end]]] (checksum: 044d860fd40ad2bb36ed34ee0bf20fc5) -->
