@@ -112,7 +112,7 @@ packaging==23.2
     # via
     #   pipx
     #   pytest
-pillow==11.0.0
+pillow==11.1.0
     # via
     #   -r requirements.in
     #   pillow-heif
