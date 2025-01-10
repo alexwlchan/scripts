@@ -36,7 +36,7 @@ if __name__ == "__main__":
         tinted_im.putdata([(red, green, blue, 255 - p[0]) for p in pixels])
 
     name, _ = path.rsplit(".", 1)
-    out_path = f'{name}.{hex_colour.strip("#")}.png'
+    out_path = f"{name}.{hex_colour.strip('#')}.png"
 
     tinted_im.save(out_path)
     print(out_path)
