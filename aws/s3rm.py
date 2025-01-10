@@ -44,7 +44,7 @@ def delete_objects(sess, iterator):
 
     def print_result():
         print(
-            f'{humanize.intcomma(total_deleted_count)} object{"s" if total_deleted_count != 1 else ""} deleted, total {humanize.naturalsize(total_deleted_size)}'
+            f"{humanize.intcomma(total_deleted_count)} object{'s' if total_deleted_count != 1 else ''} deleted, total {humanize.naturalsize(total_deleted_size)}"
         )
 
     def delete_batch(batch):

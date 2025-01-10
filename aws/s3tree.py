@@ -207,7 +207,7 @@ if __name__ == "__main__":
 
     print(
         termcolor.colored(
-            f'{humanize.intcomma(len(s3_objects))} object{"s" if len(s3_objects) > 1 else ""}, '
+            f"{humanize.intcomma(len(s3_objects))} object{'s' if len(s3_objects) > 1 else ''}, "
             f"totalling {humanize.naturalsize(total_size)}, "
             f"last modified {last_modified_message}",
             "green",

@@ -84,7 +84,7 @@ if __name__ == "__main__":
         post_data["created_at"], "%Y-%m-%dT%H:%M:%S.%fz"
     )
 
-    print(f'[{author}]({post_url}) ({created_at.strftime("%-d %B %Y")}):')
+    print(f"[{author}]({post_url}) ({created_at.strftime('%-d %B %Y')}):")
     print("")
     for line in normalise_text(post_data["content"]).splitlines():
         print(f"> {line}".strip())
