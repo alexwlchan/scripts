@@ -83,10 +83,6 @@ scripts = [
         """,
     },
     {
-        "usage": "randline [NUMBER] < [PATH]",
-        "description": "prints randomly selected lines from the given text. If `NUMBER` is unspecified, it prints a single line.",
-    },
-    {
         "usage": "recog",
         "description": """
         Find all the README files under the current folder, and process them using <a href="https://nedbatchelder.com/code/cog">Cog</a>.
@@ -236,15 +232,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/text/randline">
-      <code>randline [NUMBER] < [PATH]</code>
-    </a>
-  </dt>
-  <dd>
-    prints randomly selected lines from the given text. If `NUMBER` is unspecified, it prints a single line.
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/recog">
       <code>recog</code>
     </a>
@@ -293,4 +280,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: a84b7f3702442495b6e7efbc28b5107e) -->
+<!-- [[[end]]] (checksum: 06f29ab9e718017036fe699b5efafd00) -->
