@@ -132,6 +132,12 @@ scripts = [
         """
     },
     {
+        "usage": "squarify.py [PATH]",
+        "description": """
+        crop an image to a central square
+        """
+    },
+    {
         "usage": "srgbify.py [PATH]",
         "description": """
         convert an image in-place to have an sRGB colour profile.
@@ -296,6 +302,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/squarify.py">
+      <code>squarify.py [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    crop an image to a central square
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/srgbify.py">
       <code>srgbify.py [PATH]</code>
     </a>
@@ -324,4 +339,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     I don’t use this script very often, but I checked it in because I thought it was a neat trick I didn’t want to forget.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: c65a5837a2a9b2e8cab77b6b040d081f) -->
+<!-- [[[end]]] (checksum: 72dd4bb73da2c34197f1d6816eacb980) -->

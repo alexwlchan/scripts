@@ -199,6 +199,7 @@ __create_python_script_alias images/images_only_pdf.py
 __create_python_script_alias images/pdfthumb.py
 __create_python_script_alias images/reborder.py
 __create_python_script_alias images/save_xkcd.py
+__create_python_script_alias images/squarify.py
 __create_python_script_alias images/srgbify.py
 __create_python_script_alias images/tint_image.py
 __create_python_script_alias text/fix_twemoji.py
