@@ -60,6 +60,7 @@ function isSafeToClose(url) {
     url === 'https://github.com/alexwlchan/books.alexwlchan.net' ||
     url === 'https://github.com/alexwlchan/scripts' ||
     url === 'https://lexies-library-lookup.netlify.app/' ||
+    url === 'https://www.linkedin.com/feed/' ||
     url === 'https://mail.google.com/mail/u/0/#inbox' ||
     url === 'https://mail.google.com/mail/u/1/#inbox' ||
     url === 'https://mobile.twitter.com/home' ||
