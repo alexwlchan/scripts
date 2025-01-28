@@ -1,5 +1,5 @@
 import filecmp
-import pathlib
+from pathlib import Path
 
 from PIL import Image
 
@@ -66,7 +66,7 @@ def test_it_converts_images_with_a_grey_profile():
     assert new_im.mode == "RGB"
 
 
-def test_it_preserves_rotation_from_exif_orientation(tmp_path: pathlib.Path):
+def test_it_preserves_rotation_from_exif_orientation(tmp_path: Path):
     """
     This is based on a photo exported from my Apple Photos Library
     which was rotated by 90 degrees upon transformation.

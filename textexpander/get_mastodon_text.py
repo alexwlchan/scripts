@@ -7,7 +7,7 @@ as a blockquote.
 import datetime
 import html
 import os
-import pathlib
+from pathlib import Path
 import re
 import subprocess
 
@@ -15,7 +15,7 @@ import httpx
 import hyperlink
 
 
-ATTACHMENTS_DIR = pathlib.Path.home() / "textfiles" / "Attachments" / "mastodon"
+ATTACHMENTS_DIR = Path.home() / "textfiles" / "Attachments" / "mastodon"
 
 
 def download(url):

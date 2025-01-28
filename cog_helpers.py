@@ -8,7 +8,7 @@ https://nedbatchelder.com/code/cog
 """
 
 import os
-import pathlib
+from pathlib import Path
 import textwrap
 from typing import TypedDict
 
@@ -49,7 +49,7 @@ def create_description_table(
     if ignore_files is None:
         ignore_files = set()
 
-    folder = pathlib.Path(folder_name)
+    folder = Path(folder_name)
 
     for f in ignore_files:
         if not (folder / f).exists():

@@ -6,7 +6,7 @@ Make a local copy of one or more YouTube videos.
 import functools
 import json
 import os
-import pathlib
+from pathlib import Path
 import subprocess
 import sys
 import textwrap
@@ -18,7 +18,7 @@ from sqlite_utils.db import NotFoundError
 import termcolor
 
 
-BACKUP_ROOT = pathlib.Path("/Volumes/Media (Sapphire)/backups/youtube/videos")
+BACKUP_ROOT = Path("/Volumes/Media (Sapphire)/backups/youtube/videos")
 
 
 def youtube_dl(*args, **kwargs):
@@ -87,7 +87,7 @@ def log_result(format_template):
 
 
 def classify_file_type(
-    video_id: str, filename: pathlib.Path
+    video_id: str, filename: Path
 ) -> Literal["video", "info", "thumbnail", "subtitles"] | None:
     """
     Given an already-downloaded file, work out what sort of file it is.
@@ -127,7 +127,7 @@ def classify_file_type(
     raise ValueError(f"Unrecognised filename: {filename}")
 
 
-def fix_info_json(path: pathlib.Path) -> None:
+def fix_info_json(path: Path) -> None:
     """
     Tidy up the contents of the info.json fie.
     """

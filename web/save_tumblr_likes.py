@@ -3,7 +3,7 @@ import errno
 import functools
 import json
 import os
-import pathlib
+from pathlib import Path
 import shutil
 import subprocess
 import sys
@@ -19,7 +19,7 @@ from sqlite_utils.db import NotFoundError
 import termcolor
 
 
-BACKUP_ROOT = pathlib.Path("/Volumes/Media (Sapphire)/backups/tumblr")
+BACKUP_ROOT = Path("/Volumes/Media (Sapphire)/backups/tumblr")
 
 
 def get_liked_posts(blog_identifier: str, days: int):
@@ -87,7 +87,7 @@ def log_result(format_template):
     return decorator
 
 
-def get_saved_blog_name(*, post_id: str, blog_name: str, db_path: pathlib.Path) -> str:
+def get_saved_blog_name(*, post_id: str, blog_name: str, db_path: Path) -> str:
     """
     Look up the blog name associated with this post ID.
 
@@ -355,5 +355,5 @@ if __name__ == "__main__":
         download_tumblr_post(
             post_url=post_data["post_url"],
             post_data=post_data,
-            download_root=pathlib.Path(BACKUP_ROOT),
+            download_root=Path(BACKUP_ROOT),
         )

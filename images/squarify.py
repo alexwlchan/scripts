@@ -3,7 +3,7 @@
 Creates a square crop of an image.
 """
 
-import pathlib
+from pathlib import Path
 import sys
 
 from PIL import Image
@@ -11,7 +11,7 @@ from PIL import Image
 
 if __name__ == '__main__':
     try:
-        path = pathlib.Path(sys.argv[1])
+        path = Path(sys.argv[1])
     except IndexError:
         sys.exit(f"Usage: {__file__} IMAGE_PATH")
     

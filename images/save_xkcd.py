@@ -8,13 +8,13 @@ many already exist) but to create a mini-library of my personal favourites.
 
 import json
 import os
-import pathlib
+from pathlib import Path
 import sys
 from urllib.request import urlretrieve
 
 import httpx
 
-BACKUP_ROOT = pathlib.Path("/Volumes/Media (Sapphire)/backups/xkcd")
+BACKUP_ROOT = Path("/Volumes/Media (Sapphire)/backups/xkcd")
 
 
 if __name__ == "__main__":
