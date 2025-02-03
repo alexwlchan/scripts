@@ -12,7 +12,7 @@ asgiref==3.7.2
     # via datasette
 attrs==25.1.0
     # via -r requirements.in
-beautifulsoup4==4.12.3
+beautifulsoup4==4.13.0
     # via -r requirements.in
 boto3==1.35.26
     # via -r requirements.in
@@ -169,6 +169,7 @@ tqdm==4.67.1
     # via -r requirements.in
 typing-extensions==4.9.0
     # via
+    #   beautifulsoup4
     #   datasette
     #   flexcache
     #   flexparser
