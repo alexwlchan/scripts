@@ -69,6 +69,10 @@ scripts = [
         "description": "set the accent colour, as configured in the Appearance settings",
     },
     {
+        "usage": "set_finder_comment PATH COMMENT",
+        "description": "Set the Finder comment of a file, which will be indexed by Spotlight for searching"
+    },
+    {
         "usage": "sterilise [PATH]",
         "description": "alias for <code>xattr -d com.apple.quarantine</code>"
     },
@@ -209,6 +213,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/set_finder_comment">
+      <code>set_finder_comment PATH COMMENT</code>
+    </a>
+  </dt>
+  <dd>
+    Set the Finder comment of a file, which will be indexed by Spotlight for searching
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/sterilise">
       <code>sterilise [PATH]</code>
     </a>
@@ -238,4 +251,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: dd3558b095357994d6bd03ab9bdc8481) -->
+<!-- [[[end]]] (checksum: d3812e637239eb78235f9823c0af4b7c) -->

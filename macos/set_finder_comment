@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+if (( $# != 2 ))
+then
+  echo "Usage: $0 PATH COMMENT" >&2
+  exit 1
+fi
+
+# $ set_finder_comment src/_posts/2012/2012-12-30-hypercritical.md Hypercritical
+# 2025-02-25 23:16:10.894 osascript[60436:891948] CFURLGetFSRef was passed a URL which has no scheme (the URL will not work with other CFURL routines)
+FILE_PATH="$(realpath "$1")"
+COMMENT="$2"
+
+osascript -e '
+  on run argv
+    set filepath to (POSIX file (item 1 of argv) as alias)
+    tell application "Finder" to set the comment of filepath to (item 2 of argv)
+  end run
+' "$FILE_PATH" "$COMMENT"
