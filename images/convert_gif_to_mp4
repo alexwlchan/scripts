@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Convert an animated GIF to an MP4 file
+#
+# See https://alexwlchan.net/til/2024/convert-an-animated-gif-to-mp4/
+
+set -o errexit
+set -o nounset
+
+if (( $# != 1 ))
+then
+  echo "Usage: $0 GIF_PATH" >&2
+  exit 1
+fi
+
+GIF_PATH="$1"
+MP4_PATH="${GIF_PATH//gif/mp4}"
+
+if [[ "$GIF_PATH" = "$MP4_PATH" ]]
+then
+  echo "Unable to pick MP4 path for $GIF_PATH" >&2
+  exit 1
+fi
+
+ffmpeg \
+  -i "$GIF_PATH" \
+  -movflags faststart \
+  -pix_fmt yuv420p \
+  -hide_banner \
+  -loglevel error \
+  "$MP4_PATH"
+
+echo "$MP4_PATH"

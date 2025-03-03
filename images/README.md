@@ -50,6 +50,10 @@ scripts = [
         """,
     },
     {
+        "usage": "convert_gif_to_mp4 GIF_PATH",
+        "description": "convert an animated GIF to an MP4 file"
+    },
+    {
         "name": "copycrop.py",
         "description": """
         this script will “copy” the crop from one image pair to another.
@@ -202,6 +206,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/images/convert_gif_to_mp4">
+      <code>convert_gif_to_mp4 GIF_PATH</code>
+    </a>
+  </dt>
+  <dd>
+    convert an animated GIF to an MP4 file
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/images/copycrop.py">
       <code>copycrop.py</code>
     </a>
@@ -339,4 +352,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     I don’t use this script very often, but I checked it in because I thought it was a neat trick I didn’t want to forget.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 72dd4bb73da2c34197f1d6816eacb980) -->
+<!-- [[[end]]] (checksum: 729cb96a4ef2033ad2974a1b63327f0b) -->
