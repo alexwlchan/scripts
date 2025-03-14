@@ -10,7 +10,7 @@ asgi-csrf==0.9
     # via datasette
 asgiref==3.7.2
     # via datasette
-attrs==25.2.0
+attrs==25.3.0
     # via -r requirements.in
 beautifulsoup4==4.13.3
     # via -r requirements.in
