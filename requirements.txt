@@ -12,6 +12,8 @@ asgiref==3.7.2
     # via datasette
 attrs==25.3.0
     # via -r requirements.in
+backports-tarfile==1.2.0
+    # via jaraco-context
 beautifulsoup4==4.13.3
     # via -r requirements.in
 boto3==1.35.26
@@ -47,6 +49,10 @@ datasette==0.65.1
     #   datasette-render-image-tags
 datasette-render-image-tags==0.1
     # via -r requirements.in
+exceptiongroup==1.2.2
+    # via
+    #   anyio
+    #   pytest
 flexcache==0.3
     # via datasette
 flexparser==0.3.1
@@ -72,6 +78,8 @@ idna==3.6
     #   anyio
     #   httpx
     #   hyperlink
+importlib-metadata==8.6.1
+    # via keyring
 iniconfig==2.0.0
     # via pytest
 itsdangerous==2.1.2
@@ -145,7 +153,7 @@ python-multipart==0.0.6
     # via asgi-csrf
 pyyaml==6.0.1
     # via datasette
-ruff==0.11.0
+ruff==0.11.1
     # via -r requirements.in
 s3transfer==0.10.2
     # via boto3
@@ -165,16 +173,23 @@ tabulate==0.9.0
     # via sqlite-utils
 termcolor==2.5.0
     # via -r requirements.in
+tomli==2.2.1
+    # via
+    #   pipx
+    #   pytest
 tqdm==4.67.1
     # via -r requirements.in
 typing-extensions==4.9.0
     # via
+    #   asgiref
     #   beautifulsoup4
     #   datasette
     #   flexcache
     #   flexparser
     #   janus
-urllib3==2.0.7
+    #   pypdf
+    #   uvicorn
+urllib3==1.26.20
     # via botocore
 userpath==1.9.2
     # via pipx
@@ -182,3 +197,5 @@ uvicorn==0.25.0
     # via datasette
 yt-dlp==2025.2.19
     # via -r requirements.in
+zipp==3.21.0
+    # via importlib-metadata
