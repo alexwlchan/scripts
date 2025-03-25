@@ -67,7 +67,7 @@ httpx==0.28.1
     # via
     #   -r requirements.in
     #   datasette
-humanize==4.12.1
+humanize==4.12.2
     # via -r requirements.in
 hupper==1.12
     # via datasette
