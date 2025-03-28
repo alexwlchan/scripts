@@ -195,7 +195,7 @@ userpath==1.9.2
     # via pipx
 uvicorn==0.25.0
     # via datasette
-yt-dlp==2025.3.26
+yt-dlp==2025.3.27
     # via -r requirements.in
 zipp==3.21.0
     # via importlib-metadata
