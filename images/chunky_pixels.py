@@ -14,7 +14,10 @@ from PIL import Image, ImageDraw
 import tqdm
 
 
-def clamp(x, *, between):
+def clamp(x: float, /, *, between: tuple[int, int]) -> float:
+    """
+    Restrict the value to fit between the lower/upper bounds.
+    """
     lower, upper = between
     return min([max([x, lower]), upper])
 
@@ -55,8 +58,8 @@ if __name__ == "__main__":
 
     for (x_start, y_start), (r, g, b) in all_colours.items():
         hue, lightness, saturation = colorsys.rgb_to_hls(r / 255, g / 255, b / 255)
-        lightness = clamp(lightness * random.uniform(0.9, 1.1), between=[0, 1])
-        saturation = clamp(saturation * random.uniform(0.9, 1.1), between=[0, 1])
+        lightness = clamp(lightness * random.uniform(0.9, 1.1), between=(0, 1))
+        saturation = clamp(saturation * random.uniform(0.9, 1.1), between=(0, 1))
 
         r, g, b = colorsys.hls_to_rgb(hue, lightness, saturation)
         draw.rectangle(
