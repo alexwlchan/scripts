@@ -14,7 +14,7 @@ attrs==25.3.0
     # via -r requirements.in
 backports-tarfile==1.2.0
     # via jaraco-context
-beautifulsoup4==4.13.3
+beautifulsoup4==4.13.4
     # via -r requirements.in
 boto3==1.35.26
     # via -r requirements.in
