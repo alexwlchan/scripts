@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Lint and format Python files with `ruff`.
+#
+# This will format files in the working directory by default, or you
+# can supply one or more paths for it to check.
+
+set -o errexit
+set -o nounset
+
+
+# Work out which directory to run in:
+#
+#   * if no argument is specified, use the current working directory
+#   * if one or more directories are specified, use those
+#
+if (( $# == 0 ))
+then
+  ROOT="$(pwd)"
+else
+  ROOT="$@"
+fi
+
+
+
+# Work out which instance of ruff to use
+#
+# If we're in a virtualenv which has ruff installed, we use the locally
+# installed copy.
+#
+# If not, we use the `ruff` from my ~/repos/scripts virtualenv.
+if which ruff
+then
+  RUFF="$(which ruff)"
+else
+  RUFF=~/repos/scripts/.venv/bin/ruff
+fi
+
+
+echo -e "\033[34mruff check\033[0m"
+bash -c "$RUFF check $ROOT"
+
+echo ""
+
+echo -e "\033[34mruff format\033[0m"
+bash -c "$RUFF format $ROOT"

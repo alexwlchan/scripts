@@ -132,15 +132,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pyfmt.fish">
-      <code>pyfmt.fish</code>
-    </a>
-  </dt>
-  <dd>
-    Run Python formatting over a directory
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/reload_fish_config.fish">
       <code>reload_fish_config.fish</code>
     </a>
@@ -167,4 +158,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
     Create and activate a new virtual environment
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 2019ea5d74d78cc1b4f84da5403e077d) -->
+<!-- [[[end]]] (checksum: 67f00a2925833d4359f4ab8087eab838) -->

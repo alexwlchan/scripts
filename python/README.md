@@ -16,11 +16,24 @@ import cog_helpers
 
 folder_name = "python"
 
-scripts = []
+scripts = [
+    {
+        "name": "pyfmt [...PATH]",
+        "description": "Format Python files with ruff.",
+    },
+]
 
 cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
 
 ]]]-->
 <dl>
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/python/pyfmt">
+      <code>pyfmt [...PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    Format Python files with ruff.
+  </dd>
 </dl>
-<!-- [[[end]]] (checksum: ba71f9e78718a8f6739d2b4bef0f1d58) -->
+<!-- [[[end]]] (checksum: 4c51b7cdb9a034e48bee58b82c75d99c) -->
