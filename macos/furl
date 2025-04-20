@@ -26,4 +26,8 @@ end tell
 -- locally -- I never actually want this, just the relative path.
 set frontmostUrl to replaceText(frontmostUrl, "http://localhost:5959", "")
 
+-- Remove the localhost:5757 prefix from my personal site running
+-- locally -- I never actually want this, just the relative path.
+set frontmostUrl to replaceText(frontmostUrl, "http://localhost:5757", "")
+
 get frontmostUrl
