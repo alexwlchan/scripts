@@ -55,6 +55,7 @@ prepend_to_path ~/repos/scripts/git
 prepend_to_path ~/repos/scripts/images
 prepend_to_path ~/repos/scripts/installers
 prepend_to_path ~/repos/scripts/macos
+prepend_to_path ~/repos/scripts/python
 prepend_to_path ~/repos/scripts/terraform
 prepend_to_path ~/repos/scripts/text
 prepend_to_path ~/repos/scripts/web

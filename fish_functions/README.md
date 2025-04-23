@@ -105,39 +105,12 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pip_compile.fish">
-      <code>pip_compile.fish</code>
-    </a>
-  </dt>
-  <dd>
-    Create requirements.txt lock files with uv
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pip_sync.fish">
       <code>pip_sync.fish</code>
     </a>
   </dt>
   <dd>
     Make a virtualenv dependencies look like requirements.txt
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pip_upgrade.fish">
-      <code>pip_upgrade.fish</code>
-    </a>
-  </dt>
-  <dd>
-    Upgrade requirements.txt lock files with uv
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pyfmt.fish">
-      <code>pyfmt.fish</code>
-    </a>
-  </dt>
-  <dd>
-    Run Python formatting over a directory
   </dd>
 
   <dt>
@@ -167,4 +140,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
     Create and activate a new virtual environment
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 2019ea5d74d78cc1b4f84da5403e077d) -->
+<!-- [[[end]]] (checksum: 25bdcd02dce6ff80dc797668b840c5bb) -->

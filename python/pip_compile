@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+"""
+Compile any `requirements.in` files into a list of exact versions
+in `requirements.txt`.
+
+* If you pass the `--upgrade` flag, it will upgrade all the requirements
+  to the latest version.
+
+"""
+
+from pathlib import Path
+import shlex
+import subprocess
+import sys
+
+
+def compile_requirements_file(in_file: str, *, upgrade: bool) -> None:
+    """
+    Compile a single requirements file.
+    """
+    assert in_file.endswith(".in")
+    txt_file = in_file.replace(".in", ".txt")
+    assert in_file != txt_file
+
+    # If this `.in` file doesn't exist.
+    if not Path(in_file).exists():
+        return
+
+    # Construct the `uv pip compile` command.
+    cmd = ["uv", "pip", "compile", in_file, "--output-file", txt_file]
+
+    if upgrade:
+        cmd.append("--upgrade")
+
+    # Actually run the command, and print a debug entry for it
+    subprocess.check_call(
+        ["/Users/alexwlchan/repos/scripts/debug/print_info", f"-> {shlex.join(cmd)}"]
+    )
+    subprocess.check_call(cmd)
+
+
+if __name__ == "__main__":
+    upgrade = "--upgrade" in sys.argv
+
+    compile_requirements_file("requirements.in", upgrade=upgrade)
+    compile_requirements_file("script_requirements.in", upgrade=upgrade)
+    compile_requirements_file("dev_requirements.in", upgrade=upgrade)

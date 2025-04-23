@@ -4,6 +4,8 @@
 # creating the venv and then immediately running "pip install" without
 # activating it first.
 #
+# This has to be a fish function, because I'm activating the venv.
+#
 # See https://alexwlchan.net/2023/fish-venv/
 #
 function venv --description "Create and activate a new virtual environment"
@@ -13,7 +15,7 @@ function venv --description "Create and activate a new virtual environment"
         cd $(mktemp -d)
     end
 
-    echo "Creating virtual environment in "(pwd)"/.venv"
+    print_info "Creating virtual environment in "(pwd)"/.venv"
     uv venv --quiet .venv
     source .venv/bin/activate.fish
 
@@ -25,5 +27,10 @@ function venv --description "Create and activate a new virtual environment"
 
     # Tell Time Machine that it doesn't need to both backing up the
     # virtualenv directory.
-    tmutil addexclusion .venv
+    #
+    # Note: this is quite slow, so we only run it if we're in my home
+    # directory -- it won't get backed up otherwise.
+    if string match -q "$HOME/*" "$PWD"
+        tmutil addexclusion .venv
+    end
 end
