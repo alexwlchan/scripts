@@ -6,11 +6,15 @@ set -o nounset
 
 _ensure_ssh_key_loaded
 
-if [[ "${1:-}" == "--rebase" ]]
-then
-  git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase
-else
-  git pull origin $(git rev-parse --abbrev-ref HEAD)
-fi
+HEAD="$(git rev-parse --abbrev-ref HEAD)"
 
 gf
+
+if [[ "${1:-}" == "--rebase" ]]
+then
+  print_info "-> git rebase $HEAD"
+  git rebase "$HEAD"
+else
+  print_info "-> git merge $HEAD"
+  git merge "$HEAD"
+fi

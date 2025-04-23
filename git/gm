@@ -4,8 +4,6 @@
 set -o errexit
 set -o nounset
 
-_ensure_ssh_key_loaded
-
 # Checking for the branch first is a bit slower, but avoids a potentially
 # confusing warning immediately before the pull:
 #
@@ -14,6 +12,8 @@ _ensure_ssh_key_loaded
 #
 if [[ $(gcb) != $(_get_primary_branch) ]]
 then
+  print_info "-> git checkout $(_get_primary_branch)"
+  print_info "   (Was on $(gcb))"
   git checkout "$(_get_primary_branch)"
 fi
 
