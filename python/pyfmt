@@ -36,10 +36,10 @@ else
 fi
 
 
-echo -e "\033[34mruff check\033[0m"
+print_info "ruff check"
 bash -c "$RUFF check $ROOT"
 
 echo ""
 
-echo -e "\033[34mruff format\033[0m"
+print_info "ruff format"
 bash -c "$RUFF format $ROOT"
