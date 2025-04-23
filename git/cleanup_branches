@@ -23,10 +23,10 @@ else
   PRIMARY_BRANCH="main"
 fi
 
-echo "Deduced primary branch as $PRIMARY_BRANCH"
+print_info "-> Deduced primary branch as $PRIMARY_BRANCH"
 
 CURRENT_BRANCH=$(git branch --show-current)
-echo "Current branch is $CURRENT_BRANCH"
+print_info "-> Current branch is $CURRENT_BRANCH"
 
 for branch in $(git branch --merged "$PRIMARY_BRANCH" | grep -v '*')
 do
@@ -40,5 +40,6 @@ do
     continue
   fi
 
+  print_info "-> git branch --delete $branch"
   git branch --delete "$branch"
 done
