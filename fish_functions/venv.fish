@@ -4,6 +4,8 @@
 # creating the venv and then immediately running "pip install" without
 # activating it first.
 #
+# This has to be a fish function, because I'm activating the venv.
+#
 # See https://alexwlchan.net/2023/fish-venv/
 #
 function venv --description "Create and activate a new virtual environment"
