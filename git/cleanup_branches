@@ -40,6 +40,5 @@ do
     continue
   fi
 
-  print_info "-> git branch --delete $branch"
   git branch --delete "$branch"
 done
