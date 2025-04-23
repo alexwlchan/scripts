@@ -114,15 +114,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pip_upgrade.fish">
-      <code>pip_upgrade.fish</code>
-    </a>
-  </dt>
-  <dd>
-    Upgrade requirements.txt lock files with uv
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/reload_fish_config.fish">
       <code>reload_fish_config.fish</code>
     </a>
@@ -149,4 +140,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
     Create and activate a new virtual environment
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: b2b37beea55a61207649c299f0858d15) -->
+<!-- [[[end]]] (checksum: 25bdcd02dce6ff80dc797668b840c5bb) -->
