@@ -15,7 +15,7 @@ function venv --description "Create and activate a new virtual environment"
         cd $(mktemp -d)
     end
 
-    echo "Creating virtual environment in "(pwd)"/.venv"
+    print_info "Creating virtual environment in "(pwd)"/.venv"
     uv venv --quiet .venv
     source .venv/bin/activate.fish
 
