@@ -12,8 +12,7 @@ set -o nounset
 #
 if [[ $(gcb) != $(_get_primary_branch) ]]
 then
-  print_info "-> git checkout $(_get_primary_branch)"
-  print_info "   (Was on $(gcb))"
+  print_info "-> git checkout $(_get_primary_branch) (was on $(gcb))"
   git checkout "$(_get_primary_branch)"
 fi
 
