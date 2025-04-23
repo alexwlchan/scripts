@@ -25,7 +25,7 @@ function pip_sync --description "Make a virtualenv dependencies look like requir
     #
     # On macOS, this means "are you in a path that starts with /Volumes".
     if string match -q "/Volumes/*" "$PWD"
-        set UV_LINK_MODE copy
+        set -x UV_LINK_MODE copy
     end
 
     # Actually run the `uv pip sync` command.
