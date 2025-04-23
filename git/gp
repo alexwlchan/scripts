@@ -13,8 +13,8 @@ gf
 if [[ "${1:-}" == "--rebase" ]]
 then
   print_info "-> git rebase $HEAD"
-  git rebase "$HEAD"
+  git rebase "origin/$HEAD"
 else
   print_info "-> git merge $HEAD"
-  git merge "$HEAD"
+  git merge "origin/$HEAD"
 fi
