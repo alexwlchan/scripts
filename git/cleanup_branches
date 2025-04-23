@@ -23,10 +23,15 @@ else
   PRIMARY_BRANCH="main"
 fi
 
-print_info "-> Deduced primary branch as $PRIMARY_BRANCH"
-
 CURRENT_BRANCH=$(git branch --show-current)
-print_info "-> Current branch is $CURRENT_BRANCH"
+
+if [[ "$PRIMARY_BRANCH" = "$CURRENT_BRANCH" ]]
+then
+  print_info "-> Current branch is $CURRENT_BRANCH, which is primary"
+else
+  print_info "-> Primary branch is $PRIMARY_BRANCH"
+  print_info "-> Current branch is $CURRENT_BRANCH"
+fi
 
 for branch in $(git branch --merged "$PRIMARY_BRANCH" | grep -v '*')
 do
