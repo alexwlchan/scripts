@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+echo -e "\033[32m$1\033[0m"

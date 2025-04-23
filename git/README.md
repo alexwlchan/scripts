@@ -114,12 +114,6 @@ scripts = [
         open the current Git repo in <a href="https://gitup.co/">GitUp</a>, my GUI Git client of choice
         """
     },
-    {
-        "usage": "print_info [MESSAGE]",
-        "description": """
-        helper script that lets me print text in blue inside other Git scripts
-        """
-    },
 ]
 
 cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
@@ -273,14 +267,5 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   <dd>
     open the current Git repo in <a href="https://gitup.co/">GitUp</a>, my GUI Git client of choice
   </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/git/print_info">
-      <code>print_info [MESSAGE]</code>
-    </a>
-  </dt>
-  <dd>
-    helper script that lets me print text in blue inside other Git scripts
-  </dd>
 </dl>
-<!-- [[[end]]] (checksum: 8e699083c35f78871a88e9bf6ca053bd) -->
+<!-- [[[end]]] (checksum: 113cfe8c833dfc74985f3f7dff2bcace) -->
