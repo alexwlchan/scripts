@@ -27,5 +27,10 @@ function venv --description "Create and activate a new virtual environment"
 
     # Tell Time Machine that it doesn't need to both backing up the
     # virtualenv directory.
-    tmutil addexclusion .venv
+    #
+    # Note: this is quite slow, so we only run it if we're in my home
+    # directory -- it won't get backed up otherwise.
+    if string match -q "$HOME/*" "$PWD"
+        tmutil addexclusion .venv
+    end
 end
