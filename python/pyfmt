@@ -28,7 +28,7 @@ fi
 # installed copy.
 #
 # If not, we use the `ruff` from my ~/repos/scripts virtualenv.
-if which ruff
+if which ruff >/dev/null
 then
   RUFF="$(which ruff)"
 else
