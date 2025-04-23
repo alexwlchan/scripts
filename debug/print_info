@@ -3,4 +3,10 @@
 set -o errexit
 set -o nounset
 
-echo -e "\033[34m$1\033[0m"
+# This allows you to call `-n` to print without a trailing newline
+if [[ "$#" = "2" && "$1" = "-n" ]]
+then
+  echo -ne "\033[34m$2\033[0m"
+else
+  echo -e "\033[34m$1\033[0m"
+fi
