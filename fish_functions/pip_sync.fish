@@ -11,7 +11,7 @@ function pip_sync --description "Make a virtualenv dependencies look like requir
     if test -z "$VIRTUAL_ENV"
         venv
     end
-    
+
     # If we're on an external disk, disable the warning about being
     # unable to clone files.  In particular:
     #

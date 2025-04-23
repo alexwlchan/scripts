@@ -14,11 +14,11 @@ function venv --description "Create and activate a new virtual environment"
     if test "$PWD" = "$HOME"
         cd $(mktemp -d)
     end
-    
+
     # I never want to create a virtual environment in the top level of
     # one of my external volumes; block it if I try -- it means I've
     # run a command in the wrong directory.
-    if test (dirname "$PWD") = "/Volumes"
+    if test (dirname "$PWD") = /Volumes
         print_error "Can’t create a virtualenv in $PWD!"
         return 1
     end
