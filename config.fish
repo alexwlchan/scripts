@@ -67,6 +67,9 @@ prepend_to_path ~/.local/bin
 # Path for Rust
 prepend_to_path ~/.cargo/bin
 
+# Path for Python 3
+prepend_to_path /Library/Frameworks/Python.framework/Versions/3.13/bin
+
 # Paths for Ruby and bundler
 #
 # These paths are different for Intel/Apple Silicon Macs.
