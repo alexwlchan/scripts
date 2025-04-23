@@ -38,21 +38,27 @@ function run_python_tests() {
     if [[ "$(pwd)" == ~/repos/library-lookup ]]
     then
       print_info '-> mypy *.py src tests'
-      mypy *.py src tests
+      mypy *.py src tests --no-color-output
     else
       print_info '-> mypy src tests'
-      mypy src tests
+      mypy src tests --no-color-output
     fi
     
     echo ""
 
     print_info "-> coverage run -m pytest tests"
-    coverage run -m pytest tests --quiet
+    coverage run -m pytest tests --quiet --color=no
     
     echo ""
     
     print_info "-> coverage report"
-    coverage report
+    
+    if [[ $(coverage report --format="100") ]]
+    then
+      echo "100% coverage!"
+    else
+      coverage report
+    fi
 }
 
 function run_rust_tests() {
