@@ -36,10 +36,10 @@ else
 fi
 
 
-print_info "ruff check"
+print_info "-> ruff check"
 bash -c "$RUFF check $ROOT"
 
 echo ""
 
-print_info "ruff format"
+print_info "-> ruff format"
 bash -c "$RUFF format $ROOT"
