@@ -105,15 +105,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pip_compile.fish">
-      <code>pip_compile.fish</code>
-    </a>
-  </dt>
-  <dd>
-    Create requirements.txt lock files with uv
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pip_sync.fish">
       <code>pip_sync.fish</code>
     </a>
@@ -158,4 +149,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
     Create and activate a new virtual environment
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 67f00a2925833d4359f4ab8087eab838) -->
+<!-- [[[end]]] (checksum: b2b37beea55a61207649c299f0858d15) -->

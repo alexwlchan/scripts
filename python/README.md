@@ -21,6 +21,10 @@ scripts = [
         "name": "pyfmt [...PATH]",
         "description": "Format Python files with ruff.",
     },
+    {
+        "name": "pip_compile (--upgrade)",
+        "description": "Compile any `requirements.in` files into a list of exact versions in `requirements.txt`.",
+    },
 ]
 
 cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
@@ -35,5 +39,14 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   <dd>
     Format Python files with ruff.
   </dd>
+
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/python/pip_compile">
+      <code>pip_compile (--upgrade)</code>
+    </a>
+  </dt>
+  <dd>
+    Compile any `requirements.in` files into a list of exact versions in `requirements.txt`.
+  </dd>
 </dl>
-<!-- [[[end]]] (checksum: 4c51b7cdb9a034e48bee58b82c75d99c) -->
+<!-- [[[end]]] (checksum: 3e15017c8de1c144defe8f18a08d38b1) -->
