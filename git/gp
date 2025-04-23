@@ -10,6 +10,8 @@ HEAD="$(git rev-parse --abbrev-ref HEAD)"
 
 gf
 
+echo ""
+
 if [[ "${1:-}" == "--rebase" ]]
 then
   print_info "-> git rebase $HEAD"

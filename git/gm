@@ -14,8 +14,11 @@ if [[ $(gcb) != $(_get_primary_branch) ]]
 then
   print_info "-> git checkout $(_get_primary_branch) (was on $(gcb))"
   git checkout "$(_get_primary_branch)"
+  echo ""
 fi
 
 gp
+
+echo ""
 
 cleanup_branches
