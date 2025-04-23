@@ -38,10 +38,16 @@ function run_python_tests() {
     if [[ "$(pwd)" == ~/repos/library-lookup ]]
     then
       print_info '-> mypy *.py src tests'
-      mypy *.py src tests --no-color-output
+      mypy *.py src tests
     else
       print_info '-> mypy src tests'
-      mypy src tests --no-color-output
+      
+      if mypy src tests >/dev/null
+      then
+        mypy src tests --no-color-output
+      else
+        mypy src tests
+      fi
     fi
     
     echo ""
