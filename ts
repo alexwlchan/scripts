@@ -53,13 +53,13 @@ function run_python_tests() {
     echo ""
 
     print_info "-> coverage run -m pytest tests"
-    coverage run -m pytest tests --quiet --color=no
+    coverage run -m pytest tests --quiet
     
     echo ""
     
     print_info "-> coverage report"
     
-    if [[ $(coverage report --format="100") ]]
+    if [[ $(coverage report --format=total) = "100" ]]
     then
       echo "100% coverage!"
     else
