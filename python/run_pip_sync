@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+"""
+Run `uv pip sync` with a `requirements.txt` file in the current folder.
+
+This will pick which file to use.
+"""
+
+from pathlib import Path
+import shlex
+import subprocess
+import sys
+
+
+if __name__ == "__main__":
+    # If a dev_requirements.txt file is available, use that, otherwise use
+    # the standard `requirements.txt`.
+    if Path("dev_requirements.txt").exists():
+        chosen_file = "dev_requirements.txt"
+    else:
+        chosen_file = "requirements.txt"
+
+    # Build the command to run.
+    cmd = ["uv", "pip", "sync", chosen_file]
+
+    if "--no-cache" in sys.argv:
+        cmd.append("--no-cache")
+
+    # Actually run the command, and print a debug entry for it.
+    subprocess.check_call(
+        ["/Users/alexwlchan/repos/scripts/debug/print_info", f"-> {shlex.join(cmd)}"]
+    )
+    subprocess.check_call(cmd, stdout=subprocess.DEVNULL)

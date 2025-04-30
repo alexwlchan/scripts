@@ -14,7 +14,7 @@ import subprocess
 import sys
 
 
-def compile_requirements_file(in_file: str, *, upgrade: bool) -> None:
+def compile_requirements_file(in_file: str, *, upgrade: bool, no_cache: bool) -> None:
     """
     Compile a single requirements file.
     """
@@ -32,6 +32,9 @@ def compile_requirements_file(in_file: str, *, upgrade: bool) -> None:
     if upgrade:
         cmd.append("--upgrade")
 
+    if no_cache:
+        cmd.append("--no-cache")
+
     # Actually run the command, and print a debug entry for it.
     #
     # `uv pip compile` prints the generated `requirements.txt` file to
@@ -43,8 +46,7 @@ def compile_requirements_file(in_file: str, *, upgrade: bool) -> None:
 
 
 if __name__ == "__main__":
-    upgrade = "--upgrade" in sys.argv
-
-    compile_requirements_file("requirements.in", upgrade=upgrade)
-    compile_requirements_file("script_requirements.in", upgrade=upgrade)
-    compile_requirements_file("dev_requirements.in", upgrade=upgrade)
+    for f in ["requirements.in", "script_requirements.in", "dev_requirements.in"]:
+        compile_requirements_file(
+            f, upgrade="--upgrade" in sys.argv, no_cache="--no-cache" in sys.argv
+        )
