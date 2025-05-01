@@ -16,6 +16,9 @@ set -o nounset
 if (( $# == 0 ))
 then
   ROOT="$(pwd)"
+elif [[ "$#" = "1" && "$1" = "--fix" ]]
+then
+  ROOT="$(pwd)"
 else
   ROOT="$@"
 fi
@@ -36,8 +39,14 @@ else
 fi
 
 
-print_info "-> ruff check"
-bash -c "$RUFF check $ROOT"
+if [[ "${1:-}" == "--fix" ]]
+then
+  print_info "-> ruff check --fix"
+  bash -c "$RUFF check $ROOT --fix"
+else
+  print_info "-> ruff check"
+  bash -c "$RUFF check $ROOT"
+fi
 
 echo ""
 
