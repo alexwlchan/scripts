@@ -13,6 +13,7 @@ set -o nounset
 #   * if no argument is specified, use the current working directory
 #   * if one or more directories are specified, use those
 #
+# TODO: What if somebody passes a custom directory and `--fix`?
 if (( $# == 0 ))
 then
   ROOT="$(pwd)"
