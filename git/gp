@@ -8,7 +8,9 @@ _ensure_ssh_key_loaded
 
 HEAD="$(git rev-parse --abbrev-ref HEAD)"
 
-gf
+# This avoids any clashes with other programs called "gp", e.g. at one
+# point I had gitpython in my PATH
+$(dirname "$0")/gf
 
 echo ""
 

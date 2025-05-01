@@ -17,7 +17,9 @@ then
   echo ""
 fi
 
-gp
+# This avoids any clashes with other programs called "gp", e.g. at one
+# point I had gitpython in my PATH
+$(dirname "$0")/gp
 
 echo ""
 
