@@ -110,7 +110,7 @@ def create_description_table(
         if os.path.isdir(folder / f):
             continue
 
-        if f in {"README.md", "utf8info.Dockerfile"}:
+        if f in {"README.md", "requirements.in", "requirements.txt"}:
             continue
 
         if f.startswith(("test_", "_", ".")):
