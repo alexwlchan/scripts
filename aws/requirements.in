@@ -1,0 +1,8 @@
+# This is a set of requirements that are solely used for my aws scripts.
+#
+# I'm only keeping these scripts for archival purposes, so I want
+# a record of the dependencies, but I don't need to keep them installed
+# in my virtualenv all the time.
+
+attrs
+boto3

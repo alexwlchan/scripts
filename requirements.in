@@ -1,9 +1,6 @@
-attrs
-boto3
 beautifulsoup4
 cogapp
 datasette
-datasette-render-image-tags
 httpx
 humanize
 hyperlink
