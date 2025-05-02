@@ -25,20 +25,6 @@ scripts = [
         """,
     },
     {
-        "usage": "fix_twemoji.py [PATH]",
-        "description": """
-        when I copy/paste a tweet into Obsidian, often any emoji get replaced by "twemoji" – links to Twitter’s custom emoji artwork.
-        This script replaces those links with vanilla emoji characters.
-        """,
-    },
-    {
-        "usage": "fix_twitter_thread.py [PATH]",
-        "description": """
-        when I copy/paste a Twitter thread into Obsidian, this does some
-        initial tidying up of the formatting for me.
-        """,
-    },
-    {
         "usage": "fix_whitespace [PATH]",
         "description": """
         when I copy/paste text into Obsidian from th web, this cleans up some of the extraneous whitespace.
@@ -100,14 +86,6 @@ scripts = [
         "usage": "tally < [PATH]",
         "description": "prints a tally of lines in the given text.",
     },
-    {
-        "name": "utf8info",
-        "usage": "echo [STRING] | utf8info",
-        "description": """
-        read UTF-8 on stdin and print out the raw Unicode "
-        "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
-        """,
-    },
 ]
 
 cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
@@ -122,26 +100,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   <dd>
     print the nth line of a file.
     This is meant to fill a gap between the Unix utilities `head` and `tail`.
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/text/fix_twemoji.py">
-      <code>fix_twemoji.py [PATH]</code>
-    </a>
-  </dt>
-  <dd>
-    when I copy/paste a tweet into Obsidian, often any emoji get replaced by "twemoji" – links to Twitter’s custom emoji artwork.
-    This script replaces those links with vanilla emoji characters.
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/text/fix_twitter_thread.py">
-      <code>fix_twitter_thread.py [PATH]</code>
-    </a>
-  </dt>
-  <dd>
-    when I copy/paste a Twitter thread into Obsidian, this does some
-    initial tidying up of the formatting for me.
   </dd>
 
   <dt>
@@ -254,15 +212,5 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   <dd>
     prints a tally of lines in the given text.
   </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/text/utf8info">
-      <code>echo [STRING] | utf8info</code>
-    </a>
-  </dt>
-  <dd>
-    read UTF-8 on stdin and print out the raw Unicode "
-    "codepoints. This is a Docker wrapper around <a href="https://github.com/lunasorcery/utf8info">a tool of the same name</a> by @lunasorcery.
-  </dd>
 </dl>
-<!-- [[[end]]] (checksum: 08eaa47db846418b5ceaa263cd20e662) -->
+<!-- [[[end]]] (checksum: 105738536f233dce472625ce83573418) -->
