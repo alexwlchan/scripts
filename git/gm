@@ -24,3 +24,28 @@ $(dirname "$0")/gp
 echo ""
 
 cleanup_branches
+
+if [[ $(groot) = ~/repos/alexwlchan.net ]]
+then
+  echo ""
+
+  print_info "-> Updating Ruby dependencies"
+
+  echo ""
+
+  print_info "-> bundle install"
+  bundle install \
+    | grep -v Using \
+    | grep -v "to see where a bundled gem is installed." \
+    | grep -v "you directly depend on are looking for funding." \
+    | grep -v "bundle fund"
+
+  echo ""
+
+  print_info "-> BUNDLE_WITH=lint bundle install"
+  BUNDLE_WITH=lint bundle install \
+    | grep -v Using \
+    | grep -v "to see where a bundled gem is installed." \
+    | grep -v "you directly depend on are looking for funding." \
+    | grep -v "bundle fund"
+fi
