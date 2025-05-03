@@ -16,9 +16,9 @@ echo ""
 
 if [[ "${1:-}" == "--rebase" ]]
 then
-  print_info "-> git rebase $HEAD"
+  print_info "-> git rebase origin/$HEAD"
   git rebase "origin/$HEAD"
 else
-  print_info "-> git merge $HEAD"
+  print_info "-> git merge origin/$HEAD"
   git merge "origin/$HEAD"
 fi
