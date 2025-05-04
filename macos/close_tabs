@@ -73,6 +73,7 @@ function isSafeToClose(url) {
     url === 'https://twitter.com/home' ||
     url === 'https://twitter.com/i/timeline' ||
     url === 'https://twitter.com/notifications' ||
+    url === 'https://www.amazon.co.uk/' ||
     url === 'https://www.facebook.com/' ||
     url === 'https://www.macrumors.com' ||
     url === 'https://www.macrumors.com/' ||
