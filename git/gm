@@ -25,7 +25,8 @@ echo ""
 
 cleanup_branches
 
-if [[ $(groot) = ~/repos/alexwlchan.net ]]
+if [[ $(groot) = ~/repos/alexwlchan.net ]] || \
+   [[ $(groot) = ~/repos/books.alexwlchan.net ]]
 then
   echo ""
 
