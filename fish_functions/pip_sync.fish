@@ -1,11 +1,17 @@
 function pip_sync --description "Make a virtualenv dependencies look like requirements.txt"
 
-    # Run the `pip compile` script to get a set of version pins.
-    pip_compile $argv
-
     # If there isn't a virtualenv already, create one
     if test -z "$VIRTUAL_ENV"
         venv
+    end
+
+    # If there are no `requirements.txt` files, run my `pip compile`
+    # script to create a set of version pins.
+    if not test -e requirements.txt; and not test -e dev_requirements.txt; or contains -- --compile $argv;
+        or contains -- --upgrade $argv
+        pip_compile $argv
+
+        echo ""
     end
 
     # If we're on an external disk, disable the warning about being
