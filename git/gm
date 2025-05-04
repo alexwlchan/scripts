@@ -39,6 +39,7 @@ then
     | grep -v Using \
     | grep -v "to see where a bundled gem is installed." \
     | grep -v "you directly depend on are looking for funding." \
+    | grep -v "you directly depend on is looking for funding." \
     | grep -v "bundle fund"
 
   echo ""
@@ -48,5 +49,6 @@ then
     | grep -v Using \
     | grep -v "to see where a bundled gem is installed." \
     | grep -v "you directly depend on are looking for funding." \
+    | grep -v "you directly depend on is looking for funding." \
     | grep -v "bundle fund"
 fi
