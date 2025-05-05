@@ -25,30 +25,35 @@ echo ""
 
 cleanup_branches
 
+# If we're in one of my Jekyll repositories, and the Gemfile has changed,
+# I need to update my local Ruby installation.
 if [[ $(groot) = ~/repos/alexwlchan.net ]] || \
    [[ $(groot) = ~/repos/books.alexwlchan.net ]]
 then
-  echo ""
+  if grep -q 'Gemfile' .git/names_diff.txt
+  then
+    echo ""
 
-  print_info "-> Updating Ruby dependencies"
+    print_info "-> Updating Ruby dependencies"
 
-  echo ""
+    echo ""
 
-  print_info "-> bundle install"
-  bundle install \
-    | grep -v Using \
-    | grep -v "to see where a bundled gem is installed." \
-    | grep -v "you directly depend on are looking for funding." \
-    | grep -v "you directly depend on is looking for funding." \
-    | grep -v "bundle fund"
+    print_info "-> bundle install"
+    bundle install \
+      | grep -v Using \
+      | grep -v "to see where a bundled gem is installed." \
+      | grep -v "you directly depend on are looking for funding." \
+      | grep -v "you directly depend on is looking for funding." \
+      | grep -v "bundle fund"
 
-  echo ""
+    echo ""
 
-  print_info "-> BUNDLE_WITH=lint bundle install"
-  BUNDLE_WITH=lint bundle install \
-    | grep -v Using \
-    | grep -v "to see where a bundled gem is installed." \
-    | grep -v "you directly depend on are looking for funding." \
-    | grep -v "you directly depend on is looking for funding." \
-    | grep -v "bundle fund"
+    print_info "-> BUNDLE_WITH=lint bundle install"
+    BUNDLE_WITH=lint bundle install \
+      | grep -v Using \
+      | grep -v "to see where a bundled gem is installed." \
+      | grep -v "you directly depend on are looking for funding." \
+      | grep -v "you directly depend on is looking for funding." \
+      | grep -v "bundle fund"
+  fi
 fi
