@@ -58,18 +58,34 @@ function run_python_tests() {
     
     echo ""
 
-    print_info "-> coverage run -m pytest tests"
-    coverage run -m pytest tests --quiet
-    
-    echo ""
-    
-    print_info "-> coverage report"
-    
-    if [[ $(coverage report --format=total) = "100" ]]
+    # Run the tests.
+    #
+    # I have a couple of repos which are a bit special and need a
+    # different command because I use pytest-xdist, but not all
+    # my repos work that way.
+    if [[ "$(pwd)" = ~/repos/commons.flickr.org ]]
     then
-      echo "100% coverage!"
+      print_info "-> pytest tests/ --ignore uptime_tests/ --quiet"
+      pytest --cov=src --cov=tests tests --ignore uptime_tests --quiet
+    elif [[ "$(pwd)" = ~/repos/data-lifeboat ]] ||
+         [[ "$(pwd)" = ~/repos/flickr-photos-api ]]
+    then
+      print_info "-> pytest tests"
+      pytest tests/ --quiet
     else
-      coverage report
+      print_info "-> coverage run -m pytest tests"
+      coverage run -m pytest tests --quiet
+      
+      echo ""
+    
+      print_info "-> coverage report"
+    
+      if [[ $(coverage report --format=total) = "100" ]]
+      then
+        echo "100% coverage!"
+      else
+        coverage report
+      fi
     fi
 }
 
