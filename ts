@@ -68,7 +68,8 @@ function run_python_tests() {
       print_info "-> pytest tests/ --ignore uptime_tests/ --quiet"
       pytest --cov=src --cov=tests tests --ignore uptime_tests --quiet
     elif [[ "$(pwd)" = ~/repos/data-lifeboat ]] ||
-         [[ "$(pwd)" = ~/repos/flickr-photos-api ]]
+         [[ "$(pwd)" = ~/repos/flickr-photos-api ]] ||
+         [[ "$(pwd)" = ~/repos/analytics.alexwlchan.net ]]
     then
       print_info "-> pytest tests"
       pytest tests/ --quiet
