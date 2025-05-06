@@ -15,8 +15,14 @@ function run_python_tests() {
     fi
 
     # Run ruff to do Python formatting
-    print_info "-> ruff check"
-    ruff check .
+    if [[ "${1:-}" == "--fix" ]]
+    then
+      print_info "-> ruff check --fix"
+      ruff check --fix .
+    else
+      print_info "-> ruff check"
+      ruff check .
+    fi
     
     echo ""
     
@@ -86,5 +92,5 @@ if test -f Cargo.toml
 then
     run_rust_tests
 else
-    run_python_tests
+    run_python_tests "$@"
 fi
