@@ -14,8 +14,9 @@
 set -o errexit
 set -o nounset
 
+rm -rf dist/*
 python3 -m build
-python3 -m twine upload dist/* --username=__token__ --skip-existing
+python3 -m twine upload dist/* --username=__token__
 
 version=$(find src -name __init__.py \
   | xargs grep '__version__ =' \
