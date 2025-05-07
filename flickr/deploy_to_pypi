@@ -14,16 +14,30 @@
 set -o errexit
 set -o nounset
 
+print_info '-> rm -rf dist/*'
 rm -rf dist/*
+
+echo ""
+
+print_info '-> python3 -m build'
 python3 -m build
+
+echo ""
+
+print_info '-> python3 -m twine upload dist/* --username=__token__'
 python3 -m twine upload dist/* --username=__token__
+
+echo ""
 
 version=$(find src -name __init__.py \
   | xargs grep '__version__ =' \
   | awk '{print $3}' \
   | tr -d '"')
 
-echo "Tagging as v$version and pushing to GitHub"
-
+print_info "-> git tag v$version"
 git tag "v$version"
+
+echo ""
+
+print_info "-> git push origin --tag"
 git push origin --tag
