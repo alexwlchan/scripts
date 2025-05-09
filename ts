@@ -81,22 +81,22 @@ function run_python_tests() {
          [[ "$REPO_NAME" = "flickr-photos-api" ]] ||
          [[ "$REPO_NAME" = "analytics.alexwlchan.net" ]]
     then
-        print_info "-> pytest tests"
-        pytest tests/ --quiet
+        print_info "-> pytest tests --no-cov"
+        pytest tests/ --quiet --no-cov
     else
         print_info "-> coverage run -m pytest tests"
         coverage run -m pytest tests --quiet
-      
-        echo ""
+    fi
     
-        print_info "-> coverage report"
-    
-        if [[ $(coverage report --format=total) = "100" ]]
-        then
-            echo "100% coverage!"
-        else
-            coverage report
-        fi
+    echo ""
+
+    print_info "-> coverage report"
+
+    if [[ $(coverage report --format=total) = "100" ]]
+    then
+        echo "100% coverage!"
+    else
+        coverage report
     fi
 }
 
