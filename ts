@@ -81,8 +81,8 @@ function run_python_tests() {
          [[ "$REPO_NAME" = "flickr-photos-api" ]] ||
          [[ "$REPO_NAME" = "analytics.alexwlchan.net" ]]
     then
-        print_info "-> pytest tests"
-        pytest tests/ --quiet
+        print_info "-> pytest tests --cov=src --cov=tests"
+        pytest tests --cov=src --cov=tests --quiet
     else
         print_info "-> coverage run -m pytest tests"
         coverage run -m pytest tests --quiet
