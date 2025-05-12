@@ -135,7 +135,7 @@ python-multipart==0.0.20
     # via asgi-csrf
 pyyaml==6.0.2
     # via datasette
-ruff==0.11.8
+ruff==0.11.9
     # via -r requirements.in
 secretstorage==3.3.3
     # via keyring
