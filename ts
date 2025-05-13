@@ -25,14 +25,8 @@ function run_python_tests() {
     fi
 
     # Run ruff to do Python formatting
-    if [[ "${1:-}" == "--fix" ]]
-    then
-        print_info "-> ruff check --fix"
-        ruff check --fix .
-    else
-        print_info "-> ruff check"
-        ruff check .
-    fi
+    print_info "-> ruff check --fix"
+    ruff check --fix .
     
     echo ""
     
