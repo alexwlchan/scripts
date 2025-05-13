@@ -125,7 +125,7 @@ pycparser==2.22
     # via cffi
 pygments==2.19.1
     # via -r requirements.in
-pypdf==5.4.0
+pypdf==5.5.0
     # via -r requirements.in
 pytest==8.3.5
     # via -r requirements.in
