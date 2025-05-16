@@ -18,8 +18,10 @@ but it should never download something different to the regular tool.
 import os
 import subprocess
 import sys
+import time
 
 import hyperlink
+import termcolor
 
 
 def is_youtube_playlist(url: str) -> bool:
@@ -37,18 +39,48 @@ def download_parallel_playlist(youtube_url: str, remaining_args: list[str]) -> N
 
     See https://alexwlchan.net/2020/how-to-do-parallel-downloads-with-youtube-dl/
     """
+    print(termcolor.colored("-> This is a playlist, downloading in parallel", "blue"))
+
     get_ids_proc = subprocess.Popen(
         [yt_dlp_path, "--get-id", youtube_url], stdout=subprocess.PIPE
     )
 
-    subprocess.check_call(
-        ["xargs", "-I", "{}", "-P", "5", yt_dlp_path]
+    xargs_proc = subprocess.Popen(
+        ["xargs", "-I", "{}", "-P", "5", yt_dlp_path, "--quiet"]
         + remaining_args
         + ["https://youtube.com/watch?v={}"],
         stdin=get_ids_proc.stdout,
     )
 
-    get_ids_proc.wait()
+    seen_filenames = set()
+
+    while get_ids_proc.returncode is None and xargs_proc.returncode is None:
+        get_ids_proc.poll()
+        xargs_proc.poll()
+
+        new_filenames = {
+            f
+            for f in os.listdir(".")
+            if f not in seen_filenames and not f.endswith(".part")
+        }
+
+        if "-x" in remaining_args:
+            new_filenames = {f for f in new_filenames if f.endswith(".mp3")}
+
+        if new_filenames:
+            print("\n".join(new_filenames))
+            seen_filenames |= new_filenames
+            time.sleep(0.05)
+        else:
+            time.sleep(0.1)
+
+    new_filenames = {
+        f
+        for f in os.listdir(".")
+        if f not in seen_filenames and not f.endswith(".part")
+    }
+    if new_filenames:
+        print("\n".join(new_filenames))
 
 
 if __name__ == "__main__":
