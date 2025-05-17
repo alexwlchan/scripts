@@ -20,7 +20,6 @@ import concurrent.futures
 import os
 import subprocess
 import sys
-import time
 
 import hyperlink
 import termcolor
@@ -38,22 +37,28 @@ def is_youtube_playlist(url: str) -> bool:
 
 def get_playlist_video_ids(youtube_url: str) -> Iterator[str]:
     """
+    Generate a list of video IDs in a YouTube playlist.
     """
     get_ids_proc = subprocess.Popen(
-        [yt_dlp_path, "--get-id", youtube_url], stdout=subprocess.PIPE, bufsize=1, text=True
+        [yt_dlp_path, "--get-id", youtube_url],
+        stdout=subprocess.PIPE,
+        bufsize=1,
+        text=True,
     )
-    
+
     for line in get_ids_proc.stdout:
         yield line.strip()
-    
-    
+
+
 def download_single_youtube_video(video_id: str, remaining_args: list[str]) -> None:
     """
     Download a single YouTube video.
     """
-    subprocess.check_call([
-        yt_dlp_path, "--quiet"
-    ] + remaining_args + [f"https://youtube.com/watch?v={video_id}"])
+    subprocess.check_call(
+        [yt_dlp_path, "--quiet"]
+        + remaining_args
+        + [f"https://youtube.com/watch?v={video_id}"]
+    )
 
 
 def download_parallel_playlist(youtube_url: str, remaining_args: list[str]) -> None:
@@ -62,10 +67,14 @@ def download_parallel_playlist(youtube_url: str, remaining_args: list[str]) -> N
 
     See https://alexwlchan.net/2020/how-to-do-parallel-downloads-with-youtube-dl/
     """
-    print(termcolor.colored("-> This is a YouTube playlist, downloading in parallel", "blue"))
-    
+    print(
+        termcolor.colored(
+            "-> This is a YouTube playlist, downloading in parallel", "blue"
+        )
+    )
+
     playlist_length = 0
-    
+
     with concurrent.futures.ThreadPoolExecutor() as executor, tqdm.tqdm() as pbar:
         futures = set()
 
@@ -85,7 +94,7 @@ def download_parallel_playlist(youtube_url: str, remaining_args: list[str]) -> N
 
             pbar.total = playlist_length
             pbar.refresh()
-        
+
         for fut in concurrent.futures.as_completed(futures):
             pbar.update(1)
 
