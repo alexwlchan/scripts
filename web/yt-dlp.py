@@ -15,6 +15,8 @@ tool and it would work as-is.  It might check extra rules or run faster,
 but it should never download something different to the regular tool.
 """
 
+from collections.abc import Iterator
+import concurrent.futures
 import os
 import subprocess
 import sys
@@ -22,6 +24,7 @@ import time
 
 import hyperlink
 import termcolor
+import tqdm
 
 
 def is_youtube_playlist(url: str) -> bool:
@@ -33,54 +36,58 @@ def is_youtube_playlist(url: str) -> bool:
     return bool(u.get("list"))
 
 
+def get_playlist_video_ids(youtube_url: str) -> Iterator[str]:
+    """
+    """
+    get_ids_proc = subprocess.Popen(
+        [yt_dlp_path, "--get-id", youtube_url], stdout=subprocess.PIPE, bufsize=1, text=True
+    )
+    
+    for line in get_ids_proc.stdout:
+        yield line.strip()
+    
+    
+def download_single_youtube_video(video_id: str, remaining_args: list[str]) -> None:
+    """
+    Download a single YouTube video.
+    """
+    subprocess.check_call([
+        yt_dlp_path, "--quiet"
+    ] + remaining_args + [f"https://youtube.com/watch?v={video_id}"])
+
+
 def download_parallel_playlist(youtube_url: str, remaining_args: list[str]) -> None:
     """
     Download a YouTube playlist in parallel.
 
     See https://alexwlchan.net/2020/how-to-do-parallel-downloads-with-youtube-dl/
     """
-    print(termcolor.colored("-> This is a playlist, downloading in parallel", "blue"))
+    print(termcolor.colored("-> This is a YouTube playlist, downloading in parallel", "blue"))
+    
+    playlist_length = 0
+    
+    with concurrent.futures.ThreadPoolExecutor() as executor, tqdm.tqdm() as pbar:
+        futures = set()
 
-    get_ids_proc = subprocess.Popen(
-        [yt_dlp_path, "--get-id", youtube_url], stdout=subprocess.PIPE
-    )
+        for video_id in get_playlist_video_ids(youtube_url):
+            futures.add(
+                executor.submit(download_single_youtube_video, video_id, remaining_args)
+            )
+            playlist_length += 1
 
-    xargs_proc = subprocess.Popen(
-        ["xargs", "-I", "{}", "-P", "5", yt_dlp_path, "--quiet"]
-        + remaining_args
-        + ["https://youtube.com/watch?v={}"],
-        stdin=get_ids_proc.stdout,
-    )
+            # Once we've got a few videos in the queue, wait for a video
+            # to complete before we queue the next one.
+            if playlist_length > 5:
+                done, futures = concurrent.futures.wait(
+                    futures, return_when=concurrent.futures.FIRST_COMPLETED
+                )
+                pbar.update(len(done))
 
-    seen_filenames = set()
-
-    while get_ids_proc.returncode is None and xargs_proc.returncode is None:
-        get_ids_proc.poll()
-        xargs_proc.poll()
-
-        new_filenames = {
-            f
-            for f in os.listdir(".")
-            if f not in seen_filenames and not f.endswith(".part")
-        }
-
-        if "-x" in remaining_args:
-            new_filenames = {f for f in new_filenames if f.endswith(".mp3")}
-
-        if new_filenames:
-            print("\n".join(new_filenames))
-            seen_filenames |= new_filenames
-            time.sleep(0.05)
-        else:
-            time.sleep(0.1)
-
-    new_filenames = {
-        f
-        for f in os.listdir(".")
-        if f not in seen_filenames and not f.endswith(".part")
-    }
-    if new_filenames:
-        print("\n".join(new_filenames))
+            pbar.total = playlist_length
+            pbar.refresh()
+        
+        for fut in concurrent.futures.as_completed(futures):
+            pbar.update(1)
 
 
 if __name__ == "__main__":
