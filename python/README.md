@@ -18,6 +18,12 @@ folder_name = "python"
 
 scripts = [
     {
+        "usage": "deploy_to_pypi",
+        "description": """
+        deploy a new version of a Python library: bump the version, tag the Git commit, push to PyPI and GitHub.
+        """,
+    },
+    {
         "name": "pyfmt [...PATH]",
         "description": "Format Python files with ruff.",
     },
@@ -35,6 +41,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
 
 ]]]-->
 <dl>
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/python/deploy_to_pypi">
+      <code>deploy_to_pypi</code>
+    </a>
+  </dt>
+  <dd>
+    deploy a new version of a Python library: bump the version, tag the Git commit, push to PyPI and GitHub.
+  </dd>
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/python/pyfmt">
       <code>pyfmt [...PATH]</code>
@@ -62,4 +77,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     A wrapper around `uv pip sync`. You don't need to call this directly.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: bc5aac2674e0836cb28c25fa59413628) -->
+<!-- [[[end]]] (checksum: a41fde5ae0ac650aa914107e692982ff) -->

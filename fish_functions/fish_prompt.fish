@@ -36,7 +36,9 @@ function print_git_information
             printf "$branch"
 
             # Print an asterisk to indicate uncommitted changes, if there are any
+            # Try git update-index --really-refresh?
             if ! git diff-index --quiet HEAD --
+              
                 printf "*"
             end
 

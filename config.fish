@@ -49,7 +49,6 @@ end
 prepend_to_path ~/repos/scripts
 prepend_to_path ~/repos/scripts/aws
 prepend_to_path ~/repos/scripts/debug
-prepend_to_path ~/repos/scripts/flickr
 prepend_to_path ~/repos/scripts/fs
 prepend_to_path ~/repos/scripts/git
 prepend_to_path ~/repos/scripts/images
