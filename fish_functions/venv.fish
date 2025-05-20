@@ -26,6 +26,7 @@ function venv --description "Create and activate a new virtual environment"
     print_info "Creating virtual environment in "(pwd)"/.venv"
     uv venv --quiet .venv
     source .venv/bin/activate.fish
+    print_info "Using: "(python3 --version)
 
     # Append .venv to the Git exclude file, but only if it's not
     # already there.
