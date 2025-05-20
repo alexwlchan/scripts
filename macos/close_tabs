@@ -33,57 +33,60 @@ function isSafeToClose(url) {
   // Sometimes we get a `null` as the URL of a tab; I'm not sure why,
   // so leave this tab open.
   if (url === null) { return false; }
+  
+  const urlPrefixes = [
+    "https://chat.openai.com/c/",
+    "http://localhost:3000/",
+    "http://localhost:5000/",
+    "http://localhost:5757/",
+    "http://localhost:5959/",
+    "https://analytics.alexwlchan.net",
+    "https://app.fastmail.com/mail/Inbox/?u=",
+    "https://chat.openai.com/c/",
+    "https://discord.com/",
+    "https://github.com/Flickr-Foundation/",
+    "https://zoom.us/",
+  ];
+  
+  const exactUrls = new Set([
+    "https://alexwlchan.net/",
+    "https://arstechnica.com/",
+    "https://bsky.app/",
+    "https://calendar.google.com/calendar/u/0/r/week",
+    "https://chat.openai.com/",
+    "https://commons.flickr.org/",
+    "https://daringfireball.net/",
+    "https://docs.google.com/document/u/0/",
+    "https://github.com/",
+    "https://github.com/alexwlchan/books.alexwlchan.net",
+    "https://github.com/alexwlchan/scripts",
+    "https://lexies-library-lookup.netlify.app/",
+    "https://www.linkedin.com/feed/",
+    "https://mail.google.com/mail/u/0/#inbox",
+    "https://mail.google.com/mail/u/1/#inbox",
+    "https://mobile.twitter.com/home",
+    "https://news.ycombinator.com/",
+    "https://old.reddit.com/",
+    "https://pinboard.in/u:alexwlchan",
+    "https://remote.com",
+    "https://social.alexwlchan.net/home",
+    "https://social.alexwlchan.net/notifications",
+    "https://twitter.com/home",
+    "https://twitter.com/i/timeline",
+    "https://twitter.com/notifications",
+    "https://www.amazon.co.uk/",
+    "https://www.facebook.com/",
+    "https://www.macrumors.com",
+    "https://www.macrumors.com/",
+    "https://www.operationmincemeat.com",
+    "https://www.theguardian.com/uk",
+    "https://www.youtube.com/",
+    "https://www.youtube.com/?app=desktop",
+    "https://x.com/home",
+    "history://",
+  ]);
 
-  return (
-    url.startsWith("https://chat.openai.com/c/") ||
-    url.startsWith("http://localhost:3000/") ||
-    url.startsWith("http://localhost:5000/") ||
-    url.startsWith("http://localhost:5757/") ||
-    url.startsWith("http://localhost:5959/") ||
-    url.startsWith("https://analytics.alexwlchan.net") ||
-    url.startsWith("https://app.fastmail.com/mail/Inbox/?u=") ||
-    url.startsWith("https://chat.openai.com/c/") ||
-    url.startsWith("https://discord.com/") ||
-    url.startsWith("https://github.com/Flickr-Foundation/") ||
-    url.startsWith("https://lexies-library-lookup.netlify.app/") ||
-    url.startsWith("https://zoom.us/")
-  ) || (
-    url === 'https://alexwlchan.net/' ||
-    url === 'https://arstechnica.com/' ||
-    url === 'https://bsky.app/' ||
-    url === 'https://calendar.google.com/calendar/u/0/r/week' ||
-    url === 'https://chat.openai.com/' ||
-    url === 'https://commons.flickr.org/' ||
-    url === 'https://daringfireball.net/' ||
-    url === 'https://docs.google.com/document/u/0/' ||
-    url === 'https://github.com/' ||
-    url === 'https://github.com/alexwlchan/books.alexwlchan.net' ||
-    url === 'https://github.com/alexwlchan/scripts' ||
-    url === 'https://lexies-library-lookup.netlify.app/' ||
-    url === 'https://www.linkedin.com/feed/' ||
-    url === 'https://mail.google.com/mail/u/0/#inbox' ||
-    url === 'https://mail.google.com/mail/u/1/#inbox' ||
-    url === 'https://mobile.twitter.com/home' ||
-    url === 'https://news.ycombinator.com/' ||
-    url === 'https://old.reddit.com/' ||
-    url === 'https://pinboard.in/u:alexwlchan' ||
-    url === 'https://remote.com' ||
-    url === 'https://social.alexwlchan.net/home' ||
-    url === 'https://social.alexwlchan.net/notifications' ||
-    url === 'https://twitter.com/home' ||
-    url === 'https://twitter.com/i/timeline' ||
-    url === 'https://twitter.com/notifications' ||
-    url === 'https://www.amazon.co.uk/' ||
-    url === 'https://www.facebook.com/' ||
-    url === 'https://www.macrumors.com' ||
-    url === 'https://www.macrumors.com/' ||
-    url === 'https://www.operationmincemeat.com' ||
-    url === 'https://www.theguardian.com/uk' ||
-    url === 'https://www.youtube.com/' ||
-    url === 'https://www.youtube.com/?app=desktop' ||
-    url === 'https://x.com/home' ||
-    url === 'history://'
-  );
+  return exactUrls.has(url) || urlPrefixes.find(p => url.startsWith(p));
 }
 
 let closedCount = 0;
