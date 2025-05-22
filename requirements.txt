@@ -10,17 +10,13 @@ asgi-csrf==0.11
     # via datasette
 asgiref==3.8.1
     # via datasette
-backports-tarfile==1.2.0
-    # via jaraco-context
 beautifulsoup4==4.13.4
     # via -r requirements.in
-certifi==2025.1.31
+certifi==2025.4.26
     # via
     #   httpcore
     #   httpx
-cffi==1.17.1
-    # via cryptography
-click==8.1.8
+click==8.2.1
     # via
     #   click-default-group
     #   datasette
@@ -33,23 +29,17 @@ click-default-group==1.2.4
     #   sqlite-utils
 cogapp==3.4.1
     # via -r requirements.in
-cryptography==44.0.2
-    # via secretstorage
 datasette==0.65.1
     # via -r requirements.in
-exceptiongroup==1.2.2
-    # via
-    #   anyio
-    #   pytest
 flexcache==0.3
     # via datasette
 flexparser==0.4
     # via datasette
-h11==0.14.0
+h11==0.16.0
     # via
     #   httpcore
     #   uvicorn
-httpcore==1.0.8
+httpcore==1.0.9
     # via httpx
 httpx==0.28.1
     # via
@@ -66,8 +56,6 @@ idna==3.10
     #   anyio
     #   httpx
     #   hyperlink
-importlib-metadata==8.7.0
-    # via keyring
 iniconfig==2.1.0
     # via pytest
 itsdangerous==2.2.0
@@ -82,10 +70,6 @@ jaraco-context==6.0.1
     # via keyring
 jaraco-functools==4.1.0
     # via keyring
-jeepney==0.9.0
-    # via
-    #   keyring
-    #   secretstorage
 jinja2==3.1.6
     # via datasette
 keyring==25.6.0
@@ -110,19 +94,19 @@ pillow==11.2.1
     #   pillow-heif
 pillow-heif==0.22.0
     # via -r requirements.in
+pip==25.1.1
+    # via datasette
 pipx==1.7.1
     # via -r requirements.in
-platformdirs==4.3.7
+platformdirs==4.3.8
     # via
     #   datasette
     #   pipx
-pluggy==1.5.0
+pluggy==1.6.0
     # via
     #   datasette
     #   pytest
     #   sqlite-utils
-pycparser==2.22
-    # via cffi
 pygments==2.19.1
     # via -r requirements.in
 pypdf==5.5.0
@@ -135,10 +119,10 @@ python-multipart==0.0.20
     # via asgi-csrf
 pyyaml==6.0.2
     # via datasette
-ruff==0.11.10
+ruff==0.11.11
     # via -r requirements.in
-secretstorage==3.3.3
-    # via keyring
+setuptools==80.8.0
+    # via datasette
 six==1.17.0
     # via python-dateutil
 sniffio==1.3.1
@@ -153,27 +137,18 @@ tabulate==0.9.0
     # via sqlite-utils
 termcolor==3.1.0
     # via -r requirements.in
-tomli==2.2.1
-    # via
-    #   pipx
-    #   pytest
 tqdm==4.67.1
     # via -r requirements.in
 typing-extensions==4.13.2
     # via
     #   anyio
-    #   asgiref
     #   beautifulsoup4
     #   datasette
     #   flexcache
     #   flexparser
-    #   pypdf
-    #   uvicorn
 userpath==1.9.2
     # via pipx
 uvicorn==0.34.2
     # via datasette
-yt-dlp==2025.4.30
+yt-dlp==2025.5.22
     # via -r requirements.in
-zipp==3.21.0
-    # via importlib-metadata
