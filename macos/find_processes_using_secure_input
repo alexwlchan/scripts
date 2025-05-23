@@ -50,16 +50,18 @@ def find_dicts_in_tree(d):
         pass
 
 
-def executable_name(pid):
+def executable_name(pid: int) -> str:
     """
     Returns the executable name associated with a given pid.
     """
-    return subprocess.check_output([
+    cmd = [
         "ps",
         "-c",              # Only show the executable name, not the full command line
         "-o", "command=",  # Only show the command column, no header
         "-p", str(pid)     # Only show the given process ID
-    ]).strip().encode("utf8")
+    ]
+    
+    return subprocess.check_output(cmd, text=True).strip()
 
 
 if __name__ == "__main__":
