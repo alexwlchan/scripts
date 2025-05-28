@@ -4,6 +4,8 @@
 set -o errexit
 set -o nounset
 
+ROOT="$(git rev-parse --show-toplevel)"
+
 # Checking for the branch first is a bit slower, but avoids a potentially
 # confusing warning immediately before the pull:
 #
@@ -30,7 +32,7 @@ cleanup_branches
 if [[ $(groot) = ~/repos/alexwlchan.net ]] || \
    [[ $(groot) = ~/repos/books.alexwlchan.net ]]
 then
-  if grep -q 'Gemfile' .git/names_diff.txt
+  if grep -q 'Gemfile' "$ROOT/.git/names_diff.txt"
   then
     echo ""
 

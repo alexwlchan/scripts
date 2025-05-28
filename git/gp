@@ -9,6 +9,7 @@ set -o nounset
 
 _ensure_ssh_key_loaded
 
+ROOT="$(git rev-parse --show-toplevel)"
 HEAD="$(git rev-parse --abbrev-ref HEAD)"
 
 # This avoids any clashes with other programs called "gp", e.g. at one
@@ -18,7 +19,7 @@ $(dirname "$0")/gf
 echo ""
 
 # Log a list of files which will be changed to .git/names_diff.txt
-git diff --name-status "$HEAD" "origin/$HEAD" > .git/names_diff.txt 2>/dev/null
+git diff --name-status "$HEAD" "origin/$HEAD" > "$ROOT/.git/names_diff.txt" 2>/dev/null
 
 if [[ "${1:-}" == "--rebase" ]]
 then
