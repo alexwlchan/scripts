@@ -14,8 +14,8 @@
 set -o errexit
 set -o nounset
 
-print_info '-> rm -rf dist/*'
-rm -rf dist/*
+print_info '-> rm -rv dist/*'
+rm -rv dist/*
 
 echo ""
 
