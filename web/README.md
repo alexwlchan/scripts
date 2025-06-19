@@ -18,6 +18,10 @@ folder_name = "web"
 
 scripts = [
     {
+        "name": "caddyfmt",
+        "description": "Format all of my Caddyfiles, which are config files for my web server."
+    },
+    {
         "name": "get_phaenna_ip",
         "description": """
         Get the IP address of Phaenna (my home desktop) within my Tailscale network.
@@ -47,6 +51,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
 
 ]]]-->
 <dl>
+  <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/web/caddyfmt">
+      <code>caddyfmt</code>
+    </a>
+  </dt>
+  <dd>
+    Format all of my Caddyfiles, which are config files for my web server.
+  </dd>
+
   <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/web/get_phaenna_ip">
       <code>get_phaenna_ip</code>
@@ -83,4 +96,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: c9ec85522621534fe70f3b3eded1a06d) -->
+<!-- [[[end]]] (checksum: ad194d489b262e13569c80864b4fb7d0) -->

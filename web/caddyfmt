@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+find . \
+    -name Caddyfile \
+    -o -name '*.Caddyfile' ! -name 'redirects.Caddyfile' | \
+    xargs -I '{}' --verbose caddy fmt --overwrite '{}'
