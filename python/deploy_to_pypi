@@ -20,7 +20,7 @@ rm -rv dist/*
 echo ""
 
 print_info '-> python3 -m build'
-python3 -m build
+python3 -m build -C--quiet
 
 echo ""
 
