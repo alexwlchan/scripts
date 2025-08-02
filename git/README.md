@@ -97,12 +97,6 @@ scripts = [
         """
     },
     {
-        "variants": ["grc", "grs"],
-        "description": """
-        alias for <a href="https://git-scm.com/docs/git-rebase"><code>git rebase --continue / --skip</code></a>
-        """
-    },
-    {
         "usage": "gub",
         "description": """
         open the current Git repo in my web browser (assuming it's a GitHub repo)
@@ -238,19 +232,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/git/grc">
-      <code>grc</code>
-    </a>
-/
-    <a href="https://github.com/alexwlchan/scripts/blob/main/git/grs">
-      <code>grs</code>
-    </a>
-  </dt>
-  <dd>
-    alias for <a href="https://git-scm.com/docs/git-rebase"><code>git rebase --continue / --skip</code></a>
-  </dd>
-
-  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/git/gub">
       <code>gub</code>
     </a>
@@ -268,4 +249,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     open the current Git repo in <a href="https://gitup.co/">GitUp</a>, my GUI Git client of choice
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 113cfe8c833dfc74985f3f7dff2bcace) -->
+<!-- [[[end]]] (sum: kgos+cwNSe) -->
