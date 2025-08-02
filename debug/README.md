@@ -85,4 +85,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     print a warning message in yellow
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 6fc892fcb4c7c365c7cd03abce3b6946) -->
+<!-- [[[end]]] (sum: b8iS/LTHw2) -->

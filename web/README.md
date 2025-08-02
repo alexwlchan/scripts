@@ -81,4 +81,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     this is a wrapper around <a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a> that does parallel downloads of videos in playlists.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: bcfbd0f0903f86284aafe11f8b4ea0cd) -->
+<!-- [[[end]]] (sum: vPvQ8JA/hi) -->

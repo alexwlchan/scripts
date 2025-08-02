@@ -117,7 +117,7 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     alias for the <a href="https://github.com/terraform-linters/tflint">tflint linter</a>, but running inside a Docker container
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: b9d70deb03a18bfd0a84a1a3ee918977) -->
+<!-- [[[end]]] (sum: udcN6wOhi/) -->
 
 ## Choosing between `terraform` and `run_terraform.sh`
 

@@ -352,4 +352,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     I don’t use this script very often, but I checked it in because I thought it was a neat trick I didn’t want to forget.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 729cb96a4ef2033ad2974a1b63327f0b) -->
+<!-- [[[end]]] (sum: cpy5ak7yAz) -->

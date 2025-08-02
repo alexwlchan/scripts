@@ -184,7 +184,7 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     <img src="screenshots/sqs_stats.png">
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: d5f3c003ddf6645e4201be4fe39b23e0) -->
+<!-- [[[end]]] (sum: 1fPAA932ZF) -->
 
 ## Guessing the right account
 

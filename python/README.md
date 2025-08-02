@@ -77,4 +77,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     A wrapper around `uv pip sync`. You don't need to call this directly.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: a41fde5ae0ac650aa914107e692982ff) -->
+<!-- [[[end]]] (sum: pB/eWuCsZQ) -->

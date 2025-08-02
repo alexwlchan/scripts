@@ -213,4 +213,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     prints a tally of lines in the given text.
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 105738536f233dce472625ce83573418) -->
+<!-- [[[end]]] (sum: EFc4U28jPc) -->

@@ -140,4 +140,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
     Create and activate a new virtual environment
   </dd>
 </dl>
-<!-- [[[end]]] (checksum: 25bdcd02dce6ff80dc797668b840c5bb) -->
+<!-- [[[end]]] (sum: Jb3NAtzm/4) -->
