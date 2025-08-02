@@ -70,31 +70,13 @@ prepend_to_path ~/.cargo/bin
 prepend_to_path /Library/Frameworks/Python.framework/Versions/3.13/bin
 
 # Paths for Ruby and bundler
-#
-# These paths are different for Intel/Apple Silicon Macs.
 prepend_to_path /opt/homebrew/bin
 prepend_to_path /opt/homebrew/opt/ruby/bin
 prepend_to_path /opt/homebrew/lib/ruby/gems/3.3.0/bin
 
-
-
 # Prepend any Homebrew-related directories to my PATH variable.
-#
-# Note that Homebrew installs into different directories depending on
-# whether you're on an Intel or Apple Silicon Mac.  Eventually I can
-# delete this when I get rid of my last Intel Mac, but until then
-# I want to make sure I have the same paths on both machines.
-#
-# See https://docs.brew.sh/Installation
-
-if test (uname -m) = "arm64"
-  set HOMEBREW_PREFIX /opt/homebrew
-else
-  set HOMEBREW_PREFIX /usr/local
-end
-
-prepend_to_path $HOMEBREW_PREFIX/bin
-prepend_to_path $HOMEBREW_PREFIX/opt/ruby/bin
+prepend_to_path /opt/homebrew/bin
+prepend_to_path /opt/homebrew/opt/ruby/bin
 
 
 # This prevents me from installing packages with pip without being
