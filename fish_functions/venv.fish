@@ -33,6 +33,18 @@ function venv --description "Create and activate a new virtual environment"
     if test -e .git
         append_to_file_if_not_exists ".git/info/exclude" ".venv"
     end
+    
+    # Append some other common Python tool directories to the Git
+    # exclude file.  These tools already write a `.gitignore` entry
+    # for all the files they contain, but not the folder.
+    #
+    # This is necessary for Nova, a macOS text editor I sometimes use.
+    if test -e .git
+        append_to_file_if_not_exists ".git/info/exclude" ".mypy_cache"
+        append_to_file_if_not_exists ".git/info/exclude" ".pytest_cache"
+        append_to_file_if_not_exists ".git/info/exclude" ".ruff_cache"
+        append_to_file_if_not_exists ".git/info/exclude" "__pycache__"
+    end
 
     # Tell Time Machine that it doesn't need to both backing up the
     # virtualenv directory.
