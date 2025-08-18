@@ -20,7 +20,7 @@ To set up this repo on a new computer, I run the following commands in a Fish sh
     ```console
     $ python3 -m venv .venv
     $ source .venv/bin/activate.fish
-    $ pip install -r requirements.txt
+    $ uv pip install -r requirements.txt
     ```
     
 3.  Install my Fish config, so Fish knows where to find all these scripts:
