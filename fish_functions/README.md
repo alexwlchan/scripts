@@ -105,6 +105,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/go.fish">
+      <code>go.fish</code>
+    </a>
+  </dt>
+  <dd>
+    Remind me to use ./tool/go in Tailscale repos
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/fish_functions/pip_sync.fish">
       <code>pip_sync.fish</code>
     </a>
@@ -140,4 +149,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=functions)
     Create and activate a new virtual environment
   </dd>
 </dl>
-<!-- [[[end]]] (sum: Jb3NAtzm/4) -->
+<!-- [[[end]]] (sum: FW10hKks6J) -->

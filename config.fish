@@ -78,6 +78,9 @@ prepend_to_path /opt/homebrew/lib/ruby/gems/3.3.0/bin
 prepend_to_path /opt/homebrew/bin
 prepend_to_path /opt/homebrew/opt/ruby/bin
 
+# Path for Go binaries
+prepend_to_path ~/go/bin
+
 
 # This prevents me from installing packages with pip without being
 # in a virtualenv first.
