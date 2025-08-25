@@ -12,7 +12,7 @@ asgiref==3.9.1
     # via datasette
 backports-tarfile==1.2.0
     # via jaraco-context
-beautifulsoup4==4.13.4
+beautifulsoup4==4.13.5
     # via -r requirements.in
 certifi==2025.8.3
     # via
