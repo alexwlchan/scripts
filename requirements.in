@@ -4,6 +4,7 @@ datasette
 httpx
 humanize
 hyperlink
+iterm2
 keyring
 naturalsort==1.5.1  # Used as 'natsort'
 Pillow

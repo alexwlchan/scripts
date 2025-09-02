@@ -73,6 +73,10 @@ scripts = [
         "description": "Set the Finder comment of a file, which will be indexed by Spotlight for searching"
     },
     {
+        "usage": "set_iterm_tab_title.py TITLE",
+        "description": "Set the title of a tab in iTerm 2"
+    },
+    {
         "usage": "sterilise [PATH]",
         "description": "alias for <code>xattr -d com.apple.quarantine</code>"
     },
@@ -222,6 +226,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/macos/set_iterm_tab_title.py">
+      <code>set_iterm_tab_title.py TITLE</code>
+    </a>
+  </dt>
+  <dd>
+    Set the title of a tab in iTerm 2
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/macos/sterilise">
       <code>sterilise [PATH]</code>
     </a>
@@ -251,4 +264,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     </p>
   </dd>
 </dl>
-<!-- [[[end]]] (sum: 04EuY3I563) -->
+<!-- [[[end]]] (sum: uJMF1iuiOs) -->
