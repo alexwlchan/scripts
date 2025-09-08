@@ -182,7 +182,7 @@ uvicorn==0.35.0
     # via datasette
 websockets==15.0.1
     # via iterm2
-yt-dlp==2025.8.27
+yt-dlp==2025.9.5
     # via -r requirements.in
 zipp==3.23.0
     # via importlib-metadata
