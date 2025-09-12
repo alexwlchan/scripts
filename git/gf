@@ -9,5 +9,5 @@ set -o nounset
 
 _ensure_ssh_key_loaded
 
-print_info "-> git fetch origin --prune"
-git fetch origin --prune
+print_info "-> git fetch origin --prune $@"
+git fetch origin --prune "$@"
