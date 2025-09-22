@@ -31,7 +31,7 @@ click-default-group==1.2.4
     # via
     #   datasette
     #   sqlite-utils
-cogapp==3.5.1
+cogapp==3.6.0
     # via -r requirements.in
 cryptography==45.0.7
     # via secretstorage
