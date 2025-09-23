@@ -14,6 +14,7 @@ pygments  # Used as 'pygmentize' in 'pp_xml.sh'
 pypdf
 pytest
 ruff
+smartypants
 sqlite-utils
 termcolor
 tqdm

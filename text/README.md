@@ -73,6 +73,10 @@ scripts = [
         "description": "prints the lines of text, but in reverse order.",
     },
     {
+        "usage": "smartify.py [PATH]",
+        "description": "apply smart typography to a text file."
+    },
+    {
         "usage": "sumsizes.py < [PATH]",
         "description": """
         prints a human-readable data size for the numbers passed on stdin.
@@ -193,6 +197,15 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dd>
 
   <dt>
+    <a href="https://github.com/alexwlchan/scripts/blob/main/text/smartify.py">
+      <code>smartify.py [PATH]</code>
+    </a>
+  </dt>
+  <dd>
+    apply smart typography to a text file.
+  </dd>
+
+  <dt>
     <a href="https://github.com/alexwlchan/scripts/blob/main/text/sumsizes.py">
       <code>sumsizes.py < [PATH]</code>
     </a>
@@ -213,4 +226,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     prints a tally of lines in the given text.
   </dd>
 </dl>
-<!-- [[[end]]] (sum: EFc4U28jPc) -->
+<!-- [[[end]]] (sum: FyzA8+tT8Q) -->

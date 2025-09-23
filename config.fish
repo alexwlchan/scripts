@@ -195,6 +195,7 @@ __create_python_script_alias text/fix_twemoji.py
 __create_python_script_alias text/fix_twitter_thread.py
 __create_python_script_alias text/natsize.py
 __create_python_script_alias text/noplaylist.py
+__create_python_script_alias text/smartify.py
 __create_python_script_alias text/sumsizes.py
 __create_python_script_alias web/download_instagram.py
 __create_python_script_alias web/yt-dlp.py
