@@ -63,7 +63,9 @@ if __name__ == "__main__":
 
     # Find Markdown files that match the name of this note.
     for path in get_file_paths_under(vault_root, suffix=".md"):
-        if os.path.basename(path) == f"{note_title}.md":
+        expected = f"{note_title}.md".replace('📗 ', '📗  ')
+
+        if os.path.basename(path) == expected:
             print(path, end="")
             break
     else:  # no break
