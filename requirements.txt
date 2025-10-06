@@ -112,7 +112,7 @@ pillow==11.3.0
     #   pillow-heif
 pillow-heif==1.1.0
     # via -r requirements.in
-pipx==1.7.1
+pipx==1.8.0
     # via -r requirements.in
 platformdirs==4.4.0
     # via
