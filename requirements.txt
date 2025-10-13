@@ -14,6 +14,8 @@ certifi==2025.10.5
     # via
     #   httpcore
     #   httpx
+cffi==2.0.0
+    # via cryptography
 click==8.3.0
     # via
     #   click-default-group
@@ -26,6 +28,8 @@ click-default-group==1.2.4
     #   sqlite-utils
 cogapp==3.6.0
     # via -r requirements.in
+cryptography==46.0.2
+    # via secretstorage
 datasette==0.65.1
     # via -r requirements.in
 flexcache==0.3
@@ -69,6 +73,10 @@ jaraco-context==6.0.1
     # via keyring
 jaraco-functools==4.3.0
     # via keyring
+jeepney==0.9.0
+    # via
+    #   keyring
+    #   secretstorage
 jinja2==3.1.6
     # via datasette
 keyring==25.6.0
@@ -91,8 +99,6 @@ pillow==11.3.0
     #   pillow-heif
 pillow-heif==1.1.1
     # via -r requirements.in
-pip==25.2
-    # via datasette
 platformdirs==4.4.0
     # via datasette
 pluggy==1.6.0
@@ -102,6 +108,8 @@ pluggy==1.6.0
     #   sqlite-utils
 protobuf==6.32.1
     # via iterm2
+pycparser==2.23
+    # via cffi
 pygments==2.19.2
     # via
     #   -r requirements.in
@@ -116,10 +124,10 @@ python-multipart==0.0.20
     # via asgi-csrf
 pyyaml==6.0.3
     # via datasette
-ruff==0.13.3
+ruff==0.14.0
     # via -r requirements.in
-setuptools==80.9.0
-    # via datasette
+secretstorage==3.4.0
+    # via keyring
 six==1.17.0
     # via python-dateutil
 smartypants==2.0.2
@@ -140,7 +148,6 @@ tqdm==4.67.1
     # via -r requirements.in
 typing-extensions==4.15.0
     # via
-    #   anyio
     #   beautifulsoup4
     #   datasette
     #   flexcache
