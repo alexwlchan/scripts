@@ -5,7 +5,7 @@
 # Because switching to the repo homepage, clicking, copying the clone URL,
 # typing 'git clone', pasting, are all more effort than I care to do manually.
 function github-clone --description "Clone a GitHub repository into my ~/repos directory"
-    set url "$argv[1]"
+    set url (string replace '?tab=readme-ov-file' '' "$argv[1]")
 
     # Get the identifiers for the repository
     set components (string split "/" "$url")
@@ -37,14 +37,14 @@ function github-clone --description "Clone a GitHub repository into my ~/repos d
         cd $repo
         git remote -v | grep "$owner" >/dev/null 2>&1
         if [ $status != 0 ]
-            echo "git remote add $owner $repo_url"
+            print_info "-> git remote add $owner $repo_url"
             git remote add $owner $repo_url
         end
         set remote (git remote -v | grep "$owner" | awk '{print $1}')
         git fetch
     else
         # Otherwise, clone a fresh copy of the repo
-        echo "git clone $repo_url"
+        print_info "-> git clone $repo_url"
         git clone $repo_url
         cd $repo
 
