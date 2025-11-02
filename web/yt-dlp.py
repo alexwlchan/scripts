@@ -32,7 +32,9 @@ def is_youtube_playlist(url: str) -> bool:
     """
     u = hyperlink.DecodedURL.from_text(url)
     assert "youtube.com" in u.host
-    return bool(u.get("list"))
+    
+    # Look for a non-empty playlist which isn't WL (Watch Later)
+    return bool(u.get("list")) and u.get("list") != "WL"
 
 
 def get_playlist_video_ids(youtube_url: str) -> Iterator[str]:
