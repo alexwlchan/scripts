@@ -30,7 +30,7 @@ cogapp==3.6.0
     # via -r requirements.in
 cryptography==46.0.3
     # via secretstorage
-datasette==0.65.1
+datasette==0.65.2
     # via -r requirements.in
 flexcache==0.3
     # via datasette
