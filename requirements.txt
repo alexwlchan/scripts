@@ -116,7 +116,7 @@ pygments==2.19.2
     #   pytest
 pypdf==6.2.0
     # via -r requirements.in
-pytest==8.4.2
+pytest==9.0.0
     # via -r requirements.in
 python-dateutil==2.9.0.post0
     # via sqlite-utils
