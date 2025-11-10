@@ -59,7 +59,7 @@ idna==3.11
     #   hyperlink
 iniconfig==2.3.0
     # via pytest
-iterm2==2.11
+iterm2==2.12
     # via -r requirements.in
 itsdangerous==2.2.0
     # via
