@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+# get_codec uses `mediainfo` to print the codec of a video file.
+
+set -o errexit
+set -o nounset
+
+if (( $# == 0 ))
+then
+  echo "Usage: $0 VIDEO_FILE" >&2
+  exit 1
+fi
+
+print_info "mediainfo --Inform=\"Video;%Format%\" ${1:q}"
+mediainfo --Inform="Video;%Format%" "$1"
