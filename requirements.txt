@@ -156,5 +156,5 @@ uvicorn==0.38.0
     # via datasette
 websockets==15.0.1
     # via iterm2
-yt-dlp==2025.10.22
+yt-dlp==2025.11.12
     # via -r requirements.in
