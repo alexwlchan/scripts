@@ -35,13 +35,16 @@ function run_python_tests() {
     
     echo ""
     
-    print_info "-> interrogate"
-    if ! interrogate
+    if grep --quiet "interrogate" "dev_requirements.txt"
     then
-      interrogate -vv
-    fi
+      print_info "-> interrogate"
+      if ! interrogate
+      then
+        interrogate -vv
+      fi
     
-    echo ""
+      echo ""
+    fi
 
     # This is one repo which is a bit special -- I'm gradually trying to chase
     # the code into `src`, but for now I have to remmeber to look at *.py
