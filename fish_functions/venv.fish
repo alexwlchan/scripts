@@ -24,7 +24,7 @@ function venv --description "Create and activate a new virtual environment"
     end
 
     print_info "Creating virtual environment in "(pwd)"/.venv"
-    uv venv --quiet .venv
+    uv venv --quiet .venv --python 3.14
     source .venv/bin/activate.fish
     print_info "Using: "(python3 --version)
 
@@ -33,7 +33,7 @@ function venv --description "Create and activate a new virtual environment"
     if test -e .git
         append_to_file_if_not_exists ".git/info/exclude" ".venv"
     end
-    
+
     # Append some other common Python tool directories to the Git
     # exclude file.  These tools already write a `.gitignore` entry
     # for all the files they contain, but not the folder.
