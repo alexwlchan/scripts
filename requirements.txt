@@ -114,7 +114,7 @@ pygments==2.19.2
     # via
     #   -r requirements.in
     #   pytest
-pypdf==6.4.1
+pypdf==6.4.2
     # via -r requirements.in
 pytest==9.0.2
     # via -r requirements.in
