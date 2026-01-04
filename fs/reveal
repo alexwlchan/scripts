@@ -11,4 +11,9 @@
 set -o errexit
 set -o nounset
 
-open -R "$@"
+if (( $# == 0 ))
+then
+  open -R "."
+else
+  open -R "$@"
+fi
