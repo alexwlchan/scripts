@@ -32,12 +32,6 @@ scripts = [
         """
     },
     {
-        "name": "find_big_commits.py",
-        "description": """
-        print some information about the biggest files/commits in the Git history.
-        """
-    },
-    {
         "usage": "gb [name]",
         "description": """
         alias for <a href="https://git-scm.com/docs/git-checkout"><code>git checkout -b [name]</code></a>, which creates a new branch
@@ -134,15 +128,6 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
   </dt>
   <dd>
     clean up any local branches which have been merged into the primary branch (<code>main</code>, <code>master</code>, etc.)
-  </dd>
-
-  <dt>
-    <a href="https://github.com/alexwlchan/scripts/blob/main/git/find_big_commits.py">
-      <code>find_big_commits.py</code>
-    </a>
-  </dt>
-  <dd>
-    print some information about the biggest files/commits in the Git history.
   </dd>
 
   <dt>
@@ -249,4 +234,4 @@ cog_helpers.create_description_table(folder_name=folder_name, scripts=scripts)
     open the current Git repo in <a href="https://gitup.co/">GitUp</a>, my GUI Git client of choice
   </dd>
 </dl>
-<!-- [[[end]]] (sum: kgos+cwNSe) -->
+<!-- [[[end]]] (sum: vSOg0LYPZG) -->
