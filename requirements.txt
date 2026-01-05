@@ -93,7 +93,7 @@ naturalsort==1.5.1
     # via -r requirements.in
 packaging==25.0
     # via pytest
-pillow==12.0.0
+pillow==12.1.0
     # via
     #   -r requirements.in
     #   pillow-heif
