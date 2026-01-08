@@ -10,5 +10,5 @@ then
   exit 1
 fi
 
-print_info "mediainfo --Inform=\"Video;%Format%\" ${1:q}"
+print_info "-> mediainfo --Inform=\"Video;%Format%\" ${1:q}"
 mediainfo --Inform="Video;%Format%" "$1"
