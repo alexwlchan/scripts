@@ -97,7 +97,7 @@ pillow==12.1.0
     # via
     #   -r requirements.in
     #   pillow-heif
-pillow-heif==1.1.1
+pillow-heif==1.2.0
     # via -r requirements.in
 platformdirs==4.5.0
     # via datasette
