@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# Open the current Git repo in my web browser (assuming it's a GitHub repo).
-
-set -o errexit
-set -o nounset
-
-open "$(_get_github_url)"

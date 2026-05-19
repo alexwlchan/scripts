@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# A shortcut because I'm too lazy to type all the letters of "terraform".
-
-terraform "$@"

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# alias for 'git checkout -b'
-
-set -o errexit
-set -o nounset
-
-print_info "-> git checkout -b \"$@\""
-git checkout -b "$@"

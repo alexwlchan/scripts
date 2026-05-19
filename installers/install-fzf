@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# This installs the latest version of fzf, a command-line fuzzy finder
-#
-# See https://github.com/junegunn/fzf
-
-set -o errexit
-set -o nounset
-
-_install-github-bin junegunn/fzf
